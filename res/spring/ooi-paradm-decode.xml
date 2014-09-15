@@ -1,0 +1,81 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+  
+    <bean id="paradMRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="PARAD_M_Recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/parad/parad_m_glider_recovered_driver.py" />
+    </bean>
+    
+    <bean id="paradMTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="PARAD_M_Telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/parad/parad_m_glider_telemetered_driver.py" />
+    </bean>
+    
+    <camelContext id="parad-m-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+        
+        <endpoint id="paradMRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/parad_m_recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        
+        <endpoint id="paradMTelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/parad_m_telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+                    
+        <route id="paradMRecoveredFileConsumerRoute">
+            <from ref="paradMRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PARAD-M-R000</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.paradMRecovered" />
+        </route>
+        
+        <route id="paradMTelemeteredFileConsumerRoute">
+            <from ref="paradMTelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PARAD-M-T000</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.paradMTelemetered" />
+        </route>
+        
+        <route id="paradMRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.paradMRecovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="paradMRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.parad?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+        
+        <route id="paradMTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.paradMTelemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="paradMTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.parad?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+        
+    </camelContext>
+    
+</beans>

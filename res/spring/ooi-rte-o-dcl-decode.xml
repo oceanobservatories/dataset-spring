@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="rteODclRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="rte_o_dcl_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/rte_o_dcl_recovered_driver.py" />
+    </bean>
+
+    <bean id="rteODclTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="rte_o_dcl_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/rte_o_dcl_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="rte-o-dcl-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="rteODclRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/rte_o_dcl_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="rteODclTelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/rte_o_dcl_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="rteODclRecoveredFileConsumerRoute">
+            <from ref="rteODclRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-RTEODR000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.rte_o_dcl_recovered" />
+        </route>
+
+        <route id="rteODclTelemeteredFileConsumerRoute">
+            <from ref="rteODclTelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-RTEODT000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.rte_o_dcl_telemetered" />
+        </route>
+
+        <route id="rteODclRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.rte_o_dcl_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="rteODclRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.rte_o_dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="rteODclTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.rte_o_dcl_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="rteODclTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.rte_o_dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

@@ -1,0 +1,79 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="vel3dKWfpRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="VEL3D_K_Recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_k/wfp/vel3d_k_wfp_recovered_driver.py" />
+    </bean>
+    
+    <bean id="vel3dKWfpTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="VEL3D_K_Telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_k/wfp/vel3d_k_wfp_telemetered_driver.py" />
+    </bean>
+    
+    <camelContext id="vel3d-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+        
+        <endpoint id="vel3dKRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/vel3d_k/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        
+        <endpoint id="vel3dKTelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/vel3d_k/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        
+        <route id="vel3dKRecoveredFileConsumerRoute">
+            <from ref="vel3dKRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-VEL3DKR00</constant>
+            </setHeader>
+            <to uri="jms-durable:queue:Ingest.vel3d_k_recovered" />
+        </route>
+        
+        <route id="vel3dKTelemeteredFileConsumerRoute">
+            <from ref="vel3dKTelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-VEL3DKT00</constant>
+            </setHeader>
+            <to uri="jms-durable:queue:Ingest.vel3d_k_telemetered" />
+        </route>
+        
+        <route id="vel3dKRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.vel3d_k_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="vel3dKWfpRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.vel3d_k?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+        
+        <route id="vel3dKTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.vel3d_k_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="vel3dKWfpTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.vel3d_k?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+    </camelContext>
+</beans>

@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="flortDjDclRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="FLORT_DJ_RECOVERED" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/dcl/flort_dj_dcl_recovered_driver.py" />
+    </bean>
+    
+    <bean id="flortDjDclTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="FLORT_DJ_TELEMETERED" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/dcl/flort_dj_dcl_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="flort-dj-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="flortDjRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort_dj/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            
+        <endpoint id="flortDjTelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort_dj/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="flortDjRecoveredFileConsumerRoute">
+            <from ref="flortDjRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FLORTDJR0</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.flortDjRecovered" />
+        </route>
+        
+        <route id="flortDjTelemeteredFileConsumerRoute">
+            <from ref="flortDjTelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FLORTDJT0</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.flortDjTelemetered" />
+        </route>
+        
+        <route id="flortDjRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.flortDjRecovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flortDjDclRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flortDjRecovered?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+        
+        <route id="flortDjTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.flortDjTelemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flortDjDclTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flortDjTelemetered?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>        
+
+    </camelContext>
+</beans>

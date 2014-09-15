@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ooi-dataset-spring
+Bundle-SymbolicName: com.raytheon.uf.edex.ooi.decoder.dataset.spring
+Bundle-Version: 14.4.0.qualifier
+Bundle-Vendor: RAYTHEON
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -3,21 +3,39 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="paradkStcImodemProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="PARAD_K" />
+    <bean id="paradkStcImodemRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="PARAD_K_Recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_driver.py" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_recovered_driver.py" />
+    </bean>
+    
+    <bean id="paradkStcImodemTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="PARAD_K_Telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_telemetered_driver.py" />
     </bean>
 
     <camelContext id="paradk-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
+        <endpoint id="paradkRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/parad_k/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            
         <endpoint id="paradkTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/paradk_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/parad_k/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="paradkFileEndpoint"
-            uri="file:${edex.home}/data/ooi/paradk?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
+        <route id="paradkRecoveredFileConsumerRoute">
+            <from ref="paradkRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>CP02PMUI-WFP01-05-PARADKR00</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.parad_k_recovered" />
+        </route>
+        
         <route id="paradkTelemeteredFileConsumerRoute">
             <from ref="paradkTelemeteredFileEndpoint" />
             <bean ref="fileToString" />
@@ -25,36 +43,37 @@
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>CP02PMUI-WFP01-05-PARADK000</constant>
+                <constant>CP02PMUI-WFP01-05-PARADKT00</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.paradk" />
+            <to uri="jms-durable:queue:Ingest.parad_k_telemetered" />
         </route>
 
-        <route id="paradkFileConsumerRoute">
-            <from ref="paradkFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>CP02PMUI-WFP01-05-PARADK000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.paradk" />
-        </route>
-
-        <route id="paradkIngest">
-            <from uri="jms-durable:queue:Ingest.paradk" />
+        <route id="paradkRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.parad_k_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="paradkStcImodemProcessor" />
+                    <bean ref="paradkStcImodemRecoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.paradk?level=ERROR" />
+                    <to uri="log:ooi.parad_k_recovered?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
-
+        
+        <route id="paradkTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.parad_k_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="paradkStcImodemTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.parad_k_telemetered?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
     </camelContext>
 </beans>

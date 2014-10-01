@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="pco2wAbcDecoder" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="PCO2W_ABC" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/pco2w_abc/pco2w_abc_recovered_driver.py" />
+    </bean>
+
+    <camelContext id="pco2w-abc-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="pco2wAbcFileEndpoint"
+            uri="file:${edex.home}/data/ooi/pco2w_abc?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="pco2wAbcFileConsumerRoute">
+            <from ref="pco2wAbcFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>RS03AXVM-DP03A-05-PCO2WC302</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.pco2w_abc" />
+        </route>
+
+        <route id="pco2wAbcIngest">
+            <from uri="jms-durable:queue:Ingest.pco2w_abc" />
+            <doTry>
+                <pipeline>
+                    <bean ref="pco2wAbcDecoder" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.pco2wAbc?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

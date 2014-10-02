@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="pco2aADclRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="PCO2A_A_RECOVERED" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/pco2a_a/dcl/pco2a_a_dcl_recovered_driver.py" />
+    </bean>
+    
+    <bean id="pco2aADclTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="PCO2A_A_TELEMETERED" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/pco2a_a/dcl/pco2a_a_dcl_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="pco2a-a-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="pco2aARecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/pco2a_a/pco2a_a_dcl_recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            
+        <endpoint id="pco2aATelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/pco2a_a/pco2a_a_dcl_telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="pco2aARecoveredFileConsumerRoute">
+            <from ref="pco2aARecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PCO2AR0</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.pco2aARecovered" />
+        </route>
+        
+        <route id="pco2aATelemeteredFileConsumerRoute">
+            <from ref="pco2aATelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PCO2AT0</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.pco2aATelemetered" />
+        </route>
+        
+        <route id="pco2aARecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.pco2aARecovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="pco2aADclRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.pco2aARecovered?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+        
+        <route id="pco2aATelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.pco2aATelemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="pco2aADclTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.pco2aATelemetered?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>        
+
+    </camelContext>
+</beans>

@@ -8,7 +8,7 @@
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/metbk_a/dcl/metbk_a_dcl_recovered_driver.py" />
     </bean>
-    
+
     <bean id="metbkADclTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="METBK_A_TELEMETERED" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
@@ -20,7 +20,7 @@
 
         <endpoint id="metbkARecoveredFileEndpoint"
             uri="file:${edex.home}/data/ooi/metbk_a/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-            
+
         <endpoint id="metbkATelemeteredFileEndpoint"
             uri="file:${edex.home}/data/ooi/metbk_a/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
@@ -32,10 +32,10 @@
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-METBKAR0</constant>
-            </setHeader>  
+            </setHeader>
             <to uri="jms-durable:queue:Ingest.metbkARecovered" />
         </route>
-        
+
         <route id="metbkATelemeteredFileConsumerRoute">
             <from ref="metbkATelemeteredFileEndpoint" />
             <bean ref="fileToString" />
@@ -44,10 +44,10 @@
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-METBKAT0</constant>
-            </setHeader>  
+            </setHeader>
             <to uri="jms-durable:queue:Ingest.metbkATelemetered" />
         </route>
-        
+
         <route id="metbkARecoveredIngest">
             <from uri="jms-durable:queue:Ingest.metbkARecovered" />
             <doTry>
@@ -61,7 +61,7 @@
                 </doCatch>
             </doTry>
         </route>
-        
+
         <route id="metbkATelemeteredIngest">
             <from uri="jms-durable:queue:Ingest.metbkATelemetered" />
             <doTry>
@@ -74,7 +74,7 @@
                     <to uri="log:ooi.metbkATelemetered?level=ERROR" />
                 </doCatch>
             </doTry>
-        </route>        
+        </route>
 
     </camelContext>
 </beans>

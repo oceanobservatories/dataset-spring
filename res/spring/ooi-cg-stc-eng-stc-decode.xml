@@ -4,14 +4,14 @@
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<!-- CG STC ENG Telemetered processing configuration -->
-    <bean id="cgStcEngRProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+    <bean id="cgStcEngTProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="CG_STC_ENG_T" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/cg_stc_eng_stc_telemetered_driver.py" />
     </bean>
 
 	<!-- CG STC ENG Recovered processing configuration -->
-    <bean id="cgStcEngTProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+    <bean id="cgStcEngRProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="CG_STC_ENG_R" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/cg_stc_eng_stc_recovered_driver.py" />

@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="presfAbcDclRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="presf_abc_dcl_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/presf_abc/dcl/presf_abc_dcl_recovered_driver.py" />
+    </bean>
+
+    <bean id="presfAbcDclTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="presf_abc_dcl_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/presf_abc/dcl/presf_abc_dcl_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="presf-abc-dcl-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="presfAbcDclRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/presf_abc_dcl_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="presfAbcDclTelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/presf_abc_dcl_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="presfAbcDclRecoveredFileConsumerRoute">
+            <from ref="presfAbcDclRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PRESFR000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.presf_abc_dcl_recovered" />
+        </route>
+
+        <route id="presfAbcDclTelemeteredFileConsumerRoute">
+            <from ref="presfAbcDclTelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PRESFT000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.presf_abc_dcl_telemetered" />
+        </route>
+
+        <route id="presfAbcDclRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.presf_abc_dcl_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="presfAbcDclRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.presf_abc_dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="presfAbcDclTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.presf_abc_dcl_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="presfAbcDclTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.presf_abc_dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

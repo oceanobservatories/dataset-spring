@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="phsenAbcdefRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="phsen_abcdef_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/mflm/phsen/phsen_abcdef_recovered_driver.py" />
+    </bean>
+
+    <camelContext id="phsen-abcdef-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="phsenAbcdefRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/phsen_abcdef_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="phsenAbcdefRecoveredFileConsumerRoute">
+            <from ref="phsenAbcdefRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX0XXXXX-XXX01-00-PHSEN-ABCDEF-R00</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.phsen_abcdef_recovered" />
+        </route>
+
+        <route id="phsenAbcdefRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.phsen_abcdef_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="phsenAbcdefRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.phsen_abcdef?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

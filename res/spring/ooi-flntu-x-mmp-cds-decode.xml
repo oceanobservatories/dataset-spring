@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<!-- FLNTU_X_MMP_CDS processing configuration -->
+    <bean id="flntuXMmpCdsProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="FLNTU_X_MMP_CDS" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flntu_x/mmp_cds/flntu_x_mmp_cds_recovered_driver.py" />
+    </bean>
+
+	<!-- FLNTU_X_MMP_CDS camel configuration -->
+    <camelContext id="flntu-x-mmp-cds-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="flntuXMmpCdsFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flntu_x_mmp_cds?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="flntuXMmpCdsFileConsumerRoute">
+            <from ref="flntuXMmpCdsFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FLNTUX000</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.flntuXMmpCds" />
+        </route>
+
+        <route id="flntuXMmpCdsIngest">
+            <from uri="jms-durable:queue:Ingest.flntuXMmpCds" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flntuXMmpCdsProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flntuXMmpCds?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

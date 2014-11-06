@@ -1,0 +1,82 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <!-- CG DCL ENG Telemetered processing configuration -->
+    <bean id="cgDclEngDclTelemProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="CG_DCL_ENG_T" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_dcl_eng/dcl/cg_dcl_eng_dcl_telemetered_driver.py" />
+    </bean>
+
+    <!-- CG DCL ENG Recovered processing configuration -->
+    <bean id="cgDclEngDclRecovProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="CG_DCL_ENG_R" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_dcl_eng/dcl/cg_dcl_eng_dcl_recovered_driver.py" />
+    </bean>
+
+    <!-- CG DCL ENG camel configuration -->
+    <camelContext id="cg-dcl-eng-dcl-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="cgDclEngDclTelemFileEndpoint"
+            uri="file:${edex.home}/data/ooi/cg_dcl_eng_dcl_telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="cgDclEngDclRecovEndpoint"
+            uri="file:${edex.home}/data/ooi/cg_dcl_eng_dcl_recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="cgDclEngDclTelemFileConsumerRoute">
+            <from ref="cgDclEngDclTelemFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CGDCLE000</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.cgDclEngDclTelem" />
+        </route>
+
+        <route id="cgDclEngDclRecovFileConsumerRoute">
+            <from ref="cgDclEngDclRecovEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CGDCLE100</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.cgDclEngDclRecov" />
+        </route>
+
+        <route id="cgDclEngDclTelemIngest">
+            <from uri="jms-durable:queue:Ingest.cgDclEngDclTelem" />
+            <doTry>
+                <pipeline>
+                    <bean ref="cgDclEngDclTelemProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.cgDclEngDclTelem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="cgDclEngDclRecovIngest">
+            <from uri="jms-durable:queue:Ingest.cgDclEngDclRecov" />
+            <doTry>
+                <pipeline>
+                    <bean ref="cgDclEngDclRecovProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.cgDclEngDclRecov?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+    </camelContext>
+</beans>

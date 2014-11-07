@@ -287,6 +287,25 @@
     <parameterId>PD962</parameterId> <!-- beam_attenuation -->
     <parameterId>PD963</parameterId> <!-- optical_absorption -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_dlog_status_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
+    <parameterId>PD3025</parameterId> <!-- instrument_identifier -->
+    <parameterId>PD3026</parameterId> <!-- datalogger_state -->
+    <parameterId>PD3027</parameterId> <!-- bytes_sent -->
+    <parameterId>PD3028</parameterId> <!-- bytes_received -->
+    <parameterId>PD3029</parameterId> <!-- bytes_logged -->
+    <parameterId>PD3030</parameterId> <!-- good_records -->
+    <parameterId>PD3031</parameterId> <!-- bad_records -->
+    <parameterId>PD3032</parameterId> <!-- bad_bytes -->
+    <parameterId>PD3033</parameterId> <!-- time_received_last_data -->
+    <parameterId>PD3034</parameterId> <!-- time_last_communicated -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_identification_string">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1492,6 +1511,19 @@
     <parameterId>PD265</parameterId> <!-- sample_length -->
     <parameterId>PD2293</parameterId> <!-- profiles -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_status_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD3035</parameterId> <!-- message_sent_type -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
+    <parameterId>PD3036</parameterId> <!-- sync_type -->
+    <parameterId>PD3037</parameterId> <!-- ntp_offset -->
+    <parameterId>PD3038</parameterId> <!-- ntp_jitter -->
+  </streamDefinition>
   <streamDefinition streamName="phsen_abcdef_dcl_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -2014,7 +2046,7 @@
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2258</parameterId> <!-- chlaflo -->
-    <parameterId>PD2025</parameterId> <!-- flord_wfp_ turbidity -->
+    <parameterId>PD2259</parameterId> <!-- ntuflo -->
   </streamDefinition>
   <streamDefinition streamName="vadcp_5thbeam_pd0_beam_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -2355,6 +2387,27 @@
     <parameterId>PD1961</parameterId> <!-- ctdpf_ckl_seawater_conductivity -->
     <parameterId>PD1962</parameterId> <!-- ctdpf_ckl_sci_water_pracsal -->
     <parameterId>PD1963</parameterId> <!-- ctdpf_ckl_seawater_density -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_gps">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
+    <parameterId>PD2950</parameterId> <!-- latitude -->
+    <parameterId>PD2951</parameterId> <!-- longitude -->
+    <parameterId>PD2952</parameterId> <!-- gps_speed -->
+    <parameterId>PD2953</parameterId> <!-- gps_true_course -->
+    <parameterId>PD2954</parameterId> <!-- gps_quality -->
+    <parameterId>PD2955</parameterId> <!-- gps_num_satellites -->
+    <parameterId>PD2956</parameterId> <!-- gps_hdop -->
+    <parameterId>PD2957</parameterId> <!-- gps_altitude -->
+    <parameterId>PD2958</parameterId> <!-- date_of_fix -->
+    <parameterId>PD2959</parameterId> <!-- time_of_fix -->
+    <parameterId>PD2960</parameterId> <!-- latitude_alt_format -->
+    <parameterId>PD2961</parameterId> <!-- longitude_alt_format -->
   </streamDefinition>
   <streamDefinition streamName="ctdpf_j_cspp_metadata_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -2944,6 +2997,27 @@
     <parameterId>PD22</parameterId> <!-- content_type -->
     <parameterId>PD20</parameterId> <!-- image_obj -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_gps_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
+    <parameterId>PD2950</parameterId> <!-- latitude -->
+    <parameterId>PD2951</parameterId> <!-- longitude -->
+    <parameterId>PD2952</parameterId> <!-- gps_speed -->
+    <parameterId>PD2953</parameterId> <!-- gps_true_course -->
+    <parameterId>PD2954</parameterId> <!-- gps_quality -->
+    <parameterId>PD2955</parameterId> <!-- gps_num_satellites -->
+    <parameterId>PD2956</parameterId> <!-- gps_hdop -->
+    <parameterId>PD2957</parameterId> <!-- gps_altitude -->
+    <parameterId>PD2958</parameterId> <!-- date_of_fix -->
+    <parameterId>PD2959</parameterId> <!-- time_of_fix -->
+    <parameterId>PD2960</parameterId> <!-- latitude_alt_format -->
+    <parameterId>PD2961</parameterId> <!-- longitude_alt_format -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_a_sami_data_record">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -5005,6 +5079,66 @@
     <parameterId>PD2805</parameterId> <!-- pco2_co2flux -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_superv_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2967</parameterId> <!-- board_type -->
+    <parameterId>PD2968</parameterId> <!-- vmain_backplane_bus_voltage -->
+    <parameterId>PD2969</parameterId> <!-- imain_current -->
+    <parameterId>PD2970</parameterId> <!-- error_vmain_out_tolerance -->
+    <parameterId>PD2971</parameterId> <!-- error_imain_out_tolerance -->
+    <parameterId>PD2972</parameterId> <!-- error_dcl_iso_swgf_lim_exceeded -->
+    <parameterId>PD2973</parameterId> <!-- error_dcl_rtn_swfg_lim_exceeded -->
+    <parameterId>PD2974</parameterId> <!-- error_vmain_swgf_lim_exceeded -->
+    <parameterId>PD2975</parameterId> <!-- error_gmain_swgf_lim_exceeded -->
+    <parameterId>PD2976</parameterId> <!-- error_sensor_iso_swgf_lim_exceeded -->
+    <parameterId>PD2977</parameterId> <!-- error_snsr_com_swgf_lim_exceeded -->
+    <parameterId>PD2978</parameterId> <!-- error_leak_detect_c1_lim_exceeded -->
+    <parameterId>PD2979</parameterId> <!-- error_leak_detect_c2_lim_exceeded -->
+    <parameterId>PD2980</parameterId> <!-- error_channel_overcurrent_fault -->
+    <parameterId>PD2981</parameterId> <!-- error_channel_1_not_responding -->
+    <parameterId>PD2982</parameterId> <!-- error_channel_2_not_responding -->
+    <parameterId>PD2983</parameterId> <!-- error_channel_3_not_responding -->
+    <parameterId>PD2984</parameterId> <!-- error_channel_4_not_responding -->
+    <parameterId>PD2985</parameterId> <!-- error_channel_5_not_responding -->
+    <parameterId>PD2986</parameterId> <!-- error_channel_6_not_responding -->
+    <parameterId>PD2987</parameterId> <!-- error_channel_7_not_responding -->
+    <parameterId>PD2988</parameterId> <!-- error_channel_8_not_responding -->
+    <parameterId>PD2989</parameterId> <!-- error_i2c_error -->
+    <parameterId>PD2990</parameterId> <!-- error_uart_error -->
+    <parameterId>PD2991</parameterId> <!-- error_brown_out_reset -->
+    <parameterId>PD2992</parameterId> <!-- bmp085_temp -->
+    <parameterId>PD2993</parameterId> <!-- sht25_temp -->
+    <parameterId>PD2994</parameterId> <!-- murata_12v_temp -->
+    <parameterId>PD2995</parameterId> <!-- murata_24v_temp -->
+    <parameterId>PD2996</parameterId> <!-- vicor_12v_bcm_temp -->
+    <parameterId>PD2997</parameterId> <!-- sht25_humidity -->
+    <parameterId>PD2998</parameterId> <!-- bmp085_pressure -->
+    <parameterId>PD2999</parameterId> <!-- active_swgf_channels -->
+    <parameterId>PD3000</parameterId> <!-- swgf_c1_max_leakage -->
+    <parameterId>PD3001</parameterId> <!-- swgf_c2_max_leakage -->
+    <parameterId>PD3002</parameterId> <!-- swgf_c3_max_leakage -->
+    <parameterId>PD3003</parameterId> <!-- active_leak_detect_channels -->
+    <parameterId>PD3004</parameterId> <!-- leak_detect_c1_v -->
+    <parameterId>PD3005</parameterId> <!-- leak_detect_c2_v -->
+    <parameterId>PD3006</parameterId> <!-- channel_state -->
+    <parameterId>PD3007</parameterId> <!-- channel_v -->
+    <parameterId>PD3008</parameterId> <!-- channel_i -->
+    <parameterId>PD3009</parameterId> <!-- channel_error_status -->
+    <parameterId>PD3010</parameterId> <!-- pwr_board_mode -->
+    <parameterId>PD3011</parameterId> <!-- dpb_mode -->
+    <parameterId>PD3012</parameterId> <!-- dpb_voltage_mode -->
+    <parameterId>PD3013</parameterId> <!-- vmain_dpb_in -->
+    <parameterId>PD3014</parameterId> <!-- imain_dpb_in -->
+    <parameterId>PD3015</parameterId> <!-- out_12v_v -->
+    <parameterId>PD3016</parameterId> <!-- out_12v_i -->
+    <parameterId>PD3017</parameterId> <!-- out_24v_v -->
+    <parameterId>PD3018</parameterId> <!-- out_24v_i -->
+  </streamDefinition>
   <streamDefinition streamName="phsen_control_record">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -5668,6 +5802,19 @@
     <parameterId>PD2228</parameterId> <!-- passed_checksum -->
     <parameterId>PD2766</parameterId> <!-- spkir_abj_cspp_downwelling_vector -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_status">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD3035</parameterId> <!-- message_sent_type -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
+    <parameterId>PD3036</parameterId> <!-- sync_type -->
+    <parameterId>PD3037</parameterId> <!-- ntp_offset -->
+    <parameterId>PD3038</parameterId> <!-- ntp_jitter -->
+  </streamDefinition>
   <streamDefinition streamName="nutnr_b_dcl_conc_metadata">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6211,6 +6358,20 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_pps_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2962</parameterId> <!-- nmea_lock -->
+    <parameterId>PD2963</parameterId> <!-- delta -->
+    <parameterId>PD2964</parameterId> <!-- delta_min -->
+    <parameterId>PD2965</parameterId> <!-- delta_max -->
+    <parameterId>PD2966</parameterId> <!-- bad_pulses -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
   </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_hhz">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -7153,6 +7314,25 @@
     <parameterId>PD26</parameterId> <!-- raw -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_dlog_status">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
+    <parameterId>PD3025</parameterId> <!-- instrument_identifier -->
+    <parameterId>PD3026</parameterId> <!-- datalogger_state -->
+    <parameterId>PD3027</parameterId> <!-- bytes_sent -->
+    <parameterId>PD3028</parameterId> <!-- bytes_received -->
+    <parameterId>PD3029</parameterId> <!-- bytes_logged -->
+    <parameterId>PD3030</parameterId> <!-- good_records -->
+    <parameterId>PD3031</parameterId> <!-- bad_records -->
+    <parameterId>PD3032</parameterId> <!-- bad_bytes -->
+    <parameterId>PD3033</parameterId> <!-- time_received_last_data -->
+    <parameterId>PD3034</parameterId> <!-- time_last_communicated -->
+  </streamDefinition>
   <streamDefinition streamName="ctdpf_optode_settings">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7230,6 +7410,24 @@
     <parameterId>PD716</parameterId> <!-- water_velocity_up -->
     <parameterId>PD717</parameterId> <!-- error_velocity -->
     <parameterId>PD743</parameterId> <!-- checksum -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_dlog_aarm_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD3103</parameterId> <!-- acceleration_x -->
+    <parameterId>PD3104</parameterId> <!-- acceleration_y -->
+    <parameterId>PD3105</parameterId> <!-- acceleration_z -->
+    <parameterId>PD3106</parameterId> <!-- angular_rate_x -->
+    <parameterId>PD3107</parameterId> <!-- angular_rate_y -->
+    <parameterId>PD3108</parameterId> <!-- angular_rate_z -->
+    <parameterId>PD3109</parameterId> <!-- magnetometer_x -->
+    <parameterId>PD3110</parameterId> <!-- magnetometer_y -->
+    <parameterId>PD3111</parameterId> <!-- magnetometer_z -->
+    <parameterId>PD3112</parameterId> <!-- tic_counter -->
   </streamDefinition>
   <streamDefinition streamName="mopak_o_dcl_rate">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -8053,6 +8251,20 @@
     <parameterId>PD355</parameterId> <!-- record_type -->
     <parameterId>PD356</parameterId> <!-- record_time -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_cpu_uptime">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2941</parameterId> <!-- uptime_string -->
+    <parameterId>PD2942</parameterId> <!-- load_val_1 -->
+    <parameterId>PD2943</parameterId> <!-- load_val_2 -->
+    <parameterId>PD2944</parameterId> <!-- load_val_3 -->
+    <parameterId>PD2945</parameterId> <!-- mem_free -->
+    <parameterId>PD2946</parameterId> <!-- num_processes -->
+  </streamDefinition>
   <streamDefinition streamName="nutnr_a_sample">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -8164,6 +8376,20 @@
     <parameterId>PD226</parameterId> <!-- output_salinity -->
     <parameterId>PD227</parameterId> <!-- output_sound_velocity -->
     <parameterId>PD228</parameterId> <!-- serial_sync_mode -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_dlog_mgr_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD3019</parameterId> <!-- datalogger_timestamp -->
+    <parameterId>PD3020</parameterId> <!-- dlog_mgr_act -->
+    <parameterId>PD3021</parameterId> <!-- dlog_mgr_str -->
+    <parameterId>PD3022</parameterId> <!-- dlog_mgr_hlt -->
+    <parameterId>PD3023</parameterId> <!-- dlog_mgr_fld -->
+    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_l_wfp_sio_mule_metadata">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -8681,6 +8907,24 @@
     <parameterId>PD2546</parameterId> <!-- hpies_mindex -->
     <parameterId>PD2547</parameterId> <!-- hpies_motor_current -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_dlog_aarm">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD3103</parameterId> <!-- acceleration_x -->
+    <parameterId>PD3104</parameterId> <!-- acceleration_y -->
+    <parameterId>PD3105</parameterId> <!-- acceleration_z -->
+    <parameterId>PD3106</parameterId> <!-- angular_rate_x -->
+    <parameterId>PD3107</parameterId> <!-- angular_rate_y -->
+    <parameterId>PD3108</parameterId> <!-- angular_rate_z -->
+    <parameterId>PD3109</parameterId> <!-- magnetometer_x -->
+    <parameterId>PD3110</parameterId> <!-- magnetometer_y -->
+    <parameterId>PD3111</parameterId> <!-- magnetometer_z -->
+    <parameterId>PD3112</parameterId> <!-- tic_counter -->
+  </streamDefinition>
   <streamDefinition streamName="flort_d_data_record">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -8884,6 +9128,16 @@
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_error">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2947</parameterId> <!-- log_type -->
+    <parameterId>PD2948</parameterId> <!-- message_text -->
+  </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_ehe">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -9032,7 +9286,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
     <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
-    <parameterId>PD2025</parameterId> <!-- flord_wfp_ turbidity -->
+    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
     <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
   </streamDefinition>
   <streamDefinition streamName="parad_sa_config">
@@ -9313,6 +9567,19 @@
     <parameterId>PD2771</parameterId> <!-- corrected_echo_intensity_beam3 -->
     <parameterId>PD2772</parameterId> <!-- corrected_echo_intensity_beam4 -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_msg_counts">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2936</parameterId> <!-- gps_counts -->
+    <parameterId>PD2937</parameterId> <!-- ntp_counts -->
+    <parameterId>PD2938</parameterId> <!-- pps_counts -->
+    <parameterId>PD2939</parameterId> <!-- superv_counts -->
+    <parameterId>PD2940</parameterId> <!-- dlog_mgr_counts -->
+  </streamDefinition>
   <streamDefinition streamName="vadcp_ancillary_system_data">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -9400,6 +9667,20 @@
     <parameterId>PD1961</parameterId> <!-- ctdpf_ckl_seawater_conductivity -->
     <parameterId>PD1962</parameterId> <!-- ctdpf_ckl_sci_water_pracsal -->
     <parameterId>PD1963</parameterId> <!-- ctdpf_ckl_seawater_density -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_pps">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2962</parameterId> <!-- nmea_lock -->
+    <parameterId>PD2963</parameterId> <!-- delta -->
+    <parameterId>PD2964</parameterId> <!-- delta_min -->
+    <parameterId>PD2965</parameterId> <!-- delta_max -->
+    <parameterId>PD2966</parameterId> <!-- bad_pulses -->
+    <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
   </streamDefinition>
   <streamDefinition streamName="ctdmo_ghqr_offset_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9888,7 +10169,7 @@
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2258</parameterId> <!-- chlaflo -->
-    <parameterId>PD2025</parameterId> <!-- flord_wfp_ turbidity -->
+    <parameterId>PD2259</parameterId> <!-- ntuflo -->
   </streamDefinition>
   <streamDefinition streamName="adcps_parsed">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -10395,6 +10676,16 @@
     <parameterId>PD880</parameterId> <!-- upward_turbulent_velocity -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_error_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2947</parameterId> <!-- log_type -->
+    <parameterId>PD2948</parameterId> <!-- message_text -->
+  </streamDefinition>
   <streamDefinition streamName="trhph_sample">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -10783,6 +11074,20 @@
     <parameterId>PD929</parameterId> <!-- absorbance_blank_620 -->
     <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_cpu_uptime_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2941</parameterId> <!-- uptime_string -->
+    <parameterId>PD2942</parameterId> <!-- load_val_1 -->
+    <parameterId>PD2943</parameterId> <!-- load_val_2 -->
+    <parameterId>PD2944</parameterId> <!-- load_val_3 -->
+    <parameterId>PD2945</parameterId> <!-- mem_free -->
+    <parameterId>PD2946</parameterId> <!-- num_processes -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_system_data">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11097,6 +11402,80 @@
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
     <parameterId>PD2016</parameterId> <!-- vel3d_k_str_id -->
     <parameterId>PD2017</parameterId> <!-- vel3d_k_string -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_superv">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2967</parameterId> <!-- board_type -->
+    <parameterId>PD2968</parameterId> <!-- vmain_backplane_bus_voltage -->
+    <parameterId>PD2969</parameterId> <!-- imain_current -->
+    <parameterId>PD2970</parameterId> <!-- error_vmain_out_tolerance -->
+    <parameterId>PD2971</parameterId> <!-- error_imain_out_tolerance -->
+    <parameterId>PD2972</parameterId> <!-- error_dcl_iso_swgf_lim_exceeded -->
+    <parameterId>PD2973</parameterId> <!-- error_dcl_rtn_swfg_lim_exceeded -->
+    <parameterId>PD2974</parameterId> <!-- error_vmain_swgf_lim_exceeded -->
+    <parameterId>PD2975</parameterId> <!-- error_gmain_swgf_lim_exceeded -->
+    <parameterId>PD2976</parameterId> <!-- error_sensor_iso_swgf_lim_exceeded -->
+    <parameterId>PD2977</parameterId> <!-- error_snsr_com_swgf_lim_exceeded -->
+    <parameterId>PD2978</parameterId> <!-- error_leak_detect_c1_lim_exceeded -->
+    <parameterId>PD2979</parameterId> <!-- error_leak_detect_c2_lim_exceeded -->
+    <parameterId>PD2980</parameterId> <!-- error_channel_overcurrent_fault -->
+    <parameterId>PD2981</parameterId> <!-- error_channel_1_not_responding -->
+    <parameterId>PD2982</parameterId> <!-- error_channel_2_not_responding -->
+    <parameterId>PD2983</parameterId> <!-- error_channel_3_not_responding -->
+    <parameterId>PD2984</parameterId> <!-- error_channel_4_not_responding -->
+    <parameterId>PD2985</parameterId> <!-- error_channel_5_not_responding -->
+    <parameterId>PD2986</parameterId> <!-- error_channel_6_not_responding -->
+    <parameterId>PD2987</parameterId> <!-- error_channel_7_not_responding -->
+    <parameterId>PD2988</parameterId> <!-- error_channel_8_not_responding -->
+    <parameterId>PD2989</parameterId> <!-- error_i2c_error -->
+    <parameterId>PD2990</parameterId> <!-- error_uart_error -->
+    <parameterId>PD2991</parameterId> <!-- error_brown_out_reset -->
+    <parameterId>PD2992</parameterId> <!-- bmp085_temp -->
+    <parameterId>PD2993</parameterId> <!-- sht25_temp -->
+    <parameterId>PD2994</parameterId> <!-- murata_12v_temp -->
+    <parameterId>PD2995</parameterId> <!-- murata_24v_temp -->
+    <parameterId>PD2996</parameterId> <!-- vicor_12v_bcm_temp -->
+    <parameterId>PD2997</parameterId> <!-- sht25_humidity -->
+    <parameterId>PD2998</parameterId> <!-- bmp085_pressure -->
+    <parameterId>PD2999</parameterId> <!-- active_swgf_channels -->
+    <parameterId>PD3000</parameterId> <!-- swgf_c1_max_leakage -->
+    <parameterId>PD3001</parameterId> <!-- swgf_c2_max_leakage -->
+    <parameterId>PD3002</parameterId> <!-- swgf_c3_max_leakage -->
+    <parameterId>PD3003</parameterId> <!-- active_leak_detect_channels -->
+    <parameterId>PD3004</parameterId> <!-- leak_detect_c1_v -->
+    <parameterId>PD3005</parameterId> <!-- leak_detect_c2_v -->
+    <parameterId>PD3006</parameterId> <!-- channel_state -->
+    <parameterId>PD3007</parameterId> <!-- channel_v -->
+    <parameterId>PD3008</parameterId> <!-- channel_i -->
+    <parameterId>PD3009</parameterId> <!-- channel_error_status -->
+    <parameterId>PD3010</parameterId> <!-- pwr_board_mode -->
+    <parameterId>PD3011</parameterId> <!-- dpb_mode -->
+    <parameterId>PD3012</parameterId> <!-- dpb_voltage_mode -->
+    <parameterId>PD3013</parameterId> <!-- vmain_dpb_in -->
+    <parameterId>PD3014</parameterId> <!-- imain_dpb_in -->
+    <parameterId>PD3015</parameterId> <!-- out_12v_v -->
+    <parameterId>PD3016</parameterId> <!-- out_12v_i -->
+    <parameterId>PD3017</parameterId> <!-- out_24v_v -->
+    <parameterId>PD3018</parameterId> <!-- out_24v_i -->
+  </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_dlog_mgr">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD3019</parameterId> <!-- datalogger_timestamp -->
+    <parameterId>PD3020</parameterId> <!-- dlog_mgr_act -->
+    <parameterId>PD3021</parameterId> <!-- dlog_mgr_str -->
+    <parameterId>PD3022</parameterId> <!-- dlog_mgr_hlt -->
+    <parameterId>PD3023</parameterId> <!-- dlog_mgr_fld -->
+    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
   </streamDefinition>
   <streamDefinition streamName="lookup_value_test">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -11521,6 +11900,19 @@
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD2835</parameterId> <!-- ctdbp_cdef_dcl_ce_abs_oxygen -->
   </streamDefinition>
+  <streamDefinition streamName="cg_dcl_eng_dcl_msg_counts_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2936</parameterId> <!-- gps_counts -->
+    <parameterId>PD2937</parameterId> <!-- ntp_counts -->
+    <parameterId>PD2938</parameterId> <!-- pps_counts -->
+    <parameterId>PD2939</parameterId> <!-- superv_counts -->
+    <parameterId>PD2940</parameterId> <!-- dlog_mgr_counts -->
+  </streamDefinition>
   <streamDefinition streamName="ctdpf_j_cspp_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11779,6 +12171,31 @@
     <parameterId>PD2667</parameterId> <!-- camds_temp -->
     <parameterId>PD2668</parameterId> <!-- camds_humidity -->
     <parameterId>PD2669</parameterId> <!-- camds_error -->
+  </streamDefinition>
+  <streamDefinition streamName="optaa_ac_mmp_cds_instrument">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD584</parameterId> <!-- packet_type -->
+    <parameterId>PD585</parameterId> <!-- meter_type -->
+    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
+    <parameterId>PD587</parameterId> <!-- pressure_counts -->
+    <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
+    <parameterId>PD589</parameterId> <!-- external_temp_raw -->
+    <parameterId>PD590</parameterId> <!-- internal_temp_raw -->
+    <parameterId>PD591</parameterId> <!-- c_reference_dark_counts -->
+    <parameterId>PD592</parameterId> <!-- c_signal_dark_counts -->
+    <parameterId>PD593</parameterId> <!-- elapsed_run_time -->
+    <parameterId>PD594</parameterId> <!-- num_wavelengths -->
+    <parameterId>PD595</parameterId> <!-- c_reference_counts -->
+    <parameterId>PD596</parameterId> <!-- a_reference_counts -->
+    <parameterId>PD597</parameterId> <!-- c_signal_counts -->
+    <parameterId>PD598</parameterId> <!-- a_signal_counts -->
   </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_sio_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->

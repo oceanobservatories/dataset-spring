@@ -2328,7 +2328,7 @@
 	<parameter encoding="uint16" fill="0" name="flord_wfp_temperature" pd_id="PD2026" precision="" type="quantity" unit="counts"/>
 	<parameter encoding="uint16" fill="0" name="wfp_decimation_factor" pd_id="PD2027" precision="0" type="factor" unit="1"/>
 	<parameter encoding="uint16" fill="0" name="flord_wfp_chlorophyll" pd_id="PD2024" precision="" type="quantity" unit="counts"/>
-	<parameter encoding="uint16" fill="0" name="flord_wfp_ turbidity" pd_id="PD2025" precision="" type="quantity" unit="counts"/>
+	<parameter encoding="uint16" fill="0" name="flord_wfp_turbidity" pd_id="PD2025" precision="" type="quantity" unit="counts"/>
 	<parameter encoding="str" fill="empty" name="trhph_system_info" pd_id="PD2028" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="trhph_eprom_status" pd_id="PD2029" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="t_max" pd_id="PD3049" precision="4" type="quantity" unit="seconds"/>

@@ -7,7 +7,7 @@
     <bean id="adcpsJlnProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="ADCPS_JLN" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/stc/adcps_jln_driver.py" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/adcps_jln_driver.py" />
     </bean>
 
 	<!-- ADCPS JLN STC processing configuration -->
@@ -18,7 +18,7 @@
     </bean>
 
 	<!-- ADCPS JLN and ADCPS JLN STC camel configuration -->
-    <camelContext id="adcps-jln-decode-camel"
+    <camelContext id="adcps-jln-stc-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="adcpsJlnFileEndpoint"

@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="adcpsJlnSioTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcps_jln_sio_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/sio/adcps_jln_sio_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="adcps-jln-sio-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="adcpsJlnSioTelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpsJlnSioTelem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="adcpsJlnSioTelemeteredFileConsumerRoute">
+            <from ref="adcpsJlnSioTelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-ADJLST000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.adcpsJlnSioTelemetered" />
+        </route>
+
+        <route id="adcpsJlnSioTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpsJlnSioTelemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="adcpsJlnSioTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.adcpsJlnSio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

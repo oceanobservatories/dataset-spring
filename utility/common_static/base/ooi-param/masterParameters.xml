@@ -2326,7 +2326,7 @@
 	<parameter encoding="str" fill="empty" name="cgl_eng_fileopen_time" pd_id="PD2020" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="sensor_available_speed" pd_id="PD2021" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="uint16" fill="0" name="flord_wfp_temperature" pd_id="PD2026" precision="" type="quantity" unit="counts"/>
-	<parameter encoding="uint16" fill="0" name="wfp_decimation_factor" pd_id="PD2027" precision="0" type="factor" unit="1"/>
+	<parameter encoding="uint16" fill="0" name="wfp_decimation_factor" pd_id="PD2027" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint16" fill="0" name="flord_wfp_chlorophyll" pd_id="PD2024" precision="" type="quantity" unit="counts"/>
 	<parameter encoding="uint16" fill="0" name="flord_wfp_turbidity" pd_id="PD2025" precision="" type="quantity" unit="counts"/>
 	<parameter encoding="str" fill="empty" name="trhph_system_info" pd_id="PD2028" precision="" type="array&lt;quantity&gt;" unit="1"/>

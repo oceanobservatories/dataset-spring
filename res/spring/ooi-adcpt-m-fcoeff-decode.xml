@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="adcptMFCoeffRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcpt_m_fcoeff_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_m/adcpt_m_fcoeff_recovered_driver.py" />
+    </bean>
+
+    <camelContext id="adcpt-m-fcoeff-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="adcptMFCoeffRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpt_m_fcoeff_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="adcptMFCoeffRecoveredFileConsumerRoute">
+            <from ref="adcptMFCoeffRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-ADCPTM002</constant>
+            </setHeader>
+            <to uri="jms-durable:queue:Ingest.adcpt_m_fcoeff_recovered" />
+        </route>
+
+        <route id="adcptMFCoeffRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpt_m_fcoeff_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="adcptMFCoeffRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.adcpt_m_fcoeff?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

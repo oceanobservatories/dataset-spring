@@ -2409,6 +2409,37 @@
     <parameterId>PD2960</parameterId> <!-- latitude_alt_format -->
     <parameterId>PD2961</parameterId> <!-- longitude_alt_format -->
   </streamDefinition>
+  <streamDefinition streamName="adcpt_m_instrument_log9_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD761</parameterId> <!-- burst_number -->
+    <parameterId>PD3039</parameterId> <!-- burst_start_time -->
+    <parameterId>PD2777</parameterId> <!-- significant_wave_height -->
+    <parameterId>PD2782</parameterId> <!-- peak_wave_period -->
+    <parameterId>PD3040</parameterId> <!-- peak_wave_direction -->
+    <parameterId>PD3041</parameterId> <!-- tp_sea -->
+    <parameterId>PD3042</parameterId> <!-- dp_sea -->
+    <parameterId>PD3043</parameterId> <!-- hs_sea -->
+    <parameterId>PD3044</parameterId> <!-- tp_swell -->
+    <parameterId>PD3045</parameterId> <!-- dp_swell -->
+    <parameterId>PD3046</parameterId> <!-- hs_swell -->
+    <parameterId>PD3047</parameterId> <!-- depth_water_level -->
+    <parameterId>PD3048</parameterId> <!-- h_max -->
+    <parameterId>PD3049</parameterId> <!-- t_max -->
+    <parameterId>PD3050</parameterId> <!-- h_1_3 -->
+    <parameterId>PD3051</parameterId> <!-- t_1_3 -->
+    <parameterId>PD3052</parameterId> <!-- h_mean -->
+    <parameterId>PD3053</parameterId> <!-- t_mean -->
+    <parameterId>PD3054</parameterId> <!-- h_1_10 -->
+    <parameterId>PD3055</parameterId> <!-- t_1_10 -->
+    <parameterId>PD3056</parameterId> <!-- d_mean -->
+    <parameterId>PD3057</parameterId> <!-- num_bins -->
+    <parameterId>PD3058</parameterId> <!-- depth_level_magnitude -->
+    <parameterId>PD3059</parameterId> <!-- depth_level_direction -->
+  </streamDefinition>
   <streamDefinition streamName="ctdpf_j_cspp_metadata_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -2676,6 +2707,27 @@
     <parameterId>PD330</parameterId> <!-- sea_water_dark -->
     <parameterId>PD331</parameterId> <!-- spec_channel_average -->
     <parameterId>PD332</parameterId> <!-- spectral_channels -->
+  </streamDefinition>
+  <streamDefinition streamName="adcpt_m_instrument_fcoeff_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD3060</parameterId> <!-- file_time -->
+    <parameterId>PD3093</parameterId> <!-- num_fields -->
+    <parameterId>PD3062</parameterId> <!-- num_freq -->
+    <parameterId>PD3063</parameterId> <!-- freq_w_band -->
+    <parameterId>PD3064</parameterId> <!-- freq_0 -->
+    <parameterId>PD3094</parameterId> <!-- frequency_band -->
+    <parameterId>PD3095</parameterId> <!-- bandwidth_band -->
+    <parameterId>PD3096</parameterId> <!-- energy_density_band -->
+    <parameterId>PD3097</parameterId> <!-- direction_band -->
+    <parameterId>PD3098</parameterId> <!-- a1_band -->
+    <parameterId>PD3099</parameterId> <!-- b1_band -->
+    <parameterId>PD3100</parameterId> <!-- a2_band -->
+    <parameterId>PD3101</parameterId> <!-- b2_band -->
+    <parameterId>PD3102</parameterId> <!-- check_factor_band -->
   </streamDefinition>
   <streamDefinition streamName="velpt_ab_dcl_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -12266,6 +12318,20 @@
     <parameterId>PD2241</parameterId> <!-- vel3d_l_number_of_records -->
     <parameterId>PD2242</parameterId> <!-- vel3d_l_time_on -->
     <parameterId>PD2243</parameterId> <!-- vel3d_l_time_off -->
+  </streamDefinition>
+  <streamDefinition streamName="adcpt_m_instrument_dspec_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD3060</parameterId> <!-- file_time -->
+    <parameterId>PD3061</parameterId> <!-- num_dir -->
+    <parameterId>PD3062</parameterId> <!-- num_freq -->
+    <parameterId>PD3063</parameterId> <!-- freq_w_band -->
+    <parameterId>PD3064</parameterId> <!-- freq_0 -->
+    <parameterId>PD3065</parameterId> <!-- start_dir -->
+    <parameterId>PD3066</parameterId> <!-- directional_surface_spectrum -->
   </streamDefinition>
   <streamDefinition streamName="velpt_hardware_configuration">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->

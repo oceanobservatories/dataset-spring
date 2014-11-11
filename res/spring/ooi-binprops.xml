@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+  
+  <bean id="timeBinDao" class="com.raytheon.edex.plugin.sensorreading.SensorReadingDao" />
+  
+  <bean id="oneMinuteBin" class="com.raytheon.uf.edex.ooi.decoder.dataset.container.ParticleContainerProperties" depends-on="registerSensorReadingPlugin">
+    <constructor-arg name="binSizeMilliseconds" value="60000" />
+    <constructor-arg name="dao" ref="timeBinDao" />
+  </bean>
+  
+  <bean id="fiveMinuteBin" class="com.raytheon.uf.edex.ooi.decoder.dataset.container.ParticleContainerProperties" depends-on="registerSensorReadingPlugin">
+    <constructor-arg name="binSizeMilliseconds" value="300000" />
+    <constructor-arg name="dao" ref="timeBinDao" />
+  </bean>
+  
+  <bean id="fifteenMinuteBin" class="com.raytheon.uf.edex.ooi.decoder.dataset.container.ParticleContainerProperties" depends-on="registerSensorReadingPlugin">
+    <constructor-arg name="binSizeMilliseconds" value="900000" />
+    <constructor-arg name="dao" ref="timeBinDao" />
+  </bean>
+  
+  <bean id="thirtyMinuteBin" class="com.raytheon.uf.edex.ooi.decoder.dataset.container.ParticleContainerProperties" depends-on="registerSensorReadingPlugin">
+    <constructor-arg name="binSizeMilliseconds" value="1800000" />
+    <constructor-arg name="dao" ref="timeBinDao" />
+  </bean>
+  
+  <bean id="binByAvailable" class="com.raytheon.uf.edex.ooi.decoder.dataset.container.ParticleContainerProperties" depends-on="registerSensorReadingPlugin">
+    <constructor-arg name="dao" ref="timeBinDao" />
+  </bean>
+
+
+
+</beans>

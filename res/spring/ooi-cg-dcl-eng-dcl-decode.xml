@@ -60,7 +60,6 @@
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.cgDclEngDclTelem?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

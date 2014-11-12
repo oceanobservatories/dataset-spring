@@ -8,6 +8,7 @@
         <constructor-arg name="name" value="ADCPS_JLN" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/stc/adcps_jln_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
 
 	<!-- ADCPS JLN STC processing configuration -->
@@ -15,6 +16,7 @@
         <constructor-arg name="name" value="ADCPS_JLN_STC" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/stc/adcps_jln_stc_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
 
 	<!-- ADCPS JLN and ADCPS JLN STC camel configuration -->

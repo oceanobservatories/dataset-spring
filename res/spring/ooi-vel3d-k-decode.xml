@@ -7,12 +7,14 @@
         <constructor-arg name="name" value="VEL3D_K_Recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_k/wfp/vel3d_k_wfp_recovered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
     
     <bean id="vel3dKWfpTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="VEL3D_K_Telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_k/wfp/vel3d_k_wfp_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
     
     <camelContext id="vel3d-decode-camel"

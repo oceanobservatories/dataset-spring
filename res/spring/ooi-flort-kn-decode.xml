@@ -7,12 +7,14 @@
         <constructor-arg name="name" value="FLORT_KN_RECOVERED" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/FLORT_KN/STC_IMODEM/flort_kn__stc_imodem_recovered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
     
     <bean id="flortKnStcTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="FLORT_KN_TELEMETERED" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/FLORT_KN/STC_IMODEM/flort_kn__stc_imodem_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
     
     <camelContext id="flort-kn-decode-camel"

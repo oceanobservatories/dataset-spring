@@ -24,11 +24,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDBPCDEFCER0</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.ctdbpCdefCeRecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.ctdbpCdefCeRecovered" />
         </route>
         
         <route id="ctdbpCdefCeRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdbpCdefCeRecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.ctdbpCdefCeRecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdbpCdefCeRecoveredProcessor" />

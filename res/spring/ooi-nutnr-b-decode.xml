@@ -24,11 +24,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-NUTNRBDCLCONCR00</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.nutnr_b_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.nutnr_b_recovered" />
         </route>
         
         <route id="NutnrBRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr_b_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.nutnr_b_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="NutnrBRecoveredProcessor" />

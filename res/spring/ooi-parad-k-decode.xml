@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>CP02PMUI-WFP01-05-PARADKR00</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.parad_k_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.parad_k_recovered" />
         </route>
         
         <route id="paradkTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>CP02PMUI-WFP01-05-PARADKT00</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.parad_k_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.parad_k_telemetered" />
         </route>
 
         <route id="paradkRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.parad_k_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.parad_k_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="paradkStcImodemRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
         
         <route id="paradkTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.parad_k_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.parad_k_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="paradkStcImodemTelemeteredProcessor" />

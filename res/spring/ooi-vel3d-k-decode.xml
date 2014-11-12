@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-VEL3DKR00</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.vel3d_k_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.vel3d_k_recovered" />
         </route>
         
         <route id="vel3dKTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-VEL3DKT00</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.vel3d_k_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.vel3d_k_telemetered" />
         </route>
         
         <route id="vel3dKRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d_k_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.vel3d_k_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3dKWfpRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
         
         <route id="vel3dKTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d_k_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.vel3d_k_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3dKWfpTelemeteredProcessor" />

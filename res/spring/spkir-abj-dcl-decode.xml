@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-SPKIRC302</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.spkir_abj_dcl_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.spkir_abj_dcl_recovered" />
         </route>
 
         <route id="spkirAbjDclTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-SPKIRC302</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.spkir_abj_dcl_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.spkir_abj_dcl_telemetered" />
         </route>
 
         <route id="spkirAbjDclRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.spkir_abj_dcl_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.spkir_abj_dcl_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="spkirAbjDclRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="spkirAbjDclTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.spkir_abj_dcl_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.spkir_abj_dcl_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="spkirAbjDclTelemeteredProcessor" />

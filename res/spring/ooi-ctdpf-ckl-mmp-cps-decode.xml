@@ -25,11 +25,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDPFM000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.ctdpfCklMmpCds" />
+            <to uri="jms-ooi-dataset:queue:Ingest.ctdpfCklMmpCds" />
         </route>
         
         <route id="ctdpfCklMmpCdsIngest">
-            <from uri="jms-durable:queue:Ingest.ctdpfCklMmpCds" />
+            <from uri="jms-ooi-dataset:queue:Ingest.ctdpfCklMmpCds" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdpfCklMmpCdsProcessor" />

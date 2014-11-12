@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-DABCDR000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dosta_abcdjm_dcl_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_dcl_recovered" />
         </route>
 
         <route id="dostaAbcdjmDclTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-DABCDT000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dosta_abcdjm_dcl_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_dcl_telemetered" />
         </route>
 
         <route id="dostaAbcdjmDclRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta_abcdjm_dcl_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_dcl_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="dostaAbcdjmDclRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="dostaAbcdjmDclTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta_abcdjm_dcl_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_dcl_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="dostaAbcdjmDclTelemeteredProcessor" />

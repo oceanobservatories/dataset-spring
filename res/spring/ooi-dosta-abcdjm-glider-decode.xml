@@ -7,12 +7,14 @@
         <constructor-arg name="name" value="dosta_abcdjm_glider_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/dosta/dosta_abcdjm_glider_recovered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
 
     <bean id="dostaAbcdjmGliderTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="dosta_abcdjm_glider_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/dosta/dosta_abcdjm_glider_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
 
     <camelContext id="dosta-abcdjm-glider-decode-camel"
@@ -33,7 +35,7 @@
             <setHeader headerName="sensor">
                 <constant>XX0XXXXX-XXX01-00-DOSTA000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_glider_recovered" />
         </route>
 
         <route id="dostaAbcdjmGliderTelemeteredFileConsumerRoute">
@@ -45,11 +47,11 @@
             <setHeader headerName="sensor">
                 <constant>XX0XXXXX-XXX01-00-DOSTA000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_glider_telemetered" />
         </route>
 
         <route id="dostaAbcdjmGliderRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_glider_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="dostaAbcdjmGliderRecoveredProcessor" />
@@ -63,7 +65,7 @@
         </route>
 
         <route id="dostaAbcdjmGliderTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.dosta_abcdjm_glider_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="dostaAbcdjmGliderTelemeteredProcessor" />

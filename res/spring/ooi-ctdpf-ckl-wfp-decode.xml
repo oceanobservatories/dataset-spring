@@ -35,7 +35,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDPFW000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.ctdpfCklWfpT" />
+            <to uri="jms-ooi-dataset:queue:Ingest.ctdpfCklWfpT" />
         </route>
 
         <route id="ctdpfCklWfpRFileConsumerRoute">
@@ -47,11 +47,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDPFW100</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.ctdpfCklWfpR" />
+            <to uri="jms-ooi-dataset:queue:Ingest.ctdpfCklWfpR" />
         </route>
 
         <route id="ctdpfCklWfpTIngest">
-            <from uri="jms-durable:queue:Ingest.ctdpfCklWfpT" />
+            <from uri="jms-ooi-dataset:queue:Ingest.ctdpfCklWfpT" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdpfCklWfpTProcessor" />
@@ -65,7 +65,7 @@
         </route>
                 
         <route id="ctdpfCklWfpRIngest">
-            <from uri="jms-durable:queue:Ingest.ctdpfCklWfpR" />
+            <from uri="jms-ooi-dataset:queue:Ingest.ctdpfCklWfpR" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdpfCklWfpRProcessor" />

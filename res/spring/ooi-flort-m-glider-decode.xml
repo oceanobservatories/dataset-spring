@@ -35,7 +35,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-FLORTMR000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.flortmRecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.flortmRecovered" />
         </route>
         
         <route id="flortmTelemeteredFileConsumerRoute">
@@ -47,11 +47,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-FLORTMT000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.flortmTelemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.flortmTelemetered" />
         </route>
         
         <route id="flortmRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flortmRecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.flortmRecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="flortmRecoveredProcessor" />
@@ -65,7 +65,7 @@
         </route>
         
         <route id="flortmTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.flortmTelemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.flortmTelemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="flortmTelemeteredProcessor" />

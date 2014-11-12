@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-METBKAR0</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.metbkARecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.metbkARecovered" />
         </route>
 
         <route id="metbkATelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-METBKAT0</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.metbkATelemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.metbkATelemetered" />
         </route>
 
         <route id="metbkARecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.metbkARecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.metbkARecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="metbkADclRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="metbkATelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.metbkATelemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.metbkATelemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="metbkADclTelemeteredProcessor" />

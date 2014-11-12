@@ -36,7 +36,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGSTCM000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgStcMopakT" />
+            <to uri="jms-ooi-dataset:queue:Ingest.cgStcMopakT" />
         </route>
 
         <route id="cgStcEngMopakRFileConsumerRoute">
@@ -48,11 +48,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGSTCM100</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgStcMopakR" />
+            <to uri="jms-ooi-dataset:queue:Ingest.cgStcMopakR" />
         </route>
 
         <route id="cgStcMopakTIngest">
-            <from uri="jms-durable:queue:Ingest.cgStcMopakT" />
+            <from uri="jms-ooi-dataset:queue:Ingest.cgStcMopakT" />
             <doTry>
                 <pipeline>
                     <bean ref="cgStcMopakTProcessor" />
@@ -66,7 +66,7 @@
         </route>
 
         <route id="cgStcMopakRIngest">
-            <from uri="jms-durable:queue:Ingest.cgStcMopakR" />
+            <from uri="jms-ooi-dataset:queue:Ingest.cgStcMopakR" />
             <doTry>
                 <pipeline>
                     <bean ref="cgStcMopakRProcessor" />

@@ -24,11 +24,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-DOSTLN000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.dostaLnWfpRecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.dostaLnWfpRecovered" />
         </route>
         
         <route id="dostaLnWfpRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dostaLnWfpRecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.dostaLnWfpRecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="dostaLnWfpRecoveredProcessor" />

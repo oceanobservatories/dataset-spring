@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-PCO2AR0</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.pco2aARecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.pco2aARecovered" />
         </route>
         
         <route id="pco2aATelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-PCO2AT0</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.pco2aATelemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.pco2aATelemetered" />
         </route>
         
         <route id="pco2aARecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.pco2aARecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.pco2aARecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="pco2aADclRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
         
         <route id="pco2aATelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.pco2aATelemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.pco2aATelemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="pco2aADclTelemeteredProcessor" />

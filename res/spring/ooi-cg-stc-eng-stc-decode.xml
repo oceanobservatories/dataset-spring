@@ -36,7 +36,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGSTCE000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgStcEngT" />
+            <to uri="jms-ooi-dataset:queue:Ingest.cgStcEngT" />
         </route>
 
         <route id="cgStcEngRFileConsumerRoute">
@@ -48,11 +48,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGSTCE100</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgStcEngR" />
+            <to uri="jms-ooi-dataset:queue:Ingest.cgStcEngR" />
         </route>
 
         <route id="cgStcEngTIngest">
-            <from uri="jms-durable:queue:Ingest.cgStcEngT" />
+            <from uri="jms-ooi-dataset:queue:Ingest.cgStcEngT" />
             <doTry>
                 <pipeline>
                     <bean ref="cgStcEngTProcessor" />
@@ -66,7 +66,7 @@
         </route>
 
         <route id="cgStcEngRIngest">
-            <from uri="jms-durable:queue:Ingest.cgStcEngR" />
+            <from uri="jms-ooi-dataset:queue:Ingest.cgStcEngR" />
             <doTry>
                 <pipeline>
                     <bean ref="cgStcEngRProcessor" />

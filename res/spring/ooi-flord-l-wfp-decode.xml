@@ -26,11 +26,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-FLORDL000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.flordLWfp" />
+            <to uri="jms-ooi-dataset:queue:Ingest.flordLWfp" />
         </route>
 
         <route id="flordLWfpIngest">
-            <from uri="jms-durable:queue:Ingest.flordLWfp" />
+            <from uri="jms-ooi-dataset:queue:Ingest.flordLWfp" />
             <doTry>
                 <pipeline>
                     <bean ref="flordLWfpProcessor" />

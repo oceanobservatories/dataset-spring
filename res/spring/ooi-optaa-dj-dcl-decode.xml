@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-OPTAAC302</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.optaa_dj_dcl_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.optaa_dj_dcl_recovered" />
         </route>
 
         <route id="optaaDjDclTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-OPTAAC302</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.optaa_dj_dcl_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.optaa_dj_dcl_telemetered" />
         </route>
 
         <route id="optaaDjDclRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.optaa_dj_dcl_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.optaa_dj_dcl_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="optaaAcMmpCdsRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="optaaDjDclTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.optaa_dj_dcl_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.optaa_dj_dcl_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="optaaAcMmpCdsTelemeteredProcessor" />

@@ -7,12 +7,14 @@
         <constructor-arg name="name" value="PARAD_M_Recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/parad/parad_m_glider_recovered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
     
     <bean id="paradMTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="PARAD_M_Telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/parad/parad_m_glider_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
     
     <camelContext id="parad-m-decode-camel"
@@ -33,7 +35,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-PARAD-M-R000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.paradMRecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.paradMRecovered" />
         </route>
         
         <route id="paradMTelemeteredFileConsumerRoute">
@@ -45,11 +47,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-PARAD-M-T000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.paradMTelemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.paradMTelemetered" />
         </route>
         
         <route id="paradMRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.paradMRecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.paradMRecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="paradMRecoveredProcessor" />
@@ -63,7 +65,7 @@
         </route>
         
         <route id="paradMTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.paradMTelemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.paradMTelemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="paradMTelemeteredProcessor" />

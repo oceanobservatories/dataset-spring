@@ -26,11 +26,11 @@
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-OPTAAC302</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.optaa" />
+            <to uri="jms-ooi-dataset:queue:Ingest.optaa" />
         </route>
 
         <route id="optaaIngest">
-            <from uri="jms-durable:queue:Ingest.optaa" />
+            <from uri="jms-ooi-dataset:queue:Ingest.optaa" />
             <doTry>
                 <pipeline>
                     <bean ref="optaaAcMmpCdsProcessor" />

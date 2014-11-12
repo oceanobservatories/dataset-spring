@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="jmsOOOIConfig" class="org.apache.camel.component.jms.JmsConfiguration"
+            factory-bean="jmsConfig" factory-method="copy">
+        <property name="destinationResolver" ref="qpidDurableResolver" />
+        <property name="deliveryPersistent" value="true"/>
+    </bean>
+    
+    <bean id="ooiThreadPool"
+        class="com.raytheon.uf.edex.esb.camel.spring.JmsThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="1" />
+        <property name="maxPoolSize" value="12" />
+        <property name="queueCapacity" value="0" />
+    </bean>
+
+    <bean id="jms-ooi-dataset" class="com.raytheon.uf.edex.esb.camel.jms.DedicatedThreadJmsComponent">
+        <constructor-arg ref="jmsOOOIConfig" />
+        <property name="taskExecutor" ref="ooiThreadPool" />
+    </bean>
+</beans>

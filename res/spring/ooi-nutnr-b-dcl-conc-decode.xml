@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-NUTNRBDCLCONCR00</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.nutnr_b_dcl_conc_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.nutnr_b_dcl_conc_recovered" />
         </route>
         
         <route id="NutnrBDclConcTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-NUTNRBDCLCONCT00</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.nutnr_b_dcl_conc_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.nutnr_b_dcl_conc_telemetered" />
         </route>
         
         <route id="NutnrBDclConcRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr_b_dcl_conc_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.nutnr_b_dcl_conc_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="NutnrBDclConcRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
         
         <route id="NutnrBDclConcTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr_b_dcl_conc_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.nutnr_b_dcl_conc_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="NutnrBDclConcTelemeteredProcessor" />

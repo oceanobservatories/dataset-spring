@@ -24,11 +24,11 @@
             <setHeader headerName="sensor">
                 <constant>XX0X-X01-PHSEN-ABCDEF-R00</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.phsen_abcdef_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.phsen_abcdef_recovered" />
         </route>
 
         <route id="phsenAbcdefRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen_abcdef_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.phsen_abcdef_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="phsenAbcdefRecoveredProcessor" />

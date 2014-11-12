@@ -36,7 +36,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPSJ000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.adcpsJln" />
+            <to uri="jms-ooi-dataset:queue:Ingest.adcpsJln" />
         </route>
 
         <route id="adcpsJlnStcFileConsumerRoute">
@@ -48,11 +48,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPSS000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.adcpsJlnStc" />
+            <to uri="jms-ooi-dataset:queue:Ingest.adcpsJlnStc" />
         </route>
 
         <route id="adcpsJlnIngest">
-            <from uri="jms-durable:queue:Ingest.adcpsJln" />
+            <from uri="jms-ooi-dataset:queue:Ingest.adcpsJln" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpsJlnProcessor" />
@@ -66,7 +66,7 @@
         </route>
 
         <route id="adcpsJlnStcIngest">
-            <from uri="jms-durable:queue:Ingest.adcpsJlnStc" />
+            <from uri="jms-ooi-dataset:queue:Ingest.adcpsJlnStc" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpsJlnStcProcessor" />

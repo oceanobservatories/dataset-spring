@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-DOFSTR000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.dofstRecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.dofstRecovered" />
         </route>
         
         <route id="dofstTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-DOFSTT000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.dofstTelemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.dofstTelemetered" />
         </route>
         
         <route id="dofstRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dofstRecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.dofstRecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="dofstKWfpRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
         
         <route id="dofstTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dofstTelemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.dofstTelemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="dofstKWfpTelemeteredProcessor" />

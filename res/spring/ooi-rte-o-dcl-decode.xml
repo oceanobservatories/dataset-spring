@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-RTEODR000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.rte_o_dcl_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.rte_o_dcl_recovered" />
         </route>
 
         <route id="rteODclTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-RTEODT000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.rte_o_dcl_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.rte_o_dcl_telemetered" />
         </route>
 
         <route id="rteODclRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.rte_o_dcl_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.rte_o_dcl_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="rteODclRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="rteODclTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.rte_o_dcl_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.rte_o_dcl_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="rteODclTelemeteredProcessor" />

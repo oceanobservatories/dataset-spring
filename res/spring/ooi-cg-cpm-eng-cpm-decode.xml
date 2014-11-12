@@ -36,7 +36,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGCPME000</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgCpmEngCpmTelemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.cgCpmEngCpmTelemetered" />
         </route>
 
         <route id="cgCpmEngCpmRecovFileConsumerRoute">
@@ -48,11 +48,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGCPME100</constant>
             </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgCpmEngCpmRecovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.cgCpmEngCpmRecovered" />
         </route>
 
         <route id="cgCpmEngCpmTelemIngest">
-            <from uri="jms-durable:queue:Ingest.cgCpmEngCpmTelemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.cgCpmEngCpmTelemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="cgCpmEngCpmTelemProcessor" />
@@ -66,7 +66,7 @@
         </route>
 
         <route id="cgCpmEngCpmRecovIngest">
-            <from uri="jms-durable:queue:Ingest.cgCpmEngCpmRecovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.cgCpmEngCpmRecovered" />
             <doTry>
                 <pipeline>
                     <bean ref="cgCpmEngCpmRecovProcessor" />

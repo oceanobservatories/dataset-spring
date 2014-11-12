@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>CP02PMUO-SBS01-00-ENGWSX000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.wfp_eng_stc_imodem_recovered" />
         </route>
 
         <route id="wfpEngStcImodemTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>CP02PMUO-SBS01-00-ENGWSX000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.wfp_eng_stc_imodem_telemetered" />
         </route>
 
         <route id="wfpEngStcImodemRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.wfp_eng_stc_imodem_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="wfpEngStcImodemRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="wfpEngStcImodemTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.wfp_eng_stc_imodem_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="wfpEngStcImodemTelemeteredProcessor" />

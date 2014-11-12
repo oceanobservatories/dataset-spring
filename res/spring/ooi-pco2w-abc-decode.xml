@@ -24,11 +24,11 @@
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-PCO2WC302</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.pco2w_abc" />
+            <to uri="jms-ooi-dataset:queue:Ingest.pco2w_abc" />
         </route>
 
         <route id="pco2wAbcIngest">
-            <from uri="jms-durable:queue:Ingest.pco2w_abc" />
+            <from uri="jms-ooi-dataset:queue:Ingest.pco2w_abc" />
             <doTry>
                 <pipeline>
                     <bean ref="pco2wAbcDecoder" />

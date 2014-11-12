@@ -35,7 +35,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPMR000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpa_m_glider_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.adcpa_m_glider_recovered" />
         </route>
 
         <route id="adcpaMGliderTelemeteredFileConsumerRoute">
@@ -47,11 +47,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPMT000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpa_m_glider_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.adcpa_m_glider_telemetered" />
         </route>
 
         <route id="adcpaMGliderRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpa_m_glider_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.adcpa_m_glider_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpaMGliderRecoveredProcessor" />
@@ -65,7 +65,7 @@
         </route>
 
         <route id="adcpaMGliderTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpa_m_glider_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.adcpa_m_glider_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpaMGliderTelemeteredProcessor" />

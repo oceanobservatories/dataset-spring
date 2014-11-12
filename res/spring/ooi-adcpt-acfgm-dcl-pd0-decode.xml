@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPTR000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd0_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.adcpt_acfgm_dcl_pd0_recovered" />
         </route>
 
         <route id="adcptAcfgmDclPd0TelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPTT000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd0_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.adcpt_acfgm_dcl_pd0_telemetered" />
         </route>
 
         <route id="adcptAcfgmDclPd0RecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd0_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.adcpt_acfgm_dcl_pd0_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="adcptAcfgmDclPd0RecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="adcptAcfgmDclPd0TelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd0_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.adcpt_acfgm_dcl_pd0_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="adcptAcfgmDclPd0TelemeteredProcessor" />

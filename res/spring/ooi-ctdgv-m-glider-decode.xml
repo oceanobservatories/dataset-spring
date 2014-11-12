@@ -35,7 +35,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDGVR000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.ctdgv_m_glider_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.ctdgv_m_glider_recovered" />
         </route>
 
         <route id="ctdgvMGliderTelemeteredFileConsumerRoute">
@@ -47,11 +47,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDGVT000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.ctdgv_m_glider_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.ctdgv_m_glider_telemetered" />
         </route>
 
         <route id="ctdgvMGliderRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdgv_m_glider_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.ctdgv_m_glider_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdgvMGliderRecoveredProcessor" />
@@ -65,7 +65,7 @@
         </route>
 
         <route id="ctdgvMGliderTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdgv_m_glider_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.ctdgv_m_glider_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdgvMGliderTelemeteredProcessor" />

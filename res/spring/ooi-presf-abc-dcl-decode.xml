@@ -33,7 +33,7 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-PRESFR000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.presf_abc_dcl_recovered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.presf_abc_dcl_recovered" />
         </route>
 
         <route id="presfAbcDclTelemeteredFileConsumerRoute">
@@ -45,11 +45,11 @@
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-PRESFT000</constant>
             </setHeader>            
-            <to uri="jms-durable:queue:Ingest.presf_abc_dcl_telemetered" />
+            <to uri="jms-ooi-dataset:queue:Ingest.presf_abc_dcl_telemetered" />
         </route>
 
         <route id="presfAbcDclRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.presf_abc_dcl_recovered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.presf_abc_dcl_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="presfAbcDclRecoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="presfAbcDclTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.presf_abc_dcl_telemetered" />
+            <from uri="jms-ooi-dataset:queue:Ingest.presf_abc_dcl_telemetered" />
             <doTry>
                 <pipeline>
                     <bean ref="presfAbcDclTelemeteredProcessor" />

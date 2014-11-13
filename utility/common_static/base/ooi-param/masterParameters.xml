@@ -207,6 +207,7 @@
 	<parameter encoding="float32" fill="-9999" name="temp_L1" pd_id="PD866" precision="" type="function" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999" name="pressure_L1" pd_id="PD865" precision="" type="function" unit="dbar"/>
 	<parameter encoding="float32" fill="-9999" name="conductivity_L1" pd_id="PD864" precision="" type="function" unit="mS cm-1"/>
+	<parameter encoding="uint8" fill="0" name="vel3d_k_beams" pd_id="PD3223" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999999" name="roll_time_series" pd_id="PD3222" precision="0" type="array&lt;quantity&gt;" unit="centidegrees"/>
 	<parameter encoding="int16" fill="-9999999" name="pitch_time_series" pd_id="PD3221" precision="0" type="array&lt;quantity&gt;" unit="centidegrees"/>
 	<parameter encoding="int16" fill="-9999999" name="heading_time_series" pd_id="PD3220" precision="0" type="array&lt;quantity&gt;" unit="centidegrees"/>

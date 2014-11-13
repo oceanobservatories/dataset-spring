@@ -1,0 +1,81 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<!-- CTDPF CKL WFP SIO Telemeter processing configuration -->
+    <bean id="ctdpfCklWfpSioTProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="CTDPF_CKL_WFP_SIO_T" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp_sio/ctdpf_ckl_wfp_sio_telemetered_driver.py" />
+    </bean>
+    
+	<!-- CTDPF CKL WFP SIO Recovered processing configuration -->
+    <bean id="ctdpfCklWfpSioRProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="CTDPF_CKL_WFP_SIO_R" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp/ctdpf_ckl_wfp_recovered_driver.py" />
+    </bean>
+
+    <camelContext id="ctdpf-ckl-wfp-sio-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="ctdpfCklWfpSioTFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdpf_ckl/wfp_sio/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="ctdpfCklWfpSioRFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdpf_ckl/wfp_sio/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="ctdpfCklWfpSioTFileConsumerRoute">
+            <from ref="ctdpfCklWfpSioTFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDPFWST0</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.ctdpfCklWfpSioT" />
+        </route>
+
+        <route id="ctdpfCklWfpSioRFileConsumerRoute">
+            <from ref="ctdpfCklWfpSioRFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDPFWSR0</constant>
+            </setHeader>  
+            <to uri="jms-durable:queue:Ingest.ctdpfCklWfpSioR" />
+        </route>
+
+        <route id="ctdpfCklWfpSioTIngest">
+            <from uri="jms-durable:queue:Ingest.ctdpfCklWfpSioT" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdpfCklWfpSioTProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdpf.ckl.wfp.sio.telemetered?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+                
+        <route id="ctdpfCklWfpSioRIngest">
+            <from uri="jms-durable:queue:Ingest.ctdpfCklWfpSioR" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdpfCklWfpSioRProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdpf.ckl.wfp.sio.recovered?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+    </camelContext>
+</beans>

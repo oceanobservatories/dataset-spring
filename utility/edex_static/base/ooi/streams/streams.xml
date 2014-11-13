@@ -1256,7 +1256,6 @@
     <parameterId>PD2310</parameterId> <!-- ext_volt0 -->
   </streamDefinition>
   <streamDefinition streamName="pco2a_a_dcl_metadata_recovered">
-    <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
@@ -1264,7 +1263,6 @@
     <parameterId>PD133</parameterId> <!-- logging_stop_time -->
   </streamDefinition>
   <streamDefinition streamName="pco2a_a_dcl_instrument_water_recovered">
-    <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
@@ -2226,7 +2224,6 @@
     <parameterId>PD1538</parameterId> <!-- sci_flbb_chlor_units -->
   </streamDefinition>
   <streamDefinition streamName="pco2a_a_dcl_instrument_air_recovered">
-    <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
@@ -7953,7 +7950,7 @@
     <parameterId>PD3021</parameterId> <!-- dlog_mgr_str -->
     <parameterId>PD3022</parameterId> <!-- dlog_mgr_hlt -->
     <parameterId>PD3023</parameterId> <!-- dlog_mgr_fld -->
-    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
+    <parameterId>PD3024</parameterId> <!-- dlog_mgr_map -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_l_wfp_sio_mule_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -8812,6 +8809,8 @@
     <parameterId>PD1609</parameterId> <!-- vel3d_k_heading -->
     <parameterId>PD1610</parameterId> <!-- vel3d_k_pitch -->
     <parameterId>PD1611</parameterId> <!-- vel3d_k_roll -->
+    <parameterId>PD3223</parameterId> <!-- vel3d_k_beams -->
+    <parameterId>PD2010</parameterId> <!-- vel3d_k_data_set_description -->
     <parameterId>PD1612</parameterId> <!-- vel3d_k_v_scale -->
     <parameterId>PD1613</parameterId> <!-- vel3d_k_vel0 -->
     <parameterId>PD1614</parameterId> <!-- vel3d_k_vel1 -->
@@ -10939,7 +10938,7 @@
     <parameterId>PD3021</parameterId> <!-- dlog_mgr_str -->
     <parameterId>PD3022</parameterId> <!-- dlog_mgr_hlt -->
     <parameterId>PD3023</parameterId> <!-- dlog_mgr_fld -->
-    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
+    <parameterId>PD3024</parameterId> <!-- dlog_mgr_map -->
   </streamDefinition>
   <streamDefinition streamName="lookup_value_test">
     <parameterId>PD6</parameterId> <!-- temp -->
@@ -11662,7 +11661,6 @@
     <parameterId>PD2023</parameterId> <!-- dosta_ln_optode_temperature -->
   </streamDefinition>
   <streamDefinition streamName="pco2a_a_dcl_metadata">
-    <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->

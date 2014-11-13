@@ -3,43 +3,43 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="NutnrBRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="Nutnr_b_Recovered" />
+    <bean id="nutnr-b_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="nutnr-b_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_b/nutnr_b_recovered_driver.py" />
     </bean>
-    
+
     <camelContext id="nutnr-b-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
-        
-        <endpoint id="NutnrBRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/nutnr_b_recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-        
-        <route id="NutnrBRecoveredFileConsumerRoute">
-            <from ref="NutnrBRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+
+        <endpoint id="nutnr-b_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/nutnr-b_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="nutnr-b_recoveredFileConsumerRoute">
+            <from ref="nutnr-b_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-NUTNRBDCLCONCR00</constant>
+                <constant>XX00XXXX-XX00X-00-NUTNRR000</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.nutnr_b_recovered" />
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.nutnr-b_recovered" />
         </route>
-        
-        <route id="NutnrBRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr_b_recovered" />
+
+        <route id="nutnr-b_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.nutnr-b_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="NutnrBRecoveredProcessor" />
+                    <bean ref="nutnr-b_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.nutnr_b?level=ERROR" />
+                    <to uri="log:ooi.nutnr-b?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
-        
+
     </camelContext>
 </beans>

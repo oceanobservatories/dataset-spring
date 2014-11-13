@@ -3,14 +3,14 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="wfpEngStcImodemRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="wfp_eng_stc_imodem_recovered" />
+    <bean id="wfp-eng-stc-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="wfp-eng-stc-imodem_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/WFP_ENG/STC_IMODEM/wfp_eng_stc_imodem_recovered_driver.py" />
     </bean>
 
-    <bean id="wfpEngStcImodemTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="wfp_eng_stc_imodem_telemetered" />
+    <bean id="wfp-eng-stc-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="wfp-eng-stc-imodem_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/WFP_ENG/STC_IMODEM/wfp_eng_stc_imodem_telemetered_driver.py" />
     </bean>
@@ -18,60 +18,60 @@
     <camelContext id="wfp-eng-stc-imodem-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="wfpEngStcImodemRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/wfp_eng_stc_imodem_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="wfp-eng-stc-imodem_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/wfp-eng-stc-imodem_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="wfpEngStcImodemTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/wfp_eng_stc_imodem_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="wfp-eng-stc-imodem_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/wfp-eng-stc-imodem_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="wfpEngStcImodemRecoveredFileConsumerRoute">
-            <from ref="wfpEngStcImodemRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="wfp-eng-stc-imodem_recoveredFileConsumerRoute">
+            <from ref="wfp-eng-stc-imodem_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>CP02PMUO-SBS01-00-ENGWSX000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_recovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.wfp-eng-stc-imodem_recovered" />
         </route>
 
-        <route id="wfpEngStcImodemTelemeteredFileConsumerRoute">
-            <from ref="wfpEngStcImodemTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="wfp-eng-stc-imodem_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.wfp-eng-stc-imodem_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="wfp-eng-stc-imodem_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.wfp-eng-stc-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="wfp-eng-stc-imodem_telemeteredFileConsumerRoute">
+            <from ref="wfp-eng-stc-imodem_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>CP02PMUO-SBS01-00-ENGWSX000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_telemetered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.wfp-eng-stc-imodem_telemetered" />
         </route>
 
-        <route id="wfpEngStcImodemRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_recovered" />
+        <route id="wfp-eng-stc-imodem_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.wfp-eng-stc-imodem_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="wfpEngStcImodemRecoveredProcessor" />
+                    <bean ref="wfp-eng-stc-imodem_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.wfp_eng_stc_imodem?level=ERROR" />
-                </doCatch>
-            </doTry>
-        </route>
-
-        <route id="wfpEngStcImodemTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.wfp_eng_stc_imodem_telemetered" />
-            <doTry>
-                <pipeline>
-                    <bean ref="wfpEngStcImodemTelemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.wfp_eng_stc_imodem?level=ERROR" />
+                    <to uri="log:ooi.wfp-eng-stc-imodem?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

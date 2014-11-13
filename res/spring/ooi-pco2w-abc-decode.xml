@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="pco2wAbcDecoder" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="PCO2W_ABC" />
+    <bean id="pco2w-abc_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="pco2w-abc_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/pco2w_abc/pco2w_abc_recovered_driver.py" />
     </bean>
@@ -12,31 +12,31 @@
     <camelContext id="pco2w-abc-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="pco2wAbcFileEndpoint"
-            uri="file:${edex.home}/data/ooi/pco2w_abc?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="pco2w-abc_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/pco2w-abc_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="pco2wAbcFileConsumerRoute">
-            <from ref="pco2wAbcFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="pco2w-abc_recoveredFileConsumerRoute">
+            <from ref="pco2w-abc_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-PCO2WC302</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.pco2w_abc" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.pco2w-abc_recovered" />
         </route>
 
-        <route id="pco2wAbcIngest">
-            <from uri="jms-durable:queue:Ingest.pco2w_abc" />
+        <route id="pco2w-abc_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.pco2w-abc_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="pco2wAbcDecoder" />
+                    <bean ref="pco2w-abc_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.pco2wAbc?level=ERROR" />
+                    <to uri="log:ooi.pco2w-abc?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

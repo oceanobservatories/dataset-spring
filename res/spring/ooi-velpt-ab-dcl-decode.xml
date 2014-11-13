@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="velpt-ab-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="velpt-ab-dcl_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/velpt_ab/dcl/velpt_ab_dcl_recovered_driver.py" />
+    </bean>
+
+    <bean id="velpt-ab-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="velpt-ab-dcl_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/velpt_ab/dcl/velpt_ab_dcl_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="velpt-ab-dcl-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="velpt-ab-dcl_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/velpt-ab-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="velpt-ab-dcl_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/velpt-ab-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="velpt-ab-dcl_recoveredFileConsumerRoute">
+            <from ref="velpt-ab-dcl_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-VELABR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.velpt-ab-dcl_recovered" />
+        </route>
+
+        <route id="velpt-ab-dcl_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.velpt-ab-dcl_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="velpt-ab-dcl_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.velpt-ab-dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="velpt-ab-dcl_telemeteredFileConsumerRoute">
+            <from ref="velpt-ab-dcl_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-VELABR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.velpt-ab-dcl_telemetered" />
+        </route>
+
+        <route id="velpt-ab-dcl_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.velpt-ab-dcl_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="velpt-ab-dcl_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.velpt-ab-dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

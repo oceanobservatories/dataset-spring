@@ -3,80 +3,78 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<!-- CG STC ENG Telemetered processing configuration -->
-    <bean id="cgStcEngTProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="CG_STC_ENG_T" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/cg_stc_eng_stc_telemetered_driver.py" />
-    </bean>
-
-	<!-- CG STC ENG Recovered processing configuration -->
-    <bean id="cgStcEngRProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="CG_STC_ENG_R" />
+    <bean id="cg-stc-eng-stc_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="cg-stc-eng-stc_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/cg_stc_eng_stc_recovered_driver.py" />
     </bean>
 
-	<!-- CG STC ENG camel configuration -->
-    <camelContext id="cg-stc-eng-decode-camel"
+    <bean id="cg-stc-eng-stc_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="cg-stc-eng-stc_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/cg_stc_eng_stc_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="cg-stc-eng-stc-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="cgStcEngTFileEndpoint"
-            uri="file:${edex.home}/data/ooi/cgStcEng/stcTelemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="cg-stc-eng-stc_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/cg-stc-eng-stc_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="cgStcEngRFileEndpoint"
-            uri="file:${edex.home}/data/ooi/cgStcEng/stcRecovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="cg-stc-eng-stc_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/cg-stc-eng-stc_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="cgStcEngTFileConsumerRoute">
-            <from ref="cgStcEngTFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-CGSTCE000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgStcEngT" />
-        </route>
-
-        <route id="cgStcEngRFileConsumerRoute">
-            <from ref="cgStcEngRFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="cg-stc-eng-stc_recoveredFileConsumerRoute">
+            <from ref="cg-stc-eng-stc_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGSTCE100</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgStcEngR" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.cg-stc-eng-stc_recovered" />
         </route>
 
-        <route id="cgStcEngTIngest">
-            <from uri="jms-durable:queue:Ingest.cgStcEngT" />
+        <route id="cg-stc-eng-stc_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.cg-stc-eng-stc_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="cgStcEngTProcessor" />
+                    <bean ref="cg-stc-eng-stc_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.cgStcEngT?level=ERROR" />
+                    <to uri="log:ooi.cg-stc-eng-stc?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
 
-        <route id="cgStcEngRIngest">
-            <from uri="jms-durable:queue:Ingest.cgStcEngR" />
+        <route id="cg-stc-eng-stc_telemeteredFileConsumerRoute">
+            <from ref="cg-stc-eng-stc_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CGSTCE000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.cg-stc-eng-stc_telemetered" />
+        </route>
+
+        <route id="cg-stc-eng-stc_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.cg-stc-eng-stc_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="cgStcEngRProcessor" />
+                    <bean ref="cg-stc-eng-stc_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.cgStcEngR?level=ERROR" />
+                    <to uri="log:ooi.cg-stc-eng-stc?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
+
     </camelContext>
 </beans>

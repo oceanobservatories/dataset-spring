@@ -3,79 +3,78 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<!-- CTDPF CKL WFP Telemeter processing configuration -->
-    <bean id="ctdpfCklWfpTProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="CTDPF_CKL_WFP_T" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp/ctdpf_ckl_wfp_telemetered_driver.py" />
-    </bean>
-    
-	<!-- CTDPF CKL WFP Recovered processing configuration -->
-    <bean id="ctdpfCklWfpRProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="CTDPF_CKL_WFP_R" />
+    <bean id="ctdpf-ckl-wfp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdpf-ckl-wfp_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp/ctdpf_ckl_wfp_recovered_driver.py" />
+    </bean>
+
+    <bean id="ctdpf-ckl-wfp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdpf-ckl-wfp_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp/ctdpf_ckl_wfp_telemetered_driver.py" />
     </bean>
 
     <camelContext id="ctdpf-ckl-wfp-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="ctdpfCklWfpTFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdpf/ckl/wfp/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="ctdpf-ckl-wfp_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdpf-ckl-wfp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="ctdpfCklWfpRFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdpf/ckl/wfp/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="ctdpf-ckl-wfp_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdpf-ckl-wfp_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="ctdpfCklWfpTFileConsumerRoute">
-            <from ref="ctdpfCklWfpTFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-CTDPFW000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.ctdpfCklWfpT" />
-        </route>
-
-        <route id="ctdpfCklWfpRFileConsumerRoute">
-            <from ref="ctdpfCklWfpRFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="ctdpf-ckl-wfp_recoveredFileConsumerRoute">
+            <from ref="ctdpf-ckl-wfp_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDPFW100</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.ctdpfCklWfpR" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdpf-ckl-wfp_recovered" />
         </route>
 
-        <route id="ctdpfCklWfpTIngest">
-            <from uri="jms-durable:queue:Ingest.ctdpfCklWfpT" />
+        <route id="ctdpf-ckl-wfp_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdpf-ckl-wfp_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="ctdpfCklWfpTProcessor" />
+                    <bean ref="ctdpf-ckl-wfp_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.ctdpf.ckl.wfp.telemetered?level=ERROR" />
+                    <to uri="log:ooi.ctdpf-ckl-wfp?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
-                
-        <route id="ctdpfCklWfpRIngest">
-            <from uri="jms-durable:queue:Ingest.ctdpfCklWfpR" />
+
+        <route id="ctdpf-ckl-wfp_telemeteredFileConsumerRoute">
+            <from ref="ctdpf-ckl-wfp_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDPFW000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdpf-ckl-wfp_telemetered" />
+        </route>
+
+        <route id="ctdpf-ckl-wfp_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdpf-ckl-wfp_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="ctdpfCklWfpRProcessor" />
+                    <bean ref="ctdpf-ckl-wfp_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.ctdpf.ckl.wfp.recovered?level=ERROR" />
+                    <to uri="log:ooi.ctdpf-ckl-wfp?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
+
     </camelContext>
 </beans>

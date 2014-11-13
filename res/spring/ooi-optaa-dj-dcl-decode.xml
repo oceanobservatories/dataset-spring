@@ -3,14 +3,14 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="optaaAcMmpCdsRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="OPTAA_DJ_DCL_RECOVERED" />
+    <bean id="optaa-dj-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="optaa-dj-dcl_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/optaa_dj/dcl/optaa_dj_dcl_recovered_driver.py" />
     </bean>
 
-    <bean id="optaaAcMmpCdsTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="OPTAA_DJ_DCL_TELEMETERED" />
+    <bean id="optaa-dj-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="optaa-dj-dcl_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/optaa_dj/dcl/optaa_dj_dcl_telemetered_driver.py" />
     </bean>
@@ -18,60 +18,60 @@
     <camelContext id="optaa-dj-dcl-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="optaaDjDclRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/optaa_dj_dcl/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="optaa-dj-dcl_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/optaa-dj-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="optaaDjDclTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/optaa_dj_dcl/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="optaa-dj-dcl_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/optaa-dj-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="optaaDjDclRecoveredFileConsumerRoute">
-            <from ref="optaaDjDclRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="optaa-dj-dcl_recoveredFileConsumerRoute">
+            <from ref="optaa-dj-dcl_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-OPTAAC302</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.optaa_dj_dcl_recovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.optaa-dj-dcl_recovered" />
         </route>
 
-        <route id="optaaDjDclTelemeteredFileConsumerRoute">
-            <from ref="optaaDjDclTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="optaa-dj-dcl_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.optaa-dj-dcl_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="optaa-dj-dcl_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.optaa-dj-dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="optaa-dj-dcl_telemeteredFileConsumerRoute">
+            <from ref="optaa-dj-dcl_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>RS03AXVM-DP03A-05-OPTAAC302</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.optaa_dj_dcl_telemetered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.optaa-dj-dcl_telemetered" />
         </route>
 
-        <route id="optaaDjDclRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.optaa_dj_dcl_recovered" />
+        <route id="optaa-dj-dcl_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.optaa-dj-dcl_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="optaaAcMmpCdsRecoveredProcessor" />
+                    <bean ref="optaa-dj-dcl_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.optaa?level=ERROR" />
-                </doCatch>
-            </doTry>
-        </route>
-
-        <route id="optaaDjDclTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.optaa_dj_dcl_telemetered" />
-            <doTry>
-                <pipeline>
-                    <bean ref="optaaAcMmpCdsTelemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.optaa?level=ERROR" />
+                    <to uri="log:ooi.optaa-dj-dcl?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

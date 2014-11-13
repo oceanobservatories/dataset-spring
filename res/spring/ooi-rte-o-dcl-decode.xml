@@ -7,12 +7,14 @@
         <constructor-arg name="name" value="rte_o_dcl_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/rte_o_dcl_recovered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
 
     <bean id="rteODclTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="rte_o_dcl_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/rte_o_dcl_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="fiveMinuteBin" />
     </bean>
 
     <camelContext id="rte-o-dcl-decode-camel"

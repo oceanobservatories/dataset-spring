@@ -2,80 +2,79 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
-    
-    <bean id="flordmRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="FLORD_M_Recovered" />
+
+    <bean id="flord-m-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flord-m-glider_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/flord_m/flord_m_glider_recovered_driver.py" />
     </bean>
-    
-    <bean id="flordmTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="FLORD_M_Telemetered" />
+
+    <bean id="flord-m-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flord-m-glider_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/flord_m/flord_m_glider_telemetered_driver.py" />
     </bean>
-    
-    <camelContext id="flordm-decode-camel"
+
+    <camelContext id="flord-m-glider-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
-        
-        <endpoint id="flordmRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flord_m_glider_recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-        
-        <endpoint id="flordmTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flord_m_glider_telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-                    
-        <route id="flordmRecoveredFileConsumerRoute">
-            <from ref="flordmRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+
+        <endpoint id="flord-m-glider_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flord-m-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="flord-m-glider_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flord-m-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="flord-m-glider_recoveredFileConsumerRoute">
+            <from ref="flord-m-glider_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-FLORDMR000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.flordmRecovered" />
-        </route>
-        
-        <route id="flordmTelemeteredFileConsumerRoute">
-            <from ref="flordmTelemeteredFileEndpoint" />
+            </setHeader>
             <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flord-m-glider_recovered" />
+        </route>
+
+        <route id="flord-m-glider_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.flord-m-glider_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flord-m-glider_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flord-m-glider?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="flord-m-glider_telemeteredFileConsumerRoute">
+            <from ref="flord-m-glider_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-FLORDMT000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.flordmTelemetered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flord-m-glider_telemetered" />
         </route>
-        
-        <route id="flordmRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flordmRecovered" />
+
+        <route id="flord-m-glider_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.flord-m-glider_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="flordmRecoveredProcessor" />
+                    <bean ref="flord-m-glider_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.flordm?level=ERROR" />
+                    <to uri="log:ooi.flord-m-glider?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
-        
-        <route id="flordmTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.flordmTelemetered" />
-            <doTry>
-                <pipeline>
-                    <bean ref="flordmTelemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.flordm?level=ERROR" />
-                </doCatch>
-            </doTry>
-        </route>
-        
+
     </camelContext>
-    
 </beans>

@@ -3,75 +3,75 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="dostaAbcdjmSioRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="dosta_abcdjm_sio_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/sio/dosta_abcdjm_sio_recovered_driver.py" />
-    </bean>
-
-    <bean id="dostaAbcdjmSioTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="dosta_abcdjm_sio_telemetered" />
+    <bean id="dosta-abcdjm-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="dosta-abcdjm-sio_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/sio/dosta_abcdjm_sio_telemetered_driver.py" />
+    </bean>
+
+    <bean id="dosta-abcdjm-sio_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="dosta-abcdjm-sio_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/sio/dosta_abcdjm_sio_recovered_driver.py" />
     </bean>
 
     <camelContext id="dosta-abcdjm-sio-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="dostaAbcdjmSioRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta_abcdjm_sio_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="dosta-abcdjm-sio_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="dostaAbcdjmSioTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta_abcdjm_sio_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="dosta-abcdjm-sio_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="dostaAbcdjmSioRecoveredFileConsumerRoute">
-            <from ref="dostaAbcdjmSioRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-DSTASR000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dostaAbcdjmSioRecovered" />
-        </route>
-
-        <route id="dostaAbcdjmSioTelemeteredFileConsumerRoute">
-            <from ref="dostaAbcdjmSioTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="dosta-abcdjm-sio_telemeteredFileConsumerRoute">
+            <from ref="dosta-abcdjm-sio_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-DSTAST000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dostaAbcdjmSioTelemetered" />
+                <constant>XX00XXXX-XX00X-00-DOSTASIO000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dosta-abcdjm-sio_telemetered" />
         </route>
 
-        <route id="dostaAbcdjmSioRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dostaAbcdjmSioRecovered" />
+        <route id="dosta-abcdjm-sio_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-sio_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="dostaAbcdjmSioRecoveredProcessor" />
+                    <bean ref="dosta-abcdjm-sio_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.dostaAbcdjmSio?level=ERROR" />
+                    <to uri="log:ooi.dosta-abcdjm-sio?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
 
-        <route id="dostaAbcdjmSioTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dostaAbcdjmSioTelemetered" />
+        <route id="dosta-abcdjm-sio_recoveredFileConsumerRoute">
+            <from ref="dosta-abcdjm-sio_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-DOSTASIO001</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dosta-abcdjm-sio_recovered" />
+        </route>
+
+        <route id="dosta-abcdjm-sio_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-sio_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="dostaAbcdjmSioTelemeteredProcessor" />
+                    <bean ref="dosta-abcdjm-sio_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.dostaAbcdjmSio?level=ERROR" />
+                    <to uri="log:ooi.dosta-abcdjm-sio?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

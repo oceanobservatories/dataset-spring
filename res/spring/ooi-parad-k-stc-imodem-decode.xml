@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="parad-k-stc-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="parad-k-stc-imodem_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_recovered_driver.py" />
+    </bean>
+
+    <bean id="parad-k-stc-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="parad-k-stc-imodem_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="parad-k-stc-imodem-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="parad-k-stc-imodem_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/parad-k-stc-imodem_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="parad-k-stc-imodem_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/parad-k-stc-imodem_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="parad-k-stc-imodem_recoveredFileConsumerRoute">
+            <from ref="parad-k-stc-imodem_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>CP02PMUI-WFP01-05-PARADKR00</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.parad-k-stc-imodem_recovered" />
+        </route>
+
+        <route id="parad-k-stc-imodem_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.parad-k-stc-imodem_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="parad-k-stc-imodem_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.parad-k-stc-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="parad-k-stc-imodem_telemeteredFileConsumerRoute">
+            <from ref="parad-k-stc-imodem_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>CP02PMUI-WFP01-05-PARADKT00</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.parad-k-stc-imodem_telemetered" />
+        </route>
+
+        <route id="parad-k-stc-imodem_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.parad-k-stc-imodem_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="parad-k-stc-imodem_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.parad-k-stc-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

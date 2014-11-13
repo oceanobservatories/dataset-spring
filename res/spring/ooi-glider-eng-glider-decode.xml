@@ -3,76 +3,78 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="gliderEngGliderTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="GLIDER_ENG_GLIDER_TELEMETERED" />
+    <bean id="glider-eng-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="glider-eng-glider_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/engineering/glider_eng_glider_recovered_driver.py" />
+    </bean>
+
+    <bean id="glider-eng-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="glider-eng-glider_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/engineering/glider_eng_glider_telemetered_driver.py" />
     </bean>
 
-    <bean id="gliderEngGliderRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="GLIDER_ENG_GLIDER_RECOVERED" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/engineering/glider_eng_glider_recovered_driver.py" />
-    </bean>
-    
     <camelContext id="glider-eng-glider-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="gliderEngGliderTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/glider_eng_glider/telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-        <endpoint id="gliderEngGliderRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/glider_eng_glider/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-      
-        <route id="gliderEngGliderTelemeteredFileConsumerRoute">
-            <from ref="gliderEngGliderTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-GLDRET000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.glider_eng_glider_telemetered" />
-        </route>
-        
-        <route id="gliderEngGliderRecoveredFileConsumerRoute">
-            <from ref="gliderEngGliderRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <endpoint id="glider-eng-glider_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/glider-eng-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="glider-eng-glider_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/glider-eng-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="glider-eng-glider_recoveredFileConsumerRoute">
+            <from ref="glider-eng-glider_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-GLDRER000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.glider_eng_glider_recovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.glider-eng-glider_recovered" />
         </route>
-        
-        <route id="gliderEngGliderTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.glider_eng_glider_telemetered" />
+
+        <route id="glider-eng-glider_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.glider-eng-glider_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="gliderEngGliderTelemeteredProcessor" />
+                    <bean ref="glider-eng-glider_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.glider_eng_glider_telemetered?level=ERROR" />
+                    <to uri="log:ooi.glider-eng-glider?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
-        
-        <route id="gliderEngGliderRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.glider_eng_glider_recovered" />
+
+        <route id="glider-eng-glider_telemeteredFileConsumerRoute">
+            <from ref="glider-eng-glider_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-GLDRET000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.glider-eng-glider_telemetered" />
+        </route>
+
+        <route id="glider-eng-glider_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.glider-eng-glider_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="gliderEngGliderRecoveredProcessor" />
+                    <bean ref="glider-eng-glider_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.glider_eng_glider_recovered?level=ERROR" />
+                    <to uri="log:ooi.glider-eng-glider?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
+
     </camelContext>
 </beans>

@@ -3,42 +3,40 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<!-- FLORD_L_WFP processing configuration -->
-    <bean id="flordLWfpProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="FLORD_L_WFP" />
+    <bean id="flord-l-wfp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flord-l-wfp_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flord_l_wfp/flord_l_wfp_recovered_driver.py" />
     </bean>
 
-	<!-- FLORD_L_WFP camel configuration -->
     <camelContext id="flord-l-wfp-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="flordLWfpFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flord_l_wfp?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="flord-l-wfp_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flord-l-wfp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="flordLWfpFileConsumerRoute">
-            <from ref="flordLWfpFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="flord-l-wfp_recoveredFileConsumerRoute">
+            <from ref="flord-l-wfp_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-FLORDL000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.flordLWfp" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flord-l-wfp_recovered" />
         </route>
 
-        <route id="flordLWfpIngest">
-            <from uri="jms-durable:queue:Ingest.flordLWfp" />
+        <route id="flord-l-wfp_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.flord-l-wfp_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="flordLWfpProcessor" />
+                    <bean ref="flord-l-wfp_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.flordLWfp?level=ERROR" />
+                    <to uri="log:ooi.flord-l-wfp?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

@@ -3,75 +3,75 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="adcpaMGliderRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="adcpa_m_glider_recovered" />
+    <bean id="adcpa-m-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcpa-m-glider_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/adcpa/adcpa_m_glider_recovered_driver.py" />
     </bean>
 
-    <bean id="adcpaMGliderTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="adcpa_m_glider_telemetered" />
+    <bean id="adcpa-m-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcpa-m-glider_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/adcpa//adcpa_m_glider_telemetered_driver.py" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/adcpa/adcpa_m_glider_telemetered_driver.py" />
     </bean>
 
     <camelContext id="adcpa-m-glider-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="adcpaMGliderRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpa_m_glider_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcpa-m-glider_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpa-m-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="adcpaMGliderTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpa_m_glider_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcpa-m-glider_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpa-m-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="adcpaMGliderRecoveredFileConsumerRoute">
-            <from ref="adcpaMGliderRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="adcpa-m-glider_recoveredFileConsumerRoute">
+            <from ref="adcpa-m-glider_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPMR000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpa_m_glider_recovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcpa-m-glider_recovered" />
         </route>
 
-        <route id="adcpaMGliderTelemeteredFileConsumerRoute">
-            <from ref="adcpaMGliderTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="adcpa-m-glider_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpa-m-glider_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="adcpa-m-glider_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.adcpa-m-glider?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="adcpa-m-glider_telemeteredFileConsumerRoute">
+            <from ref="adcpa-m-glider_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPMT000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpa_m_glider_telemetered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcpa-m-glider_telemetered" />
         </route>
 
-        <route id="adcpaMGliderRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpa_m_glider_recovered" />
+        <route id="adcpa-m-glider_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpa-m-glider_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcpaMGliderRecoveredProcessor" />
+                    <bean ref="adcpa-m-glider_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpa_m_glider?level=ERROR" />
-                </doCatch>
-            </doTry>
-        </route>
-
-        <route id="adcpaMGliderTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpa_m_glider_telemetered" />
-            <doTry>
-                <pipeline>
-                    <bean ref="adcpaMGliderTelemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpa_m_glider?level=ERROR" />
+                    <to uri="log:ooi.adcpa-m-glider?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

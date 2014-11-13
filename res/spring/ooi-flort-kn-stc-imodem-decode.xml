@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="flort-kn-stc-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flort-kn-stc-imodem_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/FLORT_KN/STC_IMODEM/flort_kn__stc_imodem_recovered_driver.py" />
+    </bean>
+
+    <bean id="flort-kn-stc-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flort-kn-stc-imodem_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/FLORT_KN/STC_IMODEM/flort_kn__stc_imodem_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="flort-kn-stc-imodem-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="flort-kn-stc-imodem_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort-kn-stc-imodem_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="flort-kn-stc-imodem_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort-kn-stc-imodem_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="flort-kn-stc-imodem_recoveredFileConsumerRoute">
+            <from ref="flort-kn-stc-imodem_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FLORTKNR0</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flort-kn-stc-imodem_recovered" />
+        </route>
+
+        <route id="flort-kn-stc-imodem_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.flort-kn-stc-imodem_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flort-kn-stc-imodem_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flort-kn-stc-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="flort-kn-stc-imodem_telemeteredFileConsumerRoute">
+            <from ref="flort-kn-stc-imodem_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FLORTKNT0</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flort-kn-stc-imodem_telemetered" />
+        </route>
+
+        <route id="flort-kn-stc-imodem_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.flort-kn-stc-imodem_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flort-kn-stc-imodem_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flort-kn-stc-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

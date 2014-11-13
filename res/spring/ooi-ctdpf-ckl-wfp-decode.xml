@@ -8,7 +8,7 @@
         <constructor-arg name="name" value="CTDPF_CKL_WFP_T" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp/ctdpf_ckl_wfp_telemetered_driver.py" />
-        <constructor-arg name="properties" ref="fiveMinuteBin" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
     
 	<!-- CTDPF CKL WFP Recovered processing configuration -->
@@ -16,7 +16,7 @@
         <constructor-arg name="name" value="CTDPF_CKL_WFP_R" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp/ctdpf_ckl_wfp_recovered_driver.py" />
-        <constructor-arg name="properties" ref="fiveMinuteBin" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="ctdpf-ckl-wfp-decode-camel"

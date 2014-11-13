@@ -7,14 +7,14 @@
         <constructor-arg name="name" value="PARAD_K_Recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_recovered_driver.py" />
-        <constructor-arg name="properties" ref="fiveMinuteBin" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
     
     <bean id="paradkStcImodemTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="PARAD_K_Telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_telemetered_driver.py" />
-        <constructor-arg name="properties" ref="fiveMinuteBin" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="paradk-decode-camel"

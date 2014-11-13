@@ -3,42 +3,40 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<!-- VEL3D_AMMP_CDS processing configuration -->
-    <bean id="vel3dAMmpCdsProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="VEL3D_AMMP_CDS" />
+    <bean id="vel3d-a-mmp-cds_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="vel3d-a-mmp-cds_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_a/mmp_cds/vel3d_a_mmp_cds_recovered_driver.py" />
     </bean>
 
-	<!-- VEL3D_AMMP_CDS camel configuration -->
     <camelContext id="vel3d-a-mmp-cds-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="vel3dAMmpCdsFileEndpoint"
-            uri="file:${edex.home}/data/ooi/vel3d_a_mmp_cds?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="vel3d-a-mmp-cds_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/vel3d-a-mmp-cds_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="vel3dAMmpCdsFileConsumerRoute">
-            <from ref="vel3dAMmpCdsFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="vel3d-a-mmp-cds_recoveredFileConsumerRoute">
+            <from ref="vel3d-a-mmp-cds_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-FLNTUX000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.vel3dAMmpCds" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.vel3d-a-mmp-cds_recovered" />
         </route>
 
-        <route id="vel3dAMmpCdsIngest">
-            <from uri="jms-durable:queue:Ingest.vel3dAMmpCds" />
+        <route id="vel3d-a-mmp-cds_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.vel3d-a-mmp-cds_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="vel3dAMmpCdsProcessor" />
+                    <bean ref="vel3d-a-mmp-cds_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.vel3dAMmpCds?level=ERROR" />
+                    <to uri="log:ooi.vel3d-a-mmp-cds?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

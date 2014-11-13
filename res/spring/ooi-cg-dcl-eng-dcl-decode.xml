@@ -3,80 +3,78 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <!-- CG DCL ENG Telemetered processing configuration -->
-    <bean id="cgDclEngDclTelemProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="CG_DCL_ENG_T" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_dcl_eng/dcl/cg_dcl_eng_dcl_telemetered_driver.py" />
-    </bean>
-
-    <!-- CG DCL ENG Recovered processing configuration -->
-    <bean id="cgDclEngDclRecovProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="CG_DCL_ENG_R" />
+    <bean id="cg-dcl-eng-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="cg-dcl-eng-dcl_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_dcl_eng/dcl/cg_dcl_eng_dcl_recovered_driver.py" />
     </bean>
 
-    <!-- CG DCL ENG camel configuration -->
+    <bean id="cg-dcl-eng-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="cg-dcl-eng-dcl_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_dcl_eng/dcl/cg_dcl_eng_dcl_telemetered_driver.py" />
+    </bean>
+
     <camelContext id="cg-dcl-eng-dcl-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="cgDclEngDclTelemFileEndpoint"
-            uri="file:${edex.home}/data/ooi/cg_dcl_eng_dcl_telemetered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="cg-dcl-eng-dcl_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/cg-dcl-eng-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="cgDclEngDclRecovEndpoint"
-            uri="file:${edex.home}/data/ooi/cg_dcl_eng_dcl_recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="cg-dcl-eng-dcl_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/cg-dcl-eng-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="cgDclEngDclTelemFileConsumerRoute">
-            <from ref="cgDclEngDclTelemFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-CGDCLE000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgDclEngDclTelem" />
-        </route>
-
-        <route id="cgDclEngDclRecovFileConsumerRoute">
-            <from ref="cgDclEngDclRecovEndpoint" />
-            <bean ref="fileToString" />
+        <route id="cg-dcl-eng-dcl_recoveredFileConsumerRoute">
+            <from ref="cg-dcl-eng-dcl_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CGDCLE100</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.cgDclEngDclRecov" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_recovered" />
         </route>
 
-        <route id="cgDclEngDclTelemIngest">
-            <from uri="jms-durable:queue:Ingest.cgDclEngDclTelem" />
+        <route id="cg-dcl-eng-dcl_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="cgDclEngDclTelemProcessor" />
+                    <bean ref="cg-dcl-eng-dcl_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.cgDclEngDclTelem?level=ERROR" />
+                    <to uri="log:ooi.cg-dcl-eng-dcl?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
 
-        <route id="cgDclEngDclRecovIngest">
-            <from uri="jms-durable:queue:Ingest.cgDclEngDclRecov" />
+        <route id="cg-dcl-eng-dcl_telemeteredFileConsumerRoute">
+            <from ref="cg-dcl-eng-dcl_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CGDCLE000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_telemetered" />
+        </route>
+
+        <route id="cg-dcl-eng-dcl_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="cgDclEngDclRecovProcessor" />
+                    <bean ref="cg-dcl-eng-dcl_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.cgDclEngDclRecov?level=ERROR" />
+                    <to uri="log:ooi.cg-dcl-eng-dcl?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
+
     </camelContext>
 </beans>

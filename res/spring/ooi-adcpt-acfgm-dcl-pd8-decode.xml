@@ -3,14 +3,14 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="adcptAcfgmDclPd8RecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="adcpt_acfgm_dcl_pd8_recovered" />
+    <bean id="adcpt-acfgm-dcl-pd8_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcpt-acfgm-dcl-pd8_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_acfgm/dcl/pd8/adcpt_acfgm_dcl_pd8_recovered_driver.py" />
     </bean>
 
-    <bean id="adcptAcfgmDclPd8TelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="adcpt_acfgm_dcl_pd8_telemetered" />
+    <bean id="adcpt-acfgm-dcl-pd8_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcpt-acfgm-dcl-pd8_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_acfgm/dcl/pd8/adcpt_acfgm_dcl_pd8_telemetered_driver.py" />
     </bean>
@@ -18,60 +18,60 @@
     <camelContext id="adcpt-acfgm-dcl-pd8-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="adcptAcfgmDclPd8RecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpt_acfgm_dcl_pd8_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcpt-acfgm-dcl-pd8_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpt-acfgm-dcl-pd8_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="adcptAcfgmDclPd8TelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpt_acfgm_dcl_pd8_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcpt-acfgm-dcl-pd8_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpt-acfgm-dcl-pd8_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="adcptAcfgmDclPd8RecoveredFileConsumerRoute">
-            <from ref="adcptAcfgmDclPd8RecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="adcpt-acfgm-dcl-pd8_recoveredFileConsumerRoute">
+            <from ref="adcpt-acfgm-dcl-pd8_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPTR800</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd8_recovered" />
-        </route>
-
-        <route id="adcptAcfgmDclPd8TelemeteredFileConsumerRoute">
-            <from ref="adcptAcfgmDclPd8TelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
             </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-ADCPTT800</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd8_telemetered" />
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd8_recovered" />
         </route>
 
-        <route id="adcptAcfgmDclPd8RecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd8_recovered" />
+        <route id="adcpt-acfgm-dcl-pd8_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd8_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcptAcfgmDclPd8RecoveredProcessor" />
+                    <bean ref="adcpt-acfgm-dcl-pd8_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpt_acfgm_dcl_pd8?level=ERROR" />
+                    <to uri="log:ooi.adcpt-acfgm-dcl-pd8?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
 
-        <route id="adcptAcfgmDclPd8TelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt_acfgm_dcl_pd8_telemetered" />
+        <route id="adcpt-acfgm-dcl-pd8_telemeteredFileConsumerRoute">
+            <from ref="adcpt-acfgm-dcl-pd8_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-ADCPTR800</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd8_telemetered" />
+        </route>
+
+        <route id="adcpt-acfgm-dcl-pd8_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd8_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcptAcfgmDclPd8TelemeteredProcessor" />
+                    <bean ref="adcpt-acfgm-dcl-pd8_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpt_acfgm_dcl_pd8?level=ERROR" />
+                    <to uri="log:ooi.adcpt-acfgm-dcl-pd8?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

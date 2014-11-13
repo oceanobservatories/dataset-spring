@@ -3,80 +3,78 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<!-- ADCPS JLN STC recovered processing configuration -->
-    <bean id="adcpsJlnStcRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ADCPS_JLN_STC_RECOVERED" />
+    <bean id="adcps-jln-stc_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcps-jln-stc_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/adcps_jln_driver.py" />
     </bean>
 
-	<!-- ADCPS JLN STC telemetered processing configuration -->
-    <bean id="adcpsJlnStcTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ADCPS_JLN_STC_TELEMETERED" />
+    <bean id="adcps-jln-stc_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcps-jln-stc_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/stc/adcps_jln_stc_driver.py" />
     </bean>
 
-	<!-- ADCPS JLN STC recovered and telemetered camel configuration -->
     <camelContext id="adcps-jln-stc-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="adcpsJlnStcRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcps_jln_stc_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcps-jln-stc_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcps-jln-stc_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="adpcsJlnStcTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcps_jln_stc_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcps-jln-stc_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcps-jln-stc_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="adcpsJlnStcRecoveredFileConsumerRoute">
-            <from ref="adcpsJlnStcRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="adcps-jln-stc_recoveredFileConsumerRoute">
+            <from ref="adcps-jln-stc_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPSJ000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.adcpsJlnStcRecovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcps-jln-stc_recovered" />
         </route>
 
-        <route id="adcpsJlnStcTelemeteredFileConsumerRoute">
-            <from ref="adpcsJlnStcTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="adcps-jln-stc_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.adcps-jln-stc_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="adcps-jln-stc_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.adcps-jln-stc?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="adcps-jln-stc_telemeteredFileConsumerRoute">
+            <from ref="adcps-jln-stc_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPSS000</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.adcpsJlnStcTelemetered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcps-jln-stc_telemetered" />
         </route>
 
-        <route id="adcpsJlnStcRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpsJlnStcRecovered" />
+        <route id="adcps-jln-stc_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.adcps-jln-stc_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcpsJlnStcRecoveredProcessor" />
+                    <bean ref="adcps-jln-stc_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpsJlnStc?level=ERROR" />
+                    <to uri="log:ooi.adcps-jln-stc?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
 
-        <route id="adcpsJlnStcTelemteredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpsJlnStcTelemetered" />
-            <doTry>
-                <pipeline>
-                    <bean ref="adcpsJlnStcTelemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpsJlnStc?level=ERROR" />
-                </doCatch>
-            </doTry>
-        </route>
     </camelContext>
 </beans>

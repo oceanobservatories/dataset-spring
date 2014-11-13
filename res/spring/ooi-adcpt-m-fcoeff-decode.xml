@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="adcptMFCoeffRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="adcpt_m_fcoeff_recovered" />
+    <bean id="adcpt-m-fcoeff_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcpt-m-fcoeff_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_m/adcpt_m_fcoeff_recovered_driver.py" />
     </bean>
@@ -12,31 +12,31 @@
     <camelContext id="adcpt-m-fcoeff-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="adcptMFCoeffRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpt_m_fcoeff_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcpt-m-fcoeff_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpt-m-fcoeff_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="adcptMFCoeffRecoveredFileConsumerRoute">
-            <from ref="adcptMFCoeffRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="adcpt-m-fcoeff_recoveredFileConsumerRoute">
+            <from ref="adcpt-m-fcoeff_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPTM002</constant>
             </setHeader>
-            <to uri="jms-durable:queue:Ingest.adcpt_m_fcoeff_recovered" />
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcpt-m-fcoeff_recovered" />
         </route>
 
-        <route id="adcptMFCoeffRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt_m_fcoeff_recovered" />
+        <route id="adcpt-m-fcoeff_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpt-m-fcoeff_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcptMFCoeffRecoveredProcessor" />
+                    <bean ref="adcpt-m-fcoeff_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpt_m_fcoeff?level=ERROR" />
+                    <to uri="log:ooi.adcpt-m-fcoeff?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

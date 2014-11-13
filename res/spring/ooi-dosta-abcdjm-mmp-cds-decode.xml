@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="dostaAbcdjmMmpCdsDecoder" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="dosta_abcdjm_mmp_cds_recovered" />
+    <bean id="dosta-abcdjm-mmp-cds_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="dosta-abcdjm-mmp-cds_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/mmp_cds/dosta_abcdjm_mmp_cds_recovered_driver.py" />
     </bean>
@@ -12,31 +12,31 @@
     <camelContext id="dosta-abcdjm-mmp-cds-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="dostaAbcdjmMmpCdsFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta_abcdjm_mmp_cds_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="dosta-abcdjm-mmp-cds_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-mmp-cds_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="dostaAbcdjmMmpCdsFileConsumerRoute">
-            <from ref="dostaAbcdjmMmpCdsFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="dosta-abcdjm-mmp-cds_recoveredFileConsumerRoute">
+            <from ref="dosta-abcdjm-mmp-cds_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-DABMCR000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dosta_abcdjm_mmp_cds" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dosta-abcdjm-mmp-cds_recovered" />
         </route>
 
-        <route id="dostaAbcdjmMmpCdsIngest">
-            <from uri="jms-durable:queue:Ingest.dosta_abcdjm_mmp_cds" />
+        <route id="dosta-abcdjm-mmp-cds_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-mmp-cds_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="dostaAbcdjmMmpCdsDecoder" />
+                    <bean ref="dosta-abcdjm-mmp-cds_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.dostaAbcdjmMmpCds?level=ERROR" />
+                    <to uri="log:ooi.dosta-abcdjm-mmp-cds?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

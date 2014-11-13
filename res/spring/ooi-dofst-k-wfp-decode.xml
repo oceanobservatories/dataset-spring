@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="dofst-k-wfp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="dofst-k-wfp_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dofst_k/wfp/dofst_k_wfp_recovered_driver.py" />
+    </bean>
+
+    <bean id="dofst-k-wfp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="dofst-k-wfp_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dofst_k/wfp/dofst_k_wfp_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="dofst-k-wfp-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="dofst-k-wfp_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dofst-k-wfp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="dofst-k-wfp_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dofst-k-wfp_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="dofst-k-wfp_recoveredFileConsumerRoute">
+            <from ref="dofst-k-wfp_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-DOFSTR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dofst-k-wfp_recovered" />
+        </route>
+
+        <route id="dofst-k-wfp_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.dofst-k-wfp_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="dofst-k-wfp_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.dofst-k-wfp?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="dofst-k-wfp_telemeteredFileConsumerRoute">
+            <from ref="dofst-k-wfp_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-DOFSTT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dofst-k-wfp_telemetered" />
+        </route>
+
+        <route id="dofst-k-wfp_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.dofst-k-wfp_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="dofst-k-wfp_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.dofst-k-wfp?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

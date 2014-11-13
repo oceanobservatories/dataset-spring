@@ -3,14 +3,14 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="dostaAbcdjmGliderRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="dosta_abcdjm_glider_recovered" />
+    <bean id="dosta-abcdjm-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="dosta-abcdjm-glider_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/dosta/dosta_abcdjm_glider_recovered_driver.py" />
     </bean>
 
-    <bean id="dostaAbcdjmGliderTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="dosta_abcdjm_glider_telemetered" />
+    <bean id="dosta-abcdjm-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="dosta-abcdjm-glider_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/dosta/dosta_abcdjm_glider_telemetered_driver.py" />
     </bean>
@@ -18,60 +18,60 @@
     <camelContext id="dosta-abcdjm-glider-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="dostaAbcdjmGliderRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta_abcdjm_glider_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="dosta-abcdjm-glider_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="dostaAbcdjmGliderTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta_abcdjm_glider_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="dosta-abcdjm-glider_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="dostaAbcdjmGliderRecoveredFileConsumerRoute">
-            <from ref="dostaAbcdjmGliderRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="dosta-abcdjm-glider_recoveredFileConsumerRoute">
+            <from ref="dosta-abcdjm-glider_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX0XXXXX-XXX01-00-DOSTA000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_recovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_recovered" />
         </route>
 
-        <route id="dostaAbcdjmGliderTelemeteredFileConsumerRoute">
-            <from ref="dostaAbcdjmGliderTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="dosta-abcdjm-glider_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="dosta-abcdjm-glider_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.dosta-abcdjm-glider?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="dosta-abcdjm-glider_telemeteredFileConsumerRoute">
+            <from ref="dosta-abcdjm-glider_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX0XXXXX-XXX01-00-DOSTA000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_telemetered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_telemetered" />
         </route>
 
-        <route id="dostaAbcdjmGliderRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_recovered" />
+        <route id="dosta-abcdjm-glider_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="dostaAbcdjmGliderRecoveredProcessor" />
+                    <bean ref="dosta-abcdjm-glider_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.dosta_abcdjm_glider?level=ERROR" />
-                </doCatch>
-            </doTry>
-        </route>
-
-        <route id="dostaAbcdjmGliderTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta_abcdjm_glider_telemetered" />
-            <doTry>
-                <pipeline>
-                    <bean ref="dostaAbcdjmGliderTelemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.dosta_abcdjm_glider?level=ERROR" />
+                    <to uri="log:ooi.dosta-abcdjm-glider?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

@@ -3,14 +3,14 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="ctdgvMGliderRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ctdgv_m_glider_recovered" />
+    <bean id="ctdgv-m-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdgv-m-glider_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/ctdgv/ctdgv_m_glider_recovered_driver.py" />
     </bean>
 
-    <bean id="ctdgvMGliderTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ctdgv_m_glider_telemetered" />
+    <bean id="ctdgv-m-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdgv-m-glider_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/ctdgv/ctdgv_m_glider_telemetered_driver.py" />
     </bean>
@@ -18,60 +18,60 @@
     <camelContext id="ctdgv-m-glider-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="ctdgvMGliderRecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdgv_m_glider_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="ctdgv-m-glider_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdgv-m-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="ctdgvMGliderTelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdgv_m_glider_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="ctdgv-m-glider_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdgv-m-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="ctdgvMGliderRecoveredFileConsumerRoute">
-            <from ref="ctdgvMGliderRecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="ctdgv-m-glider_recoveredFileConsumerRoute">
+            <from ref="ctdgv-m-glider_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDGVR000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.ctdgv_m_glider_recovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdgv-m-glider_recovered" />
         </route>
 
-        <route id="ctdgvMGliderTelemeteredFileConsumerRoute">
-            <from ref="ctdgvMGliderTelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="ctdgv-m-glider_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdgv-m-glider_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdgv-m-glider_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdgv-m-glider?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="ctdgv-m-glider_telemeteredFileConsumerRoute">
+            <from ref="ctdgv-m-glider_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-CTDGVT000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.ctdgv_m_glider_telemetered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdgv-m-glider_telemetered" />
         </route>
 
-        <route id="ctdgvMGliderRecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdgv_m_glider_recovered" />
+        <route id="ctdgv-m-glider_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdgv-m-glider_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="ctdgvMGliderRecoveredProcessor" />
+                    <bean ref="ctdgv-m-glider_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.ctdgv_m_glider?level=ERROR" />
-                </doCatch>
-            </doTry>
-        </route>
-
-        <route id="ctdgvMGliderTelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdgv_m_glider_telemetered" />
-            <doTry>
-                <pipeline>
-                    <bean ref="ctdgvMGliderTelemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.ctdgv_m_glider?level=ERROR" />
+                    <to uri="log:ooi.ctdgv-m-glider?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

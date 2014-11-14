@@ -1312,6 +1312,26 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD829</parameterId> <!-- date_time_array -->
   </streamDefinition>
+  <streamDefinition streamName="dpc_acs_instrument_recovered">
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD584</parameterId> <!-- packet_type -->
+    <parameterId>PD585</parameterId> <!-- meter_type -->
+    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
+    <parameterId>PD587</parameterId> <!-- pressure_counts -->
+    <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
+    <parameterId>PD589</parameterId> <!-- external_temp_raw -->
+    <parameterId>PD590</parameterId> <!-- internal_temp_raw -->
+    <parameterId>PD591</parameterId> <!-- c_reference_dark_counts -->
+    <parameterId>PD592</parameterId> <!-- c_signal_dark_counts -->
+    <parameterId>PD593</parameterId> <!-- elapsed_run_time -->
+    <parameterId>PD594</parameterId> <!-- num_wavelengths -->
+    <parameterId>PD595</parameterId> <!-- c_reference_counts -->
+    <parameterId>PD596</parameterId> <!-- a_reference_counts -->
+    <parameterId>PD597</parameterId> <!-- c_signal_counts -->
+    <parameterId>PD598</parameterId> <!-- a_signal_counts -->
+  </streamDefinition>
   <streamDefinition streamName="pco2w_a_thermistor_voltage">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1929,12 +1949,6 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
-  </streamDefinition>
-  <streamDefinition streamName="dpc_flnturtd_recovered">
-    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
-    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
-    <parameterId>PD2258</parameterId> <!-- chlaflo -->
-    <parameterId>PD2259</parameterId> <!-- ntuflo -->
   </streamDefinition>
   <streamDefinition streamName="vadcp_5thbeam_pd0_beam_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -3352,13 +3366,6 @@
   </streamDefinition>
   <streamDefinition streamName="prest_l1_pressure">
     <parameterId>PD95</parameterId> <!-- seafloor_pressure -->
-  </streamDefinition>
-  <streamDefinition streamName="dpc_ctd_recovered">
-    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
-    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
-    <parameterId>PD2934</parameterId> <!-- conductivity_millisiemens -->
-    <parameterId>PD6</parameterId> <!-- temp -->
-    <parameterId>PD2</parameterId> <!-- pressure -->
   </streamDefinition>
   <streamDefinition streamName="wavss_a_dcl_fourier">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -5015,26 +5022,6 @@
     <parameterId>PD827</parameterId> <!-- power_timing_type -->
     <parameterId>PD828</parameterId> <!-- board_serial_numbers -->
   </streamDefinition>
-  <streamDefinition streamName="dpc_acs_recovered">
-    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
-    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
-    <parameterId>PD584</parameterId> <!-- packet_type -->
-    <parameterId>PD585</parameterId> <!-- meter_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
-    <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
-    <parameterId>PD587</parameterId> <!-- pressure_counts -->
-    <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
-    <parameterId>PD589</parameterId> <!-- external_temp_raw -->
-    <parameterId>PD590</parameterId> <!-- internal_temp_raw -->
-    <parameterId>PD591</parameterId> <!-- c_reference_dark_counts -->
-    <parameterId>PD592</parameterId> <!-- c_signal_dark_counts -->
-    <parameterId>PD593</parameterId> <!-- elapsed_run_time -->
-    <parameterId>PD594</parameterId> <!-- num_wavelengths -->
-    <parameterId>PD595</parameterId> <!-- c_reference_counts -->
-    <parameterId>PD596</parameterId> <!-- a_reference_counts -->
-    <parameterId>PD597</parameterId> <!-- c_signal_counts -->
-    <parameterId>PD598</parameterId> <!-- a_signal_counts -->
-  </streamDefinition>
   <streamDefinition streamName="raw_5thbeam">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -5921,12 +5908,6 @@
     <parameterId>PD923</parameterId> <!-- salinity -->
     <parameterId>PD2841</parameterId> <!-- ctdbp_cdef_dcl_ce_density -->
   </streamDefinition>
-  <streamDefinition streamName="dpc_optode_recovered">
-    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
-    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
-    <parameterId>PD943</parameterId> <!-- calibrated_phase -->
-    <parameterId>PD942</parameterId> <!-- optode_temperature -->
-  </streamDefinition>
   <streamDefinition streamName="raw">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6181,6 +6162,12 @@
     <parameterId>PD6</parameterId> <!-- temp -->
     <parameterId>PD1</parameterId> <!-- conductivity -->
     <parameterId>PD2</parameterId> <!-- pressure -->
+  </streamDefinition>
+  <streamDefinition streamName="dpc_flnturtd_instrument_recovered">
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD2258</parameterId> <!-- chlaflo -->
+    <parameterId>PD2259</parameterId> <!-- ntuflo -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_a_data_record">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -6866,19 +6853,6 @@
     <parameterId>PD309</parameterId> <!-- error_12 -->
     <parameterId>PD298</parameterId> <!-- number_events -->
     <parameterId>PD2924</parameterId> <!-- max_stack -->
-  </streamDefinition>
-  <streamDefinition streamName="dpc_acm_recovered">
-    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
-    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
-    <parameterId>PD2248</parameterId> <!-- vel3d_a_va -->
-    <parameterId>PD2249</parameterId> <!-- vel3d_a_vb -->
-    <parameterId>PD2250</parameterId> <!-- vel3d_a_vc -->
-    <parameterId>PD2251</parameterId> <!-- vel3d_a_vd -->
-    <parameterId>PD2252</parameterId> <!-- vel3d_a_hx -->
-    <parameterId>PD2253</parameterId> <!-- vel3d_a_hy -->
-    <parameterId>PD2254</parameterId> <!-- vel3d_a_hz -->
-    <parameterId>PD2255</parameterId> <!-- vel3d_a_tx -->
-    <parameterId>PD2256</parameterId> <!-- vel3d_a_ty -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_b_dcl_full_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7892,6 +7866,11 @@
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD432</parameterId> <!-- battery_voltage -->
     <parameterId>PD1084</parameterId> <!-- sampling_status_code -->
+  </streamDefinition>
+  <streamDefinition streamName="dpc_flcdrtd_instrument_recovered">
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD2257</parameterId> <!-- cdomflo -->
   </streamDefinition>
   <streamDefinition streamName="wfp_eng_stc_imodem_start_time">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -9704,11 +9683,6 @@
     <parameterId>PD2735</parameterId> <!-- temperature23 -->
     <parameterId>PD2736</parameterId> <!-- temperature24 -->
   </streamDefinition>
-  <streamDefinition streamName="dpc_flcdrtd_recovered">
-    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
-    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
-    <parameterId>PD2257</parameterId> <!-- cdomflo -->
-  </streamDefinition>
   <streamDefinition streamName="cgldr_engineering_delayed">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -10666,6 +10640,19 @@
     <parameterId>PD935</parameterId> <!-- thermistor_end -->
     <parameterId>PD228</parameterId> <!-- serial_sync_mode -->
   </streamDefinition>
+  <streamDefinition streamName="dpc_acm_instrument_recovered">
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD2248</parameterId> <!-- vel3d_a_va -->
+    <parameterId>PD2249</parameterId> <!-- vel3d_a_vb -->
+    <parameterId>PD2250</parameterId> <!-- vel3d_a_vc -->
+    <parameterId>PD2251</parameterId> <!-- vel3d_a_vd -->
+    <parameterId>PD2252</parameterId> <!-- vel3d_a_hx -->
+    <parameterId>PD2253</parameterId> <!-- vel3d_a_hy -->
+    <parameterId>PD2254</parameterId> <!-- vel3d_a_hz -->
+    <parameterId>PD2255</parameterId> <!-- vel3d_a_tx -->
+    <parameterId>PD2256</parameterId> <!-- vel3d_a_ty -->
+  </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_L0">
     <parameterId>PD193</parameterId> <!-- temperature -->
     <parameterId>PD194</parameterId> <!-- conductivity -->
@@ -11364,6 +11351,13 @@
     <parameterId>PD2939</parameterId> <!-- superv_counts -->
     <parameterId>PD2940</parameterId> <!-- dlog_mgr_counts -->
   </streamDefinition>
+  <streamDefinition streamName="dpc_ctd_instrument_recovered">
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD2934</parameterId> <!-- conductivity_millisiemens -->
+    <parameterId>PD6</parameterId> <!-- temp -->
+    <parameterId>PD2</parameterId> <!-- pressure -->
+  </streamDefinition>
   <streamDefinition streamName="ctdpf_j_cspp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -11403,6 +11397,12 @@
     <parameterId>PD2180</parameterId> <!-- adcp_ambient_temp -->
     <parameterId>PD2181</parameterId> <!-- adcp_attitude_temp -->
     <parameterId>PD2182</parameterId> <!-- adcp_internal_moisture -->
+  </streamDefinition>
+  <streamDefinition streamName="dpc_optode_instrument_recovered">
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD943</parameterId> <!-- calibrated_phase -->
+    <parameterId>PD942</parameterId> <!-- optode_temperature -->
   </streamDefinition>
   <streamDefinition streamName="sparse_dict">
     <parameterId>PD1553</parameterId> <!-- sparse_float -->

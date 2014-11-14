@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="ctdbp_cdef_dcl_ce_RecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdbp_cdef_dcl_ce_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/dcl_ce/ctdbp_cdef_dcl_ce_recovered_driver.py" />
+    </bean>
+
+    <bean id="ctdbp_cdef_dcl_ce_TelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdbp_cdef_dcl_ce_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/dcl_ce/ctdbp_cdef_dcl_ce_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="ctdbp_cdef_dcl_ce-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="ctdbp_cdef_dcl_ce_RecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdbp_cdef_dcl_ce_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="ctdbp_cdef_dcl_ce_TelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdbp_cdef_dcl_ce_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="ctdbp_cdef_dcl_ce_RecoveredFileConsumerRoute">
+            <from ref="ctdbp_cdef_dcl_ce_RecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDBPE000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_ce_recovered" />
+        </route>
+
+        <route id="ctdbp_cdef_dcl_ce_TelemeteredFileConsumerRoute">
+            <from ref="ctdbp_cdef_dcl_ce_TelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDBPE000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_ce_telemetered" />
+        </route>
+
+        <route id="ctdbp_cdef_dcl_ce_RecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_ce_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdbp_cdef_dcl_ce_RecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdbp_cdef_dcl_ce?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="ctdbp_cdef_dcl_ce_TelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_ce_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdbp_cdef_dcl_ce_TelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdbp_cdef_dcl_ce?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

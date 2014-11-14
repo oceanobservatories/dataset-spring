@@ -1313,6 +1313,7 @@
     <parameterId>PD829</parameterId> <!-- date_time_array -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acs_instrument_recovered">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD584</parameterId> <!-- packet_type -->
@@ -3592,6 +3593,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acm_instrument">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2248</parameterId> <!-- vel3d_a_va -->
@@ -6164,6 +6166,7 @@
     <parameterId>PD2</parameterId> <!-- pressure -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flnturtd_instrument_recovered">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2258</parameterId> <!-- chlaflo -->
@@ -6326,6 +6329,7 @@
     <parameterId>PD2706</parameterId> <!-- raw -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acs_instrument">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD584</parameterId> <!-- packet_type -->
@@ -7868,6 +7872,7 @@
     <parameterId>PD1084</parameterId> <!-- sampling_status_code -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flcdrtd_instrument_recovered">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2257</parameterId> <!-- cdomflo -->
@@ -7943,6 +7948,7 @@
     <parameterId>PD2245</parameterId> <!-- vel3d_l_controller_timestamp -->
   </streamDefinition>
   <streamDefinition streamName="dpc_optode_instrument">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD943</parameterId> <!-- calibrated_phase -->
@@ -8201,6 +8207,7 @@
     <parameterId>PD2538</parameterId> <!-- hpies_stm_timestamp -->
   </streamDefinition>
   <streamDefinition streamName="dpc_ctd_instrument">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2934</parameterId> <!-- conductivity_millisiemens -->
@@ -9586,6 +9593,7 @@
     <parameterId>PD2767</parameterId> <!-- phsen_abcdef_ph_seawater -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flnturtd_instrument">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2258</parameterId> <!-- chlaflo -->
@@ -10210,6 +10218,7 @@
     <parameterId>PD1006</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flcdrtd_instrument">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2257</parameterId> <!-- cdomflo -->
@@ -10641,6 +10650,7 @@
     <parameterId>PD228</parameterId> <!-- serial_sync_mode -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acm_instrument_recovered">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2248</parameterId> <!-- vel3d_a_va -->
@@ -11352,6 +11362,7 @@
     <parameterId>PD2940</parameterId> <!-- dlog_mgr_counts -->
   </streamDefinition>
   <streamDefinition streamName="dpc_ctd_instrument_recovered">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2934</parameterId> <!-- conductivity_millisiemens -->
@@ -11399,6 +11410,7 @@
     <parameterId>PD2182</parameterId> <!-- adcp_internal_moisture -->
   </streamDefinition>
   <streamDefinition streamName="dpc_optode_instrument_recovered">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD943</parameterId> <!-- calibrated_phase -->

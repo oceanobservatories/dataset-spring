@@ -1,0 +1,82 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  	<!-- FLORT DJ SIO recovered processing configuration -->
+    <bean id="flortDjSioRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flort_dj_sio_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/sio/flort_dj_sio_recovered_driver.py" />
+    </bean>
+
+    <!-- FLORT DJ SIO telemetered processing configuration -->
+    <bean id="flortDjSioTelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flort_dj_sio_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/sio/flort_dj_sio_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="flort-dj-sio-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="flortDjSioRecoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort_dj_sio_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="flortDjSioTelemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort_dj_sio_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="flortDjSioRecoveredFileConsumerRoute">
+            <from ref="flortDjSioRecoveredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FTDJSR000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.flortDjSioRecovered" />
+        </route>
+
+        <route id="flortDjSioTelemeteredFileConsumerRoute">
+            <from ref="flortDjSioTelemeteredFileEndpoint" />
+            <bean ref="fileToString" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FTDJST000</constant>
+            </setHeader>            
+            <to uri="jms-durable:queue:Ingest.flortDjSioTelemetered" />
+        </route>
+
+        <route id="flortDjSioRecoveredIngest">
+            <from uri="jms-durable:queue:Ingest.flortDjSioRecovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flortDjSioRecoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flortDjSio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="flortDjSioTelemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.flortDjSioTelemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flortDjSioTelemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flortDjSio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

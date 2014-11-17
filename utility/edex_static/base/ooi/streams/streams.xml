@@ -10623,6 +10623,16 @@
     <parameterId>PD3091</parameterId> <!-- met_tempskn -->
     <parameterId>PD3092</parameterId> <!-- met_wind10m -->
   </streamDefinition>
+  <streamDefinition streamName="dpc_mmp_instrument_recovered">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD345</parameterId> <!-- operating_mode -->
+    <parameterId>PD1576</parameterId> <!-- wfp_profile_number -->
+    <parameterId>PD1586</parameterId> <!-- wfp_prof_current -->
+    <parameterId>PD1587</parameterId> <!-- wfp_prof_voltage -->
+    <parameterId>PD1588</parameterId> <!-- wfp_prof_pressure -->
+  </streamDefinition>
   <streamDefinition streamName="sbe16_parsed">
     <parameterId>PD193</parameterId> <!-- temperature -->
     <parameterId>PD194</parameterId> <!-- conductivity -->
@@ -10673,6 +10683,16 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
+    <parameterId>PD1586</parameterId> <!-- wfp_prof_current -->
+    <parameterId>PD1587</parameterId> <!-- wfp_prof_voltage -->
+    <parameterId>PD1588</parameterId> <!-- wfp_prof_pressure -->
+  </streamDefinition>
+  <streamDefinition streamName="dpc_mmp_instrument">
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
+    <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD345</parameterId> <!-- operating_mode -->
+    <parameterId>PD1576</parameterId> <!-- wfp_profile_number -->
     <parameterId>PD1586</parameterId> <!-- wfp_prof_current -->
     <parameterId>PD1587</parameterId> <!-- wfp_prof_voltage -->
     <parameterId>PD1588</parameterId> <!-- wfp_prof_pressure -->

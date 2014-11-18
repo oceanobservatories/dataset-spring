@@ -7794,6 +7794,46 @@
     <parameterId>PD432</parameterId> <!-- battery_voltage -->
     <parameterId>PD1084</parameterId> <!-- sampling_status_code -->
   </streamDefinition>
+  <streamDefinition streamName="flort_dj_sio_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2174</parameterId> <!-- sio_controller_timestamp -->
+    <parameterId>PD1136</parameterId> <!-- date_string -->
+    <parameterId>PD1137</parameterId> <!-- time_string -->
+    <parameterId>PD1138</parameterId> <!-- measurement_wavelength_beta -->
+    <parameterId>PD1139</parameterId> <!-- raw_signal_beta -->
+    <parameterId>PD1140</parameterId> <!-- measurement_wavelength_chl -->
+    <parameterId>PD1141</parameterId> <!-- raw_signal_chl -->
+    <parameterId>PD1142</parameterId> <!-- measurement_wavelength_cdom -->
+    <parameterId>PD1143</parameterId> <!-- raw_signal_cdom -->
+    <parameterId>PD1144</parameterId> <!-- raw_internal_temp -->
+    <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
+    <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
+    <parameterId>PD1656</parameterId> <!-- fluorometric_cdom -->
+    <parameterId>PD3224</parameterId> <!-- flort_dj_bback_total -->
+    <parameterId>PD3225</parameterId> <!-- flort_dj_scat_seawater -->
+  </streamDefinition>
+  <streamDefinition streamName="flort_dj_sio_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2174</parameterId> <!-- sio_controller_timestamp -->
+    <parameterId>PD1136</parameterId> <!-- date_string -->
+    <parameterId>PD1137</parameterId> <!-- time_string -->
+    <parameterId>PD1138</parameterId> <!-- measurement_wavelength_beta -->
+    <parameterId>PD1139</parameterId> <!-- raw_signal_beta -->
+    <parameterId>PD1140</parameterId> <!-- measurement_wavelength_chl -->
+    <parameterId>PD1141</parameterId> <!-- raw_signal_chl -->
+    <parameterId>PD1142</parameterId> <!-- measurement_wavelength_cdom -->
+    <parameterId>PD1143</parameterId> <!-- raw_signal_cdom -->
+    <parameterId>PD1144</parameterId> <!-- raw_internal_temp -->
+    <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
+    <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
+    <parameterId>PD1656</parameterId> <!-- fluorometric_cdom -->
+    <parameterId>PD3224</parameterId> <!-- flort_dj_bback_total -->
+    <parameterId>PD3225</parameterId> <!-- flort_dj_scat_seawater -->
+  </streamDefinition>
   <streamDefinition streamName="pco2w_abc_power">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->

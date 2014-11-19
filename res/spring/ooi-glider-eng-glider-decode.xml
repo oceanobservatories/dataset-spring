@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="glider-eng-glider_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/glider-eng-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/glider-eng-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="glider-eng-glider_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/glider-eng-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/glider-eng-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="glider-eng-glider_recoveredFileConsumerRoute">
             <from ref="glider-eng-glider_recoveredFileEndpoint" />

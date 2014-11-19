@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="dosta-abcdjm-mmp-cds_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta-abcdjm-mmp-cds_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-mmp-cds_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="dosta-abcdjm-mmp-cds_recoveredFileConsumerRoute">
             <from ref="dosta-abcdjm-mmp-cds_recoveredFileEndpoint" />

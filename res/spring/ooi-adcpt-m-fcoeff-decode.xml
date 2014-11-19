@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="adcpt-m-fcoeff_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpt-m-fcoeff_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/adcpt-m-fcoeff_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="adcpt-m-fcoeff_recoveredFileConsumerRoute">
             <from ref="adcpt-m-fcoeff_recoveredFileEndpoint" />

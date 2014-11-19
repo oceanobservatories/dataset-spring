@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="flord-l-wfp_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flord-l-wfp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/flord-l-wfp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="flord-l-wfp_recoveredFileConsumerRoute">
             <from ref="flord-l-wfp_recoveredFileEndpoint" />

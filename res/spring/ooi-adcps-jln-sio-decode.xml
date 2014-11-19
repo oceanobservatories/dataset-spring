@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="adcps-jln-sio_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcps-jln-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/adcps-jln-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="adcps-jln-sio_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcps-jln-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/adcps-jln-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="adcps-jln-sio_recoveredFileConsumerRoute">
             <from ref="adcps-jln-sio_recoveredFileEndpoint" />

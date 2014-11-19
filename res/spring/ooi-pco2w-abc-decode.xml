@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="pco2w-abc_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/pco2w-abc_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/pco2w-abc_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="pco2w-abc_recoveredFileConsumerRoute">
             <from ref="pco2w-abc_recoveredFileEndpoint" />

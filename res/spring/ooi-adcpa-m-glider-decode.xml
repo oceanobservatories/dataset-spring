@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="adcpa-m-glider_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpa-m-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/adcpa-m-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="adcpa-m-glider_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpa-m-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/adcpa-m-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="adcpa-m-glider_recoveredFileConsumerRoute">
             <from ref="adcpa-m-glider_recoveredFileEndpoint" />

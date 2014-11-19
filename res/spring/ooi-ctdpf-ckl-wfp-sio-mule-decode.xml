@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="ctdpf-ckl-wfp-sio-mule_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdpf-ckl-wfp-sio-mule_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/ctdpf-ckl-wfp-sio-mule_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="ctdpf-ckl-wfp-sio-mule_telemeteredFileConsumerRoute">
             <from ref="ctdpf-ckl-wfp-sio-mule_telemeteredFileEndpoint" />

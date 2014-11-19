@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="flort-kn-stc-imodem_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flort-kn-stc-imodem_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/flort-kn-stc-imodem_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="flort-kn-stc-imodem_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flort-kn-stc-imodem_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/flort-kn-stc-imodem_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="flort-kn-stc-imodem_recoveredFileConsumerRoute">
             <from ref="flort-kn-stc-imodem_recoveredFileEndpoint" />

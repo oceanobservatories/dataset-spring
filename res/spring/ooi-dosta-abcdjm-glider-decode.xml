@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="dosta-abcdjm-glider_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta-abcdjm-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="dosta-abcdjm-glider_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta-abcdjm-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="dosta-abcdjm-glider_recoveredFileConsumerRoute">
             <from ref="dosta-abcdjm-glider_recoveredFileEndpoint" />
@@ -30,7 +30,7 @@
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>XX0XXXXX-XXX01-00-DOSTA000</constant>
+                <constant>XX0XXXXX-XXX01-00-DOSTAR000</constant>
             </setHeader>
             <bean ref="fileToString" />
             <to uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_recovered" />
@@ -56,7 +56,7 @@
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>XX0XXXXX-XXX01-00-DOSTA000</constant>
+                <constant>XX0XXXXX-XXX01-00-DOSTAT000</constant>
             </setHeader>
             <bean ref="fileToString" />
             <to uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_telemetered" />

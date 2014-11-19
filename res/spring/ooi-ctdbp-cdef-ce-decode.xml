@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="ctdbp-cdef-ce_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdbp-cdef-ce_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/ctdbp-cdef-ce_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="ctdbp-cdef-ce_recoveredFileConsumerRoute">
             <from ref="ctdbp-cdef-ce_recoveredFileEndpoint" />
@@ -21,7 +21,7 @@
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-CTDBPCDEFCER0</constant>
+                <constant>XX00XXXX-XX00X-00-CTDCER000</constant>
             </setHeader>
             <bean ref="fileToString" />
             <to uri="jms-durable:queue:Ingest.ctdbp-cdef-ce_recovered" />

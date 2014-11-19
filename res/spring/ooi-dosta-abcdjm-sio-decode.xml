@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="dosta-abcdjm-sio_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta-abcdjm-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="dosta-abcdjm-sio_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dosta-abcdjm-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/dosta-abcdjm-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="dosta-abcdjm-sio_telemeteredFileConsumerRoute">
             <from ref="dosta-abcdjm-sio_telemeteredFileEndpoint" />

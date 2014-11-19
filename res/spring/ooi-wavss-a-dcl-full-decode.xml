@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="wavss-a-dcl-full_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/wavss-a-dcl-full_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/wavss-a-dcl-full_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="wavss-a-dcl-full_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/wavss-a-dcl-full_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/wavss-a-dcl-full_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="wavss-a-dcl-full_recoveredFileConsumerRoute">
             <from ref="wavss-a-dcl-full_recoveredFileEndpoint" />

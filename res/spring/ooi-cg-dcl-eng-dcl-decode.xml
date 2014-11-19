@@ -19,10 +19,10 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="cg-dcl-eng-dcl_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/cg-dcl-eng-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/cg-dcl-eng-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="cg-dcl-eng-dcl_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/cg-dcl-eng-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/cg-dcl-eng-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="cg-dcl-eng-dcl_recoveredFileConsumerRoute">
             <from ref="cg-dcl-eng-dcl_recoveredFileEndpoint" />

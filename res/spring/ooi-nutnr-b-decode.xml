@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="nutnr-b_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/nutnr-b_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/nutnr-b_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="nutnr-b_recoveredFileConsumerRoute">
             <from ref="nutnr-b_recoveredFileEndpoint" />

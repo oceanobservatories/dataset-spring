@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="ctdmo-ghqr-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdmo-ghqr-imodem_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/imodem/ctdmo_ghqr_imodem_recovered_driver.py" />
+    </bean>
+
+    <bean id="ctdmo-ghqr-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdmo-ghqr-imodem_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/imodem/ctdmo_ghqr_imodem_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="ctdmo-ghqr-imodem-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="ctdmo-ghqr-imodem_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdmo-ghqr-imodem_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="ctdmo-ghqr-imodem_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdmo-ghqr-imodem_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="ctdmo-ghqr-imodem_recoveredFileConsumerRoute">
+            <from ref="ctdmo-ghqr-imodem_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDMOM000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdmo-ghqr-imodem_recovered" />
+        </route>
+
+        <route id="ctdmo-ghqr-imodem_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-imodem_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdmo-ghqr-imodem_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdmo-ghqr-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="ctdmo-ghqr-imodem_telemeteredFileConsumerRoute">
+            <from ref="ctdmo-ghqr-imodem_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDMOM000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdmo-ghqr-imodem_telemetered" />
+        </route>
+
+        <route id="ctdmo-ghqr-imodem_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-imodem_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdmo-ghqr-imodem_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdmo-ghqr-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

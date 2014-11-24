@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="flort-dj-sio_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flort-dj-sio_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/sio/flort_dj_sio_recovered_driver.py" />
+    </bean>
+
+    <bean id="flort-dj-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="flort-dj-sio_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/sio/flort_dj_sio_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="flort-dj-sio-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="flort-dj-sio_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort-dj-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="flort-dj-sio_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort-dj-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="flort-dj-sio_recoveredFileConsumerRoute">
+            <from ref="flort-dj-sio_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FLTDJR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flort-dj-sio_recovered" />
+        </route>
+
+        <route id="flort-dj-sio_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.flort-dj-sio_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flort-dj-sio_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flort-dj-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="flort-dj-sio_telemeteredFileConsumerRoute">
+            <from ref="flort-dj-sio_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FLTDJT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flort-dj-sio_telemetered" />
+        </route>
+
+        <route id="flort-dj-sio_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.flort-dj-sio_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flort-dj-sio_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flort-dj-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

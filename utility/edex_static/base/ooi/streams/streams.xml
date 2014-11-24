@@ -946,6 +946,21 @@
     <parameterId>PD2785</parameterId> <!-- mean_direction -->
     <parameterId>PD2786</parameterId> <!-- mean_spread -->
   </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_instrument_blank_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD2712</parameterId> <!-- blank_light_measurements -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD359</parameterId> <!-- thermistor_raw -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+    <parameterId>PD928</parameterId> <!-- absorbance_blank_434 -->
+    <parameterId>PD929</parameterId> <!-- absorbance_blank_620 -->
+    <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="flort_dj_dcl_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -2259,6 +2274,35 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD2805</parameterId> <!-- pco2_co2flux -->
   </streamDefinition>
+  <streamDefinition streamName="phsen_abcdef_imodem_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD366</parameterId> <!-- clock_active -->
+    <parameterId>PD367</parameterId> <!-- recording_active -->
+    <parameterId>PD368</parameterId> <!-- record_end_on_time -->
+    <parameterId>PD369</parameterId> <!-- record_memory_full -->
+    <parameterId>PD370</parameterId> <!-- record_end_on_error -->
+    <parameterId>PD371</parameterId> <!-- data_download_ok -->
+    <parameterId>PD372</parameterId> <!-- flash_memory_open -->
+    <parameterId>PD373</parameterId> <!-- battery_low_prestart -->
+    <parameterId>PD374</parameterId> <!-- battery_low_measurement -->
+    <parameterId>PD2834</parameterId> <!-- battery_low_blank -->
+    <parameterId>PD376</parameterId> <!-- battery_low_external -->
+    <parameterId>PD377</parameterId> <!-- external_device1_fault -->
+    <parameterId>PD1113</parameterId> <!-- external_device2_fault -->
+    <parameterId>PD1114</parameterId> <!-- external_device3_fault -->
+    <parameterId>PD378</parameterId> <!-- flash_erased -->
+    <parameterId>PD379</parameterId> <!-- power_on_invalid -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD1116</parameterId> <!-- num_error_records -->
+    <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+  </streamDefinition>
   <streamDefinition streamName="ctdpf_ckl_wfp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -2346,6 +2390,22 @@
     <parameterId>PD272</parameterId> <!-- pcb_thermistor_value -->
     <parameterId>PD273</parameterId> <!-- reference_error -->
     <parameterId>PD270</parameterId> <!-- set_timeout_icd -->
+  </streamDefinition>
+  <streamDefinition streamName="phsen_abcdef_imodem_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD932</parameterId> <!-- thermistor_start -->
+    <parameterId>PD933</parameterId> <!-- reference_light_measurements -->
+    <parameterId>PD357</parameterId> <!-- light_measurements -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD935</parameterId> <!-- thermistor_end -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+    <parameterId>PD938</parameterId> <!-- phsen_thermistor_temperature -->
+    <parameterId>PD2767</parameterId> <!-- phsen_abcdef_ph_seawater -->
   </streamDefinition>
   <streamDefinition streamName="parad_sa_raw">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -2698,6 +2758,21 @@
     <parameterId>PD17</parameterId> <!-- quality_flag -->
     <parameterId>PD26</parameterId> <!-- raw -->
   </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_instrument_blank">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD2712</parameterId> <!-- blank_light_measurements -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD359</parameterId> <!-- thermistor_raw -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+    <parameterId>PD928</parameterId> <!-- absorbance_blank_434 -->
+    <parameterId>PD929</parameterId> <!-- absorbance_blank_620 -->
+    <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_lhn">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -2936,6 +3011,22 @@
     <parameterId>PD1584</parameterId> <!-- wfp_sensor_stop -->
     <parameterId>PD1585</parameterId> <!-- wfp_profile_stop -->
     <parameterId>PD2027</parameterId> <!-- wfp_decimation_factor -->
+  </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD357</parameterId> <!-- light_measurements -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD359</parameterId> <!-- thermistor_raw -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+    <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
+    <parameterId>PD931</parameterId> <!-- pco2_seawater -->
+    <parameterId>PD926</parameterId> <!-- absorbance_ratio_434 -->
+    <parameterId>PD927</parameterId> <!-- absorbance_ratio_620 -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_cd_user_configuration">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -3364,8 +3455,8 @@
     <parameterId>PD2228</parameterId> <!-- passed_checksum -->
     <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
     <parameterId>PD931</parameterId> <!-- pco2_seawater -->
-    <parameterId>PD928</parameterId> <!-- absorbance_blank_434 -->
-    <parameterId>PD929</parameterId> <!-- absorbance_blank_620 -->
+    <parameterId>PD926</parameterId> <!-- absorbance_ratio_434 -->
+    <parameterId>PD927</parameterId> <!-- absorbance_ratio_620 -->
   </streamDefinition>
   <streamDefinition streamName="prest_l1_pressure">
     <parameterId>PD95</parameterId> <!-- seafloor_pressure -->
@@ -5583,8 +5674,8 @@
     <parameterId>PD2228</parameterId> <!-- passed_checksum -->
     <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
     <parameterId>PD931</parameterId> <!-- pco2_seawater -->
-    <parameterId>PD928</parameterId> <!-- absorbance_blank_434 -->
-    <parameterId>PD929</parameterId> <!-- absorbance_blank_620 -->
+    <parameterId>PD926</parameterId> <!-- absorbance_ratio_434 -->
+    <parameterId>PD927</parameterId> <!-- absorbance_ratio_620 -->
   </streamDefinition>
   <streamDefinition streamName="ctdpf_j_cspp_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6130,6 +6221,19 @@
     <parameterId>PD2064</parameterId> <!-- glider_mission_name -->
     <parameterId>PD2065</parameterId> <!-- glider_eng_fileopen_time -->
   </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3060</parameterId> <!-- file_time -->
+    <parameterId>PD1089</parameterId> <!-- instrument_id -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD2649</parameterId> <!-- voltage_flt32 -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD583</parameterId> <!-- record_length -->
+    <parameterId>PD263</parameterId> <!-- num_events -->
+    <parameterId>PD203</parameterId> <!-- num_samples -->
+  </streamDefinition>
   <streamDefinition streamName="ctdpf_ckl_wfp_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -6161,8 +6265,8 @@
     <parameterId>PD359</parameterId> <!-- thermistor_raw -->
     <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
     <parameterId>PD931</parameterId> <!-- pco2_seawater -->
-    <parameterId>PD928</parameterId> <!-- absorbance_blank_434 -->
-    <parameterId>PD929</parameterId> <!-- absorbance_blank_620 -->
+    <parameterId>PD926</parameterId> <!-- absorbance_ratio_434 -->
+    <parameterId>PD927</parameterId> <!-- absorbance_ratio_620 -->
   </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_L1">
     <parameterId>PD6</parameterId> <!-- temp -->
@@ -6800,6 +6904,19 @@
     <parameterId>PD2584</parameterId> <!-- hpies_bliley_frequency -->
     <parameterId>PD2538</parameterId> <!-- hpies_stm_timestamp -->
   </streamDefinition>
+  <streamDefinition streamName="phsen_abcdef_imodem_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3060</parameterId> <!-- file_time -->
+    <parameterId>PD1089</parameterId> <!-- instrument_id -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD2649</parameterId> <!-- voltage_flt32 -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD583</parameterId> <!-- record_length -->
+    <parameterId>PD263</parameterId> <!-- num_events -->
+    <parameterId>PD203</parameterId> <!-- num_samples -->
+  </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_cp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -6909,6 +7026,15 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD26</parameterId> <!-- raw -->
+  </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_power">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
   </streamDefinition>
   <streamDefinition streamName="cg_dcl_eng_dcl_dlog_status">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7735,6 +7861,35 @@
     <parameterId>PD1210</parameterId> <!-- bt_beam4_rssi_amplitude -->
     <parameterId>PD1211</parameterId> <!-- bt_gain -->
   </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_control_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD366</parameterId> <!-- clock_active -->
+    <parameterId>PD367</parameterId> <!-- recording_active -->
+    <parameterId>PD368</parameterId> <!-- record_end_on_time -->
+    <parameterId>PD369</parameterId> <!-- record_memory_full -->
+    <parameterId>PD370</parameterId> <!-- record_end_on_error -->
+    <parameterId>PD371</parameterId> <!-- data_download_ok -->
+    <parameterId>PD372</parameterId> <!-- flash_memory_open -->
+    <parameterId>PD373</parameterId> <!-- battery_low_prestart -->
+    <parameterId>PD374</parameterId> <!-- battery_low_measurement -->
+    <parameterId>PD2834</parameterId> <!-- battery_low_blank -->
+    <parameterId>PD376</parameterId> <!-- battery_low_external -->
+    <parameterId>PD377</parameterId> <!-- external_device1_fault -->
+    <parameterId>PD1113</parameterId> <!-- external_device2_fault -->
+    <parameterId>PD1114</parameterId> <!-- external_device3_fault -->
+    <parameterId>PD378</parameterId> <!-- flash_erased -->
+    <parameterId>PD379</parameterId> <!-- power_on_invalid -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD1116</parameterId> <!-- num_error_records -->
+    <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_ab_diagnostics_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -8419,6 +8574,19 @@
     <parameterId>PD2656</parameterId> <!-- vadcp_upward_seawater_velocity_tru -->
     <parameterId>PD2657</parameterId> <!-- vadcp_beam_error -->
   </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3060</parameterId> <!-- file_time -->
+    <parameterId>PD1089</parameterId> <!-- instrument_id -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD2649</parameterId> <!-- voltage_flt32 -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD583</parameterId> <!-- record_length -->
+    <parameterId>PD263</parameterId> <!-- num_events -->
+    <parameterId>PD203</parameterId> <!-- num_samples -->
+  </streamDefinition>
   <streamDefinition streamName="dofst_k_wfp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -9099,6 +9267,35 @@
     <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
     <parameterId>PD2845</parameterId> <!-- dosta_ln_wfp_abs_oxygen -->
   </streamDefinition>
+  <streamDefinition streamName="phsen_abcdef_imodem_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3060</parameterId> <!-- file_time -->
+    <parameterId>PD1089</parameterId> <!-- instrument_id -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD2649</parameterId> <!-- voltage_flt32 -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD583</parameterId> <!-- record_length -->
+    <parameterId>PD263</parameterId> <!-- num_events -->
+    <parameterId>PD203</parameterId> <!-- num_samples -->
+  </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD357</parameterId> <!-- light_measurements -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD359</parameterId> <!-- thermistor_raw -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+    <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
+    <parameterId>PD931</parameterId> <!-- pco2_seawater -->
+    <parameterId>PD926</parameterId> <!-- absorbance_ratio_434 -->
+    <parameterId>PD927</parameterId> <!-- absorbance_ratio_620 -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_ab_diagnostics_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -9148,6 +9345,35 @@
     <parameterId>PD1461</parameterId> <!-- m_water_vx -->
     <parameterId>PD1462</parameterId> <!-- m_water_vy -->
     <parameterId>PD1539</parameterId> <!-- x_low_power_status -->
+  </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_control">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD366</parameterId> <!-- clock_active -->
+    <parameterId>PD367</parameterId> <!-- recording_active -->
+    <parameterId>PD368</parameterId> <!-- record_end_on_time -->
+    <parameterId>PD369</parameterId> <!-- record_memory_full -->
+    <parameterId>PD370</parameterId> <!-- record_end_on_error -->
+    <parameterId>PD371</parameterId> <!-- data_download_ok -->
+    <parameterId>PD372</parameterId> <!-- flash_memory_open -->
+    <parameterId>PD373</parameterId> <!-- battery_low_prestart -->
+    <parameterId>PD374</parameterId> <!-- battery_low_measurement -->
+    <parameterId>PD2834</parameterId> <!-- battery_low_blank -->
+    <parameterId>PD376</parameterId> <!-- battery_low_external -->
+    <parameterId>PD377</parameterId> <!-- external_device1_fault -->
+    <parameterId>PD1113</parameterId> <!-- external_device2_fault -->
+    <parameterId>PD1114</parameterId> <!-- external_device3_fault -->
+    <parameterId>PD378</parameterId> <!-- flash_erased -->
+    <parameterId>PD379</parameterId> <!-- power_on_invalid -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD1116</parameterId> <!-- num_error_records -->
+    <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
   </streamDefinition>
   <streamDefinition streamName="ctdpf_ckl_wfp_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -9566,6 +9792,15 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
+  </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_power_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
   </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_hnn">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -10537,6 +10772,35 @@
     <parameterId>PD3090</parameterId> <!-- met_tempa2m -->
     <parameterId>PD3091</parameterId> <!-- met_tempskn -->
     <parameterId>PD3092</parameterId> <!-- met_wind10m -->
+  </streamDefinition>
+  <streamDefinition streamName="phsen_abcdef_imodem_control_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD366</parameterId> <!-- clock_active -->
+    <parameterId>PD367</parameterId> <!-- recording_active -->
+    <parameterId>PD368</parameterId> <!-- record_end_on_time -->
+    <parameterId>PD369</parameterId> <!-- record_memory_full -->
+    <parameterId>PD370</parameterId> <!-- record_end_on_error -->
+    <parameterId>PD371</parameterId> <!-- data_download_ok -->
+    <parameterId>PD372</parameterId> <!-- flash_memory_open -->
+    <parameterId>PD373</parameterId> <!-- battery_low_prestart -->
+    <parameterId>PD374</parameterId> <!-- battery_low_measurement -->
+    <parameterId>PD2834</parameterId> <!-- battery_low_blank -->
+    <parameterId>PD376</parameterId> <!-- battery_low_external -->
+    <parameterId>PD377</parameterId> <!-- external_device1_fault -->
+    <parameterId>PD1113</parameterId> <!-- external_device2_fault -->
+    <parameterId>PD1114</parameterId> <!-- external_device3_fault -->
+    <parameterId>PD378</parameterId> <!-- flash_erased -->
+    <parameterId>PD379</parameterId> <!-- power_on_invalid -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD1116</parameterId> <!-- num_error_records -->
+    <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
   </streamDefinition>
   <streamDefinition streamName="presf_abc_dcl_tide_measurement">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11679,6 +11943,18 @@
     <parameterId>PD2063</parameterId> <!-- glider_eng_filename -->
     <parameterId>PD2064</parameterId> <!-- glider_mission_name -->
     <parameterId>PD2065</parameterId> <!-- glider_eng_fileopen_time -->
+  </streamDefinition>
+  <streamDefinition streamName="sio_eng_control_status_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2173</parameterId> <!-- sio_controller_id -->
+    <parameterId>PD2174</parameterId> <!-- sio_controller_timestamp -->
+    <parameterId>PD2175</parameterId> <!-- sio_eng_voltage -->
+    <parameterId>PD2176</parameterId> <!-- sio_eng_temperature -->
+    <parameterId>PD2177</parameterId> <!-- sio_eng_on_time -->
+    <parameterId>PD2178</parameterId> <!-- sio_eng_number_of_wakeups -->
+    <parameterId>PD2179</parameterId> <!-- sio_eng_clock_drift -->
   </streamDefinition>
   <streamDefinition streamName="camds_health_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->

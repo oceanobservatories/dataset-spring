@@ -184,7 +184,7 @@
 	<parameter encoding="int32" fill="-9999" name="board_frequency" pd_id="PD464" precision="0" type="quantity" unit="kHz"/>
 	<parameter encoding="int8" fill="-99" name="compass_installed" pd_id="PD463" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="recorder_installed" pd_id="PD462" precision="0" type="boolean" unit="1"/>
-	<parameter encoding="str" fill="empty" name="instrmt_type_serial_number" pd_id="PD461" precision="0" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="str" fill="empty" name="instrument_type_serial_number" pd_id="PD461" precision="0" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="distance_beam4" pd_id="PD460" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="bit_result_timing" pd_id="PD669" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="bit_result_demod_0" pd_id="PD668" precision="0" type="boolean" unit="1"/>
@@ -377,7 +377,7 @@
 	<parameter encoding="uint16" fill="65535" name="velocity_data_id" pd_id="PD713" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="0" name="correlation_magnitude_beam1" pd_id="PD719" precision="0" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="uint16" fill="65535" name="correlation_magnitude_id" pd_id="PD718" precision="0" type="quantity" unit="1"/>
-	<parameter encoding="int16" fill="-9999" name="number_beams" pd_id="PD478" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int16" fill="-9999" name="number_of_beams" pd_id="PD478" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="transmit_pulse_length" pd_id="PD479" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_fw_rev" pd_id="PD1627" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_fw_vers" pd_id="PD1626" precision="0" type="quantity" unit="1"/>
@@ -386,7 +386,7 @@
 	<parameter encoding="uint64" fill="0" name="adcps_jln_record" pd_id="PD1623" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint32" fill="9999999" name="wfp_timestamp" pd_id="PD1622" precision="0" type="quantity" unit="seconds since 1970-01-01"/>
 	<parameter encoding="int8" fill="-99" name="pressure_sensor" pd_id="PD470" precision="0" type="boolean" unit="1"/>
-	<parameter encoding="int8" fill="-99" name="magnetometer_sensor" pd_id="PD471" precision="0" type="boolean" unit="1"/>
+	<parameter encoding="int8" fill="-99" name="magnetometer" pd_id="PD471" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="tilt_sensor" pd_id="PD472" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="tilt_sensor_mounting" pd_id="PD473" precision="0" type="category&lt;int8:str&gt;" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="head_frequency" pd_id="PD474" precision="0" type="quantity" unit="kHz"/>
@@ -1464,7 +1464,7 @@
 	<parameter encoding="int8" fill="-99" name="use_dsp_filter" pd_id="PD517" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="number_pings_diagnostic" pd_id="PD516" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="number_beams_per_cell" pd_id="PD515" precision="0" type="quantity" unit="1"/>
-	<parameter encoding="int16" fill="-9999" name="number_diagnostics_samples" pd_id="PD514" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int16" fill="-9999" name="number_diagnostic_samples" pd_id="PD514" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="lily_temp" pd_id="PD849" precision="" type="quantity" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999999" name="bottom_pressure" pd_id="PD848" precision="" type="quantity" unit="psi"/>
 	<parameter encoding="float32" fill="-9999999" name="velocity_offsets" pd_id="PD733" precision="2" type="array&lt;quantity&gt;" unit="cm s-1"/>

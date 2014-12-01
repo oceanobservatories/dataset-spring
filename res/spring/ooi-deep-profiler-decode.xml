@@ -13,7 +13,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="deep-profiler_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/deep-profiler_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/deep-profiler_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="deep-profiler_recoveredFileConsumerRoute">
             <from ref="deep-profiler_recoveredFileEndpoint" />

@@ -3,75 +3,75 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="ctdbp_cdef_dcl_cp_RecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ctdbp_cdef_dcl_cp_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/dcl_cp/ctdbp_cdef_dcl_cp_recovered_driver.py" />
-    </bean>
-
-    <bean id="ctdbp_cdef_dcl_cp_TelemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ctdbp_cdef_dcl_cp_telemetered" />
+    <bean id="ctdbp-cdef-dcl-cp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdbp-cdef-dcl-cp_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/dcl_cp/ctdbp_cdef_dcl_cp_telemetered_driver.py" />
     </bean>
 
-    <camelContext id="ctdbp_cdef_dcl_cp-decode-camel"
+    <bean id="ctdbp-cdef-dcl-cp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdbp-cdef-dcl-cp_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/dcl_cp/ctdbp_cdef_dcl_cp_recovered_driver.py" />
+    </bean>
+
+    <camelContext id="ctdbp-cdef-dcl-cp-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="ctdbp_cdef_dcl_cp_RecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdbp_cdef_dcl_cp_recov?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="ctdbp-cdef-dcl-cp_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdbp-cdef-dcl-cp_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <endpoint id="ctdbp_cdef_dcl_cp_TelemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdbp_cdef_dcl_cp_telem?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="ctdbp-cdef-dcl-cp_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdbp-cdef-dcl-cp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="ctdbp_cdef_dcl_cp_RecoveredFileConsumerRoute">
-            <from ref="ctdbp_cdef_dcl_cp_RecoveredFileEndpoint" />
-            <bean ref="fileToString" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-CTDBPP000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_cp_recovered" />
-        </route>
-
-        <route id="ctdbp_cdef_dcl_cp_TelemeteredFileConsumerRoute">
-            <from ref="ctdbp_cdef_dcl_cp_TelemeteredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="ctdbp-cdef-dcl-cp_telemeteredFileConsumerRoute">
+            <from ref="ctdbp-cdef-dcl-cp_telemeteredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>telemetered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-CTDBPP000</constant>
-            </setHeader>            
-            <to uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_cp_telemetered" />
+                <constant>XX00XXXX-XX00X-00-CTDCPT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdbp-cdef-dcl-cp_telemetered" />
         </route>
 
-        <route id="ctdbp_cdef_dcl_cp_RecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_cp_recovered" />
+        <route id="ctdbp-cdef-dcl-cp_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdbp-cdef-dcl-cp_telemetered" />
             <doTry>
                 <pipeline>
-                    <bean ref="ctdbp_cdef_dcl_cp_RecoveredProcessor" />
+                    <bean ref="ctdbp-cdef-dcl-cp_telemeteredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.ctdbp_cdef_dcl_cp?level=ERROR" />
+                    <to uri="log:ooi.ctdbp-cdef-dcl-cp?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
 
-        <route id="ctdbp_cdef_dcl_cp_TelemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdbp_cdef_dcl_cp_telemetered" />
+        <route id="ctdbp-cdef-dcl-cp_recoveredFileConsumerRoute">
+            <from ref="ctdbp-cdef-dcl-cp_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDCPR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdbp-cdef-dcl-cp_recovered" />
+        </route>
+
+        <route id="ctdbp-cdef-dcl-cp_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdbp-cdef-dcl-cp_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="ctdbp_cdef_dcl_cp_TelemeteredProcessor" />
+                    <bean ref="ctdbp-cdef-dcl-cp_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.ctdbp_cdef_dcl_cp?level=ERROR" />
+                    <to uri="log:ooi.ctdbp-cdef-dcl-cp?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

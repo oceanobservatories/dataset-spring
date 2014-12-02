@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="adcptMLog9RecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ADCPT_M_LOG9_RECOVERED" />
+    <bean id="adcpt-m-log9_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="adcpt-m-log9_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_m/adcpt_m_log9_recovered_driver.py" />
     </bean>
@@ -12,31 +12,31 @@
     <camelContext id="adcpt-m-log9-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="adcptMLog9RecoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpt_m_log9/recovered?delete=true&amp;delay=5000&amp;maxMessagesPerPoll=1000&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+        <endpoint id="adcpt-m-log9_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/adcpt-m-log9_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
-        <route id="adcptMLog9RecoveredFileConsumerRoute">
-            <from ref="adcptMLog9RecoveredFileEndpoint" />
-            <bean ref="fileToString" />
+        <route id="adcpt-m-log9_recoveredFileConsumerRoute">
+            <from ref="adcpt-m-log9_recoveredFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
                 <constant>XX00XXXX-XX00X-00-ADCPTM003</constant>
-            </setHeader>  
-            <to uri="jms-durable:queue:Ingest.adcptMLog9Recovered" />
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.adcpt-m-log9_recovered" />
         </route>
-        
-        <route id="adcptMLog9RecoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcptMLog9Recovered" />
+
+        <route id="adcpt-m-log9_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.adcpt-m-log9_recovered" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcptMLog9RecoveredProcessor" />
+                    <bean ref="adcpt-m-log9_recoveredProcessor" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcptMLog9Recovered?level=ERROR" />
+                    <to uri="log:ooi.adcpt-m-log9?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

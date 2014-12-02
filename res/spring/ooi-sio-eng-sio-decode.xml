@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="sio-eng-sio_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="sio-eng-sio_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/sio_eng/sio/sio_eng_sio_recovered_driver.py" />
+    </bean>
+
+    <bean id="sio-eng-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="sio-eng-sio_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/sio_eng/sio/sio_eng_sio_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="sio-eng-sio-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="sio-eng-sio_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/sio-eng-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="sio-eng-sio_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/sio-eng-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="sio-eng-sio_recoveredFileConsumerRoute">
+            <from ref="sio-eng-sio_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-SIOESR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.sio-eng-sio_recovered" />
+        </route>
+
+        <route id="sio-eng-sio_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.sio-eng-sio_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="sio-eng-sio_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.sio-eng-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="sio-eng-sio_telemeteredFileConsumerRoute">
+            <from ref="sio-eng-sio_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-SIOEST000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.sio-eng-sio_telemetered" />
+        </route>
+
+        <route id="sio-eng-sio_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.sio-eng-sio_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="sio-eng-sio_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.sio-eng-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

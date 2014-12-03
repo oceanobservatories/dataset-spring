@@ -995,6 +995,18 @@
     <parameterId>PD2665</parameterId> <!-- camds_resolution -->
     <parameterId>PD2666</parameterId> <!-- camds_brightness -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="wavss_a_dcl_motion_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -1211,6 +1223,16 @@
     <parameterId>PD584</parameterId> <!-- packet_type -->
     <parameterId>PD585</parameterId> <!-- meter_type -->
     <parameterId>PD114</parameterId> <!-- serial_number -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_batt_eng">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2641</parameterId> <!-- battery_number_uint8 -->
+    <parameterId>PD2642</parameterId> <!-- battery_voltage_flt32 -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_b_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1858,6 +1880,18 @@
     <parameterId>PD2747</parameterId> <!-- adcpa_m_echo_intensity_beam3 -->
     <parameterId>PD2748</parameterId> <!-- adcpa_m_echo_intensity_beam4 -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_wm_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_bhz">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1899,6 +1933,15 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_sbe_eng">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2644</parameterId> <!-- velocity_flt32 -->
   </streamDefinition>
   <streamDefinition streamName="phsen_regular_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -2281,27 +2324,14 @@
     <parameterId>PD353</parameterId> <!-- unique_id -->
     <parameterId>PD355</parameterId> <!-- record_type -->
     <parameterId>PD356</parameterId> <!-- record_time -->
-    <parameterId>PD366</parameterId> <!-- clock_active -->
-    <parameterId>PD367</parameterId> <!-- recording_active -->
-    <parameterId>PD368</parameterId> <!-- record_end_on_time -->
-    <parameterId>PD369</parameterId> <!-- record_memory_full -->
-    <parameterId>PD370</parameterId> <!-- record_end_on_error -->
-    <parameterId>PD371</parameterId> <!-- data_download_ok -->
-    <parameterId>PD372</parameterId> <!-- flash_memory_open -->
-    <parameterId>PD373</parameterId> <!-- battery_low_prestart -->
-    <parameterId>PD374</parameterId> <!-- battery_low_measurement -->
-    <parameterId>PD2834</parameterId> <!-- battery_low_blank -->
-    <parameterId>PD376</parameterId> <!-- battery_low_external -->
-    <parameterId>PD377</parameterId> <!-- external_device1_fault -->
-    <parameterId>PD1113</parameterId> <!-- external_device2_fault -->
-    <parameterId>PD1114</parameterId> <!-- external_device3_fault -->
-    <parameterId>PD378</parameterId> <!-- flash_erased -->
-    <parameterId>PD379</parameterId> <!-- power_on_invalid -->
-    <parameterId>PD1115</parameterId> <!-- num_data_records -->
-    <parameterId>PD1116</parameterId> <!-- num_error_records -->
-    <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
+    <parameterId>PD932</parameterId> <!-- thermistor_start -->
+    <parameterId>PD933</parameterId> <!-- reference_light_measurements -->
+    <parameterId>PD357</parameterId> <!-- light_measurements -->
     <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD935</parameterId> <!-- thermistor_end -->
     <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+    <parameterId>PD938</parameterId> <!-- phsen_thermistor_temperature -->
+    <parameterId>PD2767</parameterId> <!-- phsen_abcdef_ph_seawater -->
   </streamDefinition>
   <streamDefinition streamName="ctdpf_ckl_wfp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3089,6 +3119,15 @@
     <parameterId>PD1088</parameterId> <!-- transmit_pulse_length_2nd -->
     <parameterId>PD534</parameterId> <!-- filter_constants -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_gps_eng">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2643</parameterId> <!-- gps_adjustment -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_data_header">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3171,6 +3210,18 @@
     <parameterId>PD1148</parameterId> <!-- signal_2_offset -->
     <parameterId>PD1149</parameterId> <!-- signal_3_scale_factor -->
     <parameterId>PD1150</parameterId> <!-- signal_3_offset -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_sbe_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
   </streamDefinition>
   <streamDefinition streamName="ies_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -4453,6 +4504,16 @@
     <parameterId>PD845</parameterId> <!-- heat_y_tilt -->
     <parameterId>PD851</parameterId> <!-- heat_temp -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_batt_eng_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2641</parameterId> <!-- battery_number_uint8 -->
+    <parameterId>PD2642</parameterId> <!-- battery_voltage_flt32 -->
+  </streamDefinition>
   <streamDefinition streamName="sbe37_L0_test">
     <parameterId>PD8</parameterId> <!-- lat -->
     <parameterId>PD9</parameterId> <!-- lon -->
@@ -5151,6 +5212,17 @@
     <parameterId>PD1116</parameterId> <!-- num_error_records -->
     <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
     <parameterId>PD358</parameterId> <!-- voltage_battery -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_hmr_eng">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
   </streamDefinition>
   <streamDefinition streamName="flortd_parsed">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6012,6 +6084,18 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD26</parameterId> <!-- raw -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_hmr_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="massp_rga_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6029,6 +6113,15 @@
     <parameterId>PD2522</parameterId> <!-- massp_rga_initial_mass -->
     <parameterId>PD2523</parameterId> <!-- massp_rga_final_mass -->
     <parameterId>PD2524</parameterId> <!-- massp_rga_readings_per_scan -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_sbe_eng_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2644</parameterId> <!-- velocity_flt32 -->
   </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_cspp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6241,6 +6334,18 @@
     <parameterId>PD1574</parameterId> <!-- wfp_time_on -->
     <parameterId>PD1575</parameterId> <!-- wfp_time_off -->
     <parameterId>PD1577</parameterId> <!-- wfp_number_samples -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_sbe_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
   </streamDefinition>
   <streamDefinition streamName="sio_eng_control_status">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6458,6 +6563,35 @@
     <parameterId>PD18</parameterId> <!-- viz_timestamp -->
     <parameterId>PD23</parameterId> <!-- google_dt_components -->
   </streamDefinition>
+  <streamDefinition streamName="phsen_abcdef_imodem_control">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD366</parameterId> <!-- clock_active -->
+    <parameterId>PD367</parameterId> <!-- recording_active -->
+    <parameterId>PD368</parameterId> <!-- record_end_on_time -->
+    <parameterId>PD369</parameterId> <!-- record_memory_full -->
+    <parameterId>PD370</parameterId> <!-- record_end_on_error -->
+    <parameterId>PD371</parameterId> <!-- data_download_ok -->
+    <parameterId>PD372</parameterId> <!-- flash_memory_open -->
+    <parameterId>PD373</parameterId> <!-- battery_low_prestart -->
+    <parameterId>PD374</parameterId> <!-- battery_low_measurement -->
+    <parameterId>PD2834</parameterId> <!-- battery_low_blank -->
+    <parameterId>PD376</parameterId> <!-- battery_low_external -->
+    <parameterId>PD377</parameterId> <!-- external_device1_fault -->
+    <parameterId>PD1113</parameterId> <!-- external_device2_fault -->
+    <parameterId>PD1114</parameterId> <!-- external_device3_fault -->
+    <parameterId>PD378</parameterId> <!-- flash_erased -->
+    <parameterId>PD379</parameterId> <!-- power_on_invalid -->
+    <parameterId>PD1115</parameterId> <!-- num_data_records -->
+    <parameterId>PD1116</parameterId> <!-- num_error_records -->
+    <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
+    <parameterId>PD358</parameterId> <!-- voltage_battery -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+  </streamDefinition>
   <streamDefinition streamName="ctdpf_sbe43_hardware">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6490,6 +6624,21 @@
     <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
     <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
     <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_wm_eng">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2646</parameterId> <!-- encoder_counts -->
+    <parameterId>PD2647</parameterId> <!-- current_flt32 -->
+    <parameterId>PD156</parameterId> <!-- device_status -->
+    <parameterId>PD2648</parameterId> <!-- winch_velocity -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD2649</parameterId> <!-- voltage_flt32 -->
+    <parameterId>PD2652</parameterId> <!-- rope_on_drum -->
   </streamDefinition>
   <streamDefinition streamName="adcp_waves_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -6989,6 +7138,18 @@
     <parameterId>PD331</parameterId> <!-- spec_channel_average -->
     <parameterId>PD332</parameterId> <!-- spectral_channels -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_hmr_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="adcps_jln_stc_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -7363,6 +7524,15 @@
     <parameterId>PD950</parameterId> <!-- svu_cal_coefs -->
     <parameterId>PD957</parameterId> <!-- tc_oxygen -->
     <parameterId>PD888</parameterId> <!-- abs_oxygen -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_gps_eng_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2643</parameterId> <!-- gps_adjustment -->
   </streamDefinition>
   <streamDefinition streamName="velpt_ab_dcl_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -10934,6 +11104,18 @@
     <parameterId>PD1587</parameterId> <!-- wfp_prof_voltage -->
     <parameterId>PD1588</parameterId> <!-- wfp_prof_pressure -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_wm_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="sbe16_parsed">
     <parameterId>PD193</parameterId> <!-- temperature -->
     <parameterId>PD194</parameterId> <!-- conductivity -->
@@ -11001,6 +11183,21 @@
     <parameterId>PD1586</parameterId> <!-- wfp_prof_current -->
     <parameterId>PD1587</parameterId> <!-- wfp_prof_voltage -->
     <parameterId>PD1588</parameterId> <!-- wfp_prof_pressure -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_wm_eng_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2646</parameterId> <!-- encoder_counts -->
+    <parameterId>PD2647</parameterId> <!-- current_flt32 -->
+    <parameterId>PD156</parameterId> <!-- device_status -->
+    <parameterId>PD2648</parameterId> <!-- winch_velocity -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD2649</parameterId> <!-- voltage_flt32 -->
+    <parameterId>PD2652</parameterId> <!-- rope_on_drum -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_b_dcl_conc_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11750,6 +11947,18 @@
     <parameterId>PD1554</parameterId> <!-- sparse_double -->
     <parameterId>PD1555</parameterId> <!-- sparse_int -->
   </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="adcps_jln_beam_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -12138,6 +12347,17 @@
     <parameterId>PD362</parameterId> <!-- external_power_on -->
     <parameterId>PD363</parameterId> <!-- debug_led -->
     <parameterId>PD364</parameterId> <!-- debug_echo -->
+  </streamDefinition>
+  <streamDefinition streamName="cspp_eng_cspp_wc_hmr_eng_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
   </streamDefinition>
   <streamDefinition streamName="flord_m_glider_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->

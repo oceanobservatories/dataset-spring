@@ -11140,7 +11140,9 @@
     <parameterId>PD357</parameterId> <!-- light_measurements -->
     <parameterId>PD358</parameterId> <!-- voltage_battery -->
     <parameterId>PD935</parameterId> <!-- thermistor_end -->
-    <parameterId>PD228</parameterId> <!-- serial_sync_mode -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+    <parameterId>PD938</parameterId> <!-- phsen_thermistor_temperature -->
+    <parameterId>PD2767</parameterId> <!-- phsen_abcdef_ph_seawater -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acm_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11157,6 +11159,19 @@
     <parameterId>PD2254</parameterId> <!-- vel3d_a_hz -->
     <parameterId>PD2255</parameterId> <!-- vel3d_a_tx -->
     <parameterId>PD2256</parameterId> <!-- vel3d_a_ty -->
+  </streamDefinition>
+  <streamDefinition streamName="adcps_jln_stc_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD1646</parameterId> <!-- adcps_jln_timestamp -->
+    <parameterId>PD1647</parameterId> <!-- adcps_jln_id -->
+    <parameterId>PD1648</parameterId> <!-- adcps_jln_serial_number -->
+    <parameterId>PD1649</parameterId> <!-- adcps_jln_volts -->
+    <parameterId>PD1650</parameterId> <!-- adcps_jln_records -->
+    <parameterId>PD1651</parameterId> <!-- adcps_jln_length -->
+    <parameterId>PD1652</parameterId> <!-- adcps_jln_events -->
+    <parameterId>PD1653</parameterId> <!-- adcps_jln_samples_written -->
   </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_L0">
     <parameterId>PD193</parameterId> <!-- temperature -->
@@ -12173,6 +12188,38 @@
     <parameterId>PD2667</parameterId> <!-- camds_temp -->
     <parameterId>PD2668</parameterId> <!-- camds_humidity -->
     <parameterId>PD2669</parameterId> <!-- camds_error -->
+  </streamDefinition>
+  <streamDefinition streamName="adcps_jln_stc_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD1623</parameterId> <!-- adcps_jln_record -->
+    <parameterId>PD1624</parameterId> <!-- adcps_jln_number -->
+    <parameterId>PD1625</parameterId> <!-- adcps_jln_unit_id -->
+    <parameterId>PD1626</parameterId> <!-- adcps_jln_fw_vers -->
+    <parameterId>PD1627</parameterId> <!-- adcps_jln_fw_rev -->
+    <parameterId>PD1628</parameterId> <!-- adcps_jln_year -->
+    <parameterId>PD1629</parameterId> <!-- adcps_jln_month -->
+    <parameterId>PD1630</parameterId> <!-- adcps_jln_day -->
+    <parameterId>PD1631</parameterId> <!-- adcps_jln_hour -->
+    <parameterId>PD1632</parameterId> <!-- adcps_jln_minute -->
+    <parameterId>PD1633</parameterId> <!-- adcps_jln_second -->
+    <parameterId>PD1634</parameterId> <!-- adcps_jln_hsec -->
+    <parameterId>PD1635</parameterId> <!-- adcps_jln_heading -->
+    <parameterId>PD1636</parameterId> <!-- adcps_jln_pitch -->
+    <parameterId>PD1637</parameterId> <!-- adcps_jln_roll -->
+    <parameterId>PD1638</parameterId> <!-- adcps_jln_temp -->
+    <parameterId>PD1639</parameterId> <!-- adcps_jln_pressure -->
+    <parameterId>PD1640</parameterId> <!-- adcps_jln_startbin -->
+    <parameterId>PD1641</parameterId> <!-- adcps_jln_bins -->
+    <parameterId>PD2268</parameterId> <!-- adcps_jln_vel_error -->
+    <parameterId>PD2269</parameterId> <!-- adcps_jln_vel_up -->
+    <parameterId>PD2270</parameterId> <!-- adcps_jln_vel_north -->
+    <parameterId>PD2271</parameterId> <!-- adcps_jln_vel_east -->
+    <parameterId>PD2272</parameterId> <!-- adcps_jln_upward_seawater_velocity2 -->
+    <parameterId>PD2273</parameterId> <!-- adcps_jln_error_velocity2 -->
+    <parameterId>PD2274</parameterId> <!-- adcps_jln_eastward_seawater_velocity2 -->
+    <parameterId>PD2275</parameterId> <!-- adcps_jln_northward_seawater_velocity2 -->
   </streamDefinition>
   <streamDefinition streamName="optaa_ac_mmp_cds_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->

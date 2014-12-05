@@ -6,8 +6,7 @@
     <bean id="phsen-abcdef_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="phsen-abcdef_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/mflm/phsen/phsen_abcdef_recovered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/phsen_abcdef_recovered_driver.py" />
     </bean>
 
     <camelContext id="phsen-abcdef-decode-camel"

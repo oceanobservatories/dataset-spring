@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="phsen-abcdef-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="phsen-abcdef-sio_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/sio/phsen_abcdef_sio_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="phsen-abcdef-sio-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="phsen-abcdef-sio_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/phsen-abcdef-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="phsen-abcdef-sio_telemeteredFileConsumerRoute">
+            <from ref="phsen-abcdef-sio_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PHSENSIO000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.phsen-abcdef-sio_telemetered" />
+        </route>
+
+        <route id="phsen-abcdef-sio_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-sio_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="phsen-abcdef-sio_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.phsen-abcdef-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

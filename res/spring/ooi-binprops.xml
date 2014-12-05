@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
   
-  <bean id="timeBinDao" class="com.raytheon.edex.plugin.sensorreading.SensorReadingDao" />
+  <bean id="timeBinDao" class="com.raytheon.edex.plugin.sensorreading.SensorReadingDao" depends-on="registerSensorReadingPlugin"/>
   
   <bean id="oneMinuteBin" class="com.raytheon.uf.edex.ooi.decoder.dataset.container.ParticleContainerProperties" depends-on="registerSensorReadingPlugin">
     <constructor-arg name="binSizeMilliseconds" value="60000" />

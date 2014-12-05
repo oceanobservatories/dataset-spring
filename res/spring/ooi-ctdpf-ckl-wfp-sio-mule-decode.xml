@@ -7,6 +7,7 @@
         <constructor-arg name="name" value="ctdpf-ckl-wfp-sio-mule_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp_sio/ctdpf_ckl_wfp_sio_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="ctdpf-ckl-wfp-sio-mule-decode-camel"

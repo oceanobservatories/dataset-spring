@@ -7,12 +7,14 @@
         <constructor-arg name="name" value="ctdbp-cdef-dcl-ce_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/dcl_ce/ctdbp_cdef_dcl_ce_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <bean id="ctdbp-cdef-dcl-ce_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="ctdbp-cdef-dcl-ce_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/dcl_ce/ctdbp_cdef_dcl_ce_recovered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="ctdbp-cdef-dcl-ce-decode-camel"

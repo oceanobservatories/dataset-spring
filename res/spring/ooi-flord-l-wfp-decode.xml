@@ -7,6 +7,7 @@
         <constructor-arg name="name" value="flord-l-wfp_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flord_l_wfp/flord_l_wfp_recovered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="flord-l-wfp-decode-camel"

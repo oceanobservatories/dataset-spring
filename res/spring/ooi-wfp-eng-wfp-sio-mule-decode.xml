@@ -7,6 +7,7 @@
         <constructor-arg name="name" value="wfp-eng-wfp-sio-mule_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/WFP_ENG/wfp_sio/wfp_eng_wfp_sio_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="wfp-eng-wfp-sio-mule-decode-camel"

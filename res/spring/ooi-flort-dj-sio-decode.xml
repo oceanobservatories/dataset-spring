@@ -7,22 +7,24 @@
         <constructor-arg name="name" value="flort-dj-sio_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/sio/flort_dj_sio_recovered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <bean id="flort-dj-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="flort-dj-sio_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/sio/flort_dj_sio_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="flort-dj-sio-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="flort-dj-sio_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flort-dj-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/flort-dj-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <endpoint id="flort-dj-sio_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flort-dj-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=1&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            uri="file:${edex.home}/data/ooi/flort-dj-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="flort-dj-sio_recoveredFileConsumerRoute">
             <from ref="flort-dj-sio_recoveredFileEndpoint" />

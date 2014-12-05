@@ -7,6 +7,7 @@
         <constructor-arg name="name" value="flcdr-x-mmp-cds_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flntu_x/mmp_cds/flcdr_x_mmp_cds_recovered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="flcdr-x-mmp-cds-decode-camel"

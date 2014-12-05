@@ -7,12 +7,14 @@
         <constructor-arg name="name" value="adcpt-acfgm-dcl-pd8_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_acfgm/dcl/pd8/adcpt_acfgm_dcl_pd8_recovered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <bean id="adcpt-acfgm-dcl-pd8_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg name="name" value="adcpt-acfgm-dcl-pd8_telemetered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_acfgm/dcl/pd8/adcpt_acfgm_dcl_pd8_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="adcpt-acfgm-dcl-pd8-decode-camel"

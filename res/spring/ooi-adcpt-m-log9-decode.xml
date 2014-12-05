@@ -7,6 +7,7 @@
         <constructor-arg name="name" value="adcpt-m-log9_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_m/adcpt_m_log9_recovered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="adcpt-m-log9-decode-camel"

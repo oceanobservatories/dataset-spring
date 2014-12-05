@@ -7,6 +7,7 @@
         <constructor-arg name="name" value="phsen-abcdef_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/mflm/phsen/phsen_abcdef_recovered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="phsen-abcdef-decode-camel"

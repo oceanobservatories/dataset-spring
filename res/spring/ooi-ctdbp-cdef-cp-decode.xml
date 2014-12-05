@@ -7,6 +7,7 @@
         <constructor-arg name="name" value="ctdbp-cdef-cp_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/cp/ctdbp_cdef_cp_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
     </bean>
 
     <camelContext id="ctdbp-cdef-cp-decode-camel"

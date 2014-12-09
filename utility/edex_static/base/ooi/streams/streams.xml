@@ -1262,6 +1262,17 @@
     <parameterId>PD331</parameterId> <!-- spec_channel_average -->
     <parameterId>PD332</parameterId> <!-- spectral_channels -->
   </streamDefinition>
+  <streamDefinition streamName="parad_j_cspp_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD1136</parameterId> <!-- date_string -->
+    <parameterId>PD1137</parameterId> <!-- time_string -->
+    <parameterId>PD188</parameterId> <!-- par -->
+  </streamDefinition>
   <streamDefinition streamName="sbe37_LC_TEST">
     <parameterId>PD8</parameterId> <!-- lat -->
     <parameterId>PD9</parameterId> <!-- lon -->
@@ -2658,6 +2669,7 @@
     <parameterId>PD330</parameterId> <!-- sea_water_dark -->
     <parameterId>PD331</parameterId> <!-- spec_channel_average -->
     <parameterId>PD332</parameterId> <!-- spectral_channels -->
+    <parameterId>PD2761</parameterId> <!-- nutnr_b_temp_sal_corrected_nitrate -->
   </streamDefinition>
   <streamDefinition streamName="adcpt_m_instrument_fcoeff_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -2702,6 +2714,17 @@
     <parameterId>PD2831</parameterId> <!-- velpt_ab_eastward_velocity -->
     <parameterId>PD2832</parameterId> <!-- velpt_ab_northward_velocity -->
     <parameterId>PD2833</parameterId> <!-- velpt_ab_upward_velocity -->
+  </streamDefinition>
+  <streamDefinition streamName="parad_j_cspp_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD1136</parameterId> <!-- date_string -->
+    <parameterId>PD1137</parameterId> <!-- time_string -->
+    <parameterId>PD188</parameterId> <!-- par -->
   </streamDefinition>
   <streamDefinition streamName="adcp_transmit_path">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -5633,6 +5656,18 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD26</parameterId> <!-- raw -->
   </streamDefinition>
+  <streamDefinition streamName="parad_j_cspp_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="massp_rga_sample">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7137,6 +7172,7 @@
     <parameterId>PD330</parameterId> <!-- sea_water_dark -->
     <parameterId>PD331</parameterId> <!-- spec_channel_average -->
     <parameterId>PD332</parameterId> <!-- spectral_channels -->
+    <parameterId>PD2761</parameterId> <!-- nutnr_b_temp_sal_corrected_nitrate -->
   </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_wc_hmr_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -8528,6 +8564,18 @@
     <parameterId>PD29</parameterId> <!-- pressure_temp -->
     <parameterId>PD742</parameterId> <!-- seawater_temperature -->
     <parameterId>PD2768</parameterId> <!-- scaled_tidal_seafloor_pressure -->
+  </streamDefinition>
+  <streamDefinition streamName="parad_j_cspp_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_cd_head_configuration">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->

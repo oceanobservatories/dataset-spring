@@ -1,0 +1,82 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="phsen-abcdef-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="phsen-abcdef-imodem_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/imodem/phsen_abcdef_imodem_recovered_driver.py" />
+		<constructor-arg name="properties" ref="oneHourBin" />        
+    </bean>
+
+    <bean id="phsen-abcdef-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="phsen-abcdef-imodem_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/imodem/phsen_abcdef_imodem_telemetered_driver.py" />
+		<constructor-arg name="properties" ref="oneHourBin" />        
+    </bean>
+
+    <camelContext id="phsen-abcdef-imodem-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="phsen-abcdef-imodem_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/phsen-abcdef-imodem_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="phsen-abcdef-imodem_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/phsen-abcdef-imodem_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="phsen-abcdef-imodem_recoveredFileConsumerRoute">
+            <from ref="phsen-abcdef-imodem_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PHABIR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_recovered" />
+        </route>
+
+        <route id="phsen-abcdef-imodem_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="phsen-abcdef-imodem_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.phsen-abcdef-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="phsen-abcdef-imodem_telemeteredFileConsumerRoute">
+            <from ref="phsen-abcdef-imodem_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-PHABIT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_telemetered" />
+        </route>
+
+        <route id="phsen-abcdef-imodem_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="phsen-abcdef-imodem_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.phsen-abcdef-imodem?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

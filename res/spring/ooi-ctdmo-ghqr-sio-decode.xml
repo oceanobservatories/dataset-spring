@@ -1,0 +1,87 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="ctdmo-ghqr-sio_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
+        <constructor-arg name="name" value="ctdmo-ghqr-sio_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_co_recovered_driver.py" />
+        <constructor-arg name="hashKeys">
+            <list>
+                <value>sio_controller_timestamp</value>
+                <value>inductive_id</value>
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="ctdmo-ghqr-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg name="name" value="ctdmo-ghqr-sio_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_telemetered_driver.py" />
+        <constructor-arg name="properties" ref="oneHourBin" />
+    </bean>    
+
+    <camelContext id="ctdmo-ghqr-sio-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="ctdmo-ghqr-sio_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdmo-ghqr-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+            
+        <endpoint id="ctdmo-ghqr-sio_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/ctdmo-ghqr-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />            
+
+        <route id="ctdmo-ghqr-sio_recoveredFileConsumerRoute">
+            <from ref="ctdmo-ghqr-sio_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDMOM000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_recovered" />
+        </route>
+
+        <route id="ctdmo-ghqr-sio_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdmo-ghqr-sio_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdmo-ghqr-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="ctdmo-ghqr-sio_telemeteredFileConsumerRoute">
+            <from ref="ctdmo-ghqr-sio_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-CTDMOM000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_telemetered" />
+        </route>
+
+        <route id="ctdmo-ghqr-sio_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdmo-ghqr-sio_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdmo-ghqr-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

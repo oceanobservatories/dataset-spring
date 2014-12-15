@@ -43,6 +43,9 @@
     <parameterId>PD2013</parameterId> <!-- vel3d_k_corr0 -->
     <parameterId>PD2014</parameterId> <!-- vel3d_k_corr1 -->
     <parameterId>PD2015</parameterId> <!-- vel3d_k_corr2 -->
+    <parameterId>PD3233</parameterId> <!-- vel3d_k_eastward_velocity -->
+    <parameterId>PD3234</parameterId> <!-- vel3d_k_northward_velocity -->
+    <parameterId>PD3235</parameterId> <!-- vel3d_k_upward_velocity -->
   </streamDefinition>
   <streamDefinition streamName="wavss_a_dcl_non_directional">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -476,7 +479,7 @@
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
     <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
-    <parameterId>PD2845</parameterId> <!-- dosta_ln_wfp_abs_oxygen -->
+    <parameterId>PD2845</parameterId> <!-- xdosta_ln_wfp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="wfp_eng_stc_imodem_engineering_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -836,6 +839,18 @@
     <parameterId>PD601</parameterId> <!-- persistor_cf_bios_version -->
     <parameterId>PD602</parameterId> <!-- persistor_cf_picodos_version -->
   </streamDefinition>
+  <streamDefinition streamName="nutnr_j_cspp_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_dcl_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -854,7 +869,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- dosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_b_control_record">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -1215,6 +1230,18 @@
     <parameterId>PD1211</parameterId> <!-- bt_gain -->
     <parameterId>PD743</parameterId> <!-- checksum -->
   </streamDefinition>
+  <streamDefinition streamName="nutnr_j_cspp_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="optaa_dj_dcl_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -1272,6 +1299,7 @@
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
     <parameterId>PD188</parameterId> <!-- par -->
+    <parameterId>PD3236</parameterId> <!-- parad_j_par_counts_output -->
   </streamDefinition>
   <streamDefinition streamName="sbe37_LC_TEST">
     <parameterId>PD8</parameterId> <!-- lat -->
@@ -1458,7 +1486,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- dosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_sio_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -2725,6 +2753,7 @@
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
     <parameterId>PD188</parameterId> <!-- par -->
+    <parameterId>PD3236</parameterId> <!-- parad_j_par_counts_output -->
   </streamDefinition>
   <streamDefinition streamName="adcp_transmit_path">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -2776,6 +2805,29 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
+  </streamDefinition>
+  <streamDefinition streamName="optaa_dj_cspp_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2611</parameterId> <!-- on_seconds -->
+    <parameterId>PD594</parameterId> <!-- num_wavelengths -->
+    <parameterId>PD591</parameterId> <!-- c_reference_dark_counts -->
+    <parameterId>PD595</parameterId> <!-- c_reference_counts -->
+    <parameterId>PD592</parameterId> <!-- c_signal_dark_counts -->
+    <parameterId>PD597</parameterId> <!-- c_signal_counts -->
+    <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
+    <parameterId>PD596</parameterId> <!-- a_reference_counts -->
+    <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
+    <parameterId>PD598</parameterId> <!-- a_signal_counts -->
+    <parameterId>PD589</parameterId> <!-- external_temp_raw -->
+    <parameterId>PD590</parameterId> <!-- internal_temp_raw -->
+    <parameterId>PD587</parameterId> <!-- pressure_counts -->
+    <parameterId>PD3237</parameterId> <!-- optaa_dj_cspp_beam_attenuation -->
+    <parameterId>PD3238</parameterId> <!-- optaa_dj_cspp_optical_absorption -->
   </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_glider_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -2986,6 +3038,18 @@
     <parameterId>PD6</parameterId> <!-- temp -->
     <parameterId>NPD11</parameterId> <!-- NOT FOUND -->
   </streamDefinition>
+  <streamDefinition streamName="velpt_j_cspp_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="ctd_LC_TEST">
     <parameterId>PD17</parameterId> <!-- quality_flag -->
     <parameterId>PD866</parameterId> <!-- temp_L1 -->
@@ -3184,7 +3248,7 @@
     <parameterId>PD943</parameterId> <!-- calibrated_phase -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- dosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="phsen_data_record">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -3475,7 +3539,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- dosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="optaa_dj_dcl_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3498,6 +3562,45 @@
     <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
     <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
     <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+  </streamDefinition>
+  <streamDefinition streamName="nutnr_j_cspp_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD311</parameterId> <!-- frame_type -->
+    <parameterId>PD2612</parameterId> <!-- year -->
+    <parameterId>PD2613</parameterId> <!-- day_of_year -->
+    <parameterId>PD314</parameterId> <!-- time_of_sample -->
+    <parameterId>PD315</parameterId> <!-- nitrate_concentration -->
+    <parameterId>PD2320</parameterId> <!-- nutnr_nitrogen_in_nitrate -->
+    <parameterId>PD2321</parameterId> <!-- nutnr_absorbance_at_254_nm -->
+    <parameterId>PD2322</parameterId> <!-- nutnr_absorbance_at_350_nm -->
+    <parameterId>PD2323</parameterId> <!-- nutnr_bromide_trace -->
+    <parameterId>PD2324</parameterId> <!-- nutnr_spectrum_average -->
+    <parameterId>PD2325</parameterId> <!-- nutnr_dark_value_used_for_fit -->
+    <parameterId>PD2326</parameterId> <!-- nutnr_integration_time_factor -->
+    <parameterId>PD332</parameterId> <!-- spectral_channels -->
+    <parameterId>PD320</parameterId> <!-- temp_interior -->
+    <parameterId>PD321</parameterId> <!-- temp_spectrometer -->
+    <parameterId>PD322</parameterId> <!-- temp_lamp -->
+    <parameterId>PD347</parameterId> <!-- lamp_time -->
+    <parameterId>PD324</parameterId> <!-- humidity -->
+    <parameterId>PD327</parameterId> <!-- voltage_main -->
+    <parameterId>PD325</parameterId> <!-- voltage_lamp -->
+    <parameterId>PD2327</parameterId> <!-- nutnr_voltage_int -->
+    <parameterId>PD2328</parameterId> <!-- nutnr_current_main -->
+    <parameterId>PD316</parameterId> <!-- aux_fitting_1 -->
+    <parameterId>PD317</parameterId> <!-- aux_fitting_2 -->
+    <parameterId>PD2329</parameterId> <!-- nutnr_fit_base_1 -->
+    <parameterId>PD2330</parameterId> <!-- nutnr_fit_base_2 -->
+    <parameterId>PD2331</parameterId> <!-- nutnr_fit_rmse -->
+    <parameterId>PD2614</parameterId> <!-- ctd_time_uint32 -->
+    <parameterId>PD2615</parameterId> <!-- ctd_psu -->
+    <parameterId>PD2616</parameterId> <!-- ctd_temp -->
+    <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_l_wfp_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3721,6 +3824,26 @@
     <parameterId>PD356</parameterId> <!-- record_time -->
     <parameterId>PD333</parameterId> <!-- checksum -->
   </streamDefinition>
+  <streamDefinition streamName="velpt_j_cspp_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD562</parameterId> <!-- speed_of_sound -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
+    <parameterId>PD2607</parameterId> <!-- velpt_pressure -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD2608</parameterId> <!-- velocity_beam1_m_s -->
+    <parameterId>PD2609</parameterId> <!-- velocity_beam2_m_s -->
+    <parameterId>PD2610</parameterId> <!-- velocity_beam3_m_s -->
+    <parameterId>PD444</parameterId> <!-- amplitude_beam1 -->
+    <parameterId>PD445</parameterId> <!-- amplitude_beam2 -->
+    <parameterId>PD446</parameterId> <!-- amplitude_beam3 -->
+  </streamDefinition>
   <streamDefinition streamName="flort_dj_cspp_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -3775,6 +3898,45 @@
     <parameterId>PD2255</parameterId> <!-- vel3d_a_tx -->
     <parameterId>PD2256</parameterId> <!-- vel3d_a_ty -->
   </streamDefinition>
+  <streamDefinition streamName="nutnr_j_cspp_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD311</parameterId> <!-- frame_type -->
+    <parameterId>PD2612</parameterId> <!-- year -->
+    <parameterId>PD2613</parameterId> <!-- day_of_year -->
+    <parameterId>PD314</parameterId> <!-- time_of_sample -->
+    <parameterId>PD315</parameterId> <!-- nitrate_concentration -->
+    <parameterId>PD2320</parameterId> <!-- nutnr_nitrogen_in_nitrate -->
+    <parameterId>PD2321</parameterId> <!-- nutnr_absorbance_at_254_nm -->
+    <parameterId>PD2322</parameterId> <!-- nutnr_absorbance_at_350_nm -->
+    <parameterId>PD2323</parameterId> <!-- nutnr_bromide_trace -->
+    <parameterId>PD2324</parameterId> <!-- nutnr_spectrum_average -->
+    <parameterId>PD2325</parameterId> <!-- nutnr_dark_value_used_for_fit -->
+    <parameterId>PD2326</parameterId> <!-- nutnr_integration_time_factor -->
+    <parameterId>PD332</parameterId> <!-- spectral_channels -->
+    <parameterId>PD320</parameterId> <!-- temp_interior -->
+    <parameterId>PD321</parameterId> <!-- temp_spectrometer -->
+    <parameterId>PD322</parameterId> <!-- temp_lamp -->
+    <parameterId>PD347</parameterId> <!-- lamp_time -->
+    <parameterId>PD324</parameterId> <!-- humidity -->
+    <parameterId>PD327</parameterId> <!-- voltage_main -->
+    <parameterId>PD325</parameterId> <!-- voltage_lamp -->
+    <parameterId>PD2327</parameterId> <!-- nutnr_voltage_int -->
+    <parameterId>PD2328</parameterId> <!-- nutnr_current_main -->
+    <parameterId>PD316</parameterId> <!-- aux_fitting_1 -->
+    <parameterId>PD317</parameterId> <!-- aux_fitting_2 -->
+    <parameterId>PD2329</parameterId> <!-- nutnr_fit_base_1 -->
+    <parameterId>PD2330</parameterId> <!-- nutnr_fit_base_2 -->
+    <parameterId>PD2331</parameterId> <!-- nutnr_fit_rmse -->
+    <parameterId>PD2614</parameterId> <!-- ctd_time_uint32 -->
+    <parameterId>PD2615</parameterId> <!-- ctd_psu -->
+    <parameterId>PD2616</parameterId> <!-- ctd_temp -->
+    <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
+  </streamDefinition>
   <streamDefinition streamName="prest_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3792,6 +3954,20 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD26</parameterId> <!-- raw -->
+  </streamDefinition>
+  <streamDefinition streamName="spkir_abj_cspp_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+    <parameterId>PD1089</parameterId> <!-- instrument_id -->
+    <parameterId>PD1090</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="old_adcps_jln_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -4454,9 +4630,9 @@
     <parameterId>PD444</parameterId> <!-- amplitude_beam1 -->
     <parameterId>PD445</parameterId> <!-- amplitude_beam2 -->
     <parameterId>PD446</parameterId> <!-- amplitude_beam3 -->
-    <parameterId>PD1154</parameterId> <!-- eastward_velocity -->
-    <parameterId>PD1155</parameterId> <!-- northward_velocity -->
-    <parameterId>PD1156</parameterId> <!-- upward_velocity -->
+    <parameterId>PD3230</parameterId> <!-- velpt_d_eastward_velocity -->
+    <parameterId>PD3231</parameterId> <!-- velpt_d_northward_velocity -->
+    <parameterId>PD3232</parameterId> <!-- velpt_d_upward_velocity -->
   </streamDefinition>
   <streamDefinition streamName="velpt_ab_dcl_diagnostics_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6175,7 +6351,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- dosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_hhe">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -7293,6 +7469,29 @@
     <parameterId>PD431</parameterId> <!-- resistivity_temp_degc -->
     <parameterId>PD432</parameterId> <!-- battery_voltage -->
   </streamDefinition>
+  <streamDefinition streamName="optaa_dj_cspp_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2611</parameterId> <!-- on_seconds -->
+    <parameterId>PD594</parameterId> <!-- num_wavelengths -->
+    <parameterId>PD591</parameterId> <!-- c_reference_dark_counts -->
+    <parameterId>PD595</parameterId> <!-- c_reference_counts -->
+    <parameterId>PD592</parameterId> <!-- c_signal_dark_counts -->
+    <parameterId>PD597</parameterId> <!-- c_signal_counts -->
+    <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
+    <parameterId>PD596</parameterId> <!-- a_reference_counts -->
+    <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
+    <parameterId>PD598</parameterId> <!-- a_signal_counts -->
+    <parameterId>PD589</parameterId> <!-- external_temp_raw -->
+    <parameterId>PD590</parameterId> <!-- internal_temp_raw -->
+    <parameterId>PD587</parameterId> <!-- pressure_counts -->
+    <parameterId>PD3237</parameterId> <!-- optaa_dj_cspp_beam_attenuation -->
+    <parameterId>PD3238</parameterId> <!-- optaa_dj_cspp_optical_absorption -->
+  </streamDefinition>
   <streamDefinition streamName="adcp_pd12_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7629,7 +7828,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- dosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="nose_acm_external">
     <parameterId>NPD1</parameterId> <!-- NOT FOUND -->
@@ -7858,8 +8057,8 @@
     <parameterId>PD596</parameterId> <!-- a_reference_counts -->
     <parameterId>PD597</parameterId> <!-- c_signal_counts -->
     <parameterId>PD598</parameterId> <!-- a_signal_counts -->
-    <parameterId>PD2811</parameterId> <!-- optaa_dj_beam_attenuation -->
-    <parameterId>PD2812</parameterId> <!-- optaa_dj_optical_absorption -->
+    <parameterId>PD3239</parameterId> <!-- optaa_dj_dcl_beam_attenuation -->
+    <parameterId>PD3240</parameterId> <!-- optaa_dj_dcl_optical_absorption -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_abc_dcl_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -8160,6 +8359,19 @@
     <parameterId>PD3224</parameterId> <!-- flort_dj_bback_total -->
     <parameterId>PD3225</parameterId> <!-- flort_dj_scat_seawater -->
   </streamDefinition>
+  <streamDefinition streamName="optaa_dj_cspp_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+    <parameterId>PD114</parameterId> <!-- serial_number -->
+  </streamDefinition>
   <streamDefinition streamName="flort_dj_sio_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -8186,6 +8398,21 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD355</parameterId> <!-- record_type -->
     <parameterId>PD356</parameterId> <!-- record_time -->
+  </streamDefinition>
+  <streamDefinition streamName="spkir_abj_cspp_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD1091</parameterId> <!-- timer -->
+    <parameterId>PD1092</parameterId> <!-- sample_delay -->
+    <parameterId>PD2319</parameterId> <!-- channel_array -->
+    <parameterId>PD1100</parameterId> <!-- vin_sense -->
+    <parameterId>PD1101</parameterId> <!-- va_sense -->
+    <parameterId>PD1102</parameterId> <!-- internal_temperature -->
+    <parameterId>PD1103</parameterId> <!-- frame_counter -->
   </streamDefinition>
   <streamDefinition streamName="cg_dcl_eng_dcl_cpu_uptime">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -8878,7 +9105,8 @@
     <parameterId>PD1151</parameterId> <!-- total_volume_scattering_coefficient -->
     <parameterId>PD1152</parameterId> <!-- fluorometric_chlorophyll_a -->
     <parameterId>PD1153</parameterId> <!-- fluorometric_cdom -->
-    <parameterId>PD2762</parameterId> <!-- flort_dj_dcl_bback_total -->
+    <parameterId>PD3228</parameterId> <!-- flort_d_bback_total -->
+    <parameterId>PD3229</parameterId> <!-- flort_d_scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_mhn">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -9221,6 +9449,9 @@
     <parameterId>PD1616</parameterId> <!-- vel3d_k_amp0 -->
     <parameterId>PD1617</parameterId> <!-- vel3d_k_amp1 -->
     <parameterId>PD1618</parameterId> <!-- vel3d_k_amp2 -->
+    <parameterId>PD3233</parameterId> <!-- vel3d_k_eastward_velocity -->
+    <parameterId>PD3234</parameterId> <!-- vel3d_k_northward_velocity -->
+    <parameterId>PD3235</parameterId> <!-- vel3d_k_upward_velocity -->
   </streamDefinition>
   <streamDefinition streamName="adcpt_acfgm_pd0_beam_dcl_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -9483,7 +9714,7 @@
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
     <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
-    <parameterId>PD2845</parameterId> <!-- dosta_ln_wfp_abs_oxygen -->
+    <parameterId>PD2845</parameterId> <!-- xdosta_ln_wfp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="phsen_abcdef_imodem_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -9617,6 +9848,19 @@
     <parameterId>PD2965</parameterId> <!-- delta_max -->
     <parameterId>PD2966</parameterId> <!-- bad_pulses -->
     <parameterId>PD2949</parameterId> <!-- message_sent_timestamp -->
+  </streamDefinition>
+  <streamDefinition streamName="optaa_dj_cspp_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+    <parameterId>PD114</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="ctdmo_ghqr_offset_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -10542,8 +10786,8 @@
     <parameterId>PD596</parameterId> <!-- a_reference_counts -->
     <parameterId>PD597</parameterId> <!-- c_signal_counts -->
     <parameterId>PD598</parameterId> <!-- a_signal_counts -->
-    <parameterId>PD2811</parameterId> <!-- optaa_dj_beam_attenuation -->
-    <parameterId>PD2812</parameterId> <!-- optaa_dj_optical_absorption -->
+    <parameterId>PD3239</parameterId> <!-- optaa_dj_dcl_beam_attenuation -->
+    <parameterId>PD3240</parameterId> <!-- optaa_dj_dcl_optical_absorption -->
   </streamDefinition>
   <streamDefinition streamName="parad_m_glider_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11098,6 +11342,18 @@
     <parameterId>PD568</parameterId> <!-- status_code -->
     <parameterId>PD569</parameterId> <!-- analog_input -->
   </streamDefinition>
+  <streamDefinition streamName="velpt_j_cspp_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
   <streamDefinition streamName="metbk_a_dcl_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -11220,6 +11476,20 @@
     <parameterId>PD1651</parameterId> <!-- adcps_jln_length -->
     <parameterId>PD1652</parameterId> <!-- adcps_jln_events -->
     <parameterId>PD1653</parameterId> <!-- adcps_jln_samples_written -->
+  </streamDefinition>
+  <streamDefinition streamName="spkir_abj_cspp_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2312</parameterId> <!-- last_character_controller_id -->
+    <parameterId>PD2313</parameterId> <!-- day_of_year_number -->
+    <parameterId>PD2314</parameterId> <!-- fraction_of_day -->
+    <parameterId>PD2315</parameterId> <!-- source_file -->
+    <parameterId>PD2316</parameterId> <!-- processing_time -->
+    <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
+    <parameterId>PD2318</parameterId> <!-- start_date -->
+    <parameterId>PD1089</parameterId> <!-- instrument_id -->
+    <parameterId>PD1090</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_L0">
     <parameterId>PD193</parameterId> <!-- temperature -->
@@ -12228,6 +12498,21 @@
     <parameterId>PD2178</parameterId> <!-- sio_eng_number_of_wakeups -->
     <parameterId>PD2179</parameterId> <!-- sio_eng_clock_drift -->
   </streamDefinition>
+  <streamDefinition streamName="spkir_abj_cspp_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD1091</parameterId> <!-- timer -->
+    <parameterId>PD1092</parameterId> <!-- sample_delay -->
+    <parameterId>PD2319</parameterId> <!-- channel_array -->
+    <parameterId>PD1100</parameterId> <!-- vin_sense -->
+    <parameterId>PD1101</parameterId> <!-- va_sense -->
+    <parameterId>PD1102</parameterId> <!-- internal_temperature -->
+    <parameterId>PD1103</parameterId> <!-- frame_counter -->
+  </streamDefinition>
   <streamDefinition streamName="camds_health_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -12292,6 +12577,26 @@
     <parameterId>PD597</parameterId> <!-- c_signal_counts -->
     <parameterId>PD598</parameterId> <!-- a_signal_counts -->
   </streamDefinition>
+  <streamDefinition streamName="velpt_j_cspp_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
+    <parameterId>PD2606</parameterId> <!-- pressure_depth -->
+    <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD562</parameterId> <!-- speed_of_sound -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
+    <parameterId>PD2607</parameterId> <!-- velpt_pressure -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD2608</parameterId> <!-- velocity_beam1_m_s -->
+    <parameterId>PD2609</parameterId> <!-- velocity_beam2_m_s -->
+    <parameterId>PD2610</parameterId> <!-- velocity_beam3_m_s -->
+    <parameterId>PD444</parameterId> <!-- amplitude_beam1 -->
+    <parameterId>PD445</parameterId> <!-- amplitude_beam2 -->
+    <parameterId>PD446</parameterId> <!-- amplitude_beam3 -->
+  </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_sio_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -12308,7 +12613,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- dosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="dosta_ln_wfp_sio_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->

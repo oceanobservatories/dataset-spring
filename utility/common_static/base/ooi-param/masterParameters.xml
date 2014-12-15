@@ -207,10 +207,14 @@
 	<parameter encoding="float32" fill="-9999" name="temp_L1" pd_id="PD866" precision="" type="function" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999" name="pressure_L1" pd_id="PD865" precision="" type="function" unit="dbar"/>
 	<parameter encoding="float32" fill="-9999" name="conductivity_L1" pd_id="PD864" precision="" type="function" unit="mS cm-1"/>
+	<parameter encoding="float32" fill="" name="flort_d_scat_seawater" pd_id="PD3229" precision="4" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="" name="flort_d_bback_total" pd_id="PD3228" precision="4" type="function" unit="m-1"/>
 	<parameter encoding="uint8" fill="0" name="vel3d_k_beams" pd_id="PD3223" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999999" name="roll_time_series" pd_id="PD3222" precision="0" type="array&lt;quantity&gt;" unit="centidegrees"/>
 	<parameter encoding="int16" fill="-9999999" name="pitch_time_series" pd_id="PD3221" precision="0" type="array&lt;quantity&gt;" unit="centidegrees"/>
 	<parameter encoding="int16" fill="-9999999" name="heading_time_series" pd_id="PD3220" precision="0" type="array&lt;quantity&gt;" unit="centidegrees"/>
+	<parameter encoding="float32" fill="-9999999" name="dosta_abcdjm_cspp_abs_oxygen" pd_id="PD3227" precision="4" type="function" unit="umol kg-1"/>
+	<parameter encoding="float32" fill="-9999999" name="dosta_ln_wfp_abs_oxygen" pd_id="PD3226" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="float32" fill="" name="flort_dj_scat_seawater" pd_id="PD3225" precision="4" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="" name="flort_dj_bback_total" pd_id="PD3224" precision="4" type="function" unit="m-1"/>
 	<parameter encoding="int16" fill="-9999" name="average_interval" pd_id="PD485" precision="0" type="quantity" unit="s"/>
@@ -252,7 +256,7 @@
 	<parameter encoding="float32" fill="-9999" name="BatteryVoltage" pd_id="PD72" precision="" type="quantity" unit="V"/>
 	<parameter encoding="int32" fill="-9999" name="analog1" pd_id="PD79" precision="0" type="quantity" unit="C"/>
 	<parameter encoding="int32" fill="-9999" name="error" pd_id="PD78" precision="0" type="quantity" unit="C"/>
-	<parameter encoding="string" fill="empty" name="assembly_number" pd_id="PD261" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="assembly_number" pd_id="PD261" precision="0" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="paros_integration" pd_id="PD260" precision="1" type="quantity" unit="s"/>
 	<parameter encoding="int32" fill="-9999999" name="num_events" pd_id="PD263" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int8" fill="-9" name="output_sigmat" pd_id="PD262" precision="0" type="boolean" unit="1"/>
@@ -488,13 +492,13 @@
 	<parameter encoding="float32" fill="-9999999" name="angular_rate_z" pd_id="PD3108" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="dosta_abcdjm_cspp_tc_oxygen" pd_id="PD2843" precision="" type="function" unit="umol L-1"/>
 	<parameter encoding="float64" fill="-9999999" name="check_factor_band" pd_id="PD3102" precision="4" type="array&lt;quantity&gt;" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="dosta_abcdjm_cspp_abs_oxygen" pd_id="PD2844" precision="4" type="function" unit="umol kg-1"/>
+	<parameter encoding="float32" fill="-9999999" name="xdosta_abcdjm_cspp_abs_oxygen" pd_id="PD2844" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="float64" fill="-9999999" name="a2_band" pd_id="PD3100" precision="4" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float64" fill="-9999999" name="b2_band" pd_id="PD3101" precision="4" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="angular_rate_x" pd_id="PD3106" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="angular_rate_y" pd_id="PD3107" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="acceleration_y" pd_id="PD3104" precision="4" type="quantity" unit="gravity"/>
-	<parameter encoding="float32" fill="-9999999" name="dosta_ln_wfp_abs_oxygen" pd_id="PD2845" precision="4" type="function" unit="umol kg-1"/>
+	<parameter encoding="float32" fill="-9999999" name="xdosta_ln_wfp_abs_oxygen" pd_id="PD2845" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_unit_id" pd_id="PD1625" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="flcdr_x_mmp_cds_fluorometric_cdom" pd_id="PD2846" precision="6" type="function" unit="ppb"/>
 	<parameter encoding="float32" fill="-9999999" name="flntu_x_mmp_cds_total_volume_scattering_coefficient" pd_id="PD2847" precision="6" type="function" unit="m-1 sr-1"/>
@@ -1343,7 +1347,7 @@
 	<parameter encoding="int32" fill="-9999999" name="number_events" pd_id="PD298" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int32" fill="-9999999" name="power_on_reset" pd_id="PD299" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="hardware_version" pd_id="PD294" precision="0" type="quantity" unit="1"/>
-	<parameter encoding="string" fill="empty" name="pcb_serial_number" pd_id="PD295" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="pcb_serial_number" pd_id="PD295" precision="0" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="string" fill="empty" name="pcb_type" pd_id="PD296" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="manufacture_date" pd_id="PD297" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int32" fill="-9999999" name="bytes_free" pd_id="PD290" precision="0" type="quantity" unit="1"/>
@@ -2565,6 +2569,7 @@
 	<parameter encoding="int32" fill="-9999999" name="cg_eng_err_dlogp1" pd_id="PD1680" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int32" fill="-9999999" name="cg_eng_err_bcmd" pd_id="PD1689" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int32" fill="-9999999" name="cg_eng_err_rcmd" pd_id="PD1688" precision="0" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="optaa_dj_dcl_optical_absorption" pd_id="PD3240" precision="6" type="function" unit="m-1"/>
 	<parameter encoding="int16" fill="-9999" name="analog1" pd_id="PD434" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="sound_speed_analog2" pd_id="PD435" precision="" type="quantity" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="heading" pd_id="PD436" precision="1" type="quantity" unit="degrees"/>
@@ -3040,6 +3045,16 @@
 	<parameter encoding="int16" fill="-9999" name="heat_temp" pd_id="PD851" precision="0" type="quantity" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_pwrsys_fc2_2" pd_id="PD2888" precision="4" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_pwrsys_main_v" pd_id="PD2856" precision="4" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="optaa_dj_cspp_optical_absorption" pd_id="PD3238" precision="6" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="optaa_dj_dcl_beam_attenuation" pd_id="PD3239" precision="6" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="vel3d_k_northward_velocity" pd_id="PD3234" precision="" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="vel3d_k_upward_velocity" pd_id="PD3235" precision="" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-99999999" name="parad_j_par_counts_output" pd_id="PD3236" precision="4" type="function" unit="umol photons m-2 s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="optaa_dj_cspp_beam_attenuation" pd_id="PD3237" precision="6" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="velpt_d_eastward_velocity" pd_id="PD3230" precision="" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="velpt_d_northward_velocity" pd_id="PD3231" precision="" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="velpt_d_upward_velocity" pd_id="PD3232" precision="" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="vel3d_k_eastward_velocity" pd_id="PD3233" precision="" type="function" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999" name="RefTempVolts" pd_id="PD68" precision="" type="quantity" unit="V"/>
 	<parameter encoding="float32" fill="-9999" name="RefTempDegC" pd_id="PD69" precision="" type="quantity" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999" name="ResistivityX1" pd_id="PD62" precision="" type="quantity" unit="V"/>

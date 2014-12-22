@@ -1,0 +1,96 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="spkir-abj-cspp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ExtraHashFileDecoder">
+        <constructor-arg name="name" value="spkir-abj-cspp_recovered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/spkir_abj/cspp/spkir_abj_cspp_recovered_driver.py" />
+        <constructor-arg name="hashKeys">
+            <list>
+                <value>profiler_timestamp</value>
+                <value>suspect_timestamp</value>
+                <value>timer</value>
+                <value>frame_counter</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="spkir-abj-cspp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ExtraHashFileDecoder">
+        <constructor-arg name="name" value="spkir-abj-cspp_telemetered" />
+        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/spkir_abj/cspp/spkir_abj_cspp_telemetered_driver.py" />
+        <constructor-arg name="hashKeys">
+            <list>
+                <value>profiler_timestamp</value>
+                <value>suspect_timestamp</value>
+                <value>timer</value>
+                <value>frame_counter</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <camelContext id="spkir-abj-cspp-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="spkir-abj-cspp_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/spkir-abj-cspp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="spkir-abj-cspp_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/spkir-abj-cspp_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="spkir-abj-cspp_recoveredFileConsumerRoute">
+            <from ref="spkir-abj-cspp_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>RS03AXVM-DP03A-05-SPKIRC302</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.spkir-abj-cspp_recovered" />
+        </route>
+
+        <route id="spkir-abj-cspp_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.spkir-abj-cspp_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="spkir-abj-cspp_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.spkir-abj-cspp?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="spkir-abj-cspp_telemeteredFileConsumerRoute">
+            <from ref="spkir-abj-cspp_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>RS03AXVM-DP03A-05-SPKIRC302</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.spkir-abj-cspp_telemetered" />
+        </route>
+
+        <route id="spkir-abj-cspp_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.spkir-abj-cspp_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="spkir-abj-cspp_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.spkir-abj-cspp?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

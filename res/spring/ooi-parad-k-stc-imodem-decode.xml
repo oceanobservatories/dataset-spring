@@ -4,17 +4,17 @@
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean id="parad-k-stc-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="parad-k-stc-imodem_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_recovered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="parad-k-stc-imodem_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_recovered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <bean id="parad-k-stc-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="parad-k-stc-imodem_telemetered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_telemetered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="parad-k-stc-imodem_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_telemetered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="parad-k-stc-imodem-decode-camel"

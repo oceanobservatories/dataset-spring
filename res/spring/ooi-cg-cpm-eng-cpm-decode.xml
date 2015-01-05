@@ -4,17 +4,17 @@
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean id="cg-cpm-eng-cpm_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="cg-cpm-eng-cpm_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_cpm_eng/cpm/cg_cpm_eng_cpm_recovered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="cg-cpm-eng-cpm_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_cpm_eng/cpm/cg_cpm_eng_cpm_recovered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <bean id="cg-cpm-eng-cpm_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="cg-cpm-eng-cpm_telemetered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_cpm_eng/cpm/cg_cpm_eng_cpm_telemetered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="cg-cpm-eng-cpm_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_cpm_eng/cpm/cg_cpm_eng_cpm_telemetered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="cg-cpm-eng-cpm-decode-camel"

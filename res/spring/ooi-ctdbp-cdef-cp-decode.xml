@@ -4,10 +4,10 @@
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean id="ctdbp-cdef-cp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="ctdbp-cdef-cp_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/cp/ctdbp_cdef_cp_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="ctdbp-cdef-cp_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/cp/ctdbp_cdef_cp_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="ctdbp-cdef-cp-decode-camel"

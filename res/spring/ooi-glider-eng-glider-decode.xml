@@ -4,17 +4,17 @@
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean id="glider-eng-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="glider-eng-glider_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/engineering/glider_eng_glider_recovered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="glider-eng-glider_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/engineering/glider_eng_glider_recovered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <bean id="glider-eng-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg name="name" value="glider-eng-glider_telemetered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/engineering/glider_eng_glider_telemetered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="glider-eng-glider_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/engineering/glider_eng_glider_telemetered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="glider-eng-glider-decode-camel"

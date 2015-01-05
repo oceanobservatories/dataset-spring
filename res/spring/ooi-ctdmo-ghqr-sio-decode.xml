@@ -4,10 +4,10 @@
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean id="ctdmo-ghqr-sio_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
-        <constructor-arg name="name" value="ctdmo-ghqr-sio_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_co_recovered_driver.py" />
-        <constructor-arg name="hashKeys">
+        <constructor-arg index="0" value="ctdmo-ghqr-sio_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_co_recovered_driver.py" />
+        <constructor-arg index="3">
             <list>
                 <value>sio_controller_timestamp</value>
                 <value>inductive_id</value>
@@ -16,10 +16,10 @@
     </bean>
     
     <bean id="ctdmo-ghqr-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
-        <constructor-arg name="name" value="ctdmo-ghqr-sio_telemetered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_telemetered_driver.py" />
-        <constructor-arg name="hashKeys">
+        <constructor-arg index="0" value="ctdmo-ghqr-sio_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_telemetered_driver.py" />
+        <constructor-arg index="3">
             <list>
                 <value>sio_controller_timestamp</value>
                 <value>inductive_id</value>

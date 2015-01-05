@@ -4,10 +4,10 @@
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean id="ctdmo-ghqr_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCtFileDecoder">
-        <constructor-arg name="name" value="ctdmo-ghqr_recovered" />
-        <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_ct_recovered_driver.py" />
-        <constructor-arg name="properties" ref="oneHourBin" />
+        <constructor-arg index="0" value="ctdmo-ghqr_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_ct_recovered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="ctdmo-ghqr-decode-camel"

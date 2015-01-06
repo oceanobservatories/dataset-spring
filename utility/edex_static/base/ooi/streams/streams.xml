@@ -65,15 +65,15 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
-    <parameterId>PD432</parameterId> <!-- battery_voltage -->
-    <parameterId>PD562</parameterId> <!-- speed_of_sound -->
-    <parameterId>PD436</parameterId> <!-- heading -->
-    <parameterId>PD437</parameterId> <!-- pitch -->
-    <parameterId>PD438</parameterId> <!-- roll -->
-    <parameterId>PD440</parameterId> <!-- temperature -->
     <parameterId>PD567</parameterId> <!-- error_code -->
     <parameterId>PD568</parameterId> <!-- status_code -->
     <parameterId>PD569</parameterId> <!-- analog_input -->
+    <parameterId>PD3242</parameterId> <!-- battery_voltage_dV -->
+    <parameterId>PD3243</parameterId> <!-- sound_speed_dms -->
+    <parameterId>PD3244</parameterId> <!-- heading_decidegree -->
+    <parameterId>PD3246</parameterId> <!-- pitch_decidegree -->
+    <parameterId>PD3245</parameterId> <!-- roll_decidegree -->
+    <parameterId>PD3247</parameterId> <!-- temperature_centidegree -->
   </streamDefinition>
   <streamDefinition streamName="adcps_jln_stc_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -869,7 +869,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD3241</parameterId> <!-- dosta_abcdjm_dcl_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_b_control_record">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -993,7 +993,7 @@
     <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
     <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
     <parameterId>PD1656</parameterId> <!-- fluorometric_cdom -->
-    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
+    <parameterId>PD2762</parameterId> <!-- flort_dj_dcl_bback_total -->
     <parameterId>PD2764</parameterId> <!-- scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="camds_image_metadata">
@@ -3171,7 +3171,7 @@
     <parameterId>PD499</parameterId> <!-- cell_size -->
     <parameterId>PD500</parameterId> <!-- measurement_interval -->
     <parameterId>PD501</parameterId> <!-- deployment_name -->
-    <parameterId>PD502</parameterId> <!-- wrap_moder -->
+    <parameterId>PD502</parameterId> <!-- wrap_mode -->
     <parameterId>PD503</parameterId> <!-- deployment_start_time -->
     <parameterId>PD504</parameterId> <!-- diagnostics_interval -->
     <parameterId>PD505</parameterId> <!-- use_specified_sound_speed -->
@@ -4616,14 +4616,7 @@
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD433</parameterId> <!-- error_code -->
     <parameterId>PD434</parameterId> <!-- analog1 -->
-    <parameterId>PD432</parameterId> <!-- battery_voltage -->
-    <parameterId>PD435</parameterId> <!-- sound_speed_analog2 -->
-    <parameterId>PD436</parameterId> <!-- heading -->
-    <parameterId>PD437</parameterId> <!-- pitch -->
-    <parameterId>PD438</parameterId> <!-- roll -->
-    <parameterId>PD2</parameterId> <!-- pressure -->
     <parameterId>PD439</parameterId> <!-- status -->
-    <parameterId>PD440</parameterId> <!-- temperature -->
     <parameterId>PD441</parameterId> <!-- velocity_beam1 -->
     <parameterId>PD442</parameterId> <!-- velocity_beam2 -->
     <parameterId>PD443</parameterId> <!-- velocity_beam3 -->
@@ -4633,6 +4626,13 @@
     <parameterId>PD3230</parameterId> <!-- velpt_d_eastward_velocity -->
     <parameterId>PD3231</parameterId> <!-- velpt_d_northward_velocity -->
     <parameterId>PD3232</parameterId> <!-- velpt_d_upward_velocity -->
+    <parameterId>PD3242</parameterId> <!-- battery_voltage_dV -->
+    <parameterId>PD3243</parameterId> <!-- sound_speed_dms -->
+    <parameterId>PD3244</parameterId> <!-- heading_decidegree -->
+    <parameterId>PD3245</parameterId> <!-- roll_decidegree -->
+    <parameterId>PD3246</parameterId> <!-- pitch_decidegree -->
+    <parameterId>PD3248</parameterId> <!-- pressure_mbar -->
+    <parameterId>PD3247</parameterId> <!-- temperature_centidegree -->
   </streamDefinition>
   <streamDefinition streamName="velpt_ab_dcl_diagnostics_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7828,7 +7828,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD3241</parameterId> <!-- dosta_abcdjm_dcl_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="nose_acm_external">
     <parameterId>NPD1</parameterId> <!-- NOT FOUND -->
@@ -11587,7 +11587,7 @@
     <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
     <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
     <parameterId>PD1656</parameterId> <!-- fluorometric_cdom -->
-    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
+    <parameterId>PD2762</parameterId> <!-- flort_dj_dcl_bback_total -->
     <parameterId>PD2764</parameterId> <!-- scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="dofst_k_wfp_metadata_recovered">
@@ -11625,7 +11625,7 @@
     <parameterId>PD499</parameterId> <!-- cell_size -->
     <parameterId>PD500</parameterId> <!-- measurement_interval -->
     <parameterId>PD501</parameterId> <!-- deployment_name -->
-    <parameterId>PD502</parameterId> <!-- wrap_moder -->
+    <parameterId>PD502</parameterId> <!-- wrap_mode -->
     <parameterId>PD503</parameterId> <!-- deployment_start_time -->
     <parameterId>PD504</parameterId> <!-- diagnostics_interval -->
     <parameterId>PD505</parameterId> <!-- use_specified_sound_speed -->
@@ -12243,7 +12243,7 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD547</parameterId> <!-- analog_input_2 -->
     <parameterId>PD548</parameterId> <!-- ensemble_counter -->
-    <parameterId>PD549</parameterId> <!-- seawater_pressure -->
+    <parameterId>PD3249</parameterId> <!-- seawater_pressure_mbar -->
     <parameterId>PD550</parameterId> <!-- analog_input_1 -->
     <parameterId>PD551</parameterId> <!-- turbulent_velocity_east -->
     <parameterId>PD552</parameterId> <!-- turbulent_velocity_north -->

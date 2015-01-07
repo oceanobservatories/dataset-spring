@@ -1537,8 +1537,6 @@
 	<parameter encoding="int32" fill="-9999999" name="lamp_on_time" pd_id="PD350" precision="0" type="quantity" unit="seconds since 1970-01-01"/>
 	<parameter encoding="uint8" fill="0" name="unique_id" pd_id="PD353" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="data_log_file" pd_id="PD352" precision="0" type="quantity" unit="1"/>
-	<parameter encoding="int16" fill="0" name="adcps_jln_vel_error" pd_id="PD2268" precision="0" type="array&lt;quantity&gt;" unit="mm s-1"/>
-	<parameter encoding="int16" fill="0" name="adcps_jln_vel_up" pd_id="PD2269" precision="0" type="array&lt;quantity&gt;" unit="mm s-1"/>
 	<parameter encoding="int16" fill="-9999999" name="thsph_thermocouple1" pd_id="PD2264" precision="" type="quantity" unit="counts"/>
 	<parameter encoding="int16" fill="-9999999" name="thsph_thermocouple2" pd_id="PD2265" precision="" type="quantity" unit="counts"/>
 	<parameter encoding="int16" fill="-9999999" name="thsph_rthermistor" pd_id="PD2266" precision="0" type="quantity" unit="counts"/>
@@ -1760,8 +1758,6 @@
 	<parameter encoding="string" fill="empty" name="volt0_serial_number" pd_id="PD2278" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="adcps_jln_error_velocity2" pd_id="PD2273" precision="4" type="function" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="adcps_jln_upward_seawater_velocity2" pd_id="PD2272" precision="4" type="function" unit="m s-1"/>
-	<parameter encoding="int16" fill="0" name="adcps_jln_vel_east" pd_id="PD2271" precision="0" type="array&lt;quantity&gt;" unit="mm s-1"/>
-	<parameter encoding="int16" fill="0" name="adcps_jln_vel_north" pd_id="PD2270" precision="0" type="array&lt;quantity&gt;" unit="mm s-1"/>
 	<parameter encoding="string" fill="empty" name="volt0_type" pd_id="PD2277" precision="" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="strain_pressure_sensor_serial_number" pd_id="PD2276" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="adcps_jln_northward_seawater_velocity2" pd_id="PD2275" precision="4" type="function" unit="m s-1"/>

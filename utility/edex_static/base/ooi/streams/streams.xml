@@ -7385,10 +7385,10 @@
     <parameterId>PD1639</parameterId> <!-- adcps_jln_pressure -->
     <parameterId>PD1640</parameterId> <!-- adcps_jln_startbin -->
     <parameterId>PD1641</parameterId> <!-- adcps_jln_bins -->
-    <parameterId>PD2268</parameterId> <!-- adcps_jln_vel_error -->
-    <parameterId>PD2269</parameterId> <!-- adcps_jln_vel_up -->
-    <parameterId>PD2270</parameterId> <!-- adcps_jln_vel_north -->
-    <parameterId>PD2271</parameterId> <!-- adcps_jln_vel_east -->
+    <parameterId>PD717</parameterId> <!-- error_velocity -->
+    <parameterId>PD716</parameterId> <!-- water_velocity_up -->
+    <parameterId>PD715</parameterId> <!-- water_velocity_north -->
+    <parameterId>PD714</parameterId> <!-- water_velocity_east -->
     <parameterId>PD2272</parameterId> <!-- adcps_jln_upward_seawater_velocity2 -->
     <parameterId>PD2273</parameterId> <!-- adcps_jln_error_velocity2 -->
     <parameterId>PD2274</parameterId> <!-- adcps_jln_eastward_seawater_velocity2 -->
@@ -10830,10 +10830,10 @@
     <parameterId>PD792</parameterId> <!-- subsampling_parameter -->
     <parameterId>PD1640</parameterId> <!-- adcps_jln_startbin -->
     <parameterId>PD1641</parameterId> <!-- adcps_jln_bins -->
-    <parameterId>PD2268</parameterId> <!-- adcps_jln_vel_error -->
-    <parameterId>PD2269</parameterId> <!-- adcps_jln_vel_up -->
-    <parameterId>PD2270</parameterId> <!-- adcps_jln_vel_north -->
-    <parameterId>PD2271</parameterId> <!-- adcps_jln_vel_east -->
+    <parameterId>PD717</parameterId> <!-- error_velocity -->
+    <parameterId>PD716</parameterId> <!-- water_velocity_up -->
+    <parameterId>PD715</parameterId> <!-- water_velocity_north -->
+    <parameterId>PD714</parameterId> <!-- water_velocity_east -->
   </streamDefinition>
   <streamDefinition streamName="glider_eng_telemetered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -12545,10 +12545,10 @@
     <parameterId>PD1639</parameterId> <!-- adcps_jln_pressure -->
     <parameterId>PD1640</parameterId> <!-- adcps_jln_startbin -->
     <parameterId>PD1641</parameterId> <!-- adcps_jln_bins -->
-    <parameterId>PD2268</parameterId> <!-- adcps_jln_vel_error -->
-    <parameterId>PD2269</parameterId> <!-- adcps_jln_vel_up -->
-    <parameterId>PD2270</parameterId> <!-- adcps_jln_vel_north -->
-    <parameterId>PD2271</parameterId> <!-- adcps_jln_vel_east -->
+    <parameterId>PD717</parameterId> <!-- error_velocity -->
+    <parameterId>PD716</parameterId> <!-- water_velocity_up -->
+    <parameterId>PD715</parameterId> <!-- water_velocity_north -->
+    <parameterId>PD714</parameterId> <!-- water_velocity_east -->
     <parameterId>PD2272</parameterId> <!-- adcps_jln_upward_seawater_velocity2 -->
     <parameterId>PD2273</parameterId> <!-- adcps_jln_error_velocity2 -->
     <parameterId>PD2274</parameterId> <!-- adcps_jln_eastward_seawater_velocity2 -->

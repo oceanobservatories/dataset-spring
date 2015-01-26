@@ -7,14 +7,12 @@
         <constructor-arg index="0" value="wavss-a-dcl-full_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/wavss_a/dcl/wavss_a_dcl_recovered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <bean id="wavss-a-dcl-full_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="wavss-a-dcl-full_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/wavss_a/dcl/wavss_a_dcl_telemetered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="wavss-a-dcl-full-decode-camel"
@@ -43,7 +41,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="wavss-a-dcl-full_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -69,7 +67,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="wavss-a-dcl-full_telemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

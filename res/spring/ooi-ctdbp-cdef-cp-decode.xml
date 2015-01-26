@@ -7,7 +7,6 @@
         <constructor-arg index="0" value="ctdbp-cdef-cp_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/cp/ctdbp_cdef_cp_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="ctdbp-cdef-cp-decode-camel"
@@ -33,7 +32,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="ctdbp-cdef-cp_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

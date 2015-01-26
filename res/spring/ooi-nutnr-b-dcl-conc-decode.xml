@@ -7,14 +7,12 @@
         <constructor-arg index="0" value="nutnr-b-dcl-conc_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_b/dcl_conc/nutnr_b_dcl_conc_recovered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <bean id="nutnr-b-dcl-conc_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="nutnr-b-dcl-conc_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_b/dcl_conc/nutnr_b_dcl_conc_telemetered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="nutnr-b-dcl-conc-decode-camel"
@@ -43,7 +41,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -69,7 +67,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_telemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

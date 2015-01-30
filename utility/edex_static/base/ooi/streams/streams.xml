@@ -2050,14 +2050,6 @@
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
   </streamDefinition>
-  <streamDefinition streamName="flord_l_wfp_sio_instrument">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
-    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
-    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
-  </streamDefinition>
   <streamDefinition streamName="vadcp_5thbeam_pd0_beam_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6954,6 +6946,19 @@
     <parameterId>PD257</parameterId> <!-- temp_sensor_serial_number -->
     <parameterId>PD258</parameterId> <!-- cond_sensor_serial_number -->
   </streamDefinition>
+  <streamDefinition streamName="flord_l_wfp_instrument ">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD1141</parameterId> <!-- raw_signal_chl -->
+    <parameterId>PD1139</parameterId> <!-- raw_signal_beta -->
+    <parameterId>PD1144</parameterId> <!-- raw_internal_temp -->
+    <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
+    <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
+    <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
+    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
+    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+  </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_wc_wm_eng">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -9574,6 +9579,14 @@
     <parameterId>PD575</parameterId> <!-- noise_correlation_beam1 -->
     <parameterId>PD576</parameterId> <!-- noise_correlation_beam2 -->
     <parameterId>PD577</parameterId> <!-- noise_correlation_beam3 -->
+  </streamDefinition>
+  <streamDefinition streamName="flord_l_wfp_sio_instrument ">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
+    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
+    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
   </streamDefinition>
   <streamDefinition streamName="parad_sa_config">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->

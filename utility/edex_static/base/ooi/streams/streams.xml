@@ -2050,6 +2050,14 @@
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
   </streamDefinition>
+  <streamDefinition streamName="flord_l_wfp_sio_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
+    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
+    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="vadcp_5thbeam_pd0_beam_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3709,6 +3717,79 @@
     <parameterId>PD2615</parameterId> <!-- ctd_psu -->
     <parameterId>PD2616</parameterId> <!-- ctd_temp -->
     <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
+  </streamDefinition>
+  <streamDefinition streamName="fdchp_a_dcl_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3289</parameterId> <!-- instrument_start_timestamp -->
+    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+    <parameterId>PD3290</parameterId> <!-- time_datacollection -->
+    <parameterId>PD3291</parameterId> <!-- v_num_datacollection -->
+    <parameterId>PD3292</parameterId> <!-- status_datacollection -->
+    <parameterId>PD3293</parameterId> <!-- wind_u_avg -->
+    <parameterId>PD3294</parameterId> <!-- wind_v_avg -->
+    <parameterId>PD3295</parameterId> <!-- wind_w_avg -->
+    <parameterId>PD3296</parameterId> <!-- speed_of_sound_avg -->
+    <parameterId>PD3297</parameterId> <!-- wind_u_std -->
+    <parameterId>PD3298</parameterId> <!-- wind_v_std -->
+    <parameterId>PD3299</parameterId> <!-- wind_w_std -->
+    <parameterId>PD3300</parameterId> <!-- speed_of_sound_std -->
+    <parameterId>PD3301</parameterId> <!-- wind_u_max -->
+    <parameterId>PD3302</parameterId> <!-- wind_v_max -->
+    <parameterId>PD3303</parameterId> <!-- wind_w_max -->
+    <parameterId>PD3304</parameterId> <!-- speed_of_sound_max -->
+    <parameterId>PD3305</parameterId> <!-- wind_u_min -->
+    <parameterId>PD3306</parameterId> <!-- wind_v_min -->
+    <parameterId>PD3307</parameterId> <!-- wind_w_min -->
+    <parameterId>PD3308</parameterId> <!-- speed_of_sound_min -->
+    <parameterId>PD3309</parameterId> <!-- x_accel -->
+    <parameterId>PD3310</parameterId> <!-- y_accel -->
+    <parameterId>PD3311</parameterId> <!-- z_accel -->
+    <parameterId>PD3312</parameterId> <!-- x_accel_std -->
+    <parameterId>PD3313</parameterId> <!-- y_accel_std -->
+    <parameterId>PD3314</parameterId> <!-- z_accel_std -->
+    <parameterId>PD3315</parameterId> <!-- x_accel_max -->
+    <parameterId>PD3316</parameterId> <!-- y_accel_max -->
+    <parameterId>PD3317</parameterId> <!-- z_accel_max -->
+    <parameterId>PD3318</parameterId> <!-- x_accel_min -->
+    <parameterId>PD3319</parameterId> <!-- y_accel_min -->
+    <parameterId>PD3320</parameterId> <!-- z_accel_min -->
+    <parameterId>PD3321</parameterId> <!-- x_ang_rate -->
+    <parameterId>PD3322</parameterId> <!-- y_ang_rate -->
+    <parameterId>PD3323</parameterId> <!-- z_ang_rate -->
+    <parameterId>PD3324</parameterId> <!-- x_ang_rate_std -->
+    <parameterId>PD3325</parameterId> <!-- y_ang_rate_std -->
+    <parameterId>PD3326</parameterId> <!-- z_ang_rate_std -->
+    <parameterId>PD3327</parameterId> <!-- x_ang_rate_max -->
+    <parameterId>PD3328</parameterId> <!-- y_ang_rate_max -->
+    <parameterId>PD3329</parameterId> <!-- z_ang_rate_max -->
+    <parameterId>PD3330</parameterId> <!-- x_ang_rate_min -->
+    <parameterId>PD3331</parameterId> <!-- y_ang_rate_min -->
+    <parameterId>PD3332</parameterId> <!-- z_ang_rate_min -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
+    <parameterId>PD3333</parameterId> <!-- heading_std -->
+    <parameterId>PD3334</parameterId> <!-- pitch_std -->
+    <parameterId>PD3335</parameterId> <!-- roll_std -->
+    <parameterId>PD3336</parameterId> <!-- heading_max -->
+    <parameterId>PD3337</parameterId> <!-- pitch_max -->
+    <parameterId>PD3338</parameterId> <!-- roll_max -->
+    <parameterId>PD3339</parameterId> <!-- heading_min -->
+    <parameterId>PD3340</parameterId> <!-- pitch_min -->
+    <parameterId>PD3341</parameterId> <!-- roll_min -->
+    <parameterId>PD3342</parameterId> <!-- u_corr -->
+    <parameterId>PD3343</parameterId> <!-- v_corr -->
+    <parameterId>PD3344</parameterId> <!-- w_corr -->
+    <parameterId>PD3345</parameterId> <!-- u_corr_std -->
+    <parameterId>PD3346</parameterId> <!-- v_corr_std -->
+    <parameterId>PD3347</parameterId> <!-- w_corr_std -->
+    <parameterId>PD3348</parameterId> <!-- wind_speed -->
+    <parameterId>PD3349</parameterId> <!-- uw_momentum_flux -->
+    <parameterId>PD3350</parameterId> <!-- vw_momentum_flux -->
+    <parameterId>PD3351</parameterId> <!-- buoyance_flux -->
+    <parameterId>PD3352</parameterId> <!-- eng_wave_motion -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_l_wfp_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6946,19 +7027,6 @@
     <parameterId>PD257</parameterId> <!-- temp_sensor_serial_number -->
     <parameterId>PD258</parameterId> <!-- cond_sensor_serial_number -->
   </streamDefinition>
-  <streamDefinition streamName="flord_l_wfp_instrument ">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD1141</parameterId> <!-- raw_signal_chl -->
-    <parameterId>PD1139</parameterId> <!-- raw_signal_beta -->
-    <parameterId>PD1144</parameterId> <!-- raw_internal_temp -->
-    <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
-    <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
-    <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
-    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
-    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
-  </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_wc_wm_eng">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -9579,14 +9647,6 @@
     <parameterId>PD575</parameterId> <!-- noise_correlation_beam1 -->
     <parameterId>PD576</parameterId> <!-- noise_correlation_beam2 -->
     <parameterId>PD577</parameterId> <!-- noise_correlation_beam3 -->
-  </streamDefinition>
-  <streamDefinition streamName="flord_l_wfp_sio_instrument ">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
-    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
-    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
   </streamDefinition>
   <streamDefinition streamName="parad_sa_config">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -12462,6 +12522,79 @@
     <parameterId>PD2022</parameterId> <!-- dosta_ln_optode_oxygen -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD2835</parameterId> <!-- ctdbp_cdef_dcl_ce_abs_oxygen -->
+  </streamDefinition>
+  <streamDefinition streamName="fdchp_a_dcl_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3289</parameterId> <!-- instrument_start_timestamp -->
+    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+    <parameterId>PD3290</parameterId> <!-- time_datacollection -->
+    <parameterId>PD3291</parameterId> <!-- v_num_datacollection -->
+    <parameterId>PD3292</parameterId> <!-- status_datacollection -->
+    <parameterId>PD3293</parameterId> <!-- wind_u_avg -->
+    <parameterId>PD3294</parameterId> <!-- wind_v_avg -->
+    <parameterId>PD3295</parameterId> <!-- wind_w_avg -->
+    <parameterId>PD3296</parameterId> <!-- speed_of_sound_avg -->
+    <parameterId>PD3297</parameterId> <!-- wind_u_std -->
+    <parameterId>PD3298</parameterId> <!-- wind_v_std -->
+    <parameterId>PD3299</parameterId> <!-- wind_w_std -->
+    <parameterId>PD3300</parameterId> <!-- speed_of_sound_std -->
+    <parameterId>PD3301</parameterId> <!-- wind_u_max -->
+    <parameterId>PD3302</parameterId> <!-- wind_v_max -->
+    <parameterId>PD3303</parameterId> <!-- wind_w_max -->
+    <parameterId>PD3304</parameterId> <!-- speed_of_sound_max -->
+    <parameterId>PD3305</parameterId> <!-- wind_u_min -->
+    <parameterId>PD3306</parameterId> <!-- wind_v_min -->
+    <parameterId>PD3307</parameterId> <!-- wind_w_min -->
+    <parameterId>PD3308</parameterId> <!-- speed_of_sound_min -->
+    <parameterId>PD3309</parameterId> <!-- x_accel -->
+    <parameterId>PD3310</parameterId> <!-- y_accel -->
+    <parameterId>PD3311</parameterId> <!-- z_accel -->
+    <parameterId>PD3312</parameterId> <!-- x_accel_std -->
+    <parameterId>PD3313</parameterId> <!-- y_accel_std -->
+    <parameterId>PD3314</parameterId> <!-- z_accel_std -->
+    <parameterId>PD3315</parameterId> <!-- x_accel_max -->
+    <parameterId>PD3316</parameterId> <!-- y_accel_max -->
+    <parameterId>PD3317</parameterId> <!-- z_accel_max -->
+    <parameterId>PD3318</parameterId> <!-- x_accel_min -->
+    <parameterId>PD3319</parameterId> <!-- y_accel_min -->
+    <parameterId>PD3320</parameterId> <!-- z_accel_min -->
+    <parameterId>PD3321</parameterId> <!-- x_ang_rate -->
+    <parameterId>PD3322</parameterId> <!-- y_ang_rate -->
+    <parameterId>PD3323</parameterId> <!-- z_ang_rate -->
+    <parameterId>PD3324</parameterId> <!-- x_ang_rate_std -->
+    <parameterId>PD3325</parameterId> <!-- y_ang_rate_std -->
+    <parameterId>PD3326</parameterId> <!-- z_ang_rate_std -->
+    <parameterId>PD3327</parameterId> <!-- x_ang_rate_max -->
+    <parameterId>PD3328</parameterId> <!-- y_ang_rate_max -->
+    <parameterId>PD3329</parameterId> <!-- z_ang_rate_max -->
+    <parameterId>PD3330</parameterId> <!-- x_ang_rate_min -->
+    <parameterId>PD3331</parameterId> <!-- y_ang_rate_min -->
+    <parameterId>PD3332</parameterId> <!-- z_ang_rate_min -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
+    <parameterId>PD3333</parameterId> <!-- heading_std -->
+    <parameterId>PD3334</parameterId> <!-- pitch_std -->
+    <parameterId>PD3335</parameterId> <!-- roll_std -->
+    <parameterId>PD3336</parameterId> <!-- heading_max -->
+    <parameterId>PD3337</parameterId> <!-- pitch_max -->
+    <parameterId>PD3338</parameterId> <!-- roll_max -->
+    <parameterId>PD3339</parameterId> <!-- heading_min -->
+    <parameterId>PD3340</parameterId> <!-- pitch_min -->
+    <parameterId>PD3341</parameterId> <!-- roll_min -->
+    <parameterId>PD3342</parameterId> <!-- u_corr -->
+    <parameterId>PD3343</parameterId> <!-- v_corr -->
+    <parameterId>PD3344</parameterId> <!-- w_corr -->
+    <parameterId>PD3345</parameterId> <!-- u_corr_std -->
+    <parameterId>PD3346</parameterId> <!-- v_corr_std -->
+    <parameterId>PD3347</parameterId> <!-- w_corr_std -->
+    <parameterId>PD3348</parameterId> <!-- wind_speed -->
+    <parameterId>PD3349</parameterId> <!-- uw_momentum_flux -->
+    <parameterId>PD3350</parameterId> <!-- vw_momentum_flux -->
+    <parameterId>PD3351</parameterId> <!-- buoyance_flux -->
+    <parameterId>PD3352</parameterId> <!-- eng_wave_motion -->
   </streamDefinition>
   <streamDefinition streamName="cg_dcl_eng_dcl_msg_counts_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->

@@ -1242,6 +1242,39 @@
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
   </streamDefinition>
+  <streamDefinition streamName="fuelcell_eng_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+    <parameterId>PD3251</parameterId> <!-- datalog_manager_version -->
+    <parameterId>PD3252</parameterId> <!-- system_software_version -->
+    <parameterId>PD3253</parameterId> <!-- total_run_time -->
+    <parameterId>PD3254</parameterId> <!-- fuel_cell_voltage -->
+    <parameterId>PD3255</parameterId> <!-- fuel_cell_current -->
+    <parameterId>PD3256</parameterId> <!-- reformer_temperature -->
+    <parameterId>PD3257</parameterId> <!-- fuel_cell_h2_pressure -->
+    <parameterId>PD3258</parameterId> <!-- fuel_cell_temperature -->
+    <parameterId>PD3259</parameterId> <!-- reformer_fuel_pressure -->
+    <parameterId>PD3260</parameterId> <!-- fuel_pump_pwm_drive_percent -->
+    <parameterId>PD3261</parameterId> <!-- air_pump_pwm_drive_percent -->
+    <parameterId>PD3262</parameterId> <!-- coolant_pump_pwm_drive_percent -->
+    <parameterId>PD3263</parameterId> <!-- air_pump_tach_count -->
+    <parameterId>PD3264</parameterId> <!-- fuel_cell_state -->
+    <parameterId>PD3265</parameterId> <!-- fuel_remaining -->
+    <parameterId>PD3266</parameterId> <!-- power_to_battery1 -->
+    <parameterId>PD3267</parameterId> <!-- battery1_converter_temperature -->
+    <parameterId>PD3268</parameterId> <!-- power_to_battery2 -->
+    <parameterId>PD3269</parameterId> <!-- battery2_converter_temperature -->
+    <parameterId>PD3270</parameterId> <!-- balance_of_plant_power -->
+    <parameterId>PD3271</parameterId> <!-- balance_of_plant_converter_temperature -->
+    <parameterId>PD3272</parameterId> <!-- power_board_temperature -->
+    <parameterId>PD3273</parameterId> <!-- control_board_temperature -->
+    <parameterId>PD3274</parameterId> <!-- power_manager_status -->
+    <parameterId>PD3275</parameterId> <!-- power_manager_error_mask -->
+    <parameterId>PD3276</parameterId> <!-- reformer_error_mask -->
+    <parameterId>PD3277</parameterId> <!-- fuel_cell_error_mask -->
+  </streamDefinition>
   <streamDefinition streamName="optaa_dj_dcl_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -2049,14 +2082,6 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
-  </streamDefinition>
-  <streamDefinition streamName="flord_l_wfp_sio_instrument">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
-    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
-    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
   </streamDefinition>
   <streamDefinition streamName="vadcp_5thbeam_pd0_beam_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -7027,6 +7052,19 @@
     <parameterId>PD257</parameterId> <!-- temp_sensor_serial_number -->
     <parameterId>PD258</parameterId> <!-- cond_sensor_serial_number -->
   </streamDefinition>
+  <streamDefinition streamName="flord_l_wfp_instrument ">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD1141</parameterId> <!-- raw_signal_chl -->
+    <parameterId>PD1139</parameterId> <!-- raw_signal_beta -->
+    <parameterId>PD1144</parameterId> <!-- raw_internal_temp -->
+    <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
+    <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
+    <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
+    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
+    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+  </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_wc_wm_eng">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -7490,6 +7528,39 @@
     <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
     <parameterId>PD1578</parameterId> <!-- par_val_v -->
     <parameterId>PD1657</parameterId> <!-- parad_k_par -->
+  </streamDefinition>
+  <streamDefinition streamName="fuelcell_eng_telemetered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+    <parameterId>PD3251</parameterId> <!-- datalog_manager_version -->
+    <parameterId>PD3252</parameterId> <!-- system_software_version -->
+    <parameterId>PD3253</parameterId> <!-- total_run_time -->
+    <parameterId>PD3254</parameterId> <!-- fuel_cell_voltage -->
+    <parameterId>PD3255</parameterId> <!-- fuel_cell_current -->
+    <parameterId>PD3256</parameterId> <!-- reformer_temperature -->
+    <parameterId>PD3257</parameterId> <!-- fuel_cell_h2_pressure -->
+    <parameterId>PD3258</parameterId> <!-- fuel_cell_temperature -->
+    <parameterId>PD3259</parameterId> <!-- reformer_fuel_pressure -->
+    <parameterId>PD3260</parameterId> <!-- fuel_pump_pwm_drive_percent -->
+    <parameterId>PD3261</parameterId> <!-- air_pump_pwm_drive_percent -->
+    <parameterId>PD3262</parameterId> <!-- coolant_pump_pwm_drive_percent -->
+    <parameterId>PD3263</parameterId> <!-- air_pump_tach_count -->
+    <parameterId>PD3264</parameterId> <!-- fuel_cell_state -->
+    <parameterId>PD3265</parameterId> <!-- fuel_remaining -->
+    <parameterId>PD3266</parameterId> <!-- power_to_battery1 -->
+    <parameterId>PD3267</parameterId> <!-- battery1_converter_temperature -->
+    <parameterId>PD3268</parameterId> <!-- power_to_battery2 -->
+    <parameterId>PD3269</parameterId> <!-- battery2_converter_temperature -->
+    <parameterId>PD3270</parameterId> <!-- balance_of_plant_power -->
+    <parameterId>PD3271</parameterId> <!-- balance_of_plant_converter_temperature -->
+    <parameterId>PD3272</parameterId> <!-- power_board_temperature -->
+    <parameterId>PD3273</parameterId> <!-- control_board_temperature -->
+    <parameterId>PD3274</parameterId> <!-- power_manager_status -->
+    <parameterId>PD3275</parameterId> <!-- power_manager_error_mask -->
+    <parameterId>PD3276</parameterId> <!-- reformer_error_mask -->
+    <parameterId>PD3277</parameterId> <!-- fuel_cell_error_mask -->
   </streamDefinition>
   <streamDefinition streamName="prest_event_counter">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -8228,8 +8299,8 @@
     <parameterId>PD732</parameterId> <!-- percent_good_4beam -->
     <parameterId>PD2272</parameterId> <!-- adcps_jln_upward_seawater_velocity2 -->
     <parameterId>PD2273</parameterId> <!-- adcps_jln_error_velocity2 -->
-    <parameterId>PD2274</parameterId> <!-- adcps_jln_eastward_seawater_velocity2 -->
-    <parameterId>PD2275</parameterId> <!-- adcps_jln_northward_seawater_velocity2 -->
+    <parameterId>PD3356</parameterId> <!-- adcps_jln_recovered_eastward_seawater_velocity -->
+    <parameterId>PD3357</parameterId> <!-- adcps_jln_recovered_northward_seawater_velocity -->
     <parameterId>PD2737</parameterId> <!-- adcps_jln_echo_intensity_beam1 -->
     <parameterId>PD2738</parameterId> <!-- adcps_jln_echo_intensity_beam2 -->
     <parameterId>PD2739</parameterId> <!-- adcps_jln_echo_intensity_beam3 -->
@@ -9648,6 +9719,14 @@
     <parameterId>PD576</parameterId> <!-- noise_correlation_beam2 -->
     <parameterId>PD577</parameterId> <!-- noise_correlation_beam3 -->
   </streamDefinition>
+  <streamDefinition streamName="flord_l_wfp_sio_instrument ">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
+    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
+    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="parad_sa_config">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -10386,6 +10465,23 @@
     <parameterId>PD2928</parameterId> <!-- ctdmo_seawater_conductivity -->
     <parameterId>PD2929</parameterId> <!-- ctdmo_practical_salinity -->
     <parameterId>PD2930</parameterId> <!-- ctdmo_seawater_density -->
+  </streamDefinition>
+  <streamDefinition streamName="zplsc_b_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3278</parameterId> <!-- zplsc_timestamp -->
+    <parameterId>PD3279</parameterId> <!-- zplsc_transducer_depth -->
+    <parameterId>PD3280</parameterId> <!-- zplsc_frequency -->
+    <parameterId>PD3281</parameterId> <!-- zplsc_transmit_power -->
+    <parameterId>PD3282</parameterId> <!-- zplsc_pulse_length -->
+    <parameterId>PD3283</parameterId> <!-- zplsc_bandwidth -->
+    <parameterId>PD3284</parameterId> <!-- zplsc_sample_interval -->
+    <parameterId>PD3285</parameterId> <!-- zplsc_sound_velocity -->
+    <parameterId>PD3286</parameterId> <!-- zplsc_absorption_coeff -->
+    <parameterId>PD3287</parameterId> <!-- zplsc_temperature -->
+    <parameterId>PD3288</parameterId> <!-- zplsc_echogram -->
+    <parameterId>PD3355</parameterId> <!-- zplsc_channel -->
   </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_hnz">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -11137,6 +11233,10 @@
     <parameterId>PD716</parameterId> <!-- water_velocity_up -->
     <parameterId>PD715</parameterId> <!-- water_velocity_north -->
     <parameterId>PD714</parameterId> <!-- water_velocity_east -->
+    <parameterId>PD3353</parameterId> <!-- adcps_jln_eastward_earth_seawater_velocity -->
+    <parameterId>PD3354</parameterId> <!-- adcps_jln_northward_earth_seawater_velocity -->
+    <parameterId>PD960</parameterId> <!-- upward_earth_seawater_velocity -->
+    <parameterId>PD961</parameterId> <!-- earth_error_velocity -->
   </streamDefinition>
   <streamDefinition streamName="glider_eng_telemetered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -12809,8 +12909,8 @@
     <parameterId>PD730</parameterId> <!-- percent_transforms_reject -->
     <parameterId>PD731</parameterId> <!-- percent_bad_beams -->
     <parameterId>PD732</parameterId> <!-- percent_good_4beam -->
-    <parameterId>PD902</parameterId> <!-- eastward_beam_seawater_velocity -->
-    <parameterId>PD903</parameterId> <!-- northward_beam_seawater_velocity -->
+    <parameterId>PD3358</parameterId> <!-- adcps_jln_recovered_eastward_beam_seawater_velocity -->
+    <parameterId>PD3359</parameterId> <!-- adcps_jln_recovered_northward_beam_seawater_velocity -->
     <parameterId>PD904</parameterId> <!-- upward_seawater_velocity -->
     <parameterId>PD905</parameterId> <!-- beam_error_velocity -->
     <parameterId>PD2737</parameterId> <!-- adcps_jln_echo_intensity_beam1 -->

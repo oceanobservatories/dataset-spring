@@ -36,7 +36,7 @@
 	<parameter encoding="uint16" fill="-9999999" name="vel3d_k_transmit_energy" pd_id="PD2011" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="uint16" fill="-9999999" name="vel3d_k_data_set_description" pd_id="PD2010" precision="0" type="array&lt;quantity&gt;" unit="bit mask"/>
 	<parameter encoding="string" fill="empty" name="vel3d_k_string" pd_id="PD2017" precision="" type="quantity" unit="1"/>
-	<parameter encoding="uin8" fill="-9999999" name="vel3d_k_str_id" pd_id="PD2016" precision="0" type="quantity" unit="counts"/>
+	<parameter encoding="uint8" fill="-9999999" name="vel3d_k_str_id" pd_id="PD2016" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int8" fill="-9999999" name="vel3d_k_corr2" pd_id="PD2015" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int8" fill="-9999999" name="vel3d_k_corr1" pd_id="PD2014" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="wavss_a_directional_frequency" pd_id="PD2824" precision="4" type="function" unit="Hz"/>
@@ -173,12 +173,12 @@
 	<parameter encoding="int16" fill="-9999" name="adcps_jln_pitch" pd_id="PD1636" precision="0" type="quantity" unit="cdegree"/>
 	<parameter encoding="int16" fill="-9999" name="adcps_jln_roll" pd_id="PD1637" precision="0" type="quantity" unit="cdegree"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_hsec" pd_id="PD1634" precision="0" type="quantity" unit="csec"/>
-	<parameter encoding="int16" fill="-9999" name="adcps_jln_heading" pd_id="PD1635" precision="0" type="quantity" unit="cdegree"/>
+	<parameter encoding="uint16" fill="-9999" name="adcps_jln_heading" pd_id="PD1635" precision="0" type="quantity" unit="cdegree"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_minute" pd_id="PD1632" precision="0" type="quantity" unit="minute"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_second" pd_id="PD1633" precision="0" type="quantity" unit="sec"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_day" pd_id="PD1630" precision="0" type="quantity" unit="day"/>
 	<parameter encoding="int8" fill="-99" name="velocity_range" pd_id="PD468" precision="0" type="category&lt;int8:str&gt;" unit="1"/>
-	<parameter encoding="int16" fill="-9999" name="recorder_size" pd_id="PD467" precision="0" type="quantity" unit="bytes"/>
+	<parameter encoding="int32" fill="-9999" name="recorder_size" pd_id="PD467" precision="0" type="quantity" unit="bytes"/>
 	<parameter encoding="int16" fill="-9999" name="hardware_revision" pd_id="PD466" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="pic_version" pd_id="PD465" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int32" fill="-9999" name="board_frequency" pd_id="PD464" precision="0" type="quantity" unit="kHz"/>
@@ -228,6 +228,16 @@
 	<parameter encoding="int8" fill="-99" name="power_level_tcm1" pd_id="PD489" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="mode_type" pd_id="PD488" precision="0" type="category&lt;int8:str&gt;" unit="1"/>
 	<parameter encoding="int32" fill="-9999999" name="cg_eng_dclp7_prot" pd_id="PD1862" precision="0" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="z_accel_max" pd_id="PD3317" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="y_accel_max" pd_id="PD3316" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="x_accel_max" pd_id="PD3315" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="z_accel_std" pd_id="PD3314" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="y_accel_std" pd_id="PD3313" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="x_accel_std" pd_id="PD3312" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="z_accel" pd_id="PD3311" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="y_accel" pd_id="PD3310" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="y_accel_min" pd_id="PD3319" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="x_accel_min" pd_id="PD3318" precision="4" type="quantity" unit="m s-2"/>
 	<parameter encoding="int32" fill="-9999999" name="cg_eng_dclp8_prot" pd_id="PD1869" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int32" fill="-9999999" name="cg_eng_dclp8_clim" pd_id="PD1868" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="out_12v_i" pd_id="PD3016" precision="4" type="quantity" unit="ma"/>
@@ -381,6 +391,7 @@
 	<parameter encoding="uint16" fill="65535" name="velocity_data_id" pd_id="PD713" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="0" name="correlation_magnitude_beam1" pd_id="PD719" precision="0" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="uint16" fill="65535" name="correlation_magnitude_id" pd_id="PD718" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="balance_of_plant_converter_temperature" pd_id="PD3271" precision="" type="quantity" unit="ddeg_C"/>
 	<parameter encoding="int16" fill="-9999" name="number_beams" pd_id="PD478" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint16" fill="-9999" name="transmit_pulse_length" pd_id="PD479" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_fw_rev" pd_id="PD1627" precision="0" type="quantity" unit="1"/>
@@ -394,7 +405,7 @@
 	<parameter encoding="int8" fill="-99" name="tilt_sensor" pd_id="PD472" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="tilt_sensor_mounting" pd_id="PD473" precision="0" type="category&lt;int8:str&gt;" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="head_frequency" pd_id="PD474" precision="0" type="quantity" unit="kHz"/>
-	<parameter encoding="string" fill="empty" name="head_type" pd_id="PD475" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int16" fill="empty" name="head_type" pd_id="PD475" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="head_serial_number" pd_id="PD476" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="system_data" pd_id="PD477" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="seawater_temperature" pd_id="PD908" precision="4" type="function" unit="deg_C"/>
@@ -448,6 +459,7 @@
 	<parameter encoding="float32" fill="-9999999" name="corrected_echo_intensity_beam1" pd_id="PD2769" precision="4" type="function" unit="dB"/>
 	<parameter encoding="uint16" fill="65535" name="pressure_counts" pd_id="PD587" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="scaled_tidal_seafloor_pressure" pd_id="PD2768" precision="4" type="function" unit="dbar"/>
+	<parameter encoding="float32" fill="-9999999" name="x_ang_rate_max" pd_id="PD3327" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="uint8" fill="-999" name="hpies_tuport_compass_null_count" pd_id="PD2567" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-999" name="hpies_compass_port_nerr" pd_id="PD2566" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-999" name="hpies_compass_port_open_errs" pd_id="PD2565" precision="" type="quantity" unit="1"/>
@@ -458,6 +470,8 @@
 	<parameter encoding="string" fill="empty" name="hpies_ifok" pd_id="PD2560" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-999" name="hpies_spurious_count" pd_id="PD2569" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-999" name="hpies_irq2_count" pd_id="PD2568" precision="" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="instrument_start_timestamp" pd_id="PD3289" precision="" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="" name="zplsc_echogram" pd_id="PD3288" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="int32" fill="-9999999" name="pcb_thermistor_value" pd_id="PD272" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="reference_error" pd_id="PD273" precision="3" type="quantity" unit="ppm"/>
 	<parameter encoding="int32" fill="-9999999" name="set_timeout_icd" pd_id="PD270" precision="0" type="quantity" unit="ms"/>
@@ -478,6 +492,7 @@
 	<parameter encoding="string" fill="empty" name="zplsc_file_path" pd_id="PD2696" precision="" type="quantity" unit=""/>
 	<parameter encoding="float32" fill="-9999999" name="zplsc_sample_range" pd_id="PD2699" precision="1" type="quantity" unit=""/>
 	<parameter encoding="int32" fill="-9999999" name="zplsc_max_file_size" pd_id="PD2698" precision="" type="quantity" unit=""/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_bandwidth" pd_id="PD3283" precision="5" type="array&lt;quantity&gt;" unit="Hz"/>
 	<parameter encoding="string" fill="empty" name="nutnr_log_file_type" pd_id="PD2361" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="m_pitch_energy" pd_id="PD1399" precision="4" type="quantity" unit="J"/>
 	<parameter encoding="uint16" fill="-9999999" name="nutnr_cntcount" pd_id="PD2363" precision="" type="quantity" unit="counts"/>
@@ -489,8 +504,10 @@
 	<parameter encoding="uint16" fill="-9999999" name="nutnr_chrddura" pd_id="PD2369" precision="" type="quantity" unit="s"/>
 	<parameter encoding="uint16" fill="-9999999" name="nutnr_chrldura" pd_id="PD2368" precision="" type="quantity" unit="s"/>
 	<parameter encoding="float32" fill="-9999999" name="ctdpf_j_density" pd_id="PD2842" precision="4" type="function" unit="kg m-3"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_sample_interval" pd_id="PD3284" precision="6" type="array&lt;quantity&gt;" unit="sec"/>
 	<parameter encoding="float32" fill="-9999999" name="angular_rate_z" pd_id="PD3108" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="dosta_abcdjm_cspp_tc_oxygen" pd_id="PD2843" precision="" type="function" unit="umol L-1"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_temperature" pd_id="PD3287" precision="3" type="array&lt;quantity&gt;" unit="deg_C"/>
 	<parameter encoding="float64" fill="-9999999" name="check_factor_band" pd_id="PD3102" precision="4" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="xdosta_abcdjm_cspp_abs_oxygen" pd_id="PD2844" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="float64" fill="-9999999" name="a2_band" pd_id="PD3100" precision="4" type="array&lt;quantity&gt;" unit="1"/>
@@ -619,7 +636,7 @@
 	<parameter encoding="int8" fill="-99" name="sensor_available_heading" pd_id="PD646" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="sensor_available_depth" pd_id="PD645" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="sensor_source_temperature" pd_id="PD644" precision="0" type="boolean" unit="1"/>
-	<parameter encoding="uin8" fill="-9999999" name="vel_std" pd_id="PD3139" precision="0" type="quantity" unit="mm s-1"/>
+	<parameter encoding="uint8" fill="-9999999" name="vel_std" pd_id="PD3139" precision="0" type="quantity" unit="mm s-1"/>
 	<parameter encoding="int16" fill="0" name="adcps_jln_component2" pd_id="PD1643" precision="0" type="array&lt;quantity&gt;" unit="counts"/>
 	<parameter encoding="int16" fill="-9999999" name="vel_max" pd_id="PD3138" precision="0" type="quantity" unit="mm s-1"/>
 	<parameter encoding="int16" fill="0" name="adcps_jln_component1" pd_id="PD1642" precision="0" type="array&lt;quantity&gt;" unit="counts"/>
@@ -795,6 +812,7 @@
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_mpic_irid_v" pd_id="PD1739" precision="1" type="quantity" unit="V"/>
 	<parameter encoding="float32" fill="-9999999" name="optaa_dj_optical_absorption" pd_id="PD2812" precision="6" type="function" unit="m-1"/>
 	<parameter encoding="uint8" fill="0" name="adcps_jln_hour" pd_id="PD1631" precision="0" type="quantity" unit="hour"/>
+	<parameter encoding="int32" fill="-9999999" name="power_manager_error_mask" pd_id="PD3275" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="255" name="reference_layer_stop" pd_id="PD654" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="255" name="false_target_threshold" pd_id="PD655" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int8" fill="-99" name="low_latency_trigger" pd_id="PD656" precision="0" type="boolean" unit="1"/>
@@ -832,7 +850,16 @@
 	<parameter encoding="uint8" fill="255" name="beam_angle" pd_id="PD662" precision="0" type="quantity" unit="degrees"/>
 	<parameter encoding="float32" fill="-9999999" name="channel_i" pd_id="PD3008" precision="4" type="array&lt;quantity&gt;" unit="ma"/>
 	<parameter encoding="uint16" fill="-99999" name="hpies_e2b" pd_id="PD2545" precision="" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_speed" pd_id="PD3348" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="uint16" fill="-99999" name="hpies_e2a" pd_id="PD2544" precision="" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="w_corr" pd_id="PD3344" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="u_corr_std" pd_id="PD3345" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="v_corr_std" pd_id="PD3346" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="w_corr_std" pd_id="PD3347" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="pitch_min" pd_id="PD3340" precision="4" type="quantity" unit="rad"/>
+	<parameter encoding="float32" fill="-9999999" name="roll_min" pd_id="PD3341" precision="4" type="quantity" unit="rad"/>
+	<parameter encoding="float32" fill="-9999999" name="u_corr" pd_id="PD3342" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="v_corr" pd_id="PD3343" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="uint16" fill="-9999999" name="avg_temp" pd_id="PD3183" precision="0" type="quantity" unit="deg C"/>
 	<parameter encoding="uint8" fill="-9999999" name="disc_flag" pd_id="PD3180" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-9999999" name="pct_gd_press" pd_id="PD3181" precision="0" type="quantity" unit="0%"/>
@@ -850,6 +877,8 @@
 	<parameter encoding="uint32" fill="-9999999" name="vs_std" pd_id="PD3188" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999" name="thsph_ph_noref" pd_id="PD2632" precision="0" type="function" unit="1"/>
 	<parameter encoding="uint32" fill="-9999999" name="ps_std" pd_id="PD3189" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_v_std" pd_id="PD3298" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_w_std" pd_id="PD3299" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="float64" fill="-1" name="elapsed_time" pd_id="PD28" precision="" type="quantity" unit="s"/>
 	<parameter encoding="float32" fill="-9999" name="pressure_temp" pd_id="PD29" precision="" type="quantity" unit="deg_C"/>
 	<parameter encoding="opaque" fill="" name="raw" pd_id="PD26" precision="0" type="array&lt;quantity&gt;" unit="1"/>
@@ -1015,15 +1044,24 @@
 	<parameter encoding="string" fill="empty" name="demod_1_version" pd_id="PD822" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="correlation_threshold" pd_id="PD533" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint16" fill="-9999" name="analog_scale_factor" pd_id="PD532" precision="0" type="quantity" unit="1"/>
-	<parameter encoding="???" fill="-9999999" name="raw" pd_id="PD2706" precision="" type="binary" unit=""/>
+	<parameter encoding="" fill="-9999999" name="raw" pd_id="PD2706" precision="" type="binary" unit=""/>
 	<parameter encoding="uint32" fill="-9999999" name="nutnr_external_disk_free" pd_id="PD2426" precision="" type="quantity" unit="MB"/>
 	<parameter encoding="uint32" fill="-9999999" name="nutnr_internal_disk_size" pd_id="PD2427" precision="" type="quantity" unit="MB"/>
 	<parameter encoding="string" fill="empty" name="nutnr_activecalfile" pd_id="PD2424" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint32" fill="-9999999" name="nutnr_external_disk_size" pd_id="PD2425" precision="" type="quantity" unit="MB"/>
 	<parameter encoding="float32" fill="-9999999" name="nutnr_fit_wavelength_high" pd_id="PD2422" precision="" type="quantity" unit="nm"/>
 	<parameter encoding="int32" fill="-9999999" name="nutnr_lamp_time" pd_id="PD2423" precision="" type="quantity" unit="s"/>
+	<parameter encoding="float32" fill="-9999999" name="adcps_jln_recovered_northward_beam_seawater_velocity" pd_id="PD3359" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="adcps_jln_recovered_eastward_beam_seawater_velocity" pd_id="PD3358" precision="4" type="function" unit="m s-1"/>
 	<parameter encoding="uint8" fill="-9999999" name="nutnr_int_time_max" pd_id="PD2420" precision="" type="quantity" unit="s"/>
+	<parameter encoding="float32" fill="-9999999" name="adcps_jln_eastward_earth_seawater_velocity" pd_id="PD3353" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="eng_wave_motion" pd_id="PD3352" precision="4" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="buoyance_flux" pd_id="PD3351" precision="4" type="quantity" unit="m s-1 K"/>
 	<parameter encoding="float32" fill="-9999999" name="nutnr_fit_wavelength_low" pd_id="PD2421" precision="" type="quantity" unit="nm"/>
+	<parameter encoding="float32" fill="-9999999" name="adcps_jln_recovered_northward_seawater_velocity" pd_id="PD3357" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="adcps_jln_recovered_eastward_seawater_velocity" pd_id="PD3356" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="uint8" fill="-9999999" name="zplsc_channel" pd_id="PD3355" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="adcps_jln_northward_earth_seawater_velocity" pd_id="PD3354" precision="4" type="function" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="h_1_3" pd_id="PD3050" precision="4" type="quantity" unit="meters"/>
 	<parameter encoding="uint8" fill="-999" name="hpies_hcno" pd_id="PD2556" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="lon" pd_id="PD9" precision="" type="quantity" unit="degree_east"/>
@@ -1442,7 +1480,7 @@
 	<parameter encoding="uint16" fill="65535" name="num_bytes" pd_id="PD607" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="255" name="data_source_id" pd_id="PD606" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="255" name="header_id" pd_id="PD605" precision="0" type="quantity" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="tmpsf_cal_coeffs" pd_id="PD604" precision="default" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float64" fill="-9999999" name="tmpsf_cal_coeffs" pd_id="PD604" precision="default" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="temperature" pd_id="PD603" precision="4" type="array&lt;quantity&gt;" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999999" name="persistor_cf_picodos_version" pd_id="PD602" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="persistor_cf_bios_version" pd_id="PD601" precision="0" type="quantity" unit="1"/>
@@ -1475,6 +1513,7 @@
 	<parameter encoding="uint8" fill="255" name="percent_good_4beam" pd_id="PD732" precision="0" type="array&lt;quantity&gt;" unit="percent"/>
 	<parameter encoding="uint8" fill="255" name="percent_bad_beams" pd_id="PD731" precision="0" type="array&lt;quantity&gt;" unit="percent"/>
 	<parameter encoding="uint8" fill="255" name="percent_transforms_reject" pd_id="PD730" precision="0" type="array&lt;quantity&gt;" unit="percent"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_sound_velocity" pd_id="PD3285" precision="5" type="array&lt;quantity&gt;" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="thermistor_calibration" pd_id="PD737" precision="4" type="quantity" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999999" name="iris_y_tilt" pd_id="PD847" precision="" type="quantity" unit="degrees"/>
 	<parameter encoding="int16" fill="-9999" name="tilt_offsets" pd_id="PD736" precision="0" type="array&lt;quantity&gt;" unit="1"/>
@@ -1486,9 +1525,9 @@
 	<parameter encoding="float32" fill="-9999999" name="avg_irga_temperature" pd_id="PD996" precision="1" type="quantity" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999999" name="measured_water_co2" pd_id="PD995" precision="3" type="quantity" unit="ppm"/>
 	<parameter encoding="float32" fill="-9999999" name="measured_air_co2" pd_id="PD994" precision="3" type="quantity" unit="ppm"/>
-	<parameter encoding="int16" fill="-9999" name="current_a2d" pd_id="PD993" precision="" type="quantity" unit="counts"/>
-	<parameter encoding="int16" fill="-9999" name="zero_a2d" pd_id="PD992" precision="" type="quantity" unit="counts"/>
-	<parameter encoding="S5" fill="empty" name="begin_measurement" pd_id="PD991" precision="" type="constant&lt;str&gt;" unit="1"/>
+	<parameter encoding="int32" fill="-9999" name="current_a2d" pd_id="PD993" precision="" type="quantity" unit="counts"/>
+	<parameter encoding="int32" fill="-9999" name="zero_a2d" pd_id="PD992" precision="" type="quantity" unit="counts"/>
+	<parameter encoding="string" fill="empty" name="begin_measurement" pd_id="PD991" precision="" type="constant&lt;str&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="ctdbp_abs_oxygen" pd_id="PD990" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="int16" fill="-9999" name="gas_stream_pressure" pd_id="PD999" precision="" type="quantity" unit="mbar"/>
 	<parameter encoding="float32" fill="-9999999" name="humidity_temperature" pd_id="PD998" precision="4" type="quantity" unit="deg_C"/>
@@ -1637,7 +1676,7 @@
 	<parameter encoding="float32" fill="-9999999" name="corrected_compass_direction" pd_id="PD1133" precision="0" type="function" unit="degrees"/>
 	<parameter encoding="uint8" fill="0" name="salinity_delay" pd_id="PD1132" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="adcps_jln_volts" pd_id="PD1649" precision="4" type="quantity" unit="V"/>
-	<parameter encoding="uint16" fill="0" name="adcps_jln_serial_number" pd_id="PD1648" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="uint32" fill="0" name="adcps_jln_serial_number" pd_id="PD1648" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint16" fill="0" name="raw_signal_beta" pd_id="PD1139" precision="" type="quantity" unit="counts"/>
 	<parameter encoding="uint16" fill="0" name="measurement_wavelength_beta" pd_id="PD1138" precision="" type="quantity" unit="nm"/>
 	<parameter encoding="float32" fill="-9999999" name="acceleration_z" pd_id="PD3105" precision="4" type="quantity" unit="gravity"/>
@@ -1675,6 +1714,8 @@
 	<parameter encoding="int8" fill="-99" name="scaling" pd_id="PD509" precision="0" type="category&lt;int8:str&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_mpic_gflt2" pd_id="PD1731" precision="1" type="quantity" unit="uA"/>
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_mpic_gflt1" pd_id="PD1730" precision="1" type="quantity" unit="uA"/>
+	<parameter encoding="uint16" fill="-9999999" name="zplsc_transmit_power" pd_id="PD3281" precision="3" type="array&lt;quantity&gt;" unit="W"/>
+	<parameter encoding="uint32" fill="-9999999" name="zplsc_frequency" pd_id="PD3280" precision="6" type="array&lt;quantity&gt;" unit="Hz"/>
 	<parameter encoding="float32" fill="-9999999" name="sci_abs_oxygen" pd_id="PD2750" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="int8" fill="-9999999" name="massp_rga_error_status" pd_id="PD2520" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float64" fill="-9999999" name="sci_flbb_timestamp" pd_id="PD2751" precision="4" type="quantity" unit="seconds since 1970-01-01"/>
@@ -1690,16 +1731,19 @@
 	<parameter encoding="float32" fill="-9999999" name="density_ctd_l2" pd_id="PD989" precision="" type="function" unit="kg m-3"/>
 	<parameter encoding="float32" fill="-9999999" name="longitude" pd_id="PD2951" precision="4" type="quantity" unit="degrees"/>
 	<parameter encoding="int8" fill="-9999999" name="error_leak_detect_c2_lim_exceeded" pd_id="PD2979" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_pulse_length" pd_id="PD3282" precision="6" type="array&lt;quantity&gt;" unit="sec"/>
 	<parameter encoding="float32" fill="" name="flord_m_scat_seawater" pd_id="PD2758" precision="4" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="" name="flort_m_bback_total" pd_id="PD2759" precision="4" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="-9999999" name="temperature01" pd_id="PD2713" precision="4" type="quantity" unit="deg_C"/>
 	<parameter encoding="int8" fill="-9999999" name="error_sensor_iso_swgf_lim_exceeded" pd_id="PD2976" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="roll_max" pd_id="PD3338" precision="4" type="quantity" unit="rad"/>
 	<parameter encoding="int8" fill="-9999999" name="error_snsr_com_swgf_lim_exceeded" pd_id="PD2977" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-9999999" name="error_vmain_out_tolerance" pd_id="PD2970" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-9999999" name="error_imain_out_tolerance" pd_id="PD2971" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-9999999" name="error_dcl_iso_swgf_lim_exceeded" pd_id="PD2972" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-9999999" name="error_dcl_rtn_swfg_lim_exceeded" pd_id="PD2973" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-9999999" name="adcps_jln_sysconfig_beam_angle" pd_id="PD1985" precision="0" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="x_ang_rate_min" pd_id="PD3330" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="float64" fill="-9999999" name="a1_band" pd_id="PD3098" precision="4" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float64" fill="-9999999" name="b1_band" pd_id="PD3099" precision="4" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float64" fill="-9999999" name="frequency_band" pd_id="PD3094" precision="4" type="array&lt;quantity&gt;" unit="hz"/>
@@ -1710,7 +1754,18 @@
 	<parameter encoding="float32" fill="-9999999" name="met_tempskn" pd_id="PD3091" precision="4" type="function" unit="degC"/>
 	<parameter encoding="float32" fill="-9999999" name="met_wind10m" pd_id="PD3092" precision="4" type="function" unit="m s-1"/>
 	<parameter encoding="uint16" fill="-9999999" name="num_fields" pd_id="PD3093" precision="0" type="quantity" unit="counts"/>
+	<parameter encoding="int32" fill="-9999999" name="fuel_cell_temperature" pd_id="PD3258" precision="" type="quantity" unit="ddeg_C"/>
+	<parameter encoding="int32" fill="-9999999" name="reformer_fuel_pressure" pd_id="PD3259" precision="" type="quantity" unit="mPSI"/>
+	<parameter encoding="int32" fill="-9999999" name="reformer_temperature" pd_id="PD3256" precision="" type="quantity" unit="ddeg_C"/>
+	<parameter encoding="int32" fill="-9999999" name="fuel_cell_h2_pressure" pd_id="PD3257" precision="" type="quantity" unit="mPSI"/>
+	<parameter encoding="int32" fill="-9999999" name="fuel_cell_voltage" pd_id="PD3254" precision="" type="quantity" unit="mV"/>
+	<parameter encoding="int32" fill="-9999999" name="fuel_cell_current" pd_id="PD3255" precision="" type="quantity" unit="mA"/>
+	<parameter encoding="string" fill="" name="system_software_version" pd_id="PD3252" precision="" type="quantity" unit="1"/>
+	<parameter encoding="int64" fill="-9999999" name="total_run_time" pd_id="PD3253" precision="" type="quantity" unit="Secs"/>
+	<parameter encoding="float32" fill="-9999999" name="abs_seafloor_pressure" pd_id="PD3250" precision="4" type="function" unit="dbar"/>
+	<parameter encoding="string" fill="" name="datalog_manager_version" pd_id="PD3251" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint16" fill="-9999999" name="nutnr_spec_lght_mi" pd_id="PD2440" precision="" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_absorption_coeff" pd_id="PD3286" precision="4" type="array&lt;quantity&gt;" unit="dB m-1"/>
 	<parameter encoding="int32" fill="-9999" name="velocity_beam2" pd_id="PD88" precision="0" type="quantity" unit="C"/>
 	<parameter encoding="int32" fill="-9999" name="velocity_beam3" pd_id="PD89" precision="0" type="quantity" unit="C"/>
 	<parameter encoding="int16" fill="-9999999" name="massp_inlet_temp_status" pd_id="PD2473" precision="" type="quantity" unit="1"/>
@@ -1915,8 +1970,10 @@
 	<parameter encoding="int32" fill="-9999999" name="compass_offset_0" pd_id="PD973" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="velocity_offset_d" pd_id="PD972" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int16" fill="-9999999" name="zplsc_scheduled_intervals_remaining" pd_id="PD2703" precision="" type="quantity" unit=""/>
+	<parameter encoding="float32" fill="-9999999" name="v_num_datacollection" pd_id="PD3291" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="met_stablty" pd_id="PD3089" precision="4" type="function" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="met_sphum2m" pd_id="PD3088" precision="4" type="function" unit="g kg-1"/>
+	<parameter encoding="float32" fill="-9999999" name="speed_of_sound_avg" pd_id="PD3296" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="met_latnflx" pd_id="PD3083" precision="4" type="function" unit="W m-2"/>
 	<parameter encoding="float32" fill="-9999999" name="met_heatflx" pd_id="PD3082" precision="4" type="function" unit="W m-2"/>
 	<parameter encoding="float32" fill="-9999999" name="met_frshflx" pd_id="PD3081" precision="4" type="function" unit="mm hr-1"/>
@@ -1937,6 +1994,8 @@
 	<parameter encoding="float32" fill="-9999999" name="sound_speed_dms" pd_id="PD3243" precision="" type="quantity" unit="dm s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="temperature21" pd_id="PD2733" precision="4" type="quantity" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999999" name="vel3d_k_upward_turbulent_velocity" pd_id="PD1972" precision="3" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_u_std" pd_id="PD3297" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="vw_momentum_flux" pd_id="PD3350" precision="4" type="quantity" unit="m2 s-2"/>
 	<parameter encoding="int64" fill="-9999999" name="cg_eng_port_dlog4_lc" pd_id="PD1976" precision="0" type="quantity" unit="s"/>
 	<parameter encoding="float32" fill="-9999999" name="temperature18" pd_id="PD2730" precision="4" type="quantity" unit="deg_C"/>
 	<parameter encoding="int64" fill="-9999999" name="cg_eng_port_dlog7_lc" pd_id="PD1979" precision="0" type="quantity" unit="s"/>
@@ -2130,6 +2189,7 @@
 	<parameter encoding="float32" fill="-9999999" name="optical_absorption" pd_id="PD963" precision="6" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="-9999999" name="upward_earth_seawater_velocity" pd_id="PD960" precision="4" type="function" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="earth_error_velocity" pd_id="PD961" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="uw_momentum_flux" pd_id="PD3349" precision="4" type="quantity" unit="m2 s-2"/>
 	<parameter encoding="string" fill="empty" name="date_of_fix" pd_id="PD2958" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float64" fill="-9999999" name="vel3d_a_vc" pd_id="PD2250" precision="2" type="quantity" unit="cm s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="sci_oxy4_oxygen" pd_id="PD1516" precision="4" type="quantity" unit="umol L-1"/>
@@ -2137,10 +2197,17 @@
 	<parameter encoding="string" fill="empty" name="startup_time_string" pd_id="PD2707" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="sci_oxy4_calphase" pd_id="PD1514" precision="4" type="quantity" unit="degrees"/>
 	<parameter encoding="int16" fill="-9999999" name="small_wave_thresh" pd_id="PD3155" precision="0" type="quantity" unit="mm"/>
+	<parameter encoding="string" fill="" name="zplsc_timestamp" pd_id="PD3278" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint16" fill="-9999" name="number_diagnostics_per_wave" pd_id="PD530" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="gps_true_course" pd_id="PD2953" precision="4" type="quantity" unit="degrees"/>
+	<parameter encoding="int32" fill="-9999999" name="balance_of_plant_power" pd_id="PD3270" precision="" type="quantity" unit="mW"/>
 	<parameter encoding="int8" fill="-9999999" name="error_leak_detect_c1_lim_exceeded" pd_id="PD2978" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="power_board_temperature" pd_id="PD3272" precision="" type="quantity" unit="ddeg_C"/>
+	<parameter encoding="int32" fill="-9999999" name="control_board_temperature" pd_id="PD3273" precision="" type="quantity" unit="ddeg_C"/>
+	<parameter encoding="int64" fill="-9999999" name="power_manager_status" pd_id="PD3274" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="average_wave_height" pd_id="PD2774" precision="4" type="quantity" unit="m"/>
+	<parameter encoding="int64" fill="-9999999" name="reformer_error_mask" pd_id="PD3276" precision="" type="quantity" unit="1"/>
+	<parameter encoding="int64" fill="-9999999" name="fuel_cell_error_mask" pd_id="PD3277" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="mean_spectral_period" pd_id="PD2775" precision="4" type="quantity" unit="sec"/>
 	<parameter encoding="uint16" fill="-9999999" name="small_wave_freq" pd_id="PD3154" precision="0" type="quantity" unit="centiHz"/>
 	<parameter encoding="float32" fill="-9999999" name="gps_hdop" pd_id="PD2956" precision="4" type="quantity" unit="1"/>
@@ -2224,7 +2291,10 @@
 	<parameter encoding="string" fill="" name="cg_eng_sched_sys" pd_id="PD2900" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="int16" fill="-9999999" name="cg_eng_sched_status_val" pd_id="PD2903" precision="0" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="string" fill="" name="cg_eng_sched_status" pd_id="PD2902" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="string" fill="empty" name="status_datacollection" pd_id="PD3292" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-99999" name="hpies_internal_temperature" pd_id="PD2597" precision="" type="quantity" unit="ºC"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_u_avg" pd_id="PD3293" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float64" fill="-9999999" name="time_datacollection" pd_id="PD3290" precision="4" type="quantity" unit="sec"/>
 	<parameter encoding="uint64" fill="0" name="cg_eng_port_dlog4_bb" pd_id="PD1908" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int64" fill="-9999999" name="cg_eng_port_dlog4_ld" pd_id="PD1909" precision="0" type="quantity" unit="s"/>
 	<parameter encoding="float32" fill="-9999" name="thsph_ph_acl" pd_id="PD2631" precision="0" type="function" unit="1"/>
@@ -2242,6 +2312,8 @@
 	<parameter encoding="uint64" fill="0" name="cg_eng_port_dlog4_good" pd_id="PD1906" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="uint64" fill="0" name="cg_eng_port_dlog4_bad" pd_id="PD1907" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_pwrsys_pv4_2" pd_id="PD2876" precision="4" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_v_avg" pd_id="PD3294" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_w_avg" pd_id="PD3295" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="int8" fill="-99" name="m_gps_utc_hour" pd_id="PD1348" precision="0" type="quantity" unit="bytes"/>
 	<parameter encoding="int8" fill="-99" name="m_gps_utc_minute" pd_id="PD1349" precision="0" type="quantity" unit="bytes"/>
 	<parameter encoding="float32" fill="-9999999" name="m_gps_uncertainty" pd_id="PD1346" precision="4" type="quantity" unit="1"/>
@@ -2325,12 +2397,13 @@
 	<parameter encoding="int16" fill="-9999" name="amplitude_beam_3" pd_id="PD556" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int16" fill="-9999" name="amplitude_beam_2" pd_id="PD555" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int16" fill="-9999" name="amplitude_beam_1" pd_id="PD554" precision="0" type="quantity" unit="counts"/>
-	<parameter encoding="float32" fill="-9999999" name="turbulent_velocity_vertical" pd_id="PD553" precision="3" type="quantity" unit="mm s-1"/>
-	<parameter encoding="float32" fill="-9999999" name="turbulent_velocity_north" pd_id="PD552" precision="3" type="quantity" unit="mm s-1"/>
-	<parameter encoding="float32" fill="-9999999" name="turbulent_velocity_east" pd_id="PD551" precision="3" type="quantity" unit="mm s-1"/>
+	<parameter encoding="int16" fill="-9999999" name="turbulent_velocity_vertical" pd_id="PD553" precision="3" type="quantity" unit="mm s-1"/>
+	<parameter encoding="int16" fill="-9999999" name="turbulent_velocity_north" pd_id="PD552" precision="3" type="quantity" unit="mm s-1"/>
+	<parameter encoding="int16" fill="-9999999" name="turbulent_velocity_east" pd_id="PD551" precision="3" type="quantity" unit="mm s-1"/>
 	<parameter encoding="uint16" fill="-9999" name="analog_input_1" pd_id="PD550" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint16" fill="-9999999" name="num_freq" pd_id="PD3062" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_pwrsys_wt1_2" pd_id="PD2879" precision="4" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_transducer_depth" pd_id="PD3279" precision="5" type="array&lt;quantity&gt;" unit="m"/>
 	<parameter encoding="uint8" fill="-9999999" name="num_beams" pd_id="PD3126" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int8" fill="-9999999" name="massp_external_valve3_status" pd_id="PD2494" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-9999999" name="beam_conf" pd_id="PD3127" precision="0" type="quantity" unit="degrees"/>
@@ -2373,8 +2446,16 @@
 	<parameter encoding="uint32" fill="0" name="adcps_jln_events" pd_id="PD1652" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-9999999" name="massp_ground_relay_status" pd_id="PD2491" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint32" fill="0" name="adcps_jln_samples_written" pd_id="PD1653" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="battery1_converter_temperature" pd_id="PD3267" precision="" type="quantity" unit="ddeg_C"/>
+	<parameter encoding="int32" fill="-9999999" name="power_to_battery1" pd_id="PD3266" precision="" type="quantity" unit="mW"/>
+	<parameter encoding="int32" fill="-9999999" name="fuel_remaining" pd_id="PD3265" precision="" type="quantity" unit="mL"/>
+	<parameter encoding="int32" fill="-9999999" name="fuel_cell_state" pd_id="PD3264" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="cg_eng_pwrsys_wt1_1" pd_id="PD2878" precision="4" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="coolant_pump_pwm_drive_percent" pd_id="PD3262" precision="" type="quantity" unit="%"/>
+	<parameter encoding="int32" fill="-9999999" name="air_pump_pwm_drive_percent" pd_id="PD3261" precision="" type="quantity" unit="%"/>
 	<parameter encoding="float32" fill="-9999999" name="hs_swell" pd_id="PD3046" precision="4" type="quantity" unit="meters"/>
+	<parameter encoding="int32" fill="-9999999" name="battery2_converter_temperature" pd_id="PD3269" precision="" type="quantity" unit="ddeg_C"/>
+	<parameter encoding="int32" fill="-9999999" name="power_to_battery2" pd_id="PD3268" precision="" type="quantity" unit="mW"/>
 	<parameter encoding="float32" fill="-9999999" name="peak_wave_direction" pd_id="PD3040" precision="4" type="quantity" unit="degrees"/>
 	<parameter encoding="float32" fill="-9999999" name="sci_m_disk_usage" pd_id="PD1490" precision="4" type="quantity" unit="Mbytes"/>
 	<parameter encoding="float32" fill="-9999999" name="sci_m_free_heap" pd_id="PD1491" precision="4" type="quantity" unit="bytes"/>
@@ -2630,7 +2711,16 @@
 	<parameter encoding="int8" fill="-9" name="tempwat_glblrng_qc" pd_id="PD43" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="zplsc_active_120k_pulse_length" pd_id="PD2681" precision="6" type="quantity" unit="sec"/>
 	<parameter encoding="uint32" fill="0" name="cg_eng_mpic_dsl" pd_id="PD1752" precision="0" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="y_ang_rate_max" pd_id="PD3328" precision="4" type="quantity" unit="rad s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="z_ang_rate_max" pd_id="PD3329" precision="4" type="quantity" unit="rad s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="z_ang_rate_std" pd_id="PD3326" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="uint16" fill="-9999999" name="vel3d_k_configuration" pd_id="PD1992" precision="" type="quantity" unit="counts"/>
+	<parameter encoding="float32" fill="-9999999" name="x_ang_rate_std" pd_id="PD3324" precision="4" type="quantity" unit="rad s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="y_ang_rate_std" pd_id="PD3325" precision="4" type="quantity" unit="rad s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="y_ang_rate" pd_id="PD3322" precision="4" type="quantity" unit="rad s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="z_ang_rate" pd_id="PD3323" precision="4" type="quantity" unit="rad s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="z_accel_min" pd_id="PD3320" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="x_ang_rate" pd_id="PD3321" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="int32" fill="-9999999" name="serial_byte_error" pd_id="PD302" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int32" fill="-9999999" name="command_buffer_overflow" pd_id="PD303" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int32" fill="-9999999" name="power_fail_reset" pd_id="PD300" precision="0" type="quantity" unit="1"/>
@@ -2845,9 +2935,17 @@
 	<parameter encoding="int8" fill="-9" name="pracsal_loclrng_qc" pd_id="PD50" precision="0" type="boolean" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="wavss_a_corrected_mean_wave_direction" pd_id="PD2827" precision="4" type="function" unit="deg"/>
 	<parameter encoding="float64" fill="-9999999" name="start_dir" pd_id="PD3065" precision="4" type="quantity" unit="degrees"/>
+	<parameter encoding="float32" fill="-9999999" name="heading_min" pd_id="PD3339" precision="4" type="quantity" unit="rad"/>
 	<parameter encoding="float32" fill="-9999999" name="voltage_flt32" pd_id="PD2649" precision="3" type="quantity" unit="V"/>
 	<parameter encoding="float64" fill="-9999999" name="freq_0" pd_id="PD3064" precision="4" type="quantity" unit="hz"/>
+	<parameter encoding="float32" fill="-9999999" name="roll_std" pd_id="PD3335" precision="4" type="quantity" unit="rad"/>
+	<parameter encoding="float32" fill="-9999999" name="pitch_std" pd_id="PD3334" precision="4" type="quantity" unit="rad"/>
+	<parameter encoding="float32" fill="-9999999" name="pitch_max" pd_id="PD3337" precision="4" type="quantity" unit="rad"/>
+	<parameter encoding="float32" fill="-9999999" name="heading_max" pd_id="PD3336" precision="4" type="quantity" unit="rad"/>
+	<parameter encoding="float32" fill="-9999999" name="y_ang_rate_min" pd_id="PD3331" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="met_barpres" pd_id="PD3067" precision="2" type="function" unit="Pa"/>
+	<parameter encoding="float32" fill="-9999999" name="heading_std" pd_id="PD3333" precision="4" type="quantity" unit="rad"/>
+	<parameter encoding="float32" fill="-9999999" name="z_ang_rate_min" pd_id="PD3332" precision="4" type="quantity" unit="rad s-1"/>
 	<parameter encoding="uint32" fill="-9999999" name="directional_surface_spectrum" pd_id="PD3066" precision="0" type="array&lt;quantity&gt;" unit="mm2 hz-1"/>
 	<parameter encoding="int32" fill="-9999999" name="cf_card_size" pd_id="PD339" precision="0" type="quantity" unit="bytes"/>
 	<parameter encoding="int32" fill="-9999999" name="persistor_picodos_bytes_used" pd_id="PD338" precision="0" type="quantity" unit="bytes"/>
@@ -2962,6 +3060,7 @@
 	<parameter encoding="uint16" fill="55555" name="bt_max_depth" pd_id="PD1206" precision="0" type="quantity" unit="dm"/>
 	<parameter encoding="uint8" fill="0" name="bt_beam4_ref_percent_good" pd_id="PD1205" precision="0" type="quantity" unit="percent"/>
 	<parameter encoding="uint8" fill="0" name="bt_beam3_ref_percent_good" pd_id="PD1204" precision="0" type="quantity" unit="percent"/>
+	<parameter encoding="int32" fill="-9999999" name="air_pump_tach_count" pd_id="PD3263" precision="" type="quantity" unit="Counts"/>
 	<parameter encoding="int8" fill="-99" name="m_is_fin_moving" pd_id="PD1377" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="m_is_de_pump_moving" pd_id="PD1376" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="m_is_battroll_moving" pd_id="PD1375" precision="0" type="quantity" unit="1"/>
@@ -3004,6 +3103,7 @@
 	<parameter encoding="float32" fill="-9999999" name="eastward_velocity" pd_id="PD1154" precision="" type="function" unit="m s-1"/>
 	<parameter encoding="uint16" fill="0" name="bottom_track_id" pd_id="PD1159" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999" name="real_time_clock_2" pd_id="PD1158" precision="0" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="fuel_pump_pwm_drive_percent" pd_id="PD3260" precision="" type="quantity" unit="%"/>
 	<parameter encoding="float32" fill="-9999999" name="thsph_temp_int" pd_id="PD2628" precision="2" type="function" unit="deg_C"/>
 	<parameter encoding="float32" fill="-9999999" name="thsph_temp_ref" pd_id="PD2629" precision="2" type="function" unit="deg_C"/>
 	<parameter encoding="int8" fill="-99" name="noise_amplitude_beam4" pd_id="PD452" precision="0" type="quantity" unit="counts"/>
@@ -3070,6 +3170,16 @@
 	<parameter encoding="float32" fill="-9999" name="EhSensor" pd_id="PD67" precision="" type="quantity" unit="V"/>
 	<parameter encoding="float32" fill="-9999" name="Hydrogen5" pd_id="PD64" precision="" type="quantity" unit="V"/>
 	<parameter encoding="float32" fill="-9999" name="HydrogenX1" pd_id="PD65" precision="" type="quantity" unit="V"/>
+	<parameter encoding="float32" fill="-9999999" name="speed_of_sound_min" pd_id="PD3308" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="x_accel" pd_id="PD3309" precision="4" type="quantity" unit="m s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="speed_of_sound_std" pd_id="PD3300" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_u_max" pd_id="PD3301" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_v_max" pd_id="PD3302" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_w_max" pd_id="PD3303" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="speed_of_sound_max" pd_id="PD3304" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_u_min" pd_id="PD3305" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_v_min" pd_id="PD3306" precision="4" type="quantity" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="wind_w_min" pd_id="PD3307" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="string" fill="empty" name="power_timing_type" pd_id="PD827" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="power_timing_version" pd_id="PD826" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="demod_2_type" pd_id="PD825" precision="0" type="quantity" unit="1"/>

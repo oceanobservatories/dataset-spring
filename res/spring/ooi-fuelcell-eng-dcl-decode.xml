@@ -1,0 +1,80 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="fuelcell-eng-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="fuelcell-eng-dcl_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/fuelcell_eng/dcl/fuelcell_eng_dcl_recovered_driver.py" />
+    </bean>
+
+    <bean id="fuelcell-eng-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="fuelcell-eng-dcl_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/fuelcell_eng/dcl/fuelcell_eng_dcl_telemetered_driver.py" />
+    </bean>
+
+    <camelContext id="fuelcell-eng-dcl-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="fuelcell-eng-dcl_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/fuelcell-eng-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="fuelcell-eng-dcl_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/fuelcell-eng-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="fuelcell-eng-dcl_recoveredFileConsumerRoute">
+            <from ref="fuelcell-eng-dcl_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FUELCR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.fuelcell-eng-dcl_recovered" />
+        </route>
+
+        <route id="fuelcell-eng-dcl_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.fuelcell-eng-dcl_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="fuelcell-eng-dcl_recoveredProcessor" />
+                    <to uri="vm:generate" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.fuelcell-eng-dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="fuelcell-eng-dcl_telemeteredFileConsumerRoute">
+            <from ref="fuelcell-eng-dcl_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FUELCT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.fuelcell-eng-dcl_telemetered" />
+        </route>
+
+        <route id="fuelcell-eng-dcl_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.fuelcell-eng-dcl_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="fuelcell-eng-dcl_telemeteredProcessor" />
+                    <to uri="vm:generate" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.fuelcell-eng-dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

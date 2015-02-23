@@ -224,7 +224,7 @@
 	<parameter encoding="float32" fill="-9999999" name="dosta_ln_wfp_abs_oxygen" pd_id="PD3226" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="float32" fill="" name="flort_dj_scat_seawater" pd_id="PD3225" precision="4" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="" name="flort_dj_bback_total" pd_id="PD3224" precision="4" type="function" unit="m-1"/>
-	<parameter encoding="int16" fill="-32768" name="adcpa_n_auv_error_velocity" pd_id="PD3422" precision="0" type="quantity" unit="mm s-1"/>
+	<parameter encoding="float32" fill="-32768" name="adcpa_n_auv_error_velocity" pd_id="PD3422" precision="0" type="quantity" unit="mm s-1"/>
 	<parameter encoding="int16" fill="-9999" name="average_interval" pd_id="PD485" precision="0" type="quantity" unit="s"/>
 	<parameter encoding="int16" fill="-9999" name="number_pings" pd_id="PD484" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-99" name="profile_type" pd_id="PD487" precision="0" type="category&lt;int8:str&gt;" unit="1"/>

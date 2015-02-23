@@ -293,6 +293,19 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD832</parameterId> <!-- identification_string -->
   </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_z3_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3368</parameterId> <!-- sulfate_concentration -->
+    <parameterId>PD3367</parameterId> <!-- chloride_concentration -->
+  </streamDefinition>
   <streamDefinition streamName="pco2w_a_regular_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -413,6 +426,24 @@
     <parameterId>PD742</parameterId> <!-- seawater_temperature -->
     <parameterId>PD891</parameterId> <!-- seafloor_pressure -->
   </streamDefinition>
+  <streamDefinition streamName="flobn_c_upper_coil_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3403</parameterId> <!-- tracking_id -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3378</parameterId> <!-- boron_concentration -->
+    <parameterId>PD3408</parameterId> <!-- barium_concentration_um -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3376</parameterId> <!-- lithium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3409</parameterId> <!-- sulfur_concentration -->
+    <parameterId>PD3410</parameterId> <!-- strontium_concentration -->
+    <parameterId>PD3411</parameterId> <!-- tracer_percent -->
+    <parameterId>PD3406</parameterId> <!-- flow_rate -->
+  </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_ldh">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -471,6 +502,13 @@
     <parameterId>PD2928</parameterId> <!-- ctdmo_seawater_conductivity -->
     <parameterId>PD2929</parameterId> <!-- ctdmo_practical_salinity -->
     <parameterId>PD2930</parameterId> <!-- ctdmo_seawater_density -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_direction_x_flow_rate_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3406</parameterId> <!-- flow_rate -->
   </streamDefinition>
   <streamDefinition streamName="dosta_ln_wfp_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -862,6 +900,19 @@
     <parameterId>PD2038</parameterId> <!-- trhph_metadata_on_powerup -->
     <parameterId>PD2039</parameterId> <!-- trhph_metadata_on_restart -->
   </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_z4_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3368</parameterId> <!-- sulfate_concentration -->
+    <parameterId>PD3367</parameterId> <!-- chloride_concentration -->
+  </streamDefinition>
   <streamDefinition streamName="optaa_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1073,6 +1124,13 @@
     <parameterId>PD2826</parameterId> <!-- wavss_a_buoymotion_time -->
     <parameterId>PD2829</parameterId> <!-- wavss_a_magcor_buoymotion_x -->
     <parameterId>PD2830</parameterId> <!-- wavss_a_magcor_buoymotion_y -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_direction_z_flow_rate_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3406</parameterId> <!-- flow_rate -->
   </streamDefinition>
   <streamDefinition streamName="cgldr_adcpa_pd0_parsed">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1443,6 +1501,32 @@
     <parameterId>PD596</parameterId> <!-- a_reference_counts -->
     <parameterId>PD597</parameterId> <!-- c_signal_counts -->
     <parameterId>PD598</parameterId> <!-- a_signal_counts -->
+  </streamDefinition>
+  <streamDefinition streamName="dosta_ln_auv_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3</parameterId> <!-- salinity -->
+    <parameterId>PD1005</parameterId> <!-- product_number -->
+    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
+    <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
+    <parameterId>PD942</parameterId> <!-- optode_temperature -->
+    <parameterId>PD943</parameterId> <!-- calibrated_phase -->
+    <parameterId>PD945</parameterId> <!-- blue_phase -->
+    <parameterId>PD946</parameterId> <!-- red_phase -->
+    <parameterId>PD947</parameterId> <!-- blue_amplitude -->
+    <parameterId>PD3455</parameterId> <!-- b_pot -->
+    <parameterId>PD948</parameterId> <!-- red_amplitude -->
+    <parameterId>PD949</parameterId> <!-- raw_temperature -->
+    <parameterId>PD3456</parameterId> <!-- calculated_oxygen_concentration -->
+    <parameterId>PD3457</parameterId> <!-- calculated_oxygen_saturation -->
+    <parameterId>PD3458</parameterId> <!-- external_temperature -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_a_thermistor_voltage">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -2746,6 +2830,55 @@
     <parameterId>PD332</parameterId> <!-- spectral_channels -->
     <parameterId>PD2761</parameterId> <!-- nutnr_b_temp_sal_corrected_nitrate -->
   </streamDefinition>
+  <streamDefinition streamName="osmoi_a_subcon_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3397</parameterId> <!-- volume_pumped -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD3360</parameterId> <!-- start_time -->
+    <parameterId>PD3361</parameterId> <!-- stop_time -->
+    <parameterId>PD1075</parameterId> <!-- port_number -->
+    <parameterId>PD8</parameterId> <!-- lat -->
+    <parameterId>PD9</parameterId> <!-- lon -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD6</parameterId> <!-- temp -->
+    <parameterId>PD3362</parameterId> <!-- acidity -->
+    <parameterId>PD3363</parameterId> <!-- alkalinity -->
+    <parameterId>PD3364</parameterId> <!-- hydrogen_sulfide_concentration -->
+    <parameterId>PD3365</parameterId> <!-- silicon_concentration -->
+    <parameterId>PD3366</parameterId> <!-- ammonia_concentration -->
+    <parameterId>PD3367</parameterId> <!-- chloride_concentration -->
+    <parameterId>PD3368</parameterId> <!-- sulfate_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3373</parameterId> <!-- bromide_concentration -->
+    <parameterId>PD3374</parameterId> <!-- iron_concentration -->
+    <parameterId>PD3375</parameterId> <!-- manganese_concentration -->
+    <parameterId>PD3376</parameterId> <!-- lithium_concentration -->
+    <parameterId>PD3377</parameterId> <!-- strontium_icpaes_concentration -->
+    <parameterId>PD3378</parameterId> <!-- boron_concentration -->
+    <parameterId>PD3379</parameterId> <!-- rubidium_concentration -->
+    <parameterId>PD3380</parameterId> <!-- cesium_concentration -->
+    <parameterId>PD3381</parameterId> <!-- strontium_icpms_concentration -->
+    <parameterId>PD3382</parameterId> <!-- barium_concentration -->
+    <parameterId>PD3383</parameterId> <!-- cobalt_concentration -->
+    <parameterId>PD3384</parameterId> <!-- nickel_concentration -->
+    <parameterId>PD3385</parameterId> <!-- copper_concentration -->
+    <parameterId>PD3386</parameterId> <!-- zinc_concentration -->
+    <parameterId>PD3387</parameterId> <!-- molybdenum_concentration -->
+    <parameterId>PD3388</parameterId> <!-- silver_concentration -->
+    <parameterId>PD3389</parameterId> <!-- cadmium_concentration -->
+    <parameterId>PD3390</parameterId> <!-- titanium_concentration -->
+    <parameterId>PD3391</parameterId> <!-- aluminum_concentration -->
+    <parameterId>PD3392</parameterId> <!-- lead_concentration -->
+    <parameterId>PD3393</parameterId> <!-- vanadium_concentration -->
+    <parameterId>PD3394</parameterId> <!-- uranium_concentration -->
+    <parameterId>PD3395</parameterId> <!-- yttrium_concentration -->
+    <parameterId>PD3396</parameterId> <!-- gadolinium_concentration -->
+  </streamDefinition>
   <streamDefinition streamName="adcpt_m_instrument_fcoeff_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -3355,6 +3488,37 @@
     <parameterId>PD2606</parameterId> <!-- pressure_depth -->
     <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
     <parameterId>PD2643</parameterId> <!-- gps_adjustment -->
+  </streamDefinition>
+  <streamDefinition streamName="adcpa_n_auv_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
+    <parameterId>PD3414</parameterId> <!-- altitude -->
+    <parameterId>PD3415</parameterId> <!-- altitude_track_range_beam_1 -->
+    <parameterId>PD3416</parameterId> <!-- altitude_track_range_beam_2 -->
+    <parameterId>PD3417</parameterId> <!-- altitude_track_range_beam_3 -->
+    <parameterId>PD3418</parameterId> <!-- altitude_track_range_beam_4 -->
+    <parameterId>PD3419</parameterId> <!-- forward_velocity -->
+    <parameterId>PD3420</parameterId> <!-- starboard_velocity -->
+    <parameterId>PD3421</parameterId> <!-- vertical_velocity -->
+    <parameterId>PD3422</parameterId> <!-- adcpa_n_auv_error_velocity -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD664</parameterId> <!-- ensemble_number -->
+    <parameterId>PD3423</parameterId> <!-- binary_velocity_data_1 -->
+    <parameterId>PD3424</parameterId> <!-- binary_velocity_data_2 -->
+    <parameterId>PD3425</parameterId> <!-- binary_velocity_data_3 -->
+    <parameterId>PD3426</parameterId> <!-- binary_velocity_data_4 -->
+    <parameterId>PD3427</parameterId> <!-- coordinates_transformation -->
+    <parameterId>PD3428</parameterId> <!-- average_current -->
+    <parameterId>PD3429</parameterId> <!-- average_direction -->
   </streamDefinition>
   <streamDefinition streamName="velpt_data_header">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -4015,6 +4179,13 @@
     <parameterId>PD356</parameterId> <!-- record_time -->
     <parameterId>PD2228</parameterId> <!-- passed_checksum -->
   </streamDefinition>
+  <streamDefinition streamName="flobn_m_ambient_temperature_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3407</parameterId> <!-- ambient_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="nutnr_b_dcl_full_metadata">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -4027,6 +4198,29 @@
     <parameterId>PD351</parameterId> <!-- lamp_powered_time -->
     <parameterId>PD352</parameterId> <!-- data_log_file -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+  </streamDefinition>
+  <streamDefinition streamName="flort_kn_auv_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3432</parameterId> <!-- device_id -->
+    <parameterId>PD3443</parameterId> <!-- device_count -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3444</parameterId> <!-- version -->
+    <parameterId>PD3445</parameterId> <!-- parameter_0 -->
+    <parameterId>PD3446</parameterId> <!-- parameter_1 -->
+    <parameterId>PD3447</parameterId> <!-- parameter_2 -->
+    <parameterId>PD3448</parameterId> <!-- parameter_3 -->
+    <parameterId>PD3449</parameterId> <!-- parameter_4 -->
+    <parameterId>PD3450</parameterId> <!-- parameter_5 -->
+    <parameterId>PD3451</parameterId> <!-- parameter_6 -->
+    <parameterId>PD3452</parameterId> <!-- parameter_7 -->
+    <parameterId>PD3453</parameterId> <!-- parameter_8 -->
+    <parameterId>PD3454</parameterId> <!-- parameter_9 -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_b_dev1_data_record">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -4182,6 +4376,13 @@
     <parameterId>PD2318</parameterId> <!-- start_date -->
     <parameterId>PD1089</parameterId> <!-- instrument_id -->
     <parameterId>PD1090</parameterId> <!-- serial_number -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_direction_y_flow_rate_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3406</parameterId> <!-- flow_rate -->
   </streamDefinition>
   <streamDefinition streamName="old_adcps_jln_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -5304,6 +5505,39 @@
     <parameterId>PD912</parameterId> <!-- seawater_density -->
     <parameterId>PD964</parameterId> <!-- ctdbp_tc_oxygen -->
     <parameterId>PD990</parameterId> <!-- ctdbp_abs_oxygen -->
+  </streamDefinition>
+  <streamDefinition streamName="ctdav_n_auv_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3459</parameterId> <!-- ctdav_n_auv_conductivity -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD3</parameterId> <!-- salinity -->
+    <parameterId>PD562</parameterId> <!-- speed_of_sound -->
+    <parameterId>PD3460</parameterId> <!-- dissolved_oxygen -->
+    <parameterId>PD3461</parameterId> <!-- powered_on -->
+  </streamDefinition>
+  <streamDefinition streamName="flort_kn_auv_metadata_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3432</parameterId> <!-- device_id -->
+    <parameterId>PD3433</parameterId> <!-- device_count -->
+    <parameterId>PD3434</parameterId> <!-- parameter_name -->
+    <parameterId>PD3435</parameterId> <!-- parameter_unit -->
+    <parameterId>PD3436</parameterId> <!-- parameter_id -->
+    <parameterId>PD3437</parameterId> <!-- eco_data_offset -->
+    <parameterId>PD3438</parameterId> <!-- html_plot -->
+    <parameterId>PD3439</parameterId> <!-- parameter_type -->
+    <parameterId>PD3440</parameterId> <!-- mx -->
+    <parameterId>PD3441</parameterId> <!-- b -->
+    <parameterId>PD3442</parameterId> <!-- sensor_name -->
   </streamDefinition>
   <streamDefinition streamName="tmpsf_sample">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -7357,6 +7591,13 @@
     <parameterId>PD1807</parameterId> <!-- cg_eng_sbc_bid -->
     <parameterId>PD1808</parameterId> <!-- cg_eng_sbc_bstr -->
   </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_y2_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_ab_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -7529,6 +7770,32 @@
     <parameterId>PD1578</parameterId> <!-- par_val_v -->
     <parameterId>PD1657</parameterId> <!-- parad_k_par -->
   </streamDefinition>
+  <streamDefinition streamName="dosta_ln_auv_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3</parameterId> <!-- salinity -->
+    <parameterId>PD1005</parameterId> <!-- product_number -->
+    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
+    <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
+    <parameterId>PD942</parameterId> <!-- optode_temperature -->
+    <parameterId>PD943</parameterId> <!-- calibrated_phase -->
+    <parameterId>PD945</parameterId> <!-- blue_phase -->
+    <parameterId>PD946</parameterId> <!-- red_phase -->
+    <parameterId>PD947</parameterId> <!-- blue_amplitude -->
+    <parameterId>PD3455</parameterId> <!-- b_pot -->
+    <parameterId>PD948</parameterId> <!-- red_amplitude -->
+    <parameterId>PD949</parameterId> <!-- raw_temperature -->
+    <parameterId>PD3456</parameterId> <!-- calculated_oxygen_concentration -->
+    <parameterId>PD3457</parameterId> <!-- calculated_oxygen_saturation -->
+    <parameterId>PD3458</parameterId> <!-- external_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="prest_event_counter">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7637,6 +7904,19 @@
     <parameterId>PD355</parameterId> <!-- record_type -->
     <parameterId>PD356</parameterId> <!-- record_time -->
     <parameterId>PD2228</parameterId> <!-- passed_checksum -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_z5_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3368</parameterId> <!-- sulfate_concentration -->
+    <parameterId>PD3367</parameterId> <!-- chloride_concentration -->
   </streamDefinition>
   <streamDefinition streamName="cg_dcl_eng_dcl_dlog_status">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -8006,6 +8286,24 @@
     <parameterId>PD950</parameterId> <!-- svu_cal_coefs -->
     <parameterId>PD957</parameterId> <!-- tc_oxygen -->
     <parameterId>PD888</parameterId> <!-- abs_oxygen -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_c_lower_coil_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3403</parameterId> <!-- tracking_id -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3378</parameterId> <!-- boron_concentration -->
+    <parameterId>PD3408</parameterId> <!-- barium_concentration_um -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3376</parameterId> <!-- lithium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3409</parameterId> <!-- sulfur_concentration -->
+    <parameterId>PD3410</parameterId> <!-- strontium_concentration -->
+    <parameterId>PD3411</parameterId> <!-- tracer_percent -->
+    <parameterId>PD3406</parameterId> <!-- flow_rate -->
   </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_gps_eng_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -8542,6 +8840,14 @@
     <parameterId>PD358</parameterId> <!-- voltage_battery -->
     <parameterId>PD2228</parameterId> <!-- passed_checksum -->
   </streamDefinition>
+  <streamDefinition streamName="hyd_o_dcl_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+    <parameterId>PD3398</parameterId> <!-- hyd_raw -->
+    <parameterId>PD3399</parameterId> <!-- hyd_percent -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_ab_diagnostics_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -8961,6 +9267,8 @@
     <parameterId>PD2928</parameterId> <!-- ctdmo_seawater_conductivity -->
     <parameterId>PD2929</parameterId> <!-- ctdmo_practical_salinity -->
     <parameterId>PD2930</parameterId> <!-- ctdmo_seawater_density -->
+    <parameterId>PD2174</parameterId> <!-- sio_controller_timestamp -->
+    <parameterId>PD1558</parameterId> <!-- inductive_id -->
   </streamDefinition>
   <streamDefinition streamName="velpt_battery_voltage">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -9759,6 +10067,22 @@
     <parameterId>PD3234</parameterId> <!-- vel3d_k_northward_velocity -->
     <parameterId>PD3235</parameterId> <!-- vel3d_k_upward_velocity -->
   </streamDefinition>
+  <streamDefinition streamName="ctdav_n_auv_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3459</parameterId> <!-- ctdav_n_auv_conductivity -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD3</parameterId> <!-- salinity -->
+    <parameterId>PD562</parameterId> <!-- speed_of_sound -->
+    <parameterId>PD3460</parameterId> <!-- dissolved_oxygen -->
+    <parameterId>PD3461</parameterId> <!-- powered_on -->
+  </streamDefinition>
   <streamDefinition streamName="adcpt_acfgm_pd0_beam_dcl_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -10089,6 +10413,29 @@
     <parameterId>PD1154</parameterId> <!-- eastward_velocity -->
     <parameterId>PD1155</parameterId> <!-- northward_velocity -->
     <parameterId>PD1156</parameterId> <!-- upward_velocity -->
+  </streamDefinition>
+  <streamDefinition streamName="flort_kn_auv_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3432</parameterId> <!-- device_id -->
+    <parameterId>PD3443</parameterId> <!-- device_count -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3444</parameterId> <!-- version -->
+    <parameterId>PD3445</parameterId> <!-- parameter_0 -->
+    <parameterId>PD3446</parameterId> <!-- parameter_1 -->
+    <parameterId>PD3447</parameterId> <!-- parameter_2 -->
+    <parameterId>PD3448</parameterId> <!-- parameter_3 -->
+    <parameterId>PD3449</parameterId> <!-- parameter_4 -->
+    <parameterId>PD3450</parameterId> <!-- parameter_5 -->
+    <parameterId>PD3451</parameterId> <!-- parameter_6 -->
+    <parameterId>PD3452</parameterId> <!-- parameter_7 -->
+    <parameterId>PD3453</parameterId> <!-- parameter_8 -->
+    <parameterId>PD3454</parameterId> <!-- parameter_9 -->
   </streamDefinition>
   <streamDefinition streamName="ggldr_eng_delayed">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -12444,6 +12791,19 @@
     <parameterId>PD2227</parameterId> <!-- instrument_serial_number_u32 -->
     <parameterId>PD2806</parameterId> <!-- pressure_range -->
   </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_z1_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3368</parameterId> <!-- sulfate_concentration -->
+    <parameterId>PD3367</parameterId> <!-- chloride_concentration -->
+  </streamDefinition>
   <streamDefinition streamName="vadcp_5thbeam_system_configuration">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -12471,6 +12831,41 @@
     <parameterId>PD826</parameterId> <!-- power_timing_version -->
     <parameterId>PD827</parameterId> <!-- power_timing_type -->
     <parameterId>PD828</parameterId> <!-- board_serial_numbers -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_z2_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3368</parameterId> <!-- sulfate_concentration -->
+    <parameterId>PD3367</parameterId> <!-- chloride_concentration -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_y1_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
+  </streamDefinition>
+  <streamDefinition streamName="ppsdn_a_subcon_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD3360</parameterId> <!-- start_time -->
+    <parameterId>PD3361</parameterId> <!-- stop_time -->
+    <parameterId>PD1075</parameterId> <!-- port_number -->
+    <parameterId>PD8</parameterId> <!-- lat -->
+    <parameterId>PD9</parameterId> <!-- lon -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3400</parameterId> <!-- ncbi_sequence_read_archive_url -->
+    <parameterId>PD3401</parameterId> <!-- fasta_url -->
+    <parameterId>PD3402</parameterId> <!-- vamps_url -->
   </streamDefinition>
   <streamDefinition streamName="adcp_pd0_beam_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -12771,6 +13166,54 @@
     <parameterId>PD1554</parameterId> <!-- sparse_double -->
     <parameterId>PD1555</parameterId> <!-- sparse_int -->
   </streamDefinition>
+  <streamDefinition streamName="rasfl_a_subcon_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD3360</parameterId> <!-- start_time -->
+    <parameterId>PD3361</parameterId> <!-- stop_time -->
+    <parameterId>PD1075</parameterId> <!-- port_number -->
+    <parameterId>PD8</parameterId> <!-- lat -->
+    <parameterId>PD9</parameterId> <!-- lon -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD6</parameterId> <!-- temp -->
+    <parameterId>PD3362</parameterId> <!-- acidity -->
+    <parameterId>PD3363</parameterId> <!-- alkalinity -->
+    <parameterId>PD3364</parameterId> <!-- hydrogen_sulfide_concentration -->
+    <parameterId>PD3365</parameterId> <!-- silicon_concentration -->
+    <parameterId>PD3366</parameterId> <!-- ammonia_concentration -->
+    <parameterId>PD3367</parameterId> <!-- chloride_concentration -->
+    <parameterId>PD3368</parameterId> <!-- sulfate_concentration -->
+    <parameterId>PD3369</parameterId> <!-- sodium_concentration -->
+    <parameterId>PD3370</parameterId> <!-- potassium_concentration -->
+    <parameterId>PD3371</parameterId> <!-- magnesium_concentration -->
+    <parameterId>PD3372</parameterId> <!-- calcium_concentration -->
+    <parameterId>PD3373</parameterId> <!-- bromide_concentration -->
+    <parameterId>PD3374</parameterId> <!-- iron_concentration -->
+    <parameterId>PD3375</parameterId> <!-- manganese_concentration -->
+    <parameterId>PD3376</parameterId> <!-- lithium_concentration -->
+    <parameterId>PD3377</parameterId> <!-- strontium_icpaes_concentration -->
+    <parameterId>PD3378</parameterId> <!-- boron_concentration -->
+    <parameterId>PD3379</parameterId> <!-- rubidium_concentration -->
+    <parameterId>PD3380</parameterId> <!-- cesium_concentration -->
+    <parameterId>PD3381</parameterId> <!-- strontium_icpms_concentration -->
+    <parameterId>PD3382</parameterId> <!-- barium_concentration -->
+    <parameterId>PD3383</parameterId> <!-- cobalt_concentration -->
+    <parameterId>PD3384</parameterId> <!-- nickel_concentration -->
+    <parameterId>PD3385</parameterId> <!-- copper_concentration -->
+    <parameterId>PD3386</parameterId> <!-- zinc_concentration -->
+    <parameterId>PD3387</parameterId> <!-- molybdenum_concentration -->
+    <parameterId>PD3388</parameterId> <!-- silver_concentration -->
+    <parameterId>PD3389</parameterId> <!-- cadmium_concentration -->
+    <parameterId>PD3390</parameterId> <!-- titanium_concentration -->
+    <parameterId>PD3391</parameterId> <!-- aluminum_concentration -->
+    <parameterId>PD3392</parameterId> <!-- lead_concentration -->
+    <parameterId>PD3393</parameterId> <!-- vanadium_concentration -->
+    <parameterId>PD3394</parameterId> <!-- uranium_concentration -->
+    <parameterId>PD3395</parameterId> <!-- yttrium_concentration -->
+    <parameterId>PD3396</parameterId> <!-- gadolinium_concentration -->
+  </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -13028,6 +13471,23 @@
     <parameterId>PD2668</parameterId> <!-- camds_humidity -->
     <parameterId>PD2669</parameterId> <!-- camds_error -->
   </streamDefinition>
+  <streamDefinition streamName="flort_kn_auv_metadata">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3432</parameterId> <!-- device_id -->
+    <parameterId>PD3433</parameterId> <!-- device_count -->
+    <parameterId>PD3434</parameterId> <!-- parameter_name -->
+    <parameterId>PD3435</parameterId> <!-- parameter_unit -->
+    <parameterId>PD3436</parameterId> <!-- parameter_id -->
+    <parameterId>PD3437</parameterId> <!-- eco_data_offset -->
+    <parameterId>PD3438</parameterId> <!-- html_plot -->
+    <parameterId>PD3439</parameterId> <!-- parameter_type -->
+    <parameterId>PD3440</parameterId> <!-- mx -->
+    <parameterId>PD3441</parameterId> <!-- b -->
+    <parameterId>PD3442</parameterId> <!-- sensor_name -->
+  </streamDefinition>
   <streamDefinition streamName="adcps_jln_stc_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -13121,6 +13581,14 @@
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
     <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
   </streamDefinition>
+  <streamDefinition streamName="hyd_o_dcl_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+    <parameterId>PD3398</parameterId> <!-- hyd_raw -->
+    <parameterId>PD3399</parameterId> <!-- hyd_percent -->
+  </streamDefinition>
   <streamDefinition streamName="dosta_ln_wfp_sio_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -13203,6 +13671,13 @@
     <parameterId>PD2707</parameterId> <!-- startup_time_string -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
     <parameterId>PD293</parameterId> <!-- firmware_date -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_x1_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
   </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_ce_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -13325,5 +13800,12 @@
     <parameterId>PD2802</parameterId> <!-- initial_directional_frequency -->
     <parameterId>PD2803</parameterId> <!-- directional_frequency_spacing -->
     <parameterId>PD2804</parameterId> <!-- fourier_coefficient_2d_array -->
+  </streamDefinition>
+  <streamDefinition streamName="flobn_m_position_x2_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3404</parameterId> <!-- sample_time -->
+    <parameterId>PD3405</parameterId> <!-- tracer_concentration -->
   </streamDefinition>
 </streamDefinitions>

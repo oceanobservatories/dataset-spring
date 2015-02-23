@@ -1,0 +1,82 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="hyd-o-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="hyd-o-dcl_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/hyd_o/dcl/hyd_o_dcl_recovered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
+    </bean>
+
+    <bean id="hyd-o-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="hyd-o-dcl_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/hyd_o/dcl/hyd_o_dcl_telemetered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
+    </bean>
+
+    <camelContext id="hyd-o-dcl-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="hyd-o-dcl_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/hyd-o-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="hyd-o-dcl_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/hyd-o-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="hyd-o-dcl_recoveredFileConsumerRoute">
+            <from ref="hyd-o-dcl_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-HYDOR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.hyd-o-dcl_recovered" />
+        </route>
+
+        <route id="hyd-o-dcl_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.hyd-o-dcl_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="hyd-o-dcl_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.hyd-o-dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="hyd-o-dcl_telemeteredFileConsumerRoute">
+            <from ref="hyd-o-dcl_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-HYDOT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.hyd-o-dcl_telemetered" />
+        </route>
+
+        <route id="hyd-o-dcl_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.hyd-o-dcl_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="hyd-o-dcl_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.hyd-o-dcl?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

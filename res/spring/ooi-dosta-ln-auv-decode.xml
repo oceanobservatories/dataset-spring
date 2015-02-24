@@ -1,0 +1,82 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="dosta-ln-auv_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="dosta-ln-auv_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_ln/auv/dosta_ln_auv_telemetered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
+    </bean>
+
+    <bean id="dosta-ln-auv_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="dosta-ln-auv_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_ln/auv/dosta_ln_auv_recovered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
+    </bean>
+
+    <camelContext id="dosta-ln-auv-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="dosta-ln-auv_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dosta-ln-auv_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="dosta-ln-auv_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/dosta-ln-auv_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="dosta-ln-auv_telemeteredFileConsumerRoute">
+            <from ref="dosta-ln-auv_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-DSTLAT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dosta-ln-auv_telemetered" />
+        </route>
+
+        <route id="dosta-ln-auv_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.dosta-ln-auv_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="dosta-ln-auv_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.dosta-ln-auv?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="dosta-ln-auv_recoveredFileConsumerRoute">
+            <from ref="dosta-ln-auv_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-DSTLAR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.dosta-ln-auv_recovered" />
+        </route>
+
+        <route id="dosta-ln-auv_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.dosta-ln-auv_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="dosta-ln-auv_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.dosta-ln-auv?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

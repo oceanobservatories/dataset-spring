@@ -1,0 +1,82 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="flort-kn-auv_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="flort-kn-auv_telemetered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_kn/auv/flort_kn_auv_telemetered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
+    </bean>
+
+    <bean id="flort-kn-auv_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="flort-kn-auv_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_kn/auv/flort_kn_auv_recovered_driver.py" />
+        <constructor-arg index="3" ref="oneHourBin" />
+    </bean>
+
+    <camelContext id="flort-kn-auv-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="flort-kn-auv_telemeteredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort-kn-auv_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <endpoint id="flort-kn-auv_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/flort-kn-auv_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="flort-kn-auv_telemeteredFileConsumerRoute">
+            <from ref="flort-kn-auv_telemeteredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>telemetered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FRTKNT000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flort-kn-auv_telemetered" />
+        </route>
+
+        <route id="flort-kn-auv_telemeteredIngest">
+            <from uri="jms-durable:queue:Ingest.flort-kn-auv_telemetered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flort-kn-auv_telemeteredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flort-kn-auv?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+        <route id="flort-kn-auv_recoveredFileConsumerRoute">
+            <from ref="flort-kn-auv_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-FRTKNR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.flort-kn-auv_recovered" />
+        </route>
+
+        <route id="flort-kn-auv_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.flort-kn-auv_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="flort-kn-auv_recoveredProcessor" />
+                    <to uri="direct-vm:persistIndexAlert" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.flort-kn-auv?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

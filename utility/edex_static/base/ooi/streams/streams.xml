@@ -2665,6 +2665,19 @@
   <streamDefinition streamName="lookup_value_static_test">
     <parameterId>PD890</parameterId> <!-- test_lookup_val -->
   </streamDefinition>
+  <streamDefinition streamName="parad_n_auv_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3462</parameterId> <!-- biospherical_mobile_sensor_voltage -->
+    <parameterId>PD3463</parameterId> <!-- sensor_temperature -->
+    <parameterId>PD3464</parameterId> <!-- parad_n_auv_supply_voltage -->
+  </streamDefinition>
   <streamDefinition streamName="stm_timestamp">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3255,6 +3268,33 @@
     <parameterId>PD1088</parameterId> <!-- transmit_pulse_length_2nd -->
     <parameterId>PD534</parameterId> <!-- filter_constants -->
   </streamDefinition>
+  <streamDefinition streamName="fdchp_a_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2612</parameterId> <!-- year -->
+    <parameterId>PD3465</parameterId> <!-- month -->
+    <parameterId>PD3466</parameterId> <!-- day -->
+    <parameterId>PD3467</parameterId> <!-- hour -->
+    <parameterId>PD3468</parameterId> <!-- minute -->
+    <parameterId>PD3469</parameterId> <!-- second -->
+    <parameterId>PD3470</parameterId> <!-- millisecond -->
+    <parameterId>PD3471</parameterId> <!-- fdchp_wind_x -->
+    <parameterId>PD3472</parameterId> <!-- fdchp_wind_y -->
+    <parameterId>PD3473</parameterId> <!-- fdchp_wind_z -->
+    <parameterId>PD3474</parameterId> <!-- fdchp_speed_of_sound_sonic -->
+    <parameterId>PD3321</parameterId> <!-- x_ang_rate -->
+    <parameterId>PD3322</parameterId> <!-- y_ang_rate -->
+    <parameterId>PD3323</parameterId> <!-- z_ang_rate -->
+    <parameterId>PD3475</parameterId> <!-- fdchp_x_accel_g -->
+    <parameterId>PD3476</parameterId> <!-- fdchp_y_accel_g -->
+    <parameterId>PD3477</parameterId> <!-- fdchp_z_accel_g -->
+    <parameterId>PD3478</parameterId> <!-- fdchp_roll -->
+    <parameterId>PD3479</parameterId> <!-- fdchp_pitch -->
+    <parameterId>PD3480</parameterId> <!-- fdchp_heading -->
+    <parameterId>PD3481</parameterId> <!-- fdchp_status_1 -->
+    <parameterId>PD3482</parameterId> <!-- fdchp_status_2 -->
+  </streamDefinition>
   <streamDefinition streamName="vel3d_parsed_sample">
     <parameterId>PD2</parameterId> <!-- pressure -->
     <parameterId>PD440</parameterId> <!-- temperature -->
@@ -3305,6 +3345,19 @@
     <parameterId>PD2316</parameterId> <!-- processing_time -->
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
+  </streamDefinition>
+  <streamDefinition streamName="parad_n_auv_instrument_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3462</parameterId> <!-- biospherical_mobile_sensor_voltage -->
+    <parameterId>PD3463</parameterId> <!-- sensor_temperature -->
+    <parameterId>PD3464</parameterId> <!-- parad_n_auv_supply_voltage -->
   </streamDefinition>
   <streamDefinition streamName="ctd_LC_TEST">
     <parameterId>PD17</parameterId> <!-- quality_flag -->

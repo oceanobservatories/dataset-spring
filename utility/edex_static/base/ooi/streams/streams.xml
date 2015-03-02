@@ -4273,7 +4273,6 @@
     <parameterId>PD3451</parameterId> <!-- parameter_6 -->
     <parameterId>PD3452</parameterId> <!-- parameter_7 -->
     <parameterId>PD3453</parameterId> <!-- parameter_8 -->
-    <parameterId>PD3454</parameterId> <!-- parameter_9 -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_b_dev1_data_record">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -7338,19 +7337,6 @@
     <parameterId>PD2278</parameterId> <!-- volt0_serial_number -->
     <parameterId>PD257</parameterId> <!-- temp_sensor_serial_number -->
     <parameterId>PD258</parameterId> <!-- cond_sensor_serial_number -->
-  </streamDefinition>
-  <streamDefinition streamName="flord_l_wfp_instrument ">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD1141</parameterId> <!-- raw_signal_chl -->
-    <parameterId>PD1139</parameterId> <!-- raw_signal_beta -->
-    <parameterId>PD1144</parameterId> <!-- raw_internal_temp -->
-    <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
-    <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
-    <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
-    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
-    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_wc_wm_eng">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -10488,7 +10474,6 @@
     <parameterId>PD3451</parameterId> <!-- parameter_6 -->
     <parameterId>PD3452</parameterId> <!-- parameter_7 -->
     <parameterId>PD3453</parameterId> <!-- parameter_8 -->
-    <parameterId>PD3454</parameterId> <!-- parameter_9 -->
   </streamDefinition>
   <streamDefinition streamName="ggldr_eng_delayed">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->

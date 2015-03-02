@@ -3908,19 +3908,6 @@
     <parameterId>PD585</parameterId> <!-- meter_type -->
     <parameterId>PD114</parameterId> <!-- serial_number -->
   </streamDefinition>
-  <streamDefinition streamName="flord_l_wfp_instrument">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD1141</parameterId> <!-- raw_signal_chl -->
-    <parameterId>PD1139</parameterId> <!-- raw_signal_beta -->
-    <parameterId>PD1144</parameterId> <!-- raw_internal_temp -->
-    <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
-    <parameterId>PD1654</parameterId> <!-- flort_k_total_volume_scattering_coefficient -->
-    <parameterId>PD1655</parameterId> <!-- fluorometric_chlorophyll_a -->
-    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
-    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
-  </streamDefinition>
   <streamDefinition streamName="nutnr_j_cspp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -4273,7 +4260,6 @@
     <parameterId>PD3451</parameterId> <!-- parameter_6 -->
     <parameterId>PD3452</parameterId> <!-- parameter_7 -->
     <parameterId>PD3453</parameterId> <!-- parameter_8 -->
-    <parameterId>PD3454</parameterId> <!-- parameter_9 -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_b_dev1_data_record">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -7949,15 +7935,6 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD26</parameterId> <!-- raw -->
   </streamDefinition>
-  <streamDefinition streamName="pco2w_abc_imodem_power">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD353</parameterId> <!-- unique_id -->
-    <parameterId>PD355</parameterId> <!-- record_type -->
-    <parameterId>PD356</parameterId> <!-- record_time -->
-    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
-  </streamDefinition>
   <streamDefinition streamName="flobn_m_position_z5_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -10488,7 +10465,6 @@
     <parameterId>PD3451</parameterId> <!-- parameter_6 -->
     <parameterId>PD3452</parameterId> <!-- parameter_7 -->
     <parameterId>PD3453</parameterId> <!-- parameter_8 -->
-    <parameterId>PD3454</parameterId> <!-- parameter_9 -->
   </streamDefinition>
   <streamDefinition streamName="ggldr_eng_delayed">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11042,6 +11018,15 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
+  </streamDefinition>
+  <streamDefinition streamName="pco2w_abc_imodem_power">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD353</parameterId> <!-- unique_id -->
+    <parameterId>PD355</parameterId> <!-- record_type -->
+    <parameterId>PD356</parameterId> <!-- record_time -->
+    <parameterId>PD2228</parameterId> <!-- passed_checksum -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_cd_dcl_user_configuration">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->

@@ -54,7 +54,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2787</parameterId> <!-- number_bands -->
     <parameterId>PD2788</parameterId> <!-- initial_frequency -->
     <parameterId>PD2789</parameterId> <!-- frequency_spacing -->
@@ -81,7 +81,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1646</parameterId> <!-- adcps_jln_timestamp -->
     <parameterId>PD1647</parameterId> <!-- adcps_jln_id -->
-    <parameterId>PD1648</parameterId> <!-- adcps_jln_serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD1649</parameterId> <!-- adcps_jln_volts -->
     <parameterId>PD1650</parameterId> <!-- adcps_jln_records -->
     <parameterId>PD1651</parameterId> <!-- adcps_jln_length -->
@@ -153,6 +153,32 @@
     <parameterId>PD1602</parameterId> <!-- mopak_magy -->
     <parameterId>PD1603</parameterId> <!-- mopak_magz -->
     <parameterId>PD1604</parameterId> <!-- mopak_timer -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_imagenex_852_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3491</parameterId> <!-- range_setting -->
+    <parameterId>PD3614</parameterId> <!-- pitch_deg -->
+    <parameterId>PD3493</parameterId> <!-- look_down_angle -->
+    <parameterId>PD1234</parameterId> <!-- m_altitude -->
+    <parameterId>PD3494</parameterId> <!-- sonar_range -->
+    <parameterId>PD3495</parameterId> <!-- roll_deg -->
+    <parameterId>PD3496</parameterId> <!-- sonar_range_minimum -->
+    <parameterId>PD3497</parameterId> <!-- estimated_range -->
+    <parameterId>PD3498</parameterId> <!-- estimated_rate -->
+    <parameterId>PD3499</parameterId> <!-- obstacle_range_rate_minimum -->
+    <parameterId>PD3500</parameterId> <!-- obstacle_range_maximum -->
+    <parameterId>PD3501</parameterId> <!-- obstacle_range_critical -->
+    <parameterId>PD3502</parameterId> <!-- obstacle_range_rate_critical -->
+    <parameterId>PD3503</parameterId> <!-- pings -->
+    <parameterId>PD2504</parameterId> <!-- massp_ion_chamber_heater_status -->
+    <parameterId>PD3505</parameterId> <!-- median_filter_range -->
   </streamDefinition>
   <streamDefinition streamName="optaa_raw">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -252,7 +278,7 @@
     <parameterId>PD583</parameterId> <!-- record_length -->
     <parameterId>PD584</parameterId> <!-- packet_type -->
     <parameterId>PD585</parameterId> <!-- meter_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
     <parameterId>PD587</parameterId> <!-- pressure_counts -->
     <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
@@ -339,7 +365,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2787</parameterId> <!-- number_bands -->
     <parameterId>PD2788</parameterId> <!-- initial_frequency -->
     <parameterId>PD2789</parameterId> <!-- frequency_spacing -->
@@ -491,7 +517,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1558</parameterId> <!-- inductive_id -->
-    <parameterId>PD2227</parameterId> <!-- instrument_serial_number_u32 -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD193</parameterId> <!-- temperature -->
     <parameterId>PD194</parameterId> <!-- conductivity -->
     <parameterId>PD195</parameterId> <!-- pressure -->
@@ -917,7 +943,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD599</parameterId> <!-- firmware_version -->
+    <parameterId>PD113</parameterId> <!-- firmware_version -->
     <parameterId>PD293</parameterId> <!-- firmware_date -->
     <parameterId>PD600</parameterId> <!-- persistor_cf_serial_number -->
     <parameterId>PD601</parameterId> <!-- persistor_cf_bios_version -->
@@ -941,7 +967,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
@@ -1022,28 +1048,13 @@
     <parameterId>PD1593</parameterId> <!-- rte_hits -->
     <parameterId>PD1594</parameterId> <!-- rte_state -->
   </streamDefinition>
-  <streamDefinition streamName="wavss_a_dcl_statistics_recovered">
+  <streamDefinition streamName="cg_dcl_eng_dcl_error_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
-    <parameterId>PD1136</parameterId> <!-- date_string -->
-    <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
-    <parameterId>PD2773</parameterId> <!-- number_zero_crossings -->
-    <parameterId>PD2774</parameterId> <!-- average_wave_height -->
-    <parameterId>PD2775</parameterId> <!-- mean_spectral_period -->
-    <parameterId>PD2776</parameterId> <!-- max_wave_height -->
-    <parameterId>PD2777</parameterId> <!-- significant_wave_height -->
-    <parameterId>PD2778</parameterId> <!-- significant_period -->
-    <parameterId>PD2779</parameterId> <!-- wave_height_10 -->
-    <parameterId>PD2780</parameterId> <!-- wave_period_10 -->
-    <parameterId>PD2781</parameterId> <!-- mean_wave_period -->
-    <parameterId>PD2782</parameterId> <!-- peak_wave_period -->
-    <parameterId>PD2783</parameterId> <!-- wave_period_tp5 -->
-    <parameterId>PD2784</parameterId> <!-- wave_height_hmo -->
-    <parameterId>PD2785</parameterId> <!-- mean_direction -->
-    <parameterId>PD2786</parameterId> <!-- mean_spread -->
+    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
+    <parameterId>PD2947</parameterId> <!-- log_type -->
+    <parameterId>PD2948</parameterId> <!-- message_text -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_abc_imodem_instrument_blank_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1113,7 +1124,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2794</parameterId> <!-- number_time_samples -->
     <parameterId>PD2795</parameterId> <!-- initial_time -->
     <parameterId>PD2796</parameterId> <!-- time_spacing -->
@@ -1192,7 +1203,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD663</parameterId> <!-- variable_leader_id -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
@@ -1340,7 +1351,7 @@
     <parameterId>PD2318</parameterId> <!-- start_date -->
     <parameterId>PD584</parameterId> <!-- packet_type -->
     <parameterId>PD585</parameterId> <!-- meter_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="cspp_eng_cspp_dbg_pdbg_batt_eng">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1418,8 +1429,6 @@
     <parameterId>PD910</parameterId> <!-- seawater_conductivity -->
     <parameterId>PD911</parameterId> <!-- practical_salinity -->
     <parameterId>PD912</parameterId> <!-- seawater_density -->
-    <parameterId>PD1556</parameterId> <!-- lat -->
-    <parameterId>PD1557</parameterId> <!-- lon -->
     <parameterId>PD2310</parameterId> <!-- ext_volt0 -->
   </streamDefinition>
   <streamDefinition streamName="pco2a_a_dcl_metadata_recovered">
@@ -1464,7 +1473,7 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD274</parameterId> <!-- device_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD291</parameterId> <!-- manufacturer -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
     <parameterId>PD293</parameterId> <!-- firmware_date -->
@@ -1487,7 +1496,7 @@
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD584</parameterId> <!-- packet_type -->
     <parameterId>PD585</parameterId> <!-- meter_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
     <parameterId>PD587</parameterId> <!-- pressure_counts -->
     <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
@@ -1513,7 +1522,7 @@
     <parameterId>PD1276</parameterId> <!-- m_depth -->
     <parameterId>PD3</parameterId> <!-- salinity -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
@@ -1610,13 +1619,13 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="ctdpf_optode_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD202</parameterId> <!-- logging_status -->
     <parameterId>PD263</parameterId> <!-- num_events -->
@@ -1774,7 +1783,7 @@
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD667</parameterId> <!-- bit_result_demod_1 -->
     <parameterId>PD666</parameterId> <!-- ensemble_number_increment -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD660</parameterId> <!-- system_power -->
     <parameterId>PD663</parameterId> <!-- variable_leader_id -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
@@ -1814,7 +1823,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD117</parameterId> <!-- pressure_sensor_range -->
     <parameterId>PD158</parameterId> <!-- calibration_date_pressure -->
     <parameterId>PD174</parameterId> <!-- press_coeff_poffset -->
@@ -1832,7 +1841,7 @@
     <parameterId>PD186</parameterId> <!-- cond_coeff_cpcor -->
     <parameterId>PD187</parameterId> <!-- cond_coeff_cslope -->
     <parameterId>PD229</parameterId> <!-- temp_coeff_offset -->
-    <parameterId>PD230</parameterId> <!-- press_serial_number -->
+    <parameterId>PD280</parameterId> <!-- pressure_sensor_serial_number -->
     <parameterId>PD231</parameterId> <!-- press_coeff_pa0 -->
     <parameterId>PD232</parameterId> <!-- press_coeff_pa1 -->
     <parameterId>PD233</parameterId> <!-- press_coeff_pa2 -->
@@ -1937,7 +1946,7 @@
     <parameterId>PD655</parameterId> <!-- false_target_threshold -->
     <parameterId>PD657</parameterId> <!-- transmit_lag_distance -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
     <parameterId>PD785</parameterId> <!-- ensemble_start_time -->
@@ -2167,6 +2176,14 @@
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
   </streamDefinition>
+  <streamDefinition streamName="flord_l_wfp_sio_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
+    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
+    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="vadcp_5thbeam_pd0_beam_parsed">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -2265,7 +2282,7 @@
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD667</parameterId> <!-- bit_result_demod_1 -->
     <parameterId>PD666</parameterId> <!-- ensemble_number_increment -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD660</parameterId> <!-- system_power -->
     <parameterId>PD663</parameterId> <!-- variable_leader_id -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
@@ -2665,6 +2682,32 @@
   <streamDefinition streamName="lookup_value_static_test">
     <parameterId>PD890</parameterId> <!-- test_lookup_val -->
   </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_imagenex_852">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3491</parameterId> <!-- range_setting -->
+    <parameterId>PD3614</parameterId> <!-- pitch_deg -->
+    <parameterId>PD3493</parameterId> <!-- look_down_angle -->
+    <parameterId>PD1234</parameterId> <!-- m_altitude -->
+    <parameterId>PD3494</parameterId> <!-- sonar_range -->
+    <parameterId>PD3495</parameterId> <!-- roll_deg -->
+    <parameterId>PD3496</parameterId> <!-- sonar_range_minimum -->
+    <parameterId>PD3497</parameterId> <!-- estimated_range -->
+    <parameterId>PD3498</parameterId> <!-- estimated_rate -->
+    <parameterId>PD3499</parameterId> <!-- obstacle_range_rate_minimum -->
+    <parameterId>PD3500</parameterId> <!-- obstacle_range_maximum -->
+    <parameterId>PD3501</parameterId> <!-- obstacle_range_critical -->
+    <parameterId>PD3502</parameterId> <!-- obstacle_range_rate_critical -->
+    <parameterId>PD3503</parameterId> <!-- pings -->
+    <parameterId>PD2504</parameterId> <!-- massp_ion_chamber_heater_status -->
+    <parameterId>PD3505</parameterId> <!-- median_filter_range -->
+  </streamDefinition>
   <streamDefinition streamName="parad_n_auv_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -2707,7 +2750,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2794</parameterId> <!-- number_time_samples -->
     <parameterId>PD2795</parameterId> <!-- initial_time -->
     <parameterId>PD2796</parameterId> <!-- time_spacing -->
@@ -3125,6 +3168,16 @@
     <parameterId>PD838</parameterId> <!-- time_sync_flag -->
     <parameterId>PD848</parameterId> <!-- bottom_pressure -->
     <parameterId>PD843</parameterId> <!-- press_trans_temp -->
+    <parameterId>PD3655</parameterId> <!-- botsflu_time15s -->
+    <parameterId>PD3656</parameterId> <!-- botsflu_meanpres -->
+    <parameterId>PD3657</parameterId> <!-- botsflu_meandepth -->
+    <parameterId>PD3658</parameterId> <!-- botsflu_5minrate -->
+    <parameterId>PD3659</parameterId> <!-- botsflu_10minrate -->
+    <parameterId>PD3660</parameterId> <!-- botsflu_time24h -->
+    <parameterId>PD3661</parameterId> <!-- botsflu_daydepth -->
+    <parameterId>PD3662</parameterId> <!-- botsflu_4wkrate -->
+    <parameterId>PD3663</parameterId> <!-- botsflu_8wkrate -->
+    <parameterId>PD3664</parameterId> <!-- botsflu_predtide -->
   </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_lhz">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -3380,6 +3433,21 @@
     <parameterId>PD895</parameterId> <!-- qc_pressure_global_range -->
     <parameterId>PD896</parameterId> <!-- qc_conductivity_global_range -->
   </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_emergency_board_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3547</parameterId> <!-- board_voltage -->
+    <parameterId>PD3548</parameterId> <!-- status -->
+    <parameterId>PD3549</parameterId> <!-- descent_status -->
+    <parameterId>PD3550</parameterId> <!-- ascent_status -->
+    <parameterId>PD3551</parameterId> <!-- pickup_status -->
+    <parameterId>PD3552</parameterId> <!-- descent_continuity -->
+    <parameterId>PD3553</parameterId> <!-- ascent_continuity -->
+    <parameterId>PD3554</parameterId> <!-- pickup_continuity -->
+    <parameterId>PD3555</parameterId> <!-- secondary_status -->
+  </streamDefinition>
   <streamDefinition streamName="graph_image_param_dict">
     <parameterId>PD18</parameterId> <!-- viz_timestamp -->
     <parameterId>PD19</parameterId> <!-- viz_product_type -->
@@ -3455,6 +3523,33 @@
     <parameterId>PD1584</parameterId> <!-- wfp_sensor_stop -->
     <parameterId>PD1585</parameterId> <!-- wfp_profile_stop -->
     <parameterId>PD2027</parameterId> <!-- wfp_decimation_factor -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_digital_tx_board">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3589</parameterId> <!-- transponder_table_index_1 -->
+    <parameterId>PD3590</parameterId> <!-- transponder_table_index_2 -->
+    <parameterId>PD3591</parameterId> <!-- inband_channel_1_snr -->
+    <parameterId>PD3592</parameterId> <!-- inband_channel_2_snr -->
+    <parameterId>PD3593</parameterId> <!-- interrogate_channel_1_snr -->
+    <parameterId>PD3594</parameterId> <!-- interrogate_channel_2_snr -->
+    <parameterId>PD3595</parameterId> <!-- receive_channel_1 -->
+    <parameterId>PD3596</parameterId> <!-- receive_channel_2 -->
+    <parameterId>PD3597</parameterId> <!-- range_1 -->
+    <parameterId>PD3598</parameterId> <!-- range_2 -->
+    <parameterId>PD3599</parameterId> <!-- reply_age_1 -->
+    <parameterId>PD3600</parameterId> <!-- reply_age_2 -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3507</parameterId> <!-- auv_speed_of_sound -->
+    <parameterId>PD3601</parameterId> <!-- fail_flag -->
+    <parameterId>PD3602</parameterId> <!-- received_bits -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3603</parameterId> <!-- outband_channel_1_snr -->
+    <parameterId>PD3604</parameterId> <!-- outband_channel_2_snr -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_abc_imodem_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3700,7 +3795,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1004</parameterId> <!-- product_name -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD1007</parameterId> <!-- software_id -->
     <parameterId>PD1008</parameterId> <!-- software_version -->
     <parameterId>PD1009</parameterId> <!-- node_description -->
@@ -3803,7 +3898,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -3897,7 +3992,49 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD3665</parameterId> <!-- dosta_abcdjm_sio_abs_oxygen -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_emergency_board">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3547</parameterId> <!-- board_voltage -->
+    <parameterId>PD3548</parameterId> <!-- status -->
+    <parameterId>PD3549</parameterId> <!-- descent_status -->
+    <parameterId>PD3550</parameterId> <!-- ascent_status -->
+    <parameterId>PD3551</parameterId> <!-- pickup_status -->
+    <parameterId>PD3552</parameterId> <!-- descent_continuity -->
+    <parameterId>PD3553</parameterId> <!-- ascent_continuity -->
+    <parameterId>PD3554</parameterId> <!-- pickup_continuity -->
+    <parameterId>PD3555</parameterId> <!-- secondary_status -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_digital_usbl_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3507</parameterId> <!-- auv_speed_of_sound -->
+    <parameterId>PD3508</parameterId> <!-- reserved -->
+    <parameterId>PD3509</parameterId> <!-- range_minimum -->
+    <parameterId>PD3510</parameterId> <!-- range_maximum -->
+    <parameterId>PD3511</parameterId> <!-- latency -->
+    <parameterId>PD3512</parameterId> <!-- x_angle -->
+    <parameterId>PD3513</parameterId> <!-- y_angle -->
+    <parameterId>PD3514</parameterId> <!-- range -->
+    <parameterId>PD3515</parameterId> <!-- gain_1 -->
+    <parameterId>PD3516</parameterId> <!-- gain_2 -->
+    <parameterId>PD3517</parameterId> <!-- array_sound_speed -->
+    <parameterId>PD3518</parameterId> <!-- reason -->
+    <parameterId>PD3519</parameterId> <!-- x_center -->
+    <parameterId>PD3520</parameterId> <!-- y_center -->
+    <parameterId>PD3521</parameterId> <!-- inband_snr -->
+    <parameterId>PD3522</parameterId> <!-- outband_snr -->
+    <parameterId>PD3523</parameterId> <!-- transponder_table_index -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
   </streamDefinition>
   <streamDefinition streamName="optaa_dj_dcl_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3906,7 +4043,7 @@
     <parameterId>PD2318</parameterId> <!-- start_date -->
     <parameterId>PD584</parameterId> <!-- packet_type -->
     <parameterId>PD585</parameterId> <!-- meter_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="flord_l_wfp_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -3960,78 +4097,17 @@
     <parameterId>PD2616</parameterId> <!-- ctd_temp -->
     <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
   </streamDefinition>
-  <streamDefinition streamName="fdchp_a_dcl_instrument_recovered">
+  <streamDefinition streamName="ctdbp_cdef_dcl_ce_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD3289</parameterId> <!-- instrument_start_timestamp -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
-    <parameterId>PD3290</parameterId> <!-- time_datacollection -->
-    <parameterId>PD3291</parameterId> <!-- v_num_datacollection -->
-    <parameterId>PD3292</parameterId> <!-- status_datacollection -->
-    <parameterId>PD3293</parameterId> <!-- wind_u_avg -->
-    <parameterId>PD3294</parameterId> <!-- wind_v_avg -->
-    <parameterId>PD3295</parameterId> <!-- wind_w_avg -->
-    <parameterId>PD3296</parameterId> <!-- speed_of_sound_avg -->
-    <parameterId>PD3297</parameterId> <!-- wind_u_std -->
-    <parameterId>PD3298</parameterId> <!-- wind_v_std -->
-    <parameterId>PD3299</parameterId> <!-- wind_w_std -->
-    <parameterId>PD3300</parameterId> <!-- speed_of_sound_std -->
-    <parameterId>PD3301</parameterId> <!-- wind_u_max -->
-    <parameterId>PD3302</parameterId> <!-- wind_v_max -->
-    <parameterId>PD3303</parameterId> <!-- wind_w_max -->
-    <parameterId>PD3304</parameterId> <!-- speed_of_sound_max -->
-    <parameterId>PD3305</parameterId> <!-- wind_u_min -->
-    <parameterId>PD3306</parameterId> <!-- wind_v_min -->
-    <parameterId>PD3307</parameterId> <!-- wind_w_min -->
-    <parameterId>PD3308</parameterId> <!-- speed_of_sound_min -->
-    <parameterId>PD3309</parameterId> <!-- x_accel -->
-    <parameterId>PD3310</parameterId> <!-- y_accel -->
-    <parameterId>PD3311</parameterId> <!-- z_accel -->
-    <parameterId>PD3312</parameterId> <!-- x_accel_std -->
-    <parameterId>PD3313</parameterId> <!-- y_accel_std -->
-    <parameterId>PD3314</parameterId> <!-- z_accel_std -->
-    <parameterId>PD3315</parameterId> <!-- x_accel_max -->
-    <parameterId>PD3316</parameterId> <!-- y_accel_max -->
-    <parameterId>PD3317</parameterId> <!-- z_accel_max -->
-    <parameterId>PD3318</parameterId> <!-- x_accel_min -->
-    <parameterId>PD3319</parameterId> <!-- y_accel_min -->
-    <parameterId>PD3320</parameterId> <!-- z_accel_min -->
-    <parameterId>PD3321</parameterId> <!-- x_ang_rate -->
-    <parameterId>PD3322</parameterId> <!-- y_ang_rate -->
-    <parameterId>PD3323</parameterId> <!-- z_ang_rate -->
-    <parameterId>PD3324</parameterId> <!-- x_ang_rate_std -->
-    <parameterId>PD3325</parameterId> <!-- y_ang_rate_std -->
-    <parameterId>PD3326</parameterId> <!-- z_ang_rate_std -->
-    <parameterId>PD3327</parameterId> <!-- x_ang_rate_max -->
-    <parameterId>PD3328</parameterId> <!-- y_ang_rate_max -->
-    <parameterId>PD3329</parameterId> <!-- z_ang_rate_max -->
-    <parameterId>PD3330</parameterId> <!-- x_ang_rate_min -->
-    <parameterId>PD3331</parameterId> <!-- y_ang_rate_min -->
-    <parameterId>PD3332</parameterId> <!-- z_ang_rate_min -->
-    <parameterId>PD436</parameterId> <!-- heading -->
-    <parameterId>PD437</parameterId> <!-- pitch -->
-    <parameterId>PD438</parameterId> <!-- roll -->
-    <parameterId>PD3333</parameterId> <!-- heading_std -->
-    <parameterId>PD3334</parameterId> <!-- pitch_std -->
-    <parameterId>PD3335</parameterId> <!-- roll_std -->
-    <parameterId>PD3336</parameterId> <!-- heading_max -->
-    <parameterId>PD3337</parameterId> <!-- pitch_max -->
-    <parameterId>PD3338</parameterId> <!-- roll_max -->
-    <parameterId>PD3339</parameterId> <!-- heading_min -->
-    <parameterId>PD3340</parameterId> <!-- pitch_min -->
-    <parameterId>PD3341</parameterId> <!-- roll_min -->
-    <parameterId>PD3342</parameterId> <!-- u_corr -->
-    <parameterId>PD3343</parameterId> <!-- v_corr -->
-    <parameterId>PD3344</parameterId> <!-- w_corr -->
-    <parameterId>PD3345</parameterId> <!-- u_corr_std -->
-    <parameterId>PD3346</parameterId> <!-- v_corr_std -->
-    <parameterId>PD3347</parameterId> <!-- w_corr_std -->
-    <parameterId>PD3348</parameterId> <!-- wind_speed -->
-    <parameterId>PD3349</parameterId> <!-- uw_momentum_flux -->
-    <parameterId>PD3350</parameterId> <!-- vw_momentum_flux -->
-    <parameterId>PD3351</parameterId> <!-- buoyance_flux -->
-    <parameterId>PD3352</parameterId> <!-- eng_wave_motion -->
+    <parameterId>PD6</parameterId> <!-- temp -->
+    <parameterId>PD1</parameterId> <!-- conductivity -->
+    <parameterId>PD2</parameterId> <!-- pressure -->
+    <parameterId>PD93</parameterId> <!-- date_time_string -->
+    <parameterId>PD923</parameterId> <!-- salinity -->
+    <parameterId>PD2841</parameterId> <!-- ctdbp_cdef_dcl_ce_density -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_l_wfp_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -4048,6 +4124,10 @@
     <parameterId>PD2237</parameterId> <!-- vel3d_l_vp2 -->
     <parameterId>PD2238</parameterId> <!-- vel3d_l_vp3 -->
     <parameterId>PD2239</parameterId> <!-- vel3d_l_vp4 -->
+    <parameterId>PD3487</parameterId> <!-- vel3d_l_eastward_velocity -->
+    <parameterId>PD3488</parameterId> <!-- vel3d_l_northward_velocity -->
+    <parameterId>PD3489</parameterId> <!-- vel3d_l_upward_velocity_ascending -->
+    <parameterId>PD3490</parameterId> <!-- vel3d_l_upward_velocity_descending -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_abc_dcl_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -4076,7 +4156,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2787</parameterId> <!-- number_bands -->
     <parameterId>PD2788</parameterId> <!-- initial_frequency -->
     <parameterId>PD2789</parameterId> <!-- frequency_spacing -->
@@ -4084,6 +4164,19 @@
     <parameterId>PD2802</parameterId> <!-- initial_directional_frequency -->
     <parameterId>PD2803</parameterId> <!-- directional_frequency_spacing -->
     <parameterId>PD2804</parameterId> <!-- fourier_coefficient_2d_array -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_oil_compensator">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3556</parameterId> <!-- raw_value -->
+    <parameterId>PD3557</parameterId> <!-- oil_level -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3558</parameterId> <!-- oil_location -->
   </streamDefinition>
   <streamDefinition streamName="adcpt_acfgm_pd0_dcl_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -4144,7 +4237,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -4284,6 +4377,19 @@
     <parameterId>PD356</parameterId> <!-- record_time -->
     <parameterId>PD333</parameterId> <!-- checksum -->
   </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_oil_compensator_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3556</parameterId> <!-- raw_value -->
+    <parameterId>PD3557</parameterId> <!-- oil_level -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3558</parameterId> <!-- oil_location -->
+  </streamDefinition>
   <streamDefinition streamName="velpt_j_cspp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -4303,6 +4409,9 @@
     <parameterId>PD444</parameterId> <!-- amplitude_beam1 -->
     <parameterId>PD445</parameterId> <!-- amplitude_beam2 -->
     <parameterId>PD446</parameterId> <!-- amplitude_beam3 -->
+    <parameterId>PD3652</parameterId> <!-- velpt_j_eastward_velocity -->
+    <parameterId>PD3653</parameterId> <!-- velpt_j_northward_velocity -->
+    <parameterId>PD3654</parameterId> <!-- velpt_j_upward_velocity -->
   </streamDefinition>
   <streamDefinition streamName="flort_dj_cspp_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -4427,7 +4536,7 @@
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
     <parameterId>PD1089</parameterId> <!-- instrument_id -->
-    <parameterId>PD1090</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="flobn_m_direction_y_flow_rate_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -4493,7 +4602,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -4735,7 +4844,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="pco2a_a_dcl_instrument_air">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -5133,6 +5242,35 @@
     <parameterId>PD1579</parameterId> <!-- wfp_sensor_start -->
     <parameterId>PD1580</parameterId> <!-- wfp_profile_start -->
   </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_tri_fin_motor_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3524</parameterId> <!-- fin_count -->
+    <parameterId>PD3525</parameterId> <!-- fin_pitch_position -->
+    <parameterId>PD3526</parameterId> <!-- fin_rudder_position -->
+    <parameterId>PD3527</parameterId> <!-- fin_roll_position -->
+    <parameterId>PD3528</parameterId> <!-- fin_pitch_command -->
+    <parameterId>PD3529</parameterId> <!-- fin_rudder_command -->
+    <parameterId>PD3530</parameterId> <!-- fin_roll_command -->
+    <parameterId>PD3531</parameterId> <!-- fin_command_data_1 -->
+    <parameterId>PD3532</parameterId> <!-- fin_position_data_1 -->
+    <parameterId>PD3533</parameterId> <!-- fin_command_data_2 -->
+    <parameterId>PD3534</parameterId> <!-- fin_position_data_2 -->
+    <parameterId>PD3535</parameterId> <!-- fin_command_data_3 -->
+    <parameterId>PD3536</parameterId> <!-- fin_position_data_3 -->
+    <parameterId>PD3537</parameterId> <!-- fin_command_data_4 -->
+    <parameterId>PD3538</parameterId> <!-- fin_position_data_4 -->
+    <parameterId>PD3539</parameterId> <!-- fin_command_data_5 -->
+    <parameterId>PD3540</parameterId> <!-- fin_position_data_5 -->
+    <parameterId>PD3541</parameterId> <!-- fin_command_data_6 -->
+    <parameterId>PD3542</parameterId> <!-- fin_position_data_6 -->
+    <parameterId>PD3543</parameterId> <!-- fin_yaw_translation_command -->
+    <parameterId>PD3544</parameterId> <!-- fin_depth_translation_command -->
+    <parameterId>PD3545</parameterId> <!-- fin_yaw_translation_position -->
+    <parameterId>PD3546</parameterId> <!-- fin_depth_translation_position -->
+  </streamDefinition>
   <streamDefinition streamName="sami_regular_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -5191,7 +5329,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD117</parameterId> <!-- pressure_sensor_range -->
     <parameterId>PD158</parameterId> <!-- calibration_date_pressure -->
     <parameterId>PD174</parameterId> <!-- press_coeff_poffset -->
@@ -5209,7 +5347,7 @@
     <parameterId>PD186</parameterId> <!-- cond_coeff_cpcor -->
     <parameterId>PD187</parameterId> <!-- cond_coeff_cslope -->
     <parameterId>PD229</parameterId> <!-- temp_coeff_offset -->
-    <parameterId>PD230</parameterId> <!-- press_serial_number -->
+    <parameterId>PD280</parameterId> <!-- pressure_sensor_serial_number -->
     <parameterId>PD231</parameterId> <!-- press_coeff_pa0 -->
     <parameterId>PD232</parameterId> <!-- press_coeff_pa1 -->
     <parameterId>PD233</parameterId> <!-- press_coeff_pa2 -->
@@ -5271,7 +5409,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD202</parameterId> <!-- logging_status -->
     <parameterId>PD263</parameterId> <!-- num_events -->
@@ -5408,7 +5546,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -5490,7 +5628,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD211</parameterId> <!-- battery_cutoff -->
     <parameterId>PD218</parameterId> <!-- ext_volt_0 -->
     <parameterId>PD219</parameterId> <!-- ext_volt_1 -->
@@ -5551,12 +5689,12 @@
     <parameterId>PD836</parameterId> <!-- oxy_temp -->
     <parameterId>PD197</parameterId> <!-- oxygen -->
     <parameterId>PD908</parameterId> <!-- seawater_temperature -->
-    <parameterId>PD909</parameterId> <!-- seawater_pressure -->
-    <parameterId>PD910</parameterId> <!-- seawater_conductivity -->
-    <parameterId>PD911</parameterId> <!-- practical_salinity -->
-    <parameterId>PD912</parameterId> <!-- seawater_density -->
+    <parameterId>PD3647</parameterId> <!-- ctdbp_no_seawater_pressure -->
+    <parameterId>PD3648</parameterId> <!-- ctdbp_no_seawater_conductivity -->
+    <parameterId>PD3649</parameterId> <!-- ctdbp_no_practical_salinity -->
+    <parameterId>PD3650</parameterId> <!-- ctdbp_no_seawater_density -->
     <parameterId>PD964</parameterId> <!-- ctdbp_tc_oxygen -->
-    <parameterId>PD990</parameterId> <!-- ctdbp_abs_oxygen -->
+    <parameterId>PD3651</parameterId> <!-- ctdbp_no_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="ctdav_n_auv_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -5597,7 +5735,6 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD77</parameterId> <!-- timestamp -->
-    <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD432</parameterId> <!-- battery_voltage -->
     <parameterId>PD2713</parameterId> <!-- temperature01 -->
@@ -5643,6 +5780,42 @@
     <parameterId>PD805</parameterId> <!-- offset_up_down -->
     <parameterId>PD806</parameterId> <!-- tilt_null -->
   </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_smart_battery">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3559</parameterId> <!-- flags -->
+    <parameterId>PD3560</parameterId> <!-- battery_index -->
+    <parameterId>PD3561</parameterId> <!-- battery_count -->
+    <parameterId>PD3562</parameterId> <!-- address_mask -->
+    <parameterId>PD3563</parameterId> <!-- smart_battery_voltage -->
+    <parameterId>PD3564</parameterId> <!-- end_of_discharge -->
+    <parameterId>PD3565</parameterId> <!-- average_current -->
+    <parameterId>PD3566</parameterId> <!-- temperature_one_tenth -->
+    <parameterId>PD3567</parameterId> <!-- full_charge_capacity -->
+    <parameterId>PD3568</parameterId> <!-- remaining_capacity -->
+    <parameterId>PD3569</parameterId> <!-- desired_charge_rate -->
+    <parameterId>PD3570</parameterId> <!-- serial -->
+    <parameterId>PD3571</parameterId> <!-- battery_status -->
+    <parameterId>PD3572</parameterId> <!-- battery_flags -->
+    <parameterId>PD3573</parameterId> <!-- cycle_count -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3574</parameterId> <!-- available_power -->
+    <parameterId>PD3575</parameterId> <!-- auv_temperature -->
+    <parameterId>PD3576</parameterId> <!-- pressure_mbar -->
+    <parameterId>PD3577</parameterId> <!-- pic_charge_value -->
+    <parameterId>PD3578</parameterId> <!-- pic_balance_enabled -->
+    <parameterId>PD3579</parameterId> <!-- pic_fet_state -->
+    <parameterId>PD3580</parameterId> <!-- pic_faults -->
+    <parameterId>PD3581</parameterId> <!-- pic_cell_voltage_1 -->
+    <parameterId>PD3582</parameterId> <!-- pic_cell_voltage_2 -->
+    <parameterId>PD3583</parameterId> <!-- pic_cell_voltage_3 -->
+    <parameterId>PD3584</parameterId> <!-- pic_cell_voltage_4 -->
+    <parameterId>PD3585</parameterId> <!-- pic_cell_voltage_5 -->
+    <parameterId>PD3586</parameterId> <!-- pic_cell_voltage_6 -->
+    <parameterId>PD3587</parameterId> <!-- pic_cell_voltage_7 -->
+    <parameterId>PD3588</parameterId> <!-- battery_temperature -->
+  </streamDefinition>
   <streamDefinition streamName="wavss_a_dcl_mean_directional_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -5650,7 +5823,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2787</parameterId> <!-- number_bands -->
     <parameterId>PD2788</parameterId> <!-- initial_frequency -->
     <parameterId>PD2789</parameterId> <!-- frequency_spacing -->
@@ -5682,7 +5855,7 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD1089</parameterId> <!-- instrument_id -->
-    <parameterId>PD1090</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD1091</parameterId> <!-- timer -->
     <parameterId>PD1092</parameterId> <!-- sample_delay -->
     <parameterId>PD1093</parameterId> <!-- spkir_samples -->
@@ -5823,7 +5996,7 @@
     <parameterId>PD203</parameterId> <!-- num_samples -->
     <parameterId>PD204</parameterId> <!-- mem_free -->
     <parameterId>PD205</parameterId> <!-- sample_interval -->
-    <parameterId>PD2227</parameterId> <!-- instrument_serial_number_u32 -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2806</parameterId> <!-- pressure_range -->
   </streamDefinition>
   <streamDefinition streamName="thsph_sample">
@@ -6397,7 +6570,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1089</parameterId> <!-- instrument_id -->
-    <parameterId>PD1090</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD1091</parameterId> <!-- timer -->
     <parameterId>PD1092</parameterId> <!-- sample_delay -->
     <parameterId>PD2319</parameterId> <!-- channel_array -->
@@ -6752,7 +6925,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
@@ -6768,7 +6941,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD211</parameterId> <!-- battery_cutoff -->
     <parameterId>PD218</parameterId> <!-- ext_volt_0 -->
     <parameterId>PD219</parameterId> <!-- ext_volt_1 -->
@@ -6790,6 +6963,56 @@
     <parameterId>PD2298</parameterId> <!-- ignore_switch -->
     <parameterId>PD2299</parameterId> <!-- battery_type -->
     <parameterId>PD2300</parameterId> <!-- sbe63 -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_state">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3608</parameterId> <!-- software_version -->
+    <parameterId>PD3675</parameterId> <!-- bt_forward_ref_layer_velocity -->
+    <parameterId>PD3609</parameterId> <!-- heading_rate -->
+    <parameterId>PD3576</parameterId> <!-- pressure_mbar -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3610</parameterId> <!-- depth_goal -->
+    <parameterId>PD3611</parameterId> <!-- obs -->
+    <parameterId>PD3492</parameterId> <!-- auv_state_voltage -->
+    <parameterId>PD3612</parameterId> <!-- auv_current -->
+    <parameterId>PD3613</parameterId> <!-- gfi -->
+    <parameterId>PD3614</parameterId> <!-- pitch_deg -->
+    <parameterId>PD3615</parameterId> <!-- pitch_goal -->
+    <parameterId>PD3495</parameterId> <!-- roll_deg -->
+    <parameterId>PD3616</parameterId> <!-- thruster -->
+    <parameterId>PD3617</parameterId> <!-- thruster_goal -->
+    <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3618</parameterId> <!-- heading_goal -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3619</parameterId> <!-- days_since_1970 -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3620</parameterId> <!-- dr_latitude -->
+    <parameterId>PD3621</parameterId> <!-- dr_longitude -->
+    <parameterId>PD3622</parameterId> <!-- goal_latitude -->
+    <parameterId>PD3623</parameterId> <!-- goal_longitude -->
+    <parameterId>PD3624</parameterId> <!-- estimated_velocity -->
+    <parameterId>PD3625</parameterId> <!-- heading_offset -->
+    <parameterId>PD3626</parameterId> <!-- flags -->
+    <parameterId>PD3627</parameterId> <!-- thruster_command -->
+    <parameterId>PD3628</parameterId> <!-- pitch_command -->
+    <parameterId>PD3629</parameterId> <!-- rudder_command -->
+    <parameterId>PD3630</parameterId> <!-- pitch_fin_position -->
+    <parameterId>PD3631</parameterId> <!-- rudder_fin_position -->
+    <parameterId>PD3632</parameterId> <!-- total_objectives -->
+    <parameterId>PD3633</parameterId> <!-- current_objective -->
+    <parameterId>PD3634</parameterId> <!-- cpu_usage -->
+    <parameterId>PD3635</parameterId> <!-- objective_index -->
+    <parameterId>PD3636</parameterId> <!-- leg_number -->
+    <parameterId>PD3637</parameterId> <!-- spare_slider -->
+    <parameterId>PD3638</parameterId> <!-- roll_rate -->
+    <parameterId>PD3639</parameterId> <!-- pitch_rate -->
+    <parameterId>PD3640</parameterId> <!-- faults -->
+    <parameterId>PD3641</parameterId> <!-- navigation_mode -->
+    <parameterId>PD3642</parameterId> <!-- secondary_faults -->
   </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_dcl_cp_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -6951,6 +7174,15 @@
     <parameterId>PD2106</parameterId> <!-- hdrcode -->
     <parameterId>PD2107</parameterId> <!-- bodycode -->
     <parameterId>PD2108</parameterId> <!-- desc -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_fault_message">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3605</parameterId> <!-- filename -->
+    <parameterId>PD3606</parameterId> <!-- line -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3607</parameterId> <!-- message -->
   </streamDefinition>
   <streamDefinition streamName="cg_dcl_eng_dcl_pps_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -7203,8 +7435,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD274</parameterId> <!-- device_type -->
-    <parameterId>PD287</parameterId> <!-- version -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD288</parameterId> <!-- event_count -->
     <parameterId>PD121</parameterId> <!-- battery_voltage_main -->
     <parameterId>PD73</parameterId> <!-- sample_number -->
@@ -7223,7 +7454,7 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD2040</parameterId> <!-- spkir_a_firmware_version -->
-    <parameterId>PD1090</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD1105</parameterId> <!-- telemetry_baud_rate -->
     <parameterId>PD1106</parameterId> <!-- max_frame_rate -->
     <parameterId>PD1107</parameterId> <!-- initialize_silent_mode -->
@@ -7284,6 +7515,10 @@
     <parameterId>PD2254</parameterId> <!-- vel3d_a_hz -->
     <parameterId>PD2255</parameterId> <!-- vel3d_a_tx -->
     <parameterId>PD2256</parameterId> <!-- vel3d_a_ty -->
+    <parameterId>PD3483</parameterId> <!-- vel3d_a_eastward_velocity -->
+    <parameterId>PD3484</parameterId> <!-- vel3d_a_northward_velocity -->
+    <parameterId>PD3485</parameterId> <!-- vel3d_a_upward_velocity_ascending -->
+    <parameterId>PD3486</parameterId> <!-- vel3d_a_upward_velocity_descending -->
   </streamDefinition>
   <streamDefinition streamName="google_dt">
     <parameterId>PD18</parameterId> <!-- viz_timestamp -->
@@ -7322,7 +7557,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
     <parameterId>PD293</parameterId> <!-- firmware_date -->
     <parameterId>PD259</parameterId> <!-- command_set_version -->
@@ -7377,7 +7612,7 @@
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
     <parameterId>PD760</parameterId> <!-- burst_start_time -->
     <parameterId>PD761</parameterId> <!-- burst_number -->
-    <parameterId>PD762</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD676</parameterId> <!-- temperature -->
     <parameterId>PD764</parameterId> <!-- wave_ping_id -->
     <parameterId>PD765</parameterId> <!-- sample_number -->
@@ -7666,7 +7901,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
     <parameterId>PD293</parameterId> <!-- firmware_date -->
     <parameterId>PD259</parameterId> <!-- command_set_version -->
@@ -7707,6 +7942,42 @@
     <parameterId>PD1116</parameterId> <!-- num_error_records -->
     <parameterId>PD1117</parameterId> <!-- num_bytes_stored -->
     <parameterId>PD353</parameterId> <!-- unique_id -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_smart_battery_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3559</parameterId> <!-- flags -->
+    <parameterId>PD3560</parameterId> <!-- battery_index -->
+    <parameterId>PD3561</parameterId> <!-- battery_count -->
+    <parameterId>PD3562</parameterId> <!-- address_mask -->
+    <parameterId>PD3563</parameterId> <!-- smart_battery_voltage -->
+    <parameterId>PD3564</parameterId> <!-- end_of_discharge -->
+    <parameterId>PD3565</parameterId> <!-- average_current -->
+    <parameterId>PD3566</parameterId> <!-- temperature_one_tenth -->
+    <parameterId>PD3567</parameterId> <!-- full_charge_capacity -->
+    <parameterId>PD3568</parameterId> <!-- remaining_capacity -->
+    <parameterId>PD3569</parameterId> <!-- desired_charge_rate -->
+    <parameterId>PD3570</parameterId> <!-- serial -->
+    <parameterId>PD3571</parameterId> <!-- battery_status -->
+    <parameterId>PD3572</parameterId> <!-- battery_flags -->
+    <parameterId>PD3573</parameterId> <!-- cycle_count -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3574</parameterId> <!-- available_power -->
+    <parameterId>PD3575</parameterId> <!-- auv_temperature -->
+    <parameterId>PD3576</parameterId> <!-- pressure_mbar -->
+    <parameterId>PD3577</parameterId> <!-- pic_charge_value -->
+    <parameterId>PD3578</parameterId> <!-- pic_balance_enabled -->
+    <parameterId>PD3579</parameterId> <!-- pic_fet_state -->
+    <parameterId>PD3580</parameterId> <!-- pic_faults -->
+    <parameterId>PD3581</parameterId> <!-- pic_cell_voltage_1 -->
+    <parameterId>PD3582</parameterId> <!-- pic_cell_voltage_2 -->
+    <parameterId>PD3583</parameterId> <!-- pic_cell_voltage_3 -->
+    <parameterId>PD3584</parameterId> <!-- pic_cell_voltage_4 -->
+    <parameterId>PD3585</parameterId> <!-- pic_cell_voltage_5 -->
+    <parameterId>PD3586</parameterId> <!-- pic_cell_voltage_6 -->
+    <parameterId>PD3587</parameterId> <!-- pic_cell_voltage_7 -->
+    <parameterId>PD3588</parameterId> <!-- battery_temperature -->
   </streamDefinition>
   <streamDefinition streamName="platform_eng_parsed">
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -7820,7 +8091,7 @@
     <parameterId>PD1276</parameterId> <!-- m_depth -->
     <parameterId>PD3</parameterId> <!-- salinity -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
@@ -7840,15 +8111,13 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD274</parameterId> <!-- device_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD299</parameterId> <!-- power_on_reset -->
     <parameterId>PD300</parameterId> <!-- power_fail_reset -->
-    <parameterId>PD301</parameterId> <!-- watchdog_reset -->
     <parameterId>PD302</parameterId> <!-- serial_byte_error -->
     <parameterId>PD303</parameterId> <!-- command_buffer_overflow -->
     <parameterId>PD304</parameterId> <!-- serial_receive_overflow -->
     <parameterId>PD305</parameterId> <!-- low_battery -->
-    <parameterId>PD306</parameterId> <!-- out_of_memory -->
     <parameterId>PD307</parameterId> <!-- signal_error -->
     <parameterId>PD308</parameterId> <!-- error_10 -->
     <parameterId>PD309</parameterId> <!-- error_12 -->
@@ -8048,7 +8317,7 @@
     <parameterId>PD784</parameterId> <!-- pd12_packet_id -->
     <parameterId>PD607</parameterId> <!-- num_bytes -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD611</parameterId> <!-- firmware_version -->
     <parameterId>PD612</parameterId> <!-- firmware_revision -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -8294,7 +8563,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1089</parameterId> <!-- instrument_id -->
-    <parameterId>PD1090</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD1091</parameterId> <!-- timer -->
     <parameterId>PD1092</parameterId> <!-- sample_delay -->
     <parameterId>PD2319</parameterId> <!-- channel_array -->
@@ -8311,7 +8580,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
@@ -8400,7 +8669,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD941</parameterId> <!-- estimated_oxygen_saturation -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
@@ -8532,7 +8801,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -8731,7 +9000,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -8962,7 +9231,7 @@
     <parameterId>PD2316</parameterId> <!-- processing_time -->
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="flort_dj_sio_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -9129,7 +9398,7 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD121</parameterId> <!-- battery_voltage_main -->
     <parameterId>PD122</parameterId> <!-- battery_voltage_lithium -->
@@ -9180,7 +9449,7 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2240</parameterId> <!-- vel3d_l_serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2241</parameterId> <!-- vel3d_l_number_of_records -->
     <parameterId>PD2242</parameterId> <!-- vel3d_l_time_on -->
     <parameterId>PD2243</parameterId> <!-- vel3d_l_time_off -->
@@ -9203,7 +9472,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2773</parameterId> <!-- number_zero_crossings -->
     <parameterId>PD2774</parameterId> <!-- average_wave_height -->
     <parameterId>PD2775</parameterId> <!-- mean_spectral_period -->
@@ -9239,7 +9508,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD115</parameterId> <!-- user_info -->
     <parameterId>PD116</parameterId> <!-- quartz_pressure_sensor_serial_number -->
@@ -9277,7 +9546,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD202</parameterId> <!-- logging_status -->
     <parameterId>PD263</parameterId> <!-- num_events -->
@@ -9370,6 +9639,9 @@
     <parameterId>PD1552</parameterId> <!-- conductivity -->
     <parameterId>PD440</parameterId> <!-- temperature -->
     <parameterId>PD2</parameterId> <!-- pressure -->
+    <parameterId>PD3666</parameterId> <!-- ctdpf_ckl_mmp_cds_seawater_conductivity -->
+    <parameterId>PD3667</parameterId> <!-- ctdpf_ckl_mmp_cds_water_pracsal -->
+    <parameterId>PD3668</parameterId> <!-- ctdpf_ckl_mmp_cds_seawater_density -->
   </streamDefinition>
   <streamDefinition streamName="botpt_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -9601,7 +9873,7 @@
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD667</parameterId> <!-- bit_result_demod_1 -->
     <parameterId>PD666</parameterId> <!-- ensemble_number_increment -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD660</parameterId> <!-- system_power -->
     <parameterId>PD663</parameterId> <!-- variable_leader_id -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
@@ -9734,6 +10006,33 @@
     <parameterId>PD1153</parameterId> <!-- fluorometric_cdom -->
     <parameterId>PD3228</parameterId> <!-- flort_d_bback_total -->
     <parameterId>PD3229</parameterId> <!-- flort_d_scat_seawater -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_digital_tx_board_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3589</parameterId> <!-- transponder_table_index_1 -->
+    <parameterId>PD3590</parameterId> <!-- transponder_table_index_2 -->
+    <parameterId>PD3591</parameterId> <!-- inband_channel_1_snr -->
+    <parameterId>PD3592</parameterId> <!-- inband_channel_2_snr -->
+    <parameterId>PD3593</parameterId> <!-- interrogate_channel_1_snr -->
+    <parameterId>PD3594</parameterId> <!-- interrogate_channel_2_snr -->
+    <parameterId>PD3595</parameterId> <!-- receive_channel_1 -->
+    <parameterId>PD3596</parameterId> <!-- receive_channel_2 -->
+    <parameterId>PD3597</parameterId> <!-- range_1 -->
+    <parameterId>PD3598</parameterId> <!-- range_2 -->
+    <parameterId>PD3599</parameterId> <!-- reply_age_1 -->
+    <parameterId>PD3600</parameterId> <!-- reply_age_2 -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3507</parameterId> <!-- auv_speed_of_sound -->
+    <parameterId>PD3601</parameterId> <!-- fail_flag -->
+    <parameterId>PD3602</parameterId> <!-- received_bits -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3603</parameterId> <!-- outband_channel_1_snr -->
+    <parameterId>PD3604</parameterId> <!-- outband_channel_2_snr -->
   </streamDefinition>
   <streamDefinition streamName="antelope_orb_packet_mhn">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -9974,7 +10273,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2787</parameterId> <!-- number_bands -->
     <parameterId>PD2788</parameterId> <!-- initial_frequency -->
     <parameterId>PD2789</parameterId> <!-- frequency_spacing -->
@@ -10066,19 +10365,11 @@
     <parameterId>PD576</parameterId> <!-- noise_correlation_beam2 -->
     <parameterId>PD577</parameterId> <!-- noise_correlation_beam3 -->
   </streamDefinition>
-  <streamDefinition streamName="flord_l_wfp_sio_instrument ">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2024</parameterId> <!-- flord_wfp_chlorophyll -->
-    <parameterId>PD2025</parameterId> <!-- flord_wfp_turbidity -->
-    <parameterId>PD2026</parameterId> <!-- flord_wfp_temperature -->
-  </streamDefinition>
   <streamDefinition streamName="parad_sa_config">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2637</parameterId> <!-- parad_telbaud -->
     <parameterId>PD2638</parameterId> <!-- parad_maxrate -->
     <parameterId>PD2639</parameterId> <!-- parad_firmware -->
@@ -10181,7 +10472,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -10291,6 +10582,60 @@
     <parameterId>PD2237</parameterId> <!-- vel3d_l_vp2 -->
     <parameterId>PD2238</parameterId> <!-- vel3d_l_vp3 -->
     <parameterId>PD2239</parameterId> <!-- vel3d_l_vp4 -->
+    <parameterId>PD3487</parameterId> <!-- vel3d_l_eastward_velocity -->
+    <parameterId>PD3488</parameterId> <!-- vel3d_l_northward_velocity -->
+    <parameterId>PD3489</parameterId> <!-- vel3d_l_upward_velocity_ascending -->
+    <parameterId>PD3490</parameterId> <!-- vel3d_l_upward_velocity_descending -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_state_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3608</parameterId> <!-- software_version -->
+    <parameterId>PD3675</parameterId> <!-- bt_forward_ref_layer_velocity -->
+    <parameterId>PD3609</parameterId> <!-- heading_rate -->
+    <parameterId>PD3576</parameterId> <!-- pressure_mbar -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD3610</parameterId> <!-- depth_goal -->
+    <parameterId>PD3611</parameterId> <!-- obs -->
+    <parameterId>PD3492</parameterId> <!-- auv_state_voltage -->
+    <parameterId>PD3612</parameterId> <!-- auv_current -->
+    <parameterId>PD3613</parameterId> <!-- gfi -->
+    <parameterId>PD3614</parameterId> <!-- pitch_deg -->
+    <parameterId>PD3615</parameterId> <!-- pitch_goal -->
+    <parameterId>PD3495</parameterId> <!-- roll_deg -->
+    <parameterId>PD3616</parameterId> <!-- thruster -->
+    <parameterId>PD3617</parameterId> <!-- thruster_goal -->
+    <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3618</parameterId> <!-- heading_goal -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3619</parameterId> <!-- days_since_1970 -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3620</parameterId> <!-- dr_latitude -->
+    <parameterId>PD3621</parameterId> <!-- dr_longitude -->
+    <parameterId>PD3622</parameterId> <!-- goal_latitude -->
+    <parameterId>PD3623</parameterId> <!-- goal_longitude -->
+    <parameterId>PD3624</parameterId> <!-- estimated_velocity -->
+    <parameterId>PD3625</parameterId> <!-- heading_offset -->
+    <parameterId>PD3626</parameterId> <!-- flags -->
+    <parameterId>PD3627</parameterId> <!-- thruster_command -->
+    <parameterId>PD3628</parameterId> <!-- pitch_command -->
+    <parameterId>PD3629</parameterId> <!-- rudder_command -->
+    <parameterId>PD3630</parameterId> <!-- pitch_fin_position -->
+    <parameterId>PD3631</parameterId> <!-- rudder_fin_position -->
+    <parameterId>PD3632</parameterId> <!-- total_objectives -->
+    <parameterId>PD3633</parameterId> <!-- current_objective -->
+    <parameterId>PD3634</parameterId> <!-- cpu_usage -->
+    <parameterId>PD3635</parameterId> <!-- objective_index -->
+    <parameterId>PD3636</parameterId> <!-- leg_number -->
+    <parameterId>PD3637</parameterId> <!-- spare_slider -->
+    <parameterId>PD3638</parameterId> <!-- roll_rate -->
+    <parameterId>PD3639</parameterId> <!-- pitch_rate -->
+    <parameterId>PD3640</parameterId> <!-- faults -->
+    <parameterId>PD3641</parameterId> <!-- navigation_mode -->
+    <parameterId>PD3642</parameterId> <!-- secondary_faults -->
   </streamDefinition>
   <streamDefinition streamName="flord_m_glider_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -10453,6 +10798,29 @@
     <parameterId>PD1155</parameterId> <!-- northward_velocity -->
     <parameterId>PD1156</parameterId> <!-- upward_velocity -->
   </streamDefinition>
+  <streamDefinition streamName="wavss_a_dcl_statistics_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
+    <parameterId>PD1136</parameterId> <!-- date_string -->
+    <parameterId>PD1137</parameterId> <!-- time_string -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD2773</parameterId> <!-- number_zero_crossings -->
+    <parameterId>PD2774</parameterId> <!-- average_wave_height -->
+    <parameterId>PD2775</parameterId> <!-- mean_spectral_period -->
+    <parameterId>PD2776</parameterId> <!-- max_wave_height -->
+    <parameterId>PD2777</parameterId> <!-- significant_wave_height -->
+    <parameterId>PD2778</parameterId> <!-- significant_period -->
+    <parameterId>PD2779</parameterId> <!-- wave_height_10 -->
+    <parameterId>PD2780</parameterId> <!-- wave_period_10 -->
+    <parameterId>PD2781</parameterId> <!-- mean_wave_period -->
+    <parameterId>PD2782</parameterId> <!-- peak_wave_period -->
+    <parameterId>PD2783</parameterId> <!-- wave_period_tp5 -->
+    <parameterId>PD2784</parameterId> <!-- wave_height_hmo -->
+    <parameterId>PD2785</parameterId> <!-- mean_direction -->
+    <parameterId>PD2786</parameterId> <!-- mean_spread -->
+  </streamDefinition>
   <streamDefinition streamName="flort_kn_auv_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -10565,7 +10933,7 @@
     <parameterId>PD2316</parameterId> <!-- processing_time -->
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="ctdmo_ghqr_offset_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -10650,6 +11018,15 @@
     <parameterId>PD2553</parameterId> <!-- hpies_c2a -->
     <parameterId>PD2554</parameterId> <!-- hpies_c2b -->
   </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_fault_message_recovered">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3605</parameterId> <!-- filename -->
+    <parameterId>PD3606</parameterId> <!-- line -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3607</parameterId> <!-- message -->
+  </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_cspp_metadata_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
@@ -10662,7 +11039,7 @@
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="adcpt_acfgm_pd0_beam_dcl_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -10723,7 +11100,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -11270,7 +11647,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD93</parameterId> <!-- date_time_string -->
     <parameterId>PD175</parameterId> <!-- calibration_date_temperature -->
     <parameterId>PD176</parameterId> <!-- temp_coeff_ta0 -->
@@ -11286,7 +11663,7 @@
     <parameterId>PD186</parameterId> <!-- cond_coeff_cpcor -->
     <parameterId>PD185</parameterId> <!-- cond_coeff_ctcor -->
     <parameterId>PD187</parameterId> <!-- cond_coeff_cslope -->
-    <parameterId>PD230</parameterId> <!-- press_serial_number -->
+    <parameterId>PD280</parameterId> <!-- pressure_sensor_serial_number -->
     <parameterId>PD117</parameterId> <!-- pressure_sensor_range -->
     <parameterId>PD158</parameterId> <!-- calibration_date_pressure -->
     <parameterId>PD231</parameterId> <!-- press_coeff_pa0 -->
@@ -11692,13 +12069,20 @@
     <parameterId>PD879</parameterId> <!-- northward_turbulent_velocity -->
     <parameterId>PD880</parameterId> <!-- upward_turbulent_velocity -->
   </streamDefinition>
-  <streamDefinition streamName="cg_dcl_eng_dcl_error_recovered">
+  <streamDefinition streamName="vel3d_cd_dcl_system_data">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2935</parameterId> <!-- header_timestamp -->
-    <parameterId>PD2947</parameterId> <!-- log_type -->
-    <parameterId>PD2948</parameterId> <!-- message_text -->
+    <parameterId>PD93</parameterId> <!-- date_time_string -->
+    <parameterId>PD432</parameterId> <!-- battery_voltage -->
+    <parameterId>PD562</parameterId> <!-- speed_of_sound -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
+    <parameterId>PD440</parameterId> <!-- temperature -->
+    <parameterId>PD567</parameterId> <!-- error_code -->
+    <parameterId>PD568</parameterId> <!-- status_code -->
+    <parameterId>PD569</parameterId> <!-- analog_input -->
   </streamDefinition>
   <streamDefinition streamName="trhph_sample">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -11733,7 +12117,7 @@
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
     <parameterId>PD1005</parameterId> <!-- product_number -->
-    <parameterId>PD1006</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_cd_dcl_system_data_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -11762,7 +12146,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD211</parameterId> <!-- battery_cutoff -->
     <parameterId>PD218</parameterId> <!-- ext_volt_0 -->
     <parameterId>PD219</parameterId> <!-- ext_volt_1 -->
@@ -11841,7 +12225,7 @@
     <parameterId>PD655</parameterId> <!-- false_target_threshold -->
     <parameterId>PD657</parameterId> <!-- transmit_lag_distance -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
     <parameterId>PD785</parameterId> <!-- ensemble_start_time -->
@@ -11955,7 +12339,7 @@
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD274</parameterId> <!-- device_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD275</parameterId> <!-- calibration_date_acq_crystal -->
     <parameterId>PD276</parameterId> <!-- acq_crystal_coeff_fra0 -->
     <parameterId>PD277</parameterId> <!-- acq_crystal_coeff_fra1 -->
@@ -12273,7 +12657,7 @@
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
     <parameterId>PD1646</parameterId> <!-- adcps_jln_timestamp -->
     <parameterId>PD1647</parameterId> <!-- adcps_jln_id -->
-    <parameterId>PD1648</parameterId> <!-- adcps_jln_serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD1649</parameterId> <!-- adcps_jln_volts -->
     <parameterId>PD1650</parameterId> <!-- adcps_jln_records -->
     <parameterId>PD1651</parameterId> <!-- adcps_jln_length -->
@@ -12292,7 +12676,7 @@
     <parameterId>PD2317</parameterId> <!-- preprocessing_software_version -->
     <parameterId>PD2318</parameterId> <!-- start_date -->
     <parameterId>PD1089</parameterId> <!-- instrument_id -->
-    <parameterId>PD1090</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
   </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_L0">
     <parameterId>PD193</parameterId> <!-- temperature -->
@@ -12351,17 +12735,78 @@
     <parameterId>PD318</parameterId> <!-- aux_fitting_3 -->
     <parameterId>PD319</parameterId> <!-- rms_error -->
   </streamDefinition>
-  <streamDefinition streamName="ctdbp_cdef_dcl_ce_instrument">
+  <streamDefinition streamName="fdchp_a_dcl_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3289</parameterId> <!-- instrument_start_timestamp -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
-    <parameterId>PD6</parameterId> <!-- temp -->
-    <parameterId>PD1</parameterId> <!-- conductivity -->
-    <parameterId>PD2</parameterId> <!-- pressure -->
-    <parameterId>PD93</parameterId> <!-- date_time_string -->
-    <parameterId>PD923</parameterId> <!-- salinity -->
-    <parameterId>PD2841</parameterId> <!-- ctdbp_cdef_dcl_ce_density -->
+    <parameterId>PD3290</parameterId> <!-- time_datacollection -->
+    <parameterId>PD3291</parameterId> <!-- v_num_datacollection -->
+    <parameterId>PD3292</parameterId> <!-- status_datacollection -->
+    <parameterId>PD3293</parameterId> <!-- wind_u_avg -->
+    <parameterId>PD3294</parameterId> <!-- wind_v_avg -->
+    <parameterId>PD3295</parameterId> <!-- wind_w_avg -->
+    <parameterId>PD3296</parameterId> <!-- speed_of_sound_avg -->
+    <parameterId>PD3297</parameterId> <!-- wind_u_std -->
+    <parameterId>PD3298</parameterId> <!-- wind_v_std -->
+    <parameterId>PD3299</parameterId> <!-- wind_w_std -->
+    <parameterId>PD3300</parameterId> <!-- speed_of_sound_std -->
+    <parameterId>PD3301</parameterId> <!-- wind_u_max -->
+    <parameterId>PD3302</parameterId> <!-- wind_v_max -->
+    <parameterId>PD3303</parameterId> <!-- wind_w_max -->
+    <parameterId>PD3304</parameterId> <!-- speed_of_sound_max -->
+    <parameterId>PD3305</parameterId> <!-- wind_u_min -->
+    <parameterId>PD3306</parameterId> <!-- wind_v_min -->
+    <parameterId>PD3307</parameterId> <!-- wind_w_min -->
+    <parameterId>PD3308</parameterId> <!-- speed_of_sound_min -->
+    <parameterId>PD3309</parameterId> <!-- x_accel -->
+    <parameterId>PD3310</parameterId> <!-- y_accel -->
+    <parameterId>PD3311</parameterId> <!-- z_accel -->
+    <parameterId>PD3312</parameterId> <!-- x_accel_std -->
+    <parameterId>PD3313</parameterId> <!-- y_accel_std -->
+    <parameterId>PD3314</parameterId> <!-- z_accel_std -->
+    <parameterId>PD3315</parameterId> <!-- x_accel_max -->
+    <parameterId>PD3316</parameterId> <!-- y_accel_max -->
+    <parameterId>PD3317</parameterId> <!-- z_accel_max -->
+    <parameterId>PD3318</parameterId> <!-- x_accel_min -->
+    <parameterId>PD3319</parameterId> <!-- y_accel_min -->
+    <parameterId>PD3320</parameterId> <!-- z_accel_min -->
+    <parameterId>PD3321</parameterId> <!-- x_ang_rate -->
+    <parameterId>PD3322</parameterId> <!-- y_ang_rate -->
+    <parameterId>PD3323</parameterId> <!-- z_ang_rate -->
+    <parameterId>PD3324</parameterId> <!-- x_ang_rate_std -->
+    <parameterId>PD3325</parameterId> <!-- y_ang_rate_std -->
+    <parameterId>PD3326</parameterId> <!-- z_ang_rate_std -->
+    <parameterId>PD3327</parameterId> <!-- x_ang_rate_max -->
+    <parameterId>PD3328</parameterId> <!-- y_ang_rate_max -->
+    <parameterId>PD3329</parameterId> <!-- z_ang_rate_max -->
+    <parameterId>PD3330</parameterId> <!-- x_ang_rate_min -->
+    <parameterId>PD3331</parameterId> <!-- y_ang_rate_min -->
+    <parameterId>PD3332</parameterId> <!-- z_ang_rate_min -->
+    <parameterId>PD436</parameterId> <!-- heading -->
+    <parameterId>PD437</parameterId> <!-- pitch -->
+    <parameterId>PD438</parameterId> <!-- roll -->
+    <parameterId>PD3333</parameterId> <!-- heading_std -->
+    <parameterId>PD3334</parameterId> <!-- pitch_std -->
+    <parameterId>PD3335</parameterId> <!-- roll_std -->
+    <parameterId>PD3336</parameterId> <!-- heading_max -->
+    <parameterId>PD3337</parameterId> <!-- pitch_max -->
+    <parameterId>PD3338</parameterId> <!-- roll_max -->
+    <parameterId>PD3339</parameterId> <!-- heading_min -->
+    <parameterId>PD3340</parameterId> <!-- pitch_min -->
+    <parameterId>PD3341</parameterId> <!-- roll_min -->
+    <parameterId>PD3342</parameterId> <!-- u_corr -->
+    <parameterId>PD3343</parameterId> <!-- v_corr -->
+    <parameterId>PD3344</parameterId> <!-- w_corr -->
+    <parameterId>PD3345</parameterId> <!-- u_corr_std -->
+    <parameterId>PD3346</parameterId> <!-- v_corr_std -->
+    <parameterId>PD3347</parameterId> <!-- w_corr_std -->
+    <parameterId>PD3348</parameterId> <!-- wind_speed -->
+    <parameterId>PD3349</parameterId> <!-- uw_momentum_flux -->
+    <parameterId>PD3350</parameterId> <!-- vw_momentum_flux -->
+    <parameterId>PD3351</parameterId> <!-- buoyance_flux -->
+    <parameterId>PD3352</parameterId> <!-- eng_wave_motion -->
   </streamDefinition>
   <streamDefinition streamName="flcdr_x_mmp_cds_instrument">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -12372,6 +12817,171 @@
     <parameterId>PD2257</parameterId> <!-- cdomflo -->
     <parameterId>PD2846</parameterId> <!-- flcdr_x_mmp_cds_fluorometric_cdom -->
     <parameterId>PD2849</parameterId> <!-- flcdr_x_mmp_cds_bback_total -->
+  </streamDefinition>
+  <streamDefinition streamName="adcpa_n_instrument">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD611</parameterId> <!-- firmware_version -->
+    <parameterId>PD612</parameterId> <!-- firmware_revision -->
+    <parameterId>PD613</parameterId> <!-- sysconfig_frequency -->
+    <parameterId>PD614</parameterId> <!-- sysconfig_beam_pattern -->
+    <parameterId>PD615</parameterId> <!-- sysconfig_sensor_config -->
+    <parameterId>PD616</parameterId> <!-- sysconfig_head_attached -->
+    <parameterId>PD617</parameterId> <!-- sysconfig_vertical_orientation -->
+    <parameterId>PD2070</parameterId> <!-- sysconfig_beam_angle -->
+    <parameterId>PD2071</parameterId> <!-- sysconfig_beam_config -->
+    <parameterId>PD618</parameterId> <!-- data_flag -->
+    <parameterId>PD619</parameterId> <!-- lag_length -->
+    <parameterId>PD620</parameterId> <!-- num_beams -->
+    <parameterId>PD621</parameterId> <!-- num_cells -->
+    <parameterId>PD622</parameterId> <!-- pings_per_ensemble -->
+    <parameterId>PD623</parameterId> <!-- cell_length -->
+    <parameterId>PD624</parameterId> <!-- blank_after_transmit -->
+    <parameterId>PD625</parameterId> <!-- signal_processing_mode -->
+    <parameterId>PD626</parameterId> <!-- low_corr_threshold -->
+    <parameterId>PD627</parameterId> <!-- num_code_repetitions -->
+    <parameterId>PD628</parameterId> <!-- percent_good_min -->
+    <parameterId>PD629</parameterId> <!-- error_vel_threshold -->
+    <parameterId>PD630</parameterId> <!-- time_per_ping_minutes -->
+    <parameterId>PD631</parameterId> <!-- time_per_ping_seconds -->
+    <parameterId>PD632</parameterId> <!-- coord_transform_type -->
+    <parameterId>PD633</parameterId> <!-- coord_transform_tilts -->
+    <parameterId>PD634</parameterId> <!-- coord_transform_beams -->
+    <parameterId>PD635</parameterId> <!-- coord_transform_mapping -->
+    <parameterId>PD636</parameterId> <!-- heading_alignment -->
+    <parameterId>PD637</parameterId> <!-- heading_bias -->
+    <parameterId>PD638</parameterId> <!-- sensor_source_speed -->
+    <parameterId>PD639</parameterId> <!-- sensor_source_depth -->
+    <parameterId>PD640</parameterId> <!-- sensor_source_heading -->
+    <parameterId>PD641</parameterId> <!-- sensor_source_pitch -->
+    <parameterId>PD642</parameterId> <!-- sensor_source_roll -->
+    <parameterId>PD643</parameterId> <!-- sensor_source_conductivity -->
+    <parameterId>PD644</parameterId> <!-- sensor_source_temperature -->
+    <parameterId>PD2021</parameterId> <!-- sensor_available_speed -->
+    <parameterId>PD645</parameterId> <!-- sensor_available_depth -->
+    <parameterId>PD646</parameterId> <!-- sensor_available_heading -->
+    <parameterId>PD647</parameterId> <!-- sensor_available_pitch -->
+    <parameterId>PD648</parameterId> <!-- sensor_available_roll -->
+    <parameterId>PD649</parameterId> <!-- sensor_available_conductivity -->
+    <parameterId>PD650</parameterId> <!-- sensor_available_temperature -->
+    <parameterId>PD651</parameterId> <!-- bin_1_distance -->
+    <parameterId>PD652</parameterId> <!-- transmit_pulse_length -->
+    <parameterId>PD653</parameterId> <!-- reference_layer_start -->
+    <parameterId>PD654</parameterId> <!-- reference_layer_stop -->
+    <parameterId>PD655</parameterId> <!-- false_target_threshold -->
+    <parameterId>PD656</parameterId> <!-- low_latency_trigger -->
+    <parameterId>PD657</parameterId> <!-- transmit_lag_distance -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD662</parameterId> <!-- beam_angle -->
+    <parameterId>PD664</parameterId> <!-- ensemble_number -->
+    <parameterId>PD877</parameterId> <!-- real_time_clock -->
+    <parameterId>PD785</parameterId> <!-- ensemble_start_time -->
+    <parameterId>PD666</parameterId> <!-- ensemble_number_increment -->
+    <parameterId>PD667</parameterId> <!-- bit_result_demod_1 -->
+    <parameterId>PD668</parameterId> <!-- bit_result_demod_0 -->
+    <parameterId>PD669</parameterId> <!-- bit_result_timing -->
+    <parameterId>PD670</parameterId> <!-- speed_of_sound -->
+    <parameterId>PD671</parameterId> <!-- transducer_depth -->
+    <parameterId>PD672</parameterId> <!-- heading -->
+    <parameterId>PD673</parameterId> <!-- pitch -->
+    <parameterId>PD674</parameterId> <!-- roll -->
+    <parameterId>PD675</parameterId> <!-- salinity -->
+    <parameterId>PD676</parameterId> <!-- temperature -->
+    <parameterId>PD677</parameterId> <!-- mpt_minutes -->
+    <parameterId>PD678</parameterId> <!-- mpt_seconds -->
+    <parameterId>PD679</parameterId> <!-- heading_stdev -->
+    <parameterId>PD680</parameterId> <!-- pitch_stdev -->
+    <parameterId>PD681</parameterId> <!-- roll_stdev -->
+    <parameterId>PD682</parameterId> <!-- adc_transmit_current -->
+    <parameterId>PD683</parameterId> <!-- adc_transmit_voltage -->
+    <parameterId>PD684</parameterId> <!-- adc_ambient_temp -->
+    <parameterId>PD685</parameterId> <!-- adc_pressure_plus -->
+    <parameterId>PD686</parameterId> <!-- adc_pressure_minus -->
+    <parameterId>PD687</parameterId> <!-- adc_attitude_temp -->
+    <parameterId>PD688</parameterId> <!-- adc_attitude -->
+    <parameterId>PD689</parameterId> <!-- adc_contamination_sensor -->
+    <parameterId>PD690</parameterId> <!-- bus_error_exception -->
+    <parameterId>PD691</parameterId> <!-- address_error_exception -->
+    <parameterId>PD692</parameterId> <!-- illegal_instruction_exception -->
+    <parameterId>PD693</parameterId> <!-- zero_divide_instruction -->
+    <parameterId>PD694</parameterId> <!-- emulator_exception -->
+    <parameterId>PD695</parameterId> <!-- unassigned_exception -->
+    <parameterId>PD698</parameterId> <!-- pinging -->
+    <parameterId>PD699</parameterId> <!-- cold_wakeup_occurred -->
+    <parameterId>PD700</parameterId> <!-- unknown_wakeup_occurred -->
+    <parameterId>PD701</parameterId> <!-- clock_read_error -->
+    <parameterId>PD707</parameterId> <!-- spurious_uart_interrupt -->
+    <parameterId>PD708</parameterId> <!-- spurious_clock_interrupt -->
+    <parameterId>PD705</parameterId> <!-- power_fail -->
+    <parameterId>PD3669</parameterId> <!-- water_velocity_forward -->
+    <parameterId>PD3670</parameterId> <!-- water_velocity_starboard -->
+    <parameterId>PD3671</parameterId> <!-- water_velocity_vertical -->
+    <parameterId>PD717</parameterId> <!-- error_velocity -->
+    <parameterId>PD719</parameterId> <!-- correlation_magnitude_beam1 -->
+    <parameterId>PD720</parameterId> <!-- correlation_magnitude_beam2 -->
+    <parameterId>PD721</parameterId> <!-- correlation_magnitude_beam3 -->
+    <parameterId>PD722</parameterId> <!-- correlation_magnitude_beam4 -->
+    <parameterId>PD724</parameterId> <!-- echo_intensity_beam1 -->
+    <parameterId>PD725</parameterId> <!-- echo_intensity_beam2 -->
+    <parameterId>PD726</parameterId> <!-- echo_intensity_beam3 -->
+    <parameterId>PD727</parameterId> <!-- echo_intensity_beam4 -->
+    <parameterId>PD729</parameterId> <!-- percent_good_3beam -->
+    <parameterId>PD730</parameterId> <!-- percent_transforms_reject -->
+    <parameterId>PD731</parameterId> <!-- percent_bad_beams -->
+    <parameterId>PD732</parameterId> <!-- percent_good_4beam -->
+    <parameterId>PD1160</parameterId> <!-- bt_pings_per_ensemble -->
+    <parameterId>PD1161</parameterId> <!-- bt_delay_before_reacquire -->
+    <parameterId>PD1162</parameterId> <!-- bt_corr_magnitude_min -->
+    <parameterId>PD1163</parameterId> <!-- bt_eval_magnitude_min -->
+    <parameterId>PD1164</parameterId> <!-- bt_percent_good_min -->
+    <parameterId>PD1165</parameterId> <!-- bt_mode -->
+    <parameterId>PD1166</parameterId> <!-- bt_error_velocity_max -->
+    <parameterId>PD1167</parameterId> <!-- bt_beam1_range -->
+    <parameterId>PD1168</parameterId> <!-- bt_beam2_range -->
+    <parameterId>PD1169</parameterId> <!-- bt_beam3_range -->
+    <parameterId>PD1170</parameterId> <!-- bt_beam4_range -->
+    <parameterId>PD3672</parameterId> <!-- bt_forward_velocity -->
+    <parameterId>PD3673</parameterId> <!-- bt_starboard_velocity -->
+    <parameterId>PD3674</parameterId> <!-- bt_vertical_velocity -->
+    <parameterId>PD1174</parameterId> <!-- bt_error_velocity -->
+    <parameterId>PD1175</parameterId> <!-- bt_beam1_correlation -->
+    <parameterId>PD1176</parameterId> <!-- bt_beam2_correlation -->
+    <parameterId>PD1177</parameterId> <!-- bt_beam3_correlation -->
+    <parameterId>PD1178</parameterId> <!-- bt_beam4_correlation -->
+    <parameterId>PD1179</parameterId> <!-- bt_beam1_eval_amp -->
+    <parameterId>PD1180</parameterId> <!-- bt_beam2_eval_amp -->
+    <parameterId>PD1181</parameterId> <!-- bt_beam3_eval_amp -->
+    <parameterId>PD1182</parameterId> <!-- bt_beam4_eval_amp -->
+    <parameterId>PD1183</parameterId> <!-- bt_beam1_percent_good -->
+    <parameterId>PD1184</parameterId> <!-- bt_beam2_percent_good -->
+    <parameterId>PD1185</parameterId> <!-- bt_beam3_percent_good -->
+    <parameterId>PD1186</parameterId> <!-- bt_beam4_percent_good -->
+    <parameterId>PD1187</parameterId> <!-- bt_ref_layer_min -->
+    <parameterId>PD1188</parameterId> <!-- bt_ref_layer_near -->
+    <parameterId>PD1189</parameterId> <!-- bt_ref_layer_far -->
+    <parameterId>PD3675</parameterId> <!-- bt_forward_ref_layer_velocity -->
+    <parameterId>PD3676</parameterId> <!-- bt_starboard_ref_layer_velocity -->
+    <parameterId>PD3677</parameterId> <!-- bt_vertical_ref_layer_velocity -->
+    <parameterId>PD3678</parameterId> <!-- ctdmo_imodem_seawater_pressure -->
+    <parameterId>PD1194</parameterId> <!-- bt_beam1_ref_correlation -->
+    <parameterId>PD1195</parameterId> <!-- bt_beam2_ref_correlation -->
+    <parameterId>PD1196</parameterId> <!-- bt_beam3_ref_correlation -->
+    <parameterId>PD1197</parameterId> <!-- bt_beam4_ref_correlation -->
+    <parameterId>PD1198</parameterId> <!-- bt_beam1_ref_intensity -->
+    <parameterId>PD1199</parameterId> <!-- bt_beam2_ref_intensity -->
+    <parameterId>PD1200</parameterId> <!-- bt_beam3_ref_intensity -->
+    <parameterId>PD1201</parameterId> <!-- bt_beam4_ref_intensity -->
+    <parameterId>PD1202</parameterId> <!-- bt_beam1_ref_percent_good -->
+    <parameterId>PD1203</parameterId> <!-- bt_beam2_ref_percent_good -->
+    <parameterId>PD1204</parameterId> <!-- bt_beam3_ref_percent_good -->
+    <parameterId>PD1205</parameterId> <!-- bt_beam4_ref_percent_good -->
+    <parameterId>PD1206</parameterId> <!-- bt_max_depth -->
+    <parameterId>PD1207</parameterId> <!-- bt_beam1_rssi_amplitude -->
+    <parameterId>PD1208</parameterId> <!-- bt_beam2_rssi_amplitude -->
+    <parameterId>PD1209</parameterId> <!-- bt_beam3_rssi_amplitude -->
+    <parameterId>PD1210</parameterId> <!-- bt_beam4_rssi_amplitude -->
+    <parameterId>PD1211</parameterId> <!-- bt_gain -->
   </streamDefinition>
   <streamDefinition streamName="flort_dj_dcl_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -12604,7 +13214,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD175</parameterId> <!-- calibration_date_temperature -->
     <parameterId>PD176</parameterId> <!-- temp_coeff_ta0 -->
     <parameterId>PD177</parameterId> <!-- temp_coeff_ta1 -->
@@ -12619,7 +13229,7 @@
     <parameterId>PD186</parameterId> <!-- cond_coeff_cpcor -->
     <parameterId>PD185</parameterId> <!-- cond_coeff_ctcor -->
     <parameterId>PD187</parameterId> <!-- cond_coeff_cslope -->
-    <parameterId>PD230</parameterId> <!-- press_serial_number -->
+    <parameterId>PD280</parameterId> <!-- pressure_sensor_serial_number -->
     <parameterId>PD158</parameterId> <!-- calibration_date_pressure -->
     <parameterId>PD163</parameterId> <!-- press_coeff_pc1 -->
     <parameterId>PD164</parameterId> <!-- press_coeff_pc2 -->
@@ -12708,7 +13318,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -12826,7 +13436,7 @@
     <parameterId>PD203</parameterId> <!-- num_samples -->
     <parameterId>PD204</parameterId> <!-- mem_free -->
     <parameterId>PD205</parameterId> <!-- sample_interval -->
-    <parameterId>PD2227</parameterId> <!-- instrument_serial_number_u32 -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2806</parameterId> <!-- pressure_range -->
   </streamDefinition>
   <streamDefinition streamName="flobn_m_position_z1_recovered">
@@ -13003,7 +13613,7 @@
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD667</parameterId> <!-- bit_result_demod_1 -->
     <parameterId>PD666</parameterId> <!-- ensemble_number_increment -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD660</parameterId> <!-- system_power -->
     <parameterId>PD663</parameterId> <!-- variable_leader_id -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
@@ -13321,7 +13931,7 @@
     <parameterId>PD658</parameterId> <!-- cpu_board_serial_number -->
     <parameterId>PD659</parameterId> <!-- system_bandwidth -->
     <parameterId>PD660</parameterId> <!-- system_power -->
-    <parameterId>PD661</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD662</parameterId> <!-- beam_angle -->
     <parameterId>PD664</parameterId> <!-- ensemble_number -->
     <parameterId>PD877</parameterId> <!-- real_time_clock -->
@@ -13403,7 +14013,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD113</parameterId> <!-- firmware_version -->
     <parameterId>PD293</parameterId> <!-- firmware_date -->
     <parameterId>PD259</parameterId> <!-- command_set_version -->
@@ -13444,7 +14054,7 @@
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD28</parameterId> <!-- elapsed_time -->
     <parameterId>PD188</parameterId> <!-- par -->
     <parameterId>PD15</parameterId> <!-- checksum -->
@@ -13457,6 +14067,33 @@
     <parameterId>PD2063</parameterId> <!-- glider_eng_filename -->
     <parameterId>PD2064</parameterId> <!-- glider_mission_name -->
     <parameterId>PD2065</parameterId> <!-- glider_eng_fileopen_time -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_digital_usbl">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3507</parameterId> <!-- auv_speed_of_sound -->
+    <parameterId>PD3508</parameterId> <!-- reserved -->
+    <parameterId>PD3509</parameterId> <!-- range_minimum -->
+    <parameterId>PD3510</parameterId> <!-- range_maximum -->
+    <parameterId>PD3511</parameterId> <!-- latency -->
+    <parameterId>PD3512</parameterId> <!-- x_angle -->
+    <parameterId>PD3513</parameterId> <!-- y_angle -->
+    <parameterId>PD3514</parameterId> <!-- range -->
+    <parameterId>PD3515</parameterId> <!-- gain_1 -->
+    <parameterId>PD3516</parameterId> <!-- gain_2 -->
+    <parameterId>PD3517</parameterId> <!-- array_sound_speed -->
+    <parameterId>PD3518</parameterId> <!-- reason -->
+    <parameterId>PD3519</parameterId> <!-- x_center -->
+    <parameterId>PD3520</parameterId> <!-- y_center -->
+    <parameterId>PD3521</parameterId> <!-- inband_snr -->
+    <parameterId>PD3522</parameterId> <!-- outband_snr -->
+    <parameterId>PD3523</parameterId> <!-- transponder_table_index -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
   </streamDefinition>
   <streamDefinition streamName="sio_eng_control_status_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -13484,21 +14121,6 @@
     <parameterId>PD1101</parameterId> <!-- va_sense -->
     <parameterId>PD1102</parameterId> <!-- internal_temperature -->
     <parameterId>PD1103</parameterId> <!-- frame_counter -->
-  </streamDefinition>
-  <streamDefinition streamName="vel3d_cd_dcl_system_data">
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD93</parameterId> <!-- date_time_string -->
-    <parameterId>PD432</parameterId> <!-- battery_voltage -->
-    <parameterId>PD562</parameterId> <!-- speed_of_sound -->
-    <parameterId>PD436</parameterId> <!-- heading -->
-    <parameterId>PD437</parameterId> <!-- pitch -->
-    <parameterId>PD438</parameterId> <!-- roll -->
-    <parameterId>PD440</parameterId> <!-- temperature -->
-    <parameterId>PD567</parameterId> <!-- error_code -->
-    <parameterId>PD568</parameterId> <!-- status_code -->
-    <parameterId>PD569</parameterId> <!-- analog_input -->
   </streamDefinition>
   <streamDefinition streamName="camds_health_status">
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
@@ -13566,7 +14188,7 @@
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD584</parameterId> <!-- packet_type -->
     <parameterId>PD585</parameterId> <!-- meter_type -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD586</parameterId> <!-- a_reference_dark_counts -->
     <parameterId>PD587</parameterId> <!-- pressure_counts -->
     <parameterId>PD588</parameterId> <!-- a_signal_dark_counts -->
@@ -13600,6 +14222,9 @@
     <parameterId>PD444</parameterId> <!-- amplitude_beam1 -->
     <parameterId>PD445</parameterId> <!-- amplitude_beam2 -->
     <parameterId>PD446</parameterId> <!-- amplitude_beam3 -->
+    <parameterId>PD3652</parameterId> <!-- velpt_j_eastward_velocity -->
+    <parameterId>PD3653</parameterId> <!-- velpt_j_northward_velocity -->
+    <parameterId>PD3654</parameterId> <!-- velpt_j_upward_velocity -->
   </streamDefinition>
   <streamDefinition streamName="dosta_abcdjm_sio_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -13617,7 +14242,7 @@
     <parameterId>PD948</parameterId> <!-- red_amplitude -->
     <parameterId>PD949</parameterId> <!-- raw_temperature -->
     <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
-    <parameterId>PD2844</parameterId> <!-- xdosta_abcdjm_cspp_abs_oxygen -->
+    <parameterId>PD3665</parameterId> <!-- dosta_abcdjm_sio_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="hyd_o_dcl_instrument_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -13663,7 +14288,7 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD2240</parameterId> <!-- vel3d_l_serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2241</parameterId> <!-- vel3d_l_number_of_records -->
     <parameterId>PD2242</parameterId> <!-- vel3d_l_time_on -->
     <parameterId>PD2243</parameterId> <!-- vel3d_l_time_off -->
@@ -13830,7 +14455,7 @@
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD1136</parameterId> <!-- date_string -->
     <parameterId>PD1137</parameterId> <!-- time_string -->
-    <parameterId>PD114</parameterId> <!-- serial_number -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
     <parameterId>PD2787</parameterId> <!-- number_bands -->
     <parameterId>PD2788</parameterId> <!-- initial_frequency -->
     <parameterId>PD2789</parameterId> <!-- frequency_spacing -->
@@ -13838,6 +14463,35 @@
     <parameterId>PD2802</parameterId> <!-- initial_directional_frequency -->
     <parameterId>PD2803</parameterId> <!-- directional_frequency_spacing -->
     <parameterId>PD2804</parameterId> <!-- fourier_coefficient_2d_array -->
+  </streamDefinition>
+  <streamDefinition streamName="auv_eng_auv_tri_fin_motor">
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3524</parameterId> <!-- fin_count -->
+    <parameterId>PD3525</parameterId> <!-- fin_pitch_position -->
+    <parameterId>PD3526</parameterId> <!-- fin_rudder_position -->
+    <parameterId>PD3527</parameterId> <!-- fin_roll_position -->
+    <parameterId>PD3528</parameterId> <!-- fin_pitch_command -->
+    <parameterId>PD3529</parameterId> <!-- fin_rudder_command -->
+    <parameterId>PD3530</parameterId> <!-- fin_roll_command -->
+    <parameterId>PD3531</parameterId> <!-- fin_command_data_1 -->
+    <parameterId>PD3532</parameterId> <!-- fin_position_data_1 -->
+    <parameterId>PD3533</parameterId> <!-- fin_command_data_2 -->
+    <parameterId>PD3534</parameterId> <!-- fin_position_data_2 -->
+    <parameterId>PD3535</parameterId> <!-- fin_command_data_3 -->
+    <parameterId>PD3536</parameterId> <!-- fin_position_data_3 -->
+    <parameterId>PD3537</parameterId> <!-- fin_command_data_4 -->
+    <parameterId>PD3538</parameterId> <!-- fin_position_data_4 -->
+    <parameterId>PD3539</parameterId> <!-- fin_command_data_5 -->
+    <parameterId>PD3540</parameterId> <!-- fin_position_data_5 -->
+    <parameterId>PD3541</parameterId> <!-- fin_command_data_6 -->
+    <parameterId>PD3542</parameterId> <!-- fin_position_data_6 -->
+    <parameterId>PD3543</parameterId> <!-- fin_yaw_translation_command -->
+    <parameterId>PD3544</parameterId> <!-- fin_depth_translation_command -->
+    <parameterId>PD3545</parameterId> <!-- fin_yaw_translation_position -->
+    <parameterId>PD3546</parameterId> <!-- fin_depth_translation_position -->
   </streamDefinition>
   <streamDefinition streamName="flobn_m_position_x2_recovered">
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->

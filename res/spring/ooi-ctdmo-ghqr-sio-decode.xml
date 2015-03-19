@@ -7,34 +7,22 @@
         <constructor-arg index="0" value="ctdmo-ghqr-sio_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_co_recovered_driver.py" />
-        <constructor-arg index="3">
-            <list>
-                <value>sio_controller_timestamp</value>
-                <value>inductive_id</value>
-            </list>
-        </constructor-arg>
     </bean>
-    
+
     <bean id="ctdmo-ghqr-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
         <constructor-arg index="0" value="ctdmo-ghqr-sio_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_telemetered_driver.py" />
-        <constructor-arg index="3">
-            <list>
-                <value>sio_controller_timestamp</value>
-                <value>inductive_id</value>
-            </list>
-        </constructor-arg>
-    </bean>    
+    </bean>
 
     <camelContext id="ctdmo-ghqr-sio-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="ctdmo-ghqr-sio_recoveredFileEndpoint"
             uri="file:${edex.home}/data/ooi/ctdmo-ghqr-sio_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-            
+
         <endpoint id="ctdmo-ghqr-sio_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdmo-ghqr-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />            
+            uri="file:${edex.home}/data/ooi/ctdmo-ghqr-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
 
         <route id="ctdmo-ghqr-sio_recoveredFileConsumerRoute">
             <from ref="ctdmo-ghqr-sio_recoveredFileEndpoint" />
@@ -53,7 +41,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="ctdmo-ghqr-sio_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -79,7 +67,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="ctdmo-ghqr-sio_telemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

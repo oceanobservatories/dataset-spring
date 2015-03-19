@@ -7,14 +7,12 @@
         <constructor-arg index="0" value="cg-stc-eng-stc_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/cg_stc_eng_stc_recovered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <bean id="cg-stc-eng-stc_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="cg-stc-eng-stc_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_stc_eng/stc/cg_stc_eng_stc_telemetered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="cg-stc-eng-stc-decode-camel"
@@ -43,7 +41,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="cg-stc-eng-stc_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -69,7 +67,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="cg-stc-eng-stc_telemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

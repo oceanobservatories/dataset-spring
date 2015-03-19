@@ -7,7 +7,6 @@
         <constructor-arg index="0" value="adcpt-m-fcoeff_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_m/adcpt_m_fcoeff_recovered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="adcpt-m-fcoeff-decode-camel"
@@ -33,7 +32,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="adcpt-m-fcoeff_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

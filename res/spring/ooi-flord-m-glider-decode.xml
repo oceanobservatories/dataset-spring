@@ -7,14 +7,12 @@
         <constructor-arg index="0" value="flord-m-glider_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/flord_m/flord_m_glider_recovered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <bean id="flord-m-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="flord-m-glider_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/flord_m/flord_m_glider_telemetered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="flord-m-glider-decode-camel"
@@ -43,7 +41,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="flord-m-glider_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -69,7 +67,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="flord-m-glider_telemeteredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

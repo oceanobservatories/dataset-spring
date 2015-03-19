@@ -7,7 +7,6 @@
         <constructor-arg index="0" value="vel3d-a-mmp-cds_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_a/mmp_cds/vel3d_a_mmp_cds_recovered_driver.py" />
-        <constructor-arg index="3" ref="oneHourBin" />
     </bean>
 
     <camelContext id="vel3d-a-mmp-cds-decode-camel"
@@ -33,7 +32,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="vel3d-a-mmp-cds_recoveredProcessor" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

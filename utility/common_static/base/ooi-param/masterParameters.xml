@@ -2488,7 +2488,7 @@
 	<parameter encoding="float32" fill="-9999999" name="flcdr_x_mmp_cds_fluorometric_cdom" pd_id="PD2846" precision="6" type="function" unit="ppb"/>
 	<parameter encoding="float32" fill="-9999999" name="flntu_x_mmp_cds_total_volume_scattering_coefficient" pd_id="PD2847" precision="6" type="function" unit="m-1 sr-1"/>
 	<parameter encoding="float32" fill="-9999999" name="flntu_x_mmp_cds_fluorometric_chlorophyll_a" pd_id="PD2848" precision="6" type="function" unit="ug L-1"/>
-	<parameter encoding="float32" fill="" name="flcdr_x_mmp_cds_bback_total" pd_id="PD2849" precision="4" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="" name="flntu_x_mmp_cds_bback_total" pd_id="PD2849" precision="4" type="function" unit="m-1"/>
 	<parameter encoding="string" fill="" name="cg_eng_alarm_sys" pd_id="PD2850" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="string" fill="" name="cg_eng_alarm_ts" pd_id="PD2851" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="string" fill="" name="cg_eng_alarm_severity" pd_id="PD2852" precision="" type="array&lt;quantity&gt;" unit="1"/>
@@ -3244,9 +3244,9 @@
 	<parameter encoding="int8" fill="-9999999" name="received_bits" pd_id="PD3602" precision="0" type="quantity" unit="mask"/>
 	<parameter encoding="uint8" fill="0" name="outband_channel_1_snr" pd_id="PD3603" precision="0" type="quantity" unit="decibel"/>
 	<parameter encoding="uint8" fill="0" name="outband_channel_2_snr" pd_id="PD3604" precision="0" type="quantity" unit="decibel"/>
-	<parameter encoding="string" fill="" name="filename" pd_id="PD3605" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="string" fill="" name="filename" pd_id="PD3605" precision="" type="quantity" unit="1"/>
 	<parameter encoding="int16" fill="-9999999" name="line" pd_id="PD3606" precision="0" type="quantity" unit="counts"/>
-	<parameter encoding="string" fill="" name="message" pd_id="PD3607" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="string" fill="" name="message" pd_id="PD3607" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="-9999999" name="software_version" pd_id="PD3608" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="heading_rate" pd_id="PD3609" precision="4" type="quantity" unit="degree"/>
 	<parameter encoding="float32" fill="-9999999" name="depth_goal" pd_id="PD3610" precision="4" type="quantity" unit="m"/>
@@ -3341,4 +3341,14 @@
 	<parameter encoding="float32" fill="-9999999" name="winch_current_draw" pd_id="PD3699" precision="4" type="quantity" unit="A"/>
 	<parameter encoding="float32" fill="-9999999" name="sensor_current_draw" pd_id="PD3700" precision="4" type="quantity" unit="A"/>
 	<parameter encoding="string" fill="" name="winch_status" pd_id="PD3701" precision="" type="quantity" unit="1"/>
+	<parameter encoding="float64" fill="-9999999" name="sci_suna_timestamp" pd_id="PD3702" precision="4" type="quantity" unit="seconds since 1970-01-01"/>
+	<parameter encoding="uint32" fill="9999999" name="sci_suna_record_offset" pd_id="PD3703" precision="0" type="quantity" unit="B"/>
+	<parameter encoding="float32" fill="-9999999" name="sci_suna_nitrate_um" pd_id="PD3704" precision="4" type="quantity" unit="µmol/L"/>
+	<parameter encoding="float32" fill="-9999999" name="sci_suna_nitrate_mg" pd_id="PD3705" precision="4" type="quantity" unit="mg/L"/>
+	<parameter encoding="float32" fill="-9999999" name="dpc_ctd_seawater_conductivity" pd_id="PD3706" precision="6" type="function" unit="S m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="dpc_ctd_water_pracsal" pd_id="PD3707" precision="4" type="function" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="dpc_ctd_seawater_density" pd_id="PD3708" precision="4" type="function" unit="kg m-3"/>
+	<parameter encoding="float32" fill="-9999999" name="dpc_optode_abs_oxygen" pd_id="PD3709" precision="4" type="function" unit="umol kg-1"/>
+	<parameter encoding="float32" fill="-9999999" name="dpc_acs_beam_attenuation" pd_id="PD3710" precision="6" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="dpc_acs_optical_absorption" pd_id="PD3711" precision="6" type="function" unit="m-1"/>
 </parameterContainer>

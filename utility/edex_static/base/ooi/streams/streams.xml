@@ -8958,7 +8958,6 @@
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2257</parameterId> <!-- cdomflo -->
     <parameterId>PD2846</parameterId> <!-- flcdr_x_mmp_cds_fluorometric_cdom -->
-    <parameterId>PD2849</parameterId> <!-- flcdr_x_mmp_cds_bback_total -->
   </streamDefinition>
   <streamDefinition streamName="flntu_x_mmp_cds_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -8973,6 +8972,7 @@
     <parameterId>PD2259</parameterId> <!-- ntuflo -->
     <parameterId>PD2847</parameterId> <!-- flntu_x_mmp_cds_total_volume_scattering_coefficient -->
     <parameterId>PD2848</parameterId> <!-- flntu_x_mmp_cds_fluorometric_chlorophyll_a -->
+    <parameterId>PD2849</parameterId> <!-- flntu_x_mmp_cds_bback_total -->
   </streamDefinition>
   <streamDefinition streamName="flord_l_wfp_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9654,6 +9654,9 @@
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2934</parameterId> <!-- conductivity_millisiemens -->
+    <parameterId>PD3706</parameterId> <!-- dpc_ctd_seawater_conductivity -->
+    <parameterId>PD3707</parameterId> <!-- dpc_ctd_water_pracsal -->
+    <parameterId>PD3708</parameterId> <!-- dpc_ctd_seawater_density -->
   </streamDefinition>
   <streamDefinition streamName="dpc_ctd_instrument_recovered">
     <parameterId>PD2</parameterId> <!-- pressure -->
@@ -9667,6 +9670,9 @@
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2934</parameterId> <!-- conductivity_millisiemens -->
+    <parameterId>PD3706</parameterId> <!-- dpc_ctd_seawater_conductivity -->
+    <parameterId>PD3707</parameterId> <!-- dpc_ctd_water_pracsal -->
+    <parameterId>PD3708</parameterId> <!-- dpc_ctd_seawater_density -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flnturtd_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9679,6 +9685,9 @@
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2258</parameterId> <!-- chlaflo -->
     <parameterId>PD2259</parameterId> <!-- ntuflo -->
+    <parameterId>PD2847</parameterId> <!-- flntu_x_mmp_cds_total_volume_scattering_coefficient -->
+    <parameterId>PD2848</parameterId> <!-- flntu_x_mmp_cds_fluorometric_chlorophyll_a -->
+    <parameterId>PD2849</parameterId> <!-- flntu_x_mmp_cds_bback_total -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flnturtd_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9691,6 +9700,9 @@
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2258</parameterId> <!-- chlaflo -->
     <parameterId>PD2259</parameterId> <!-- ntuflo -->
+    <parameterId>PD2847</parameterId> <!-- flntu_x_mmp_cds_total_volume_scattering_coefficient -->
+    <parameterId>PD2848</parameterId> <!-- flntu_x_mmp_cds_fluorometric_chlorophyll_a -->
+    <parameterId>PD2849</parameterId> <!-- flntu_x_mmp_cds_bback_total -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flcdrtd_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9702,6 +9714,7 @@
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2257</parameterId> <!-- cdomflo -->
+    <parameterId>PD2846</parameterId> <!-- flcdr_x_mmp_cds_fluorometric_cdom -->
   </streamDefinition>
   <streamDefinition streamName="dpc_flcdrtd_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9713,6 +9726,7 @@
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
     <parameterId>PD2257</parameterId> <!-- cdomflo -->
+    <parameterId>PD2846</parameterId> <!-- flcdr_x_mmp_cds_fluorometric_cdom -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acm_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9732,6 +9746,10 @@
     <parameterId>PD2254</parameterId> <!-- vel3d_a_hz -->
     <parameterId>PD2255</parameterId> <!-- vel3d_a_tx -->
     <parameterId>PD2256</parameterId> <!-- vel3d_a_ty -->
+    <parameterId>PD3483</parameterId> <!-- vel3d_a_eastward_velocity -->
+    <parameterId>PD3484</parameterId> <!-- vel3d_a_northward_velocity -->
+    <parameterId>PD3485</parameterId> <!-- vel3d_a_upward_velocity_ascending -->
+    <parameterId>PD3486</parameterId> <!-- vel3d_a_upward_velocity_descending -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acm_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9751,6 +9769,10 @@
     <parameterId>PD2254</parameterId> <!-- vel3d_a_hz -->
     <parameterId>PD2255</parameterId> <!-- vel3d_a_tx -->
     <parameterId>PD2256</parameterId> <!-- vel3d_a_ty -->
+    <parameterId>PD3483</parameterId> <!-- vel3d_a_eastward_velocity -->
+    <parameterId>PD3484</parameterId> <!-- vel3d_a_northward_velocity -->
+    <parameterId>PD3485</parameterId> <!-- vel3d_a_upward_velocity_ascending -->
+    <parameterId>PD3486</parameterId> <!-- vel3d_a_upward_velocity_descending -->
   </streamDefinition>
   <streamDefinition streamName="dpc_optode_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9763,6 +9785,8 @@
     <parameterId>PD943</parameterId> <!-- calibrated_phase -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
+    <parameterId>PD3709</parameterId> <!-- dpc_optode_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="dpc_optode_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9775,6 +9799,8 @@
     <parameterId>PD943</parameterId> <!-- calibrated_phase -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD2843</parameterId> <!-- dosta_abcdjm_cspp_tc_oxygen -->
+    <parameterId>PD3709</parameterId> <!-- dpc_optode_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="dpc_acs_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9801,6 +9827,8 @@
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
     <parameterId>PD2246</parameterId> <!-- raw_time_seconds -->
     <parameterId>PD2247</parameterId> <!-- raw_time_microseconds -->
+    <parameterId>PD3710</parameterId> <!-- dpc_acs_beam_attenuation -->
+    <parameterId>PD3711</parameterId> <!-- dpc_acs_optical_absorption -->
   </streamDefinition>
   <streamDefinition streamName="velpt_ab_instrument_metadata_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -13965,5 +13993,31 @@
     <parameterId>PD3699</parameterId> <!-- winch_current_draw -->
     <parameterId>PD3700</parameterId> <!-- sensor_current_draw -->
     <parameterId>PD3701</parameterId> <!-- winch_status -->
+  </streamDefinition>
+  <streamDefinition streamName="nutnr_n_auv_instrument">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD10</parameterId> <!-- port_timestamp -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD315</parameterId> <!-- nitrate_concentration -->
+    <parameterId>PD321</parameterId> <!-- temp_spectrometer -->
+    <parameterId>PD322</parameterId> <!-- temp_lamp -->
+    <parameterId>PD324</parameterId> <!-- humidity -->
+    <parameterId>PD325</parameterId> <!-- voltage_lamp -->
+    <parameterId>PD327</parameterId> <!-- voltage_main -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD1276</parameterId> <!-- m_depth -->
+    <parameterId>PD2320</parameterId> <!-- nutnr_nitrogen_in_nitrate -->
+    <parameterId>PD2327</parameterId> <!-- nutnr_voltage_int -->
+    <parameterId>PD2328</parameterId> <!-- nutnr_current_main -->
+    <parameterId>PD3412</parameterId> <!-- auv_latitude -->
+    <parameterId>PD3413</parameterId> <!-- auv_longitude -->
+    <parameterId>PD3430</parameterId> <!-- mission_epoch -->
+    <parameterId>PD3431</parameterId> <!-- mission_time -->
+    <parameterId>PD3643</parameterId> <!-- sample_time -->
+    <parameterId>PD3644</parameterId> <!-- nutnr_spectral_avg_last_dark -->
+    <parameterId>PD3645</parameterId> <!-- lamp_state -->
+    <parameterId>PD3646</parameterId> <!-- lamp_time_cumulative -->
   </streamDefinition>
 </streamDefinitions>

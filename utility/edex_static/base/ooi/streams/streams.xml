@@ -11418,6 +11418,7 @@
     <parameterId>PD2319</parameterId> <!-- channel_array -->
     <parameterId>PD2606</parameterId> <!-- pressure_depth -->
     <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2766</parameterId> <!-- spkir_abj_cspp_downwelling_vector -->
   </streamDefinition>
   <streamDefinition streamName="spkir_abj_cspp_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -11436,6 +11437,7 @@
     <parameterId>PD2319</parameterId> <!-- channel_array -->
     <parameterId>PD2606</parameterId> <!-- pressure_depth -->
     <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD2766</parameterId> <!-- spkir_abj_cspp_downwelling_vector -->
   </streamDefinition>
   <streamDefinition streamName="spkir_abj_cspp_metadata">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -11512,6 +11514,7 @@
     <parameterId>PD2616</parameterId> <!-- ctd_temp -->
     <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
     <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD3712</parameterId> <!-- nutnr_j_cspp_temp_sal_corrected_nitrate -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_j_cspp_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -11554,6 +11557,7 @@
     <parameterId>PD2616</parameterId> <!-- ctd_temp -->
     <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
     <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
+    <parameterId>PD3712</parameterId> <!-- nutnr_j_cspp_temp_sal_corrected_nitrate -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_j_cspp_metadata">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -12939,7 +12943,6 @@
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
     <parameterId>PD1234</parameterId> <!-- m_altitude -->
     <parameterId>PD1276</parameterId> <!-- m_depth -->
-    <parameterId>PD2504</parameterId> <!-- massp_ion_chamber_heater_status -->
     <parameterId>PD3412</parameterId> <!-- auv_latitude -->
     <parameterId>PD3413</parameterId> <!-- auv_longitude -->
     <parameterId>PD3430</parameterId> <!-- mission_epoch -->
@@ -12956,6 +12959,7 @@
     <parameterId>PD3501</parameterId> <!-- obstacle_range_critical -->
     <parameterId>PD3502</parameterId> <!-- obstacle_range_rate_critical -->
     <parameterId>PD3503</parameterId> <!-- pings -->
+    <parameterId>PD3504</parameterId> <!-- status -->
     <parameterId>PD3505</parameterId> <!-- median_filter_range -->
     <parameterId>PD3614</parameterId> <!-- pitch_deg -->
   </streamDefinition>
@@ -12968,7 +12972,6 @@
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
     <parameterId>PD1234</parameterId> <!-- m_altitude -->
     <parameterId>PD1276</parameterId> <!-- m_depth -->
-    <parameterId>PD2504</parameterId> <!-- massp_ion_chamber_heater_status -->
     <parameterId>PD3412</parameterId> <!-- auv_latitude -->
     <parameterId>PD3413</parameterId> <!-- auv_longitude -->
     <parameterId>PD3430</parameterId> <!-- mission_epoch -->
@@ -12985,6 +12988,7 @@
     <parameterId>PD3501</parameterId> <!-- obstacle_range_critical -->
     <parameterId>PD3502</parameterId> <!-- obstacle_range_rate_critical -->
     <parameterId>PD3503</parameterId> <!-- pings -->
+    <parameterId>PD3504</parameterId> <!-- status -->
     <parameterId>PD3505</parameterId> <!-- median_filter_range -->
     <parameterId>PD3614</parameterId> <!-- pitch_deg -->
   </streamDefinition>
@@ -13357,6 +13361,7 @@
     <parameterId>PD3492</parameterId> <!-- auv_state_voltage -->
     <parameterId>PD3495</parameterId> <!-- roll_deg -->
     <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3575</parameterId> <!-- auv_temperature -->
     <parameterId>PD3576</parameterId> <!-- pressure_mbar -->
     <parameterId>PD3608</parameterId> <!-- software_version -->
     <parameterId>PD3609</parameterId> <!-- heading_rate -->
@@ -13393,7 +13398,6 @@
     <parameterId>PD3640</parameterId> <!-- faults -->
     <parameterId>PD3641</parameterId> <!-- navigation_mode -->
     <parameterId>PD3642</parameterId> <!-- secondary_faults -->
-    <parameterId>PD3675</parameterId> <!-- bt_forward_ref_layer_velocity -->
   </streamDefinition>
   <streamDefinition streamName="auv_eng_auv_state_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -13410,6 +13414,7 @@
     <parameterId>PD3492</parameterId> <!-- auv_state_voltage -->
     <parameterId>PD3495</parameterId> <!-- roll_deg -->
     <parameterId>PD3506</parameterId> <!-- compass_true_heading -->
+    <parameterId>PD3575</parameterId> <!-- auv_temperature -->
     <parameterId>PD3576</parameterId> <!-- pressure_mbar -->
     <parameterId>PD3608</parameterId> <!-- software_version -->
     <parameterId>PD3609</parameterId> <!-- heading_rate -->
@@ -13446,7 +13451,6 @@
     <parameterId>PD3640</parameterId> <!-- faults -->
     <parameterId>PD3641</parameterId> <!-- navigation_mode -->
     <parameterId>PD3642</parameterId> <!-- secondary_faults -->
-    <parameterId>PD3675</parameterId> <!-- bt_forward_ref_layer_velocity -->
   </streamDefinition>
   <streamDefinition streamName="ctdbp_cdef_dcl_ce_instrument">
     <parameterId>PD1</parameterId> <!-- conductivity -->

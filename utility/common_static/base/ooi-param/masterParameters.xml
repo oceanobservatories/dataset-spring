@@ -3197,7 +3197,7 @@
 	<parameter encoding="uint32" fill="0" name="secondary_status" pd_id="PD3555" precision="0" type="quantity" unit="mask"/>
 	<parameter encoding="int16" fill="-9999999" name="raw_value" pd_id="PD3556" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="float32" fill="-9999999" name="oil_level" pd_id="PD3557" precision="4" type="quantity" unit="percentage"/>
-	<parameter encoding="uint8" fill="99" name="oil_location" pd_id="PD3558" precision="0" type="category&lt;uint8:str&gt;" unit="1"/>
+	<parameter encoding="uint8" fill="99" name="oil_location" pd_id="PD3558" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="int8" fill="-9999999" name="flags" pd_id="PD3559" precision="0" type="quantity" unit="mask"/>
 	<parameter encoding="int8" fill="-9999999" name="battery_index" pd_id="PD3560" precision="0" type="quantity" unit="counts"/>
 	<parameter encoding="int8" fill="-9999999" name="battery_count" pd_id="PD3561" precision="0" type="quantity" unit="counts"/>
@@ -3351,4 +3351,8 @@
 	<parameter encoding="float32" fill="-9999999" name="dpc_optode_abs_oxygen" pd_id="PD3709" precision="4" type="function" unit="umol kg-1"/>
 	<parameter encoding="float32" fill="-9999999" name="dpc_acs_beam_attenuation" pd_id="PD3710" precision="6" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="-9999999" name="dpc_acs_optical_absorption" pd_id="PD3711" precision="6" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="nutnr_j_cspp_temp_sal_corrected_nitrate" pd_id="PD3712" precision="" type="function" unit="uMol L-1"/>
+	<parameter encoding="float32" fill="-9999999" name="optaa_ac_mmp_cds_beam_attenuation" pd_id="PD3713" precision="6" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="optaa_ac_mmp_cds_optical_absorption" pd_id="PD3714" precision="6" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="" name="flntu_x_mmp_cds_scat_seawater" pd_id="PD3715" precision="4" type="function" unit="m-1"/>
 </parameterContainer>

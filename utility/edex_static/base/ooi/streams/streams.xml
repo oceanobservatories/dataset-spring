@@ -3299,7 +3299,7 @@
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
     <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
-    <parameterId>PD2845</parameterId> <!-- xdosta_ln_wfp_abs_oxygen -->
+    <parameterId>PD3226</parameterId> <!-- dosta_ln_wfp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="dosta_ln_wfp_sio_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -8945,7 +8945,7 @@
     <parameterId>PD940</parameterId> <!-- estimated_oxygen_concentration -->
     <parameterId>PD942</parameterId> <!-- optode_temperature -->
     <parameterId>PD1622</parameterId> <!-- wfp_timestamp -->
-    <parameterId>PD2845</parameterId> <!-- xdosta_ln_wfp_abs_oxygen -->
+    <parameterId>PD3226</parameterId> <!-- dosta_ln_wfp_abs_oxygen -->
   </streamDefinition>
   <streamDefinition streamName="flcdr_x_mmp_cds_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -14026,5 +14026,91 @@
     <parameterId>PD3644</parameterId> <!-- nutnr_spectral_avg_last_dark -->
     <parameterId>PD3645</parameterId> <!-- lamp_state -->
     <parameterId>PD3646</parameterId> <!-- lamp_time_cumulative -->
+  </streamDefinition>
+  <streamDefinition streamName="nutnr_n_instrument_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD10</parameterId> <!-- port_timestamp -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD311</parameterId> <!-- frame_type -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD314</parameterId> <!-- time_of_sample -->
+    <parameterId>PD315</parameterId> <!-- nitrate_concentration -->
+    <parameterId>PD316</parameterId> <!-- aux_fitting_1 -->
+    <parameterId>PD317</parameterId> <!-- aux_fitting_2 -->
+    <parameterId>PD320</parameterId> <!-- temp_interior -->
+    <parameterId>PD321</parameterId> <!-- temp_spectrometer -->
+    <parameterId>PD322</parameterId> <!-- temp_lamp -->
+    <parameterId>PD324</parameterId> <!-- humidity -->
+    <parameterId>PD325</parameterId> <!-- voltage_lamp -->
+    <parameterId>PD327</parameterId> <!-- voltage_main -->
+    <parameterId>PD332</parameterId> <!-- spectral_channels -->
+    <parameterId>PD347</parameterId> <!-- lamp_time -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2320</parameterId> <!-- nutnr_nitrogen_in_nitrate -->
+    <parameterId>PD2321</parameterId> <!-- nutnr_absorbance_at_254_nm -->
+    <parameterId>PD2322</parameterId> <!-- nutnr_absorbance_at_350_nm -->
+    <parameterId>PD2323</parameterId> <!-- nutnr_bromide_trace -->
+    <parameterId>PD2324</parameterId> <!-- nutnr_spectrum_average -->
+    <parameterId>PD2325</parameterId> <!-- nutnr_dark_value_used_for_fit -->
+    <parameterId>PD2326</parameterId> <!-- nutnr_integration_time_factor -->
+    <parameterId>PD2327</parameterId> <!-- nutnr_voltage_int -->
+    <parameterId>PD2328</parameterId> <!-- nutnr_current_main -->
+    <parameterId>PD2329</parameterId> <!-- nutnr_fit_base_1 -->
+    <parameterId>PD2330</parameterId> <!-- nutnr_fit_base_2 -->
+    <parameterId>PD2331</parameterId> <!-- nutnr_fit_rmse -->
+    <parameterId>PD2612</parameterId> <!-- year -->
+    <parameterId>PD2613</parameterId> <!-- day_of_year -->
+    <parameterId>PD2614</parameterId> <!-- ctd_time_uint32 -->
+    <parameterId>PD2615</parameterId> <!-- ctd_psu -->
+    <parameterId>PD2616</parameterId> <!-- ctd_temp -->
+    <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
+  </streamDefinition>
+  <streamDefinition streamName="nutnr_m_instrument_recovered">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD10</parameterId> <!-- port_timestamp -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD311</parameterId> <!-- frame_type -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD314</parameterId> <!-- time_of_sample -->
+    <parameterId>PD315</parameterId> <!-- nitrate_concentration -->
+    <parameterId>PD321</parameterId> <!-- temp_spectrometer -->
+    <parameterId>PD322</parameterId> <!-- temp_lamp -->
+    <parameterId>PD324</parameterId> <!-- humidity -->
+    <parameterId>PD332</parameterId> <!-- spectral_channels -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2320</parameterId> <!-- nutnr_nitrogen_in_nitrate -->
+    <parameterId>PD2321</parameterId> <!-- nutnr_absorbance_at_254_nm -->
+    <parameterId>PD2322</parameterId> <!-- nutnr_absorbance_at_350_nm -->
+    <parameterId>PD2323</parameterId> <!-- nutnr_bromide_trace -->
+    <parameterId>PD2324</parameterId> <!-- nutnr_spectrum_average -->
+    <parameterId>PD2325</parameterId> <!-- nutnr_dark_value_used_for_fit -->
+    <parameterId>PD2326</parameterId> <!-- nutnr_integration_time_factor -->
+    <parameterId>PD2331</parameterId> <!-- nutnr_fit_rmse -->
+    <parameterId>PD2612</parameterId> <!-- year -->
+    <parameterId>PD2613</parameterId> <!-- day_of_year -->
+    <parameterId>PD2614</parameterId> <!-- ctd_time_uint32 -->
+    <parameterId>PD2615</parameterId> <!-- ctd_psu -->
+    <parameterId>PD2616</parameterId> <!-- ctd_temp -->
+    <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
+  </streamDefinition>
+  <streamDefinition streamName="nutnr_m_glider_instrument">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD10</parameterId> <!-- port_timestamp -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD1401</parameterId> <!-- m_present_secs_into_mission -->
+    <parameterId>PD1402</parameterId> <!-- m_present_time -->
+    <parameterId>PD1494</parameterId> <!-- sci_m_present_secs_into_mission -->
+    <parameterId>PD1495</parameterId> <!-- sci_m_present_time -->
+    <parameterId>PD3702</parameterId> <!-- sci_suna_timestamp -->
+    <parameterId>PD3703</parameterId> <!-- sci_suna_record_offset -->
+    <parameterId>PD3704</parameterId> <!-- sci_suna_nitrate_um -->
+    <parameterId>PD3705</parameterId> <!-- sci_suna_nitrate_mg -->
   </streamDefinition>
 </streamDefinitions>

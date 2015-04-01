@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="nutnr-n_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="nutnr-n_recovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_n/nutnr_n_recovered_driver.py" />
+    </bean>
+
+    <camelContext id="nutnr-n-decode-camel"
+        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
+
+        <endpoint id="nutnr-n_recoveredFileEndpoint"
+            uri="file:${edex.home}/data/ooi/nutnr-n_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
+
+        <route id="nutnr-n_recoveredFileConsumerRoute">
+            <from ref="nutnr-n_recoveredFileEndpoint" />
+            <setHeader headerName="deliveryType">
+                <constant>recovered</constant>
+            </setHeader>
+            <setHeader headerName="sensor">
+                <constant>XX00XXXX-XX00X-00-NUTNAR000</constant>
+            </setHeader>
+            <bean ref="fileToString" />
+            <to uri="jms-durable:queue:Ingest.nutnr-n_recovered" />
+        </route>
+
+        <route id="nutnr-n_recoveredIngest">
+            <from uri="jms-durable:queue:Ingest.nutnr-n_recovered" />
+            <doTry>
+                <pipeline>
+                    <bean ref="nutnr-n_recoveredProcessor" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.nutnr-n?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+</beans>

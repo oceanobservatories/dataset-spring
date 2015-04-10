@@ -13,7 +13,7 @@
     <bean id="fileStore" class="org.apache.camel.processor.idempotent.FileIdempotentRepository">
         <!-- the filename for the store -->
         <property name="fileStore" value="${edex.home}/data/ooi/zplsc-b_recovered/.filestore.dat"/>  <!-- Delete this file to re-test previously downloaded raw data -->
-        <!-- the max filesize in bytes for the file. Camel will trunk and flush the cache if the file gets bigger -->
+        <!-- the max file size in bytes for the file. Camel will trunk and flush the cache if the file gets bigger -->
         <property name="maxFileStoreSize" value="512000"/>
         <!-- the number of elements in our store -->
         <property name="cacheSize" value="250"/>

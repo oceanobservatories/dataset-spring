@@ -6,7 +6,7 @@
     <bean id="adcps-jln_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="adcps-jln_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcps_jln/adcps_jln_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.adcps_jln.adcps_jln_driver" />
     </bean>
 
     <camelContext id="adcps-jln-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="adcps-jln_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcps-jln_recovered" />
+            <from uri="jms-durable:queue:Ingest.adcps-jln_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="adcps-jln_recoveredProcessor" />

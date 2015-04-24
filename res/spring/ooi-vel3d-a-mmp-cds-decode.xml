@@ -6,7 +6,7 @@
     <bean id="vel3d-a-mmp-cds_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="vel3d-a-mmp-cds_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_a/mmp_cds/vel3d_a_mmp_cds_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.vel3d_a.mmp_cds.vel3d_a_mmp_cds_recovered_driver" />
     </bean>
 
     <camelContext id="vel3d-a-mmp-cds-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="vel3d-a-mmp-cds_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d-a-mmp-cds_recovered" />
+            <from uri="jms-durable:queue:Ingest.vel3d-a-mmp-cds_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3d-a-mmp-cds_recoveredProcessor" />

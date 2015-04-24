@@ -6,7 +6,7 @@
     <bean id="phsen-abcdef_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="phsen-abcdef_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/phsen_abcdef_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.phsen_abcdef.phsen_abcdef_recovered_driver" />
     </bean>
 
     <camelContext id="phsen-abcdef-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="phsen-abcdef_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef_recovered" />
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef_recoveredProcessor" />

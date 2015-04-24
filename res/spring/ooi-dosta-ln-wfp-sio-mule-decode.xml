@@ -6,7 +6,7 @@
     <bean id="dosta-ln-wfp-sio-mule_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="dosta-ln-wfp-sio-mule_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_ln/wfp_sio/dosta_ln_wfp_sio_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.dosta_ln.wfp_sio.dosta_ln_wfp_sio_telemetered_driver" />
     </bean>
 
     <camelContext id="dosta-ln-wfp-sio-mule-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="dosta-ln-wfp-sio-mule_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-ln-wfp-sio-mule_telemetered" />
+            <from uri="jms-durable:queue:Ingest.dosta-ln-wfp-sio-mule_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-ln-wfp-sio-mule_telemeteredProcessor" />

@@ -6,7 +6,7 @@
     <bean id="adcpa-n_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="adcpa-n_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpa_n/adcpa_n_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.adcpa_n.adcpa_n_recovered_driver" />
     </bean>
 
     <camelContext id="adcpa-n-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="adcpa-n_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpa-n_recovered" />
+            <from uri="jms-durable:queue:Ingest.adcpa-n_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpa-n_recoveredProcessor" />

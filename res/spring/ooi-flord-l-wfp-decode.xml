@@ -6,7 +6,7 @@
     <bean id="flord-l-wfp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="flord-l-wfp_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flord_l_wfp/flord_l_wfp_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.flord_l_wfp.flord_l_wfp_recovered_driver" />
     </bean>
 
     <camelContext id="flord-l-wfp-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="flord-l-wfp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flord-l-wfp_recovered" />
+            <from uri="jms-durable:queue:Ingest.flord-l-wfp_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="flord-l-wfp_recoveredProcessor" />

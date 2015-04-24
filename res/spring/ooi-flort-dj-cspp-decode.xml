@@ -6,13 +6,13 @@
     <bean id="flort-dj-cspp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="flort-dj-cspp_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/cspp/flort_dj_cspp_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.flort_dj.cspp.flort_dj_cspp_recovered_driver" />
     </bean>
 
     <bean id="flort-dj-cspp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="flort-dj-cspp_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flort_dj/cspp/flort_dj_cspp_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.flort_dj.cspp.flort_dj_cspp_telemetered_driver" />
     </bean>
 
     <camelContext id="flort-dj-cspp-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="flort-dj-cspp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flort-dj-cspp_recovered" />
+            <from uri="jms-durable:queue:Ingest.flort-dj-cspp_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="flort-dj-cspp_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="flort-dj-cspp_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.flort-dj-cspp_telemetered" />
+            <from uri="jms-durable:queue:Ingest.flort-dj-cspp_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="flort-dj-cspp_telemeteredProcessor" />

@@ -6,13 +6,13 @@
     <bean id="vel3d-cd-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="vel3d-cd-dcl_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_cd/dcl/vel3d_cd_dcl_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.vel3d_cd.dcl.vel3d_cd_dcl_telemetered_driver" />
     </bean>
 
     <bean id="vel3d-cd-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="vel3d-cd-dcl_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/vel3d_cd/dcl/vel3d_cd_dcl_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.vel3d_cd.dcl.vel3d_cd_dcl_recovered_driver" />
     </bean>
 
     <camelContext id="vel3d-cd-dcl-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="vel3d-cd-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d-cd-dcl_telemetered" />
+            <from uri="jms-durable:queue:Ingest.vel3d-cd-dcl_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3d-cd-dcl_telemeteredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="vel3d-cd-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d-cd-dcl_recovered" />
+            <from uri="jms-durable:queue:Ingest.vel3d-cd-dcl_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3d-cd-dcl_recoveredProcessor" />

@@ -6,13 +6,13 @@
     <bean id="parad-k-stc-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="parad-k-stc-imodem_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.PARAD_K.STC_IMODEM.parad_k_stc_imodem_recovered_driver" />
     </bean>
 
     <bean id="parad-k-stc-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="parad-k-stc-imodem_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/PARAD_K/STC_IMODEM/parad_k_stc_imodem_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.PARAD_K.STC_IMODEM.parad_k_stc_imodem_telemetered_driver" />
     </bean>
 
     <camelContext id="parad-k-stc-imodem-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="parad-k-stc-imodem_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.parad-k-stc-imodem_recovered" />
+            <from uri="jms-durable:queue:Ingest.parad-k-stc-imodem_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="parad-k-stc-imodem_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="parad-k-stc-imodem_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.parad-k-stc-imodem_telemetered" />
+            <from uri="jms-durable:queue:Ingest.parad-k-stc-imodem_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="parad-k-stc-imodem_telemeteredProcessor" />

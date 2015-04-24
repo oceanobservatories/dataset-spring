@@ -6,13 +6,13 @@
     <bean id="dbg-pdbg-cspp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="dbg-pdbg-cspp_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dbg_pdbg/cspp/dbg_pdbg_cspp_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.dbg_pdbg.cspp.dbg_pdbg_cspp_recovered_driver" />
     </bean>
 
     <bean id="dbg-pdbg-cspp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="dbg-pdbg-cspp_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dbg_pdbg/cspp/dbg_pdbg_cspp_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.dbg_pdbg.cspp.dbg_pdbg_cspp_telemetered_driver" />
     </bean>
 
     <camelContext id="dbg-pdbg-cspp-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="dbg-pdbg-cspp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dbg-pdbg-cspp_recovered" />
+            <from uri="jms-durable:queue:Ingest.dbg-pdbg-cspp_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="dbg-pdbg-cspp_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="dbg-pdbg-cspp_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dbg-pdbg-cspp_telemetered" />
+            <from uri="jms-durable:queue:Ingest.dbg-pdbg-cspp_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="dbg-pdbg-cspp_telemeteredProcessor" />

@@ -6,13 +6,13 @@
     <bean id="auv-eng-auv_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="auv-eng-auv_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/auv_eng/auv/auv_eng_auv_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.auv_eng.auv.auv_eng_auv_recovered_driver" />
     </bean>
 
     <bean id="auv-eng-auv_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="auv-eng-auv_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/auv_eng/auv/auv_eng_auv_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.auv_eng.auv.auv_eng_auv_telemetered_driver" />
     </bean>
 
     <camelContext id="auv-eng-auv-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="auv-eng-auv_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.auv-eng-auv_recovered" />
+            <from uri="jms-durable:queue:Ingest.auv-eng-auv_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="auv-eng-auv_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="auv-eng-auv_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.auv-eng-auv_telemetered" />
+            <from uri="jms-durable:queue:Ingest.auv-eng-auv_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="auv-eng-auv_telemeteredProcessor" />

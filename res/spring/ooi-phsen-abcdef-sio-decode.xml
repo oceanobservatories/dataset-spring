@@ -6,7 +6,7 @@
     <bean id="phsen-abcdef-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="phsen-abcdef-sio_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/sio/phsen_abcdef_sio_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.phsen_abcdef.sio.phsen_abcdef_sio_telemetered_driver" />
     </bean>
 
     <camelContext id="phsen-abcdef-sio-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="phsen-abcdef-sio_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef-sio_telemetered" />
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-sio_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef-sio_telemeteredProcessor" />

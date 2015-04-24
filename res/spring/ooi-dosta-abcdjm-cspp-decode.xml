@@ -6,13 +6,13 @@
     <bean id="dosta-abcdjm-cspp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="dosta-abcdjm-cspp_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/cspp/dosta_abcdjm_cspp_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.dosta_abcdjm.cspp.dosta_abcdjm_cspp_telemetered_driver" />
     </bean>
 
     <bean id="dosta-abcdjm-cspp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="dosta-abcdjm-cspp_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/cspp/dosta_abcdjm_cspp_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.dosta_abcdjm.cspp.dosta_abcdjm_cspp_recovered_driver" />
     </bean>
 
     <camelContext id="dosta-abcdjm-cspp-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="dosta-abcdjm-cspp_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-cspp_telemetered" />
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-cspp_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-abcdjm-cspp_telemeteredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="dosta-abcdjm-cspp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-cspp_recovered" />
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-cspp_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-abcdjm-cspp_recoveredProcessor" />

@@ -6,13 +6,13 @@
     <bean id="phsen-abcdef-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="phsen-abcdef-imodem_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/imodem/phsen_abcdef_imodem_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.phsen_abcdef.imodem.phsen_abcdef_imodem_recovered_driver" />
     </bean>
 
     <bean id="phsen-abcdef-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="phsen-abcdef-imodem_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/imodem/phsen_abcdef_imodem_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.phsen_abcdef.imodem.phsen_abcdef_imodem_telemetered_driver" />
     </bean>
 
     <camelContext id="phsen-abcdef-imodem-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="phsen-abcdef-imodem_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_recovered" />
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef-imodem_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="phsen-abcdef-imodem_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_telemetered" />
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-imodem_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef-imodem_telemeteredProcessor" />

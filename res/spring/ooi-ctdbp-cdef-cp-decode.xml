@@ -6,7 +6,7 @@
     <bean id="ctdbp-cdef-cp_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="ctdbp-cdef-cp_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdbp_cdef/cp/ctdbp_cdef_cp_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctdbp_cdef.cp.ctdbp_cdef_cp_driver" />
     </bean>
 
     <camelContext id="ctdbp-cdef-cp-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="ctdbp-cdef-cp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdbp-cdef-cp_recovered" />
+            <from uri="jms-durable:queue:Ingest.ctdbp-cdef-cp_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdbp-cdef-cp_recoveredProcessor" />

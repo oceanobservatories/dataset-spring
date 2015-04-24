@@ -6,13 +6,13 @@
     <bean id="metbk-a-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="metbk-a-dcl_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/metbk_a/dcl/metbk_a_dcl_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.metbk_a.dcl.metbk_a_dcl_recovered_driver" />
     </bean>
 
     <bean id="metbk-a-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="metbk-a-dcl_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/metbk_a/dcl/metbk_a_dcl_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.metbk_a.dcl.metbk_a_dcl_telemetered_driver" />
     </bean>
 
     <camelContext id="metbk-a-dcl-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="metbk-a-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.metbk-a-dcl_recovered" />
+            <from uri="jms-durable:queue:Ingest.metbk-a-dcl_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="metbk-a-dcl_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="metbk-a-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.metbk-a-dcl_telemetered" />
+            <from uri="jms-durable:queue:Ingest.metbk-a-dcl_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="metbk-a-dcl_telemeteredProcessor" />

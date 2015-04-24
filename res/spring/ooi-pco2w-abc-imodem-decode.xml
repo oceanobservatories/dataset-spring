@@ -6,13 +6,13 @@
     <bean id="pco2w-abc-imodem_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="pco2w-abc-imodem_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/pco2w_abc/imodem/pco2w_abc_imodem_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.pco2w_abc.imodem.pco2w_abc_imodem_recovered_driver" />
     </bean>
 
     <bean id="pco2w-abc-imodem_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="pco2w-abc-imodem_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/pco2w_abc/imodem/pco2w_abc_imodem_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.pco2w_abc.imodem.pco2w_abc_imodem_telemetered_driver" />
     </bean>
 
     <camelContext id="pco2w-abc-imodem-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="pco2w-abc-imodem_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.pco2w-abc-imodem_recovered" />
+            <from uri="jms-durable:queue:Ingest.pco2w-abc-imodem_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="pco2w-abc-imodem_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="pco2w-abc-imodem_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.pco2w-abc-imodem_telemetered" />
+            <from uri="jms-durable:queue:Ingest.pco2w-abc-imodem_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="pco2w-abc-imodem_telemeteredProcessor" />

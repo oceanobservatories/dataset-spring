@@ -6,13 +6,13 @@
     <bean id="ctdgv-m-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="ctdgv-m-glider_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/ctdgv/ctdgv_m_glider_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.moas.gl.ctdgv.ctdgv_m_glider_recovered_driver" />
     </bean>
 
     <bean id="ctdgv-m-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="ctdgv-m-glider_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/moas/gl/ctdgv/ctdgv_m_glider_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.moas.gl.ctdgv.ctdgv_m_glider_telemetered_driver" />
     </bean>
 
     <camelContext id="ctdgv-m-glider-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="ctdgv-m-glider_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdgv-m-glider_recovered" />
+            <from uri="jms-durable:queue:Ingest.ctdgv-m-glider_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdgv-m-glider_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="ctdgv-m-glider_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdgv-m-glider_telemetered" />
+            <from uri="jms-durable:queue:Ingest.ctdgv-m-glider_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdgv-m-glider_telemeteredProcessor" />

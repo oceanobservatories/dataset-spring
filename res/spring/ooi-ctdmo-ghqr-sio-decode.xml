@@ -6,13 +6,13 @@
     <bean id="ctdmo-ghqr-sio_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
         <constructor-arg index="0" value="ctdmo-ghqr-sio_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_co_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctdmo_ghqr.sio.ctdmo_ghqr_sio_co_recovered_driver" />
     </bean>
 
     <bean id="ctdmo-ghqr-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
         <constructor-arg index="0" value="ctdmo-ghqr-sio_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdmo_ghqr/sio/ctdmo_ghqr_sio_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctdmo_ghqr.sio.ctdmo_ghqr_sio_telemetered_driver" />
     </bean>
 
     <camelContext id="ctdmo-ghqr-sio-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="ctdmo-ghqr-sio_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_recovered" />
+            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdmo-ghqr-sio_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="ctdmo-ghqr-sio_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_telemetered" />
+            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr-sio_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdmo-ghqr-sio_telemeteredProcessor" />

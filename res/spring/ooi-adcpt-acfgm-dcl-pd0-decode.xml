@@ -6,13 +6,13 @@
     <bean id="adcpt-acfgm-dcl-pd0_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="adcpt-acfgm-dcl-pd0_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_acfgm/dcl/pd0/adcpt_acfgm_dcl_pd0_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.adcpt_acfgm.dcl.pd0.adcpt_acfgm_dcl_pd0_recovered_driver" />
     </bean>
 
     <bean id="adcpt-acfgm-dcl-pd0_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="adcpt-acfgm-dcl-pd0_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/adcpt_acfgm/dcl/pd0/adcpt_acfgm_dcl_pd0_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.adcpt_acfgm.dcl.pd0.adcpt_acfgm_dcl_pd0_telemetered_driver" />
     </bean>
 
     <camelContext id="adcpt-acfgm-dcl-pd0-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="adcpt-acfgm-dcl-pd0_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd0_recovered" />
+            <from uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd0_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpt-acfgm-dcl-pd0_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="adcpt-acfgm-dcl-pd0_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd0_telemetered" />
+            <from uri="jms-durable:queue:Ingest.adcpt-acfgm-dcl-pd0_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpt-acfgm-dcl-pd0_telemeteredProcessor" />

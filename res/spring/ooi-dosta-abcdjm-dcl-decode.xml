@@ -6,13 +6,13 @@
     <bean id="dosta-abcdjm-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="dosta-abcdjm-dcl_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/dcl/dosta_abcdjm_dcl_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.dosta_abcdjm.dcl.dosta_abcdjm_dcl_recovered_driver" />
     </bean>
 
     <bean id="dosta-abcdjm-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="dosta-abcdjm-dcl_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/dosta_abcdjm/dcl/dosta_abcdjm_dcl_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.dosta_abcdjm.dcl.dosta_abcdjm_dcl_telemetered_driver" />
     </bean>
 
     <camelContext id="dosta-abcdjm-dcl-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="dosta-abcdjm-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-dcl_recovered" />
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-dcl_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-abcdjm-dcl_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="dosta-abcdjm-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-dcl_telemetered" />
+            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-dcl_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-abcdjm-dcl_telemeteredProcessor" />

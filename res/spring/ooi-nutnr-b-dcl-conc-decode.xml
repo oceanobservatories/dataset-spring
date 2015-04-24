@@ -6,13 +6,13 @@
     <bean id="nutnr-b-dcl-conc_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="nutnr-b-dcl-conc_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_b/dcl_conc/nutnr_b_dcl_conc_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.nutnr_b.dcl_conc.nutnr_b_dcl_conc_recovered_driver" />
     </bean>
 
     <bean id="nutnr-b-dcl-conc_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="nutnr-b-dcl-conc_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_b/dcl_conc/nutnr_b_dcl_conc_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.nutnr_b.dcl_conc.nutnr_b_dcl_conc_telemetered_driver" />
     </bean>
 
     <camelContext id="nutnr-b-dcl-conc-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="nutnr-b-dcl-conc_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_recovered" />
+            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="nutnr-b-dcl-conc_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_telemetered" />
+            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_telemeteredProcessor" />

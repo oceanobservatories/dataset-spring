@@ -6,7 +6,7 @@
     <bean id="ctdpf-ckl-wfp-sio-mule_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="ctdpf-ckl-wfp-sio-mule_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/ctdpf_ckl/wfp_sio/ctdpf_ckl_wfp_sio_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctdpf_ckl.wfp_sio.ctdpf_ckl_wfp_sio_telemetered_driver" />
     </bean>
 
     <camelContext id="ctdpf-ckl-wfp-sio-mule-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="ctdpf-ckl-wfp-sio-mule_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdpf-ckl-wfp-sio-mule_telemetered" />
+            <from uri="jms-durable:queue:Ingest.ctdpf-ckl-wfp-sio-mule_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdpf-ckl-wfp-sio-mule_telemeteredProcessor" />

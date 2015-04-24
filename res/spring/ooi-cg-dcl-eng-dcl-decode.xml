@@ -6,13 +6,13 @@
     <bean id="cg-dcl-eng-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="cg-dcl-eng-dcl_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_dcl_eng/dcl/cg_dcl_eng_dcl_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.cg_dcl_eng.dcl.cg_dcl_eng_dcl_recovered_driver" />
     </bean>
 
     <bean id="cg-dcl-eng-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="cg-dcl-eng-dcl_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/cg_dcl_eng/dcl/cg_dcl_eng_dcl_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.cg_dcl_eng.dcl.cg_dcl_eng_dcl_telemetered_driver" />
     </bean>
 
     <camelContext id="cg-dcl-eng-dcl-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="cg-dcl-eng-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_recovered" />
+            <from uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="cg-dcl-eng-dcl_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="cg-dcl-eng-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_telemetered" />
+            <from uri="jms-durable:queue:Ingest.cg-dcl-eng-dcl_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="cg-dcl-eng-dcl_telemeteredProcessor" />

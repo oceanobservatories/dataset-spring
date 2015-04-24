@@ -6,13 +6,13 @@
     <bean id="phsen-abcdef-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="phsen-abcdef-dcl_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/dcl/phsen_abcdef_dcl_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.phsen_abcdef.dcl.phsen_abcdef_dcl_recovered_driver" />
     </bean>
 
     <bean id="phsen-abcdef-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="phsen-abcdef-dcl_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/phsen_abcdef/dcl/phsen_abcdef_dcl_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.phsen_abcdef.dcl.phsen_abcdef_dcl_telemetered_driver" />
     </bean>
 
     <camelContext id="phsen-abcdef-dcl-decode-camel"
@@ -37,7 +37,7 @@
         </route>
 
         <route id="phsen-abcdef-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef-dcl_recovered" />
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-dcl_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef-dcl_recoveredProcessor" />
@@ -63,7 +63,7 @@
         </route>
 
         <route id="phsen-abcdef-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef-dcl_telemetered" />
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef-dcl_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef-dcl_telemeteredProcessor" />

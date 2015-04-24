@@ -6,7 +6,7 @@
     <bean id="nutnr-m-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="nutnr-m-glider_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_m/glider/nutnr_m_glider_telemetered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.nutnr_m.glider.nutnr_m_glider_telemetered_driver" />
     </bean>
 
     <camelContext id="nutnr-m-glider-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="nutnr-m-glider_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-m-glider_telemetered" />
+            <from uri="jms-durable:queue:Ingest.nutnr-m-glider_telemetered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-m-glider_telemeteredProcessor" />

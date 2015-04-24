@@ -6,7 +6,7 @@
     <bean id="flobn-m-subcon_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="flobn-m-subcon_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/flobn/flobn_m_subcon_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.flobn.flobn_m_subcon_recovered_driver" />
     </bean>
 
     <camelContext id="flobn-m-subcon-decode-camel"
@@ -28,11 +28,11 @@
         </route>
 
         <route id="flobn-m-subcon_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flobn-m-subcon_recovered" />
+            <from uri="jms-durable:queue:Ingest.flobn-m-subcon_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="flobn-m-subcon_recoveredProcessor" />
-                    <to uri="vm:generate" />
+                    <to uri="vm:generate?concurrentConsumers=10" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

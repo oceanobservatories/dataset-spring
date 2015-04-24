@@ -6,7 +6,7 @@
     <bean id="nutnr-n_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="nutnr-n_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/nutnr_n/nutnr_n_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.nutnr_n.nutnr_n_recovered_driver" />
     </bean>
 
     <camelContext id="nutnr-n-decode-camel"
@@ -28,7 +28,7 @@
         </route>
 
         <route id="nutnr-n_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-n_recovered" />
+            <from uri="jms-durable:queue:Ingest.nutnr-n_recovered?concurrentConsumers=4" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-n_recoveredProcessor" />

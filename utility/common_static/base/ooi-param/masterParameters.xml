@@ -698,16 +698,16 @@
 	<parameter encoding="uint8" fill="255" name="start_bin" pd_id="PD793" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="uint8" fill="255" name="num_bins" pd_id="PD794" precision="0" type="quantity" unit="1"/>
 	<parameter encoding="float64" fill="-9999999" name="fluxgate_calibration_timestamp" pd_id="PD795" precision="6" type="quantity" unit="seconds since 1900-01-01"/>
-	<parameter encoding="float32" fill="-9999999" name="s_inverse_bx" pd_id="PD796" precision="" type="quantity" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="s_inverse_by" pd_id="PD797" precision="" type="quantity" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="s_inverse_bz" pd_id="PD798" precision="" type="quantity" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="s_inverse_err" pd_id="PD799" precision="" type="quantity" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="coil_offset" pd_id="PD800" precision="" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="s_inverse_bx" pd_id="PD796" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="s_inverse_by" pd_id="PD797" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="s_inverse_bz" pd_id="PD798" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="s_inverse_err" pd_id="PD799" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="coil_offset" pd_id="PD800" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="electrical_null" pd_id="PD801" precision="" type="quantity" unit="1"/>
 	<parameter encoding="float64" fill="-9999999" name="tilt_calibration_timestamp" pd_id="PD802" precision="6" type="quantity" unit="seconds since 1900-01-01"/>
-	<parameter encoding="float32" fill="-9999999" name="roll_up_down" pd_id="PD803" precision="" type="quantity" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="pitch_up_down" pd_id="PD804" precision="" type="quantity" unit="1"/>
-	<parameter encoding="float32" fill="-9999999" name="offset_up_down" pd_id="PD805" precision="" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="roll_up_down" pd_id="PD803" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="pitch_up_down" pd_id="PD804" precision="" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="offset_up_down" pd_id="PD805" precision="" type="array&lt;quantity&gt;" unit="1"/>
 	<parameter encoding="float32" fill="-9999999" name="tilt_null" pd_id="PD806" precision="" type="quantity" unit="1"/>
 	<parameter encoding="uint32" fill="65535" name="transducer_frequency" pd_id="PD807" precision="0" type="quantity" unit="Hz"/>
 	<parameter encoding="string" fill="empty" name="configuration" pd_id="PD808" precision="0" type="quantity" unit="1"/>
@@ -1892,7 +1892,6 @@
 	<parameter encoding="float32" fill="-9999999" name="adcp_transmit_voltage" pd_id="PD2184" precision="" type="quantity" unit="V"/>
 	<parameter encoding="float32" fill="-9999999" name="adcp_transmit_impedance" pd_id="PD2185" precision="" type="quantity" unit="Ohms"/>
 	<parameter encoding="string" fill="empty" name="adcp_transmit_test_results" pd_id="PD2186" precision="" type="quantity" unit="1"/>
-	<parameter encoding="int8" fill="-99" name="lily_out_of_range" pd_id="PD2187" precision="" type="boolean" unit="1"/>
 	<parameter encoding="string" fill="empty" name="lily_leveling_status" pd_id="PD2188" precision="" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="botpt_iris_status_01" pd_id="PD2221" precision="" type="quantity" unit="1"/>
 	<parameter encoding="string" fill="empty" name="botpt_iris_status_02" pd_id="PD2222" precision="" type="quantity" unit="1"/>
@@ -3058,7 +3057,7 @@
 	<parameter encoding="float32" fill="-9999999" name="forward_velocity" pd_id="PD3419" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="starboard_velocity" pd_id="PD3420" precision="4" type="quantity" unit="m s-1"/>
 	<parameter encoding="float32" fill="-9999999" name="vertical_velocity" pd_id="PD3421" precision="4" type="quantity" unit="m s-1"/>
-	<parameter encoding="float32" fill="-32768" name="adcpa_n_auv_error_velocity" pd_id="PD3422" precision="0" type="quantity" unit="mm s-1"/>
+	<parameter encoding="float32" fill="-32768" name="adcpa_n_auv_error_velocity" pd_id="PD3422" precision="4" type="quantity" unit="mm s-1"/>
 	<parameter encoding="int16" fill="-32768" name="binary_velocity_data_1" pd_id="PD3423" precision="0" type="quantity" unit="mm s-1"/>
 	<parameter encoding="int16" fill="-32768" name="binary_velocity_data_2" pd_id="PD3424" precision="0" type="quantity" unit="mm s-1"/>
 	<parameter encoding="int16" fill="-32768" name="binary_velocity_data_3" pd_id="PD3425" precision="0" type="quantity" unit="mm s-1"/>
@@ -3352,4 +3351,56 @@
 	<parameter encoding="float32" fill="-9999999" name="optaa_ac_mmp_cds_beam_attenuation" pd_id="PD3713" precision="6" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="-9999999" name="optaa_ac_mmp_cds_optical_absorption" pd_id="PD3714" precision="6" type="function" unit="m-1"/>
 	<parameter encoding="float32" fill="" name="flntu_x_mmp_cds_scat_seawater" pd_id="PD3715" precision="4" type="function" unit="m-1"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_tmpatur" pd_id="PD3716" precision="4" type="function" unit="deg_C"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_windtur_north" pd_id="PD3717" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_windtur_up" pd_id="PD3718" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_windtur_west" pd_id="PD3719" precision="4" type="function" unit="m s-1"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_fluxhot" pd_id="PD3720" precision="4" type="function" unit="m s-1 * K"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_fluxmom_alongwind" pd_id="PD3721" precision="4" type="function" unit="m2 s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_fluxmom_crosswind" pd_id="PD3722" precision="4" type="function" unit="m2 s-2"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_time_L1" pd_id="PD3723" precision="4" type="function" unit="s"/>
+	<parameter encoding="float32" fill="-9999999" name="fdchp_a_time_L2" pd_id="PD3724" precision="4" type="function" unit="s"/>
+	<parameter encoding="float32" fill="-9999999" name="nutnr_m_temp_sal_corrected_nitrate" pd_id="PD3725" precision="" type="function" unit="uMol L-1"/>
+	<parameter encoding="float32" fill="-99999999" name="par_auv_biospherical_mobile" pd_id="PD3726" precision="4" type="function" unit="umol photons m-2 s-1 count-1"/>
+	<parameter encoding="float32" fill="-9999999" name="pco2w_seawater" pd_id="PD3729" precision="4" type="function" unit="uatm"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_transmission_timestamp" pd_id="PD3730" precision="" type="quantity" unit="1"/>
+	<parameter encoding="int16" fill="-32768" name="zplsc_c_phase" pd_id="PD3731" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int8" fill="-99" name="zplsc_c_number_of_frequencies" pd_id="PD3732" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="zplsc_c_number_of_bins_frequency_1" pd_id="PD3733" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="zplsc_c_number_of_bins_frequency_2" pd_id="PD3734" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="zplsc_c_number_of_bins_frequency_3" pd_id="PD3735" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="int32" fill="-9999999" name="zplsc_c_number_of_bins_frequency_4" pd_id="PD3736" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="uint32" fill="0" name="zplsc_c_min_value_channel_1" pd_id="PD3737" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="uint32" fill="0" name="zplsc_c_min_value_channel_2" pd_id="PD3738" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="uint32" fill="0" name="zplsc_c_min_value_channel_3" pd_id="PD3739" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="uint32" fill="0" name="zplsc_c_min_value_channel_4" pd_id="PD3740" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_date_of_burst" pd_id="PD3741" precision="" type="quantity" unit="1"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_c_tilt_x" pd_id="PD3742" precision="1" type="quantity" unit="deg"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_c_tilt_y" pd_id="PD3743" precision="1" type="quantity" unit="deg"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_c_battery_voltage" pd_id="PD3744" precision="1" type="quantity" unit="volt"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_c_temperature" pd_id="PD3745" precision="1" type="quantity" unit="degC"/>
+	<parameter encoding="float32" fill="-9999999" name="zplsc_c_pressure" pd_id="PD3746" precision="1" type="quantity" unit="dBar"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_board_number_channel_1" pd_id="PD3747" precision="" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_frequency_channel_1" pd_id="PD3748" precision="" type="quantity" unit="kHz"/>
+	<parameter encoding="uint64" fill="0" name="zplsc_c_values_channel_1" pd_id="PD3749" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_board_number_channel_2" pd_id="PD3750" precision="" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_frequency_channel_2" pd_id="PD3751" precision="" type="quantity" unit="kHz"/>
+	<parameter encoding="uint64" fill="0" name="zplsc_c_values_channel_2" pd_id="PD3752" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_board_number_channel_3" pd_id="PD3753" precision="" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_frequency_channel_3" pd_id="PD3754" precision="" type="quantity" unit="kHz"/>
+	<parameter encoding="uint64" fill="0" name="zplsc_c_values_channel_3" pd_id="PD3755" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_board_number_channel_4" pd_id="PD3756" precision="" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="zplsc_c_frequency_channel_4" pd_id="PD3757" precision="" type="quantity" unit="kHz"/>
+	<parameter encoding="uint64" fill="0" name="zplsc_c_values_channel_4" pd_id="PD3758" precision="0" type="quantity" unit="dB"/>
+	<parameter encoding="float32" fill="-9999999" name="camhd_pan_position" pd_id="PD3759" precision="0" type="quantity" unit="degrees"/>
+	<parameter encoding="float32" fill="-9999999" name="camhd_tilt_position" pd_id="PD3760" precision="0" type="quantity" unit="degrees"/>
+	<parameter encoding="float32" fill="-9999999" name="camhd_heading" pd_id="PD3761" precision="0" type="quantity" unit="degrees"/>
+	<parameter encoding="float32" fill="-9999999" name="camhd_pitch" pd_id="PD3762" precision="0" type="quantity" unit="degrees"/>
+	<parameter encoding="int8" fill="-9999999" name="camhd_light1_intensity" pd_id="PD3763" precision="0" type="quantity" unit="Percent"/>
+	<parameter encoding="int8" fill="-9999999" name="camhd_light2_intensity" pd_id="PD3764" precision="0" type="quantity" unit="Percent"/>
+	<parameter encoding="int8" fill="-9999999" name="camhd_zoom" pd_id="PD3765" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="boolean" fill="-9999999" name="camhd_laser" pd_id="PD3766" precision="0" type="quantity" unit="1"/>
+	<parameter encoding="string" fill="empty" name="camhd_channel_name" pd_id="PD3767" precision="0" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="float32" fill="empty" name="camhd_channel_value" pd_id="PD3768" precision="0" type="array&lt;quantity&gt;" unit="1"/>
+	<parameter encoding="string" fill="empty" name="camhd_value_units" pd_id="PD3769" precision="0" type="array&lt;quantity&gt;" unit="1"/>
 </parameterContainer>

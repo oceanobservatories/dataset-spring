@@ -1325,7 +1325,6 @@
     <parameterId>PD1133</parameterId> <!-- corrected_compass_direction -->
     <parameterId>PD1134</parameterId> <!-- seafloor_tilt_magnitude -->
     <parameterId>PD1135</parameterId> <!-- seafloor_tilt_direction -->
-    <parameterId>PD2187</parameterId> <!-- lily_out_of_range -->
   </streamDefinition>
   <streamDefinition streamName="botpt_iris_sample">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -1874,18 +1873,7 @@
     <parameterId>PD1083</parameterId> <!-- elapsed_time -->
     <parameterId>PD1084</parameterId> <!-- sampling_status_code -->
   </streamDefinition>
-  <streamDefinition streamName="rasfl_status">
-    <parameterId>PD7</parameterId> <!-- time -->
-    <parameterId>PD10</parameterId> <!-- port_timestamp -->
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD93</parameterId> <!-- date_time_string -->
-    <parameterId>PD312</parameterId> <!-- serial_number -->
-    <parameterId>PD832</parameterId> <!-- identification_string -->
-    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
-  </streamDefinition>
-  <streamDefinition streamName="D1000_sample">
+  <streamDefinition streamName="d1000_sample">
     <parameterId>PD7</parameterId> <!-- time -->
     <parameterId>PD10</parameterId> <!-- port_timestamp -->
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
@@ -1915,17 +1903,6 @@
     <parameterId>PD1082</parameterId> <!-- minimum_flowrate -->
     <parameterId>PD1083</parameterId> <!-- elapsed_time -->
     <parameterId>PD1084</parameterId> <!-- sampling_status_code -->
-  </streamDefinition>
-  <streamDefinition streamName="ppsdn_status">
-    <parameterId>PD7</parameterId> <!-- time -->
-    <parameterId>PD10</parameterId> <!-- port_timestamp -->
-    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
-    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
-    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD93</parameterId> <!-- date_time_string -->
-    <parameterId>PD312</parameterId> <!-- serial_number -->
-    <parameterId>PD832</parameterId> <!-- identification_string -->
-    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
   </streamDefinition>
   <streamDefinition streamName="spkir_data_record">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -3733,7 +3710,6 @@
     <parameterId>PD11</parameterId> <!-- driver_timestamp -->
     <parameterId>PD12</parameterId> <!-- internal_timestamp -->
     <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
-    <parameterId>PD837</parameterId> <!-- sensor_id -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
     <parameterId>PD2221</parameterId> <!-- botpt_iris_status_01 -->
     <parameterId>PD2222</parameterId> <!-- botpt_iris_status_02 -->
@@ -5786,6 +5762,10 @@
     <parameterId>PD358</parameterId> <!-- voltage_battery -->
     <parameterId>PD359</parameterId> <!-- thermistor_raw -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD926</parameterId> <!-- absorbance_ratio_434 -->
+    <parameterId>PD927</parameterId> <!-- absorbance_ratio_620 -->
+    <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
+    <parameterId>PD3729</parameterId> <!-- pco2w_seawater -->
   </streamDefinition>
   <streamDefinition streamName="pco2w_b_sami_data_record">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -5802,6 +5782,10 @@
     <parameterId>PD358</parameterId> <!-- voltage_battery -->
     <parameterId>PD359</parameterId> <!-- thermistor_raw -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD926</parameterId> <!-- absorbance_ratio_434 -->
+    <parameterId>PD927</parameterId> <!-- absorbance_ratio_620 -->
+    <parameterId>PD930</parameterId> <!-- pco2w_thermistor_temperature -->
+    <parameterId>PD3729</parameterId> <!-- pco2w_seawater -->
   </streamDefinition>
   <streamDefinition streamName="ctdpf_ckl_wfp_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -12008,6 +11992,9 @@
     <parameterId>PD558</parameterId> <!-- correlation_beam_2 -->
     <parameterId>PD559</parameterId> <!-- correlation_beam_3 -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD1085</parameterId> <!-- vel3d_c_eastward_turbulent_velocity -->
+    <parameterId>PD1086</parameterId> <!-- vel3d_c_northward_turbulent_velocity -->
+    <parameterId>PD1087</parameterId> <!-- vel3d_c_upward_turbulent_velocity -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_cd_dcl_velocity_data_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -12029,6 +12016,9 @@
     <parameterId>PD558</parameterId> <!-- correlation_beam_2 -->
     <parameterId>PD559</parameterId> <!-- correlation_beam_3 -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD1085</parameterId> <!-- vel3d_c_eastward_turbulent_velocity -->
+    <parameterId>PD1086</parameterId> <!-- vel3d_c_northward_turbulent_velocity -->
+    <parameterId>PD1087</parameterId> <!-- vel3d_c_upward_turbulent_velocity -->
   </streamDefinition>
   <streamDefinition streamName="vel3d_cd_dcl_system_data">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -12890,6 +12880,7 @@
     <parameterId>PD3462</parameterId> <!-- biospherical_mobile_sensor_voltage -->
     <parameterId>PD3463</parameterId> <!-- sensor_temperature -->
     <parameterId>PD3464</parameterId> <!-- parad_n_auv_supply_voltage -->
+    <parameterId>PD3726</parameterId> <!-- par_auv_biospherical_mobile -->
   </streamDefinition>
   <streamDefinition streamName="parad_n_auv_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -12906,6 +12897,7 @@
     <parameterId>PD3462</parameterId> <!-- biospherical_mobile_sensor_voltage -->
     <parameterId>PD3463</parameterId> <!-- sensor_temperature -->
     <parameterId>PD3464</parameterId> <!-- parad_n_auv_supply_voltage -->
+    <parameterId>PD3726</parameterId> <!-- par_auv_biospherical_mobile -->
   </streamDefinition>
   <streamDefinition streamName="fdchp_a_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -12936,6 +12928,15 @@
     <parameterId>PD3480</parameterId> <!-- fdchp_heading -->
     <parameterId>PD3481</parameterId> <!-- fdchp_status_1 -->
     <parameterId>PD3482</parameterId> <!-- fdchp_status_2 -->
+    <parameterId>PD3716</parameterId> <!-- fdchp_a_tmpatur -->
+    <parameterId>PD3717</parameterId> <!-- fdchp_a_windtur_north -->
+    <parameterId>PD3718</parameterId> <!-- fdchp_a_windtur_up -->
+    <parameterId>PD3719</parameterId> <!-- fdchp_a_windtur_west -->
+    <parameterId>PD3720</parameterId> <!-- fdchp_a_fluxhot -->
+    <parameterId>PD3721</parameterId> <!-- fdchp_a_fluxmom_alongwind -->
+    <parameterId>PD3722</parameterId> <!-- fdchp_a_fluxmom_crosswind -->
+    <parameterId>PD3723</parameterId> <!-- fdchp_a_time_L1 -->
+    <parameterId>PD3724</parameterId> <!-- fdchp_a_time_L2 -->
   </streamDefinition>
   <streamDefinition streamName="auv_eng_auv_imagenex_852">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -13975,6 +13976,10 @@
     <parameterId>PD2021</parameterId> <!-- sensor_available_speed -->
     <parameterId>PD2070</parameterId> <!-- sysconfig_beam_angle -->
     <parameterId>PD2071</parameterId> <!-- sysconfig_beam_config -->
+    <parameterId>PD2737</parameterId> <!-- adcps_jln_echo_intensity_beam1 -->
+    <parameterId>PD2738</parameterId> <!-- adcps_jln_echo_intensity_beam2 -->
+    <parameterId>PD2739</parameterId> <!-- adcps_jln_echo_intensity_beam3 -->
+    <parameterId>PD2740</parameterId> <!-- adcps_jln_echo_intensity_beam4 -->
     <parameterId>PD3669</parameterId> <!-- water_velocity_forward -->
     <parameterId>PD3670</parameterId> <!-- water_velocity_starboard -->
     <parameterId>PD3671</parameterId> <!-- water_velocity_vertical -->
@@ -14066,6 +14071,7 @@
     <parameterId>PD2615</parameterId> <!-- ctd_psu -->
     <parameterId>PD2616</parameterId> <!-- ctd_temp -->
     <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
+    <parameterId>PD3712</parameterId> <!-- nutnr_j_cspp_temp_sal_corrected_nitrate -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_m_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -14096,6 +14102,7 @@
     <parameterId>PD2615</parameterId> <!-- ctd_psu -->
     <parameterId>PD2616</parameterId> <!-- ctd_temp -->
     <parameterId>PD2617</parameterId> <!-- ctd_dbar -->
+    <parameterId>PD3725</parameterId> <!-- nutnr_m_temp_sal_corrected_nitrate -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_m_glider_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -14112,5 +14119,68 @@
     <parameterId>PD3703</parameterId> <!-- sci_suna_record_offset -->
     <parameterId>PD3704</parameterId> <!-- sci_suna_nitrate_um -->
     <parameterId>PD3705</parameterId> <!-- sci_suna_nitrate_mg -->
+  </streamDefinition>
+  <streamDefinition streamName="zplsc_c_instrument">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD10</parameterId> <!-- port_timestamp -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD312</parameterId> <!-- serial_number -->
+    <parameterId>PD761</parameterId> <!-- burst_number -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD3730</parameterId> <!-- zplsc_c_transmission_timestamp -->
+    <parameterId>PD3731</parameterId> <!-- zplsc_c_phase -->
+    <parameterId>PD3732</parameterId> <!-- zplsc_c_number_of_frequencies -->
+    <parameterId>PD3733</parameterId> <!-- zplsc_c_number_of_bins_frequency_1 -->
+    <parameterId>PD3734</parameterId> <!-- zplsc_c_number_of_bins_frequency_2 -->
+    <parameterId>PD3735</parameterId> <!-- zplsc_c_number_of_bins_frequency_3 -->
+    <parameterId>PD3736</parameterId> <!-- zplsc_c_number_of_bins_frequency_4 -->
+    <parameterId>PD3737</parameterId> <!-- zplsc_c_min_value_channel_1 -->
+    <parameterId>PD3738</parameterId> <!-- zplsc_c_min_value_channel_2 -->
+    <parameterId>PD3739</parameterId> <!-- zplsc_c_min_value_channel_3 -->
+    <parameterId>PD3740</parameterId> <!-- zplsc_c_min_value_channel_4 -->
+    <parameterId>PD3741</parameterId> <!-- zplsc_c_date_of_burst -->
+    <parameterId>PD3742</parameterId> <!-- zplsc_c_tilt_x -->
+    <parameterId>PD3743</parameterId> <!-- zplsc_c_tilt_y -->
+    <parameterId>PD3744</parameterId> <!-- zplsc_c_battery_voltage -->
+    <parameterId>PD3745</parameterId> <!-- zplsc_c_temperature -->
+    <parameterId>PD3746</parameterId> <!-- zplsc_c_pressure -->
+    <parameterId>PD3747</parameterId> <!-- zplsc_c_board_number_channel_1 -->
+    <parameterId>PD3748</parameterId> <!-- zplsc_c_frequency_channel_1 -->
+    <parameterId>PD3749</parameterId> <!-- zplsc_c_values_channel_1 -->
+    <parameterId>PD3750</parameterId> <!-- zplsc_c_board_number_channel_2 -->
+    <parameterId>PD3751</parameterId> <!-- zplsc_c_frequency_channel_2 -->
+    <parameterId>PD3752</parameterId> <!-- zplsc_c_values_channel_2 -->
+    <parameterId>PD3753</parameterId> <!-- zplsc_c_board_number_channel_3 -->
+    <parameterId>PD3754</parameterId> <!-- zplsc_c_frequency_channel_3 -->
+    <parameterId>PD3755</parameterId> <!-- zplsc_c_values_channel_3 -->
+    <parameterId>PD3756</parameterId> <!-- zplsc_c_board_number_channel_4 -->
+    <parameterId>PD3757</parameterId> <!-- zplsc_c_frequency_channel_4 -->
+    <parameterId>PD3758</parameterId> <!-- zplsc_c_values_channel_4 -->
+  </streamDefinition>
+  <streamDefinition streamName="camhd_streaming_status">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD10</parameterId> <!-- port_timestamp -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD3759</parameterId> <!-- camhd_pan_position -->
+    <parameterId>PD3760</parameterId> <!-- camhd_tilt_position -->
+    <parameterId>PD3761</parameterId> <!-- camhd_heading -->
+    <parameterId>PD3762</parameterId> <!-- camhd_pitch -->
+    <parameterId>PD3763</parameterId> <!-- camhd_light1_intensity -->
+    <parameterId>PD3764</parameterId> <!-- camhd_light2_intensity -->
+    <parameterId>PD3765</parameterId> <!-- camhd_zoom -->
+    <parameterId>PD3766</parameterId> <!-- camhd_laser -->
+  </streamDefinition>
+  <streamDefinition streamName="camhd_adread_status">
+    <parameterId>PD7</parameterId> <!-- time -->
+    <parameterId>PD10</parameterId> <!-- port_timestamp -->
+    <parameterId>PD11</parameterId> <!-- driver_timestamp -->
+    <parameterId>PD12</parameterId> <!-- internal_timestamp -->
+    <parameterId>PD16</parameterId> <!-- preferred_timestamp -->
+    <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
   </streamDefinition>
 </streamDefinitions>

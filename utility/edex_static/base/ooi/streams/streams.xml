@@ -6425,7 +6425,7 @@
     <parameterId>PD1656</parameterId> <!-- fluorometric_cdom -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD2762</parameterId> <!-- flort_dj_dcl_bback_total -->
-    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+    <parameterId>PD3686</parameterId> <!-- flort_d_dcl_ctdbp_scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="flort_dj_dcl_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -6448,7 +6448,7 @@
     <parameterId>PD1656</parameterId> <!-- fluorometric_cdom -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
     <parameterId>PD2762</parameterId> <!-- flort_dj_dcl_bback_total -->
-    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+    <parameterId>PD3686</parameterId> <!-- flort_d_dcl_ctdbp_scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="metbk_a_dcl_instrument">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -8118,7 +8118,6 @@
     <parameterId>PD1567</parameterId> <!-- adcps_pd12_eastward_seawater_velocity -->
     <parameterId>PD1568</parameterId> <!-- adcps_pd12_northward_seawater_velocity -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
-    <parameterId>PD2765</parameterId> <!-- dcl_controller_starting_timestamp -->
     <parameterId>PD2769</parameterId> <!-- corrected_echo_intensity_beam1 -->
     <parameterId>PD2770</parameterId> <!-- corrected_echo_intensity_beam2 -->
     <parameterId>PD2771</parameterId> <!-- corrected_echo_intensity_beam3 -->
@@ -8157,7 +8156,6 @@
     <parameterId>PD1567</parameterId> <!-- adcps_pd12_eastward_seawater_velocity -->
     <parameterId>PD1568</parameterId> <!-- adcps_pd12_northward_seawater_velocity -->
     <parameterId>PD2605</parameterId> <!-- dcl_controller_timestamp -->
-    <parameterId>PD2765</parameterId> <!-- dcl_controller_starting_timestamp -->
     <parameterId>PD2769</parameterId> <!-- corrected_echo_intensity_beam1 -->
     <parameterId>PD2770</parameterId> <!-- corrected_echo_intensity_beam2 -->
     <parameterId>PD2771</parameterId> <!-- corrected_echo_intensity_beam3 -->
@@ -8997,8 +8995,8 @@
     <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
     <parameterId>PD2606</parameterId> <!-- pressure_depth -->
     <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
-    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
-    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+    <parameterId>PD3775</parameterId> <!-- flort_dj_cspp_bback_total -->
+    <parameterId>PD3776</parameterId> <!-- flort_dj_cspp_scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="flort_dj_cspp_instrument_recovered">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9022,8 +9020,8 @@
     <parameterId>PD2311</parameterId> <!-- profiler_timestamp -->
     <parameterId>PD2606</parameterId> <!-- pressure_depth -->
     <parameterId>PD2622</parameterId> <!-- suspect_timestamp -->
-    <parameterId>PD2763</parameterId> <!-- flort_kn_bback_total -->
-    <parameterId>PD2764</parameterId> <!-- scat_seawater -->
+    <parameterId>PD3775</parameterId> <!-- flort_dj_cspp_bback_total -->
+    <parameterId>PD3776</parameterId> <!-- flort_dj_cspp_scat_seawater -->
   </streamDefinition>
   <streamDefinition streamName="flort_dj_cspp_metadata">
     <parameterId>PD7</parameterId> <!-- time -->
@@ -9549,6 +9547,7 @@
     <parameterId>PD332</parameterId> <!-- spectral_channels -->
     <parameterId>PD347</parameterId> <!-- lamp_time -->
     <parameterId>PD863</parameterId> <!-- ingestion_timestamp -->
+    <parameterId>PD2761</parameterId> <!-- nutnr_b_temp_sal_corrected_nitrate -->
   </streamDefinition>
   <streamDefinition streamName="nutnr_b_metadata_recovered">
     <parameterId>PD7</parameterId> <!-- time -->

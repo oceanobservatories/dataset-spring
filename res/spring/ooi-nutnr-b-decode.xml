@@ -12,27 +12,14 @@
     <camelContext id="nutnr-b-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="nutnr-b_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/nutnr-b_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="nutnr-b_recoveredFileConsumerRoute">
-            <from ref="nutnr-b_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-NUTNRR000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.nutnr-b_recovered" />
-        </route>
 
         <route id="nutnr-b_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-b_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.nutnr-b_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

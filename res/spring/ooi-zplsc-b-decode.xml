@@ -50,7 +50,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="zplsc-b_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

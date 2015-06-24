@@ -18,30 +18,14 @@
     <camelContext id="nutnr-b-dcl-conc-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="nutnr-b-dcl-conc_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/nutnr-b-dcl-conc_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <endpoint id="nutnr-b-dcl-conc_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/nutnr-b-dcl-conc_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="nutnr-b-dcl-conc_recoveredFileConsumerRoute">
-            <from ref="nutnr-b-dcl-conc_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-NUTNRR010</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_recovered" />
-        </route>
 
         <route id="nutnr-b-dcl-conc_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -50,24 +34,14 @@
             </doTry>
         </route>
 
-        <route id="nutnr-b-dcl-conc_telemeteredFileConsumerRoute">
-            <from ref="nutnr-b-dcl-conc_telemeteredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-NUTNRT010</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_telemetered" />
-        </route>
 
         <route id="nutnr-b-dcl-conc_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_telemetered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_telemeteredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

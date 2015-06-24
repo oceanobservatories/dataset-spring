@@ -18,30 +18,14 @@
     <camelContext id="glider-eng-glider-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="glider-eng-glider_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/glider-eng-glider_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <endpoint id="glider-eng-glider_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/glider-eng-glider_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="glider-eng-glider_recoveredFileConsumerRoute">
-            <from ref="glider-eng-glider_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-GLDRER000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.glider-eng-glider_recovered" />
-        </route>
 
         <route id="glider-eng-glider_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.glider-eng-glider_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.glider-eng-glider_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="glider-eng-glider_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -50,24 +34,14 @@
             </doTry>
         </route>
 
-        <route id="glider-eng-glider_telemeteredFileConsumerRoute">
-            <from ref="glider-eng-glider_telemeteredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-GLDRET000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.glider-eng-glider_telemetered" />
-        </route>
 
         <route id="glider-eng-glider_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.glider-eng-glider_telemetered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.glider-eng-glider_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="glider-eng-glider_telemeteredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

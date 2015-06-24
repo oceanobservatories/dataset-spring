@@ -12,27 +12,14 @@
     <camelContext id="ctdmo-ghqr-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="ctdmo-ghqr_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ctdmo-ghqr_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="ctdmo-ghqr_recoveredFileConsumerRoute">
-            <from ref="ctdmo-ghqr_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-CTDMOM000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.ctdmo-ghqr_recovered" />
-        </route>
 
         <route id="ctdmo-ghqr_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdmo-ghqr_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

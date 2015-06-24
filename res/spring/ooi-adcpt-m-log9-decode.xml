@@ -12,27 +12,14 @@
     <camelContext id="adcpt-m-log9-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="adcpt-m-log9_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcpt-m-log9_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="adcpt-m-log9_recoveredFileConsumerRoute">
-            <from ref="adcpt-m-log9_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-ADCPTM003</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.adcpt-m-log9_recovered" />
-        </route>
 
         <route id="adcpt-m-log9_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt-m-log9_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.adcpt-m-log9_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpt-m-log9_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

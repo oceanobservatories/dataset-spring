@@ -18,30 +18,14 @@
     <camelContext id="rte-o-dcl-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="rte-o-dcl_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/rte-o-dcl_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <endpoint id="rte-o-dcl_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/rte-o-dcl_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="rte-o-dcl_recoveredFileConsumerRoute">
-            <from ref="rte-o-dcl_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-RTEODR000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.rte-o-dcl_recovered" />
-        </route>
 
         <route id="rte-o-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.rte-o-dcl_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.rte-o-dcl_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="rte-o-dcl_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -50,24 +34,14 @@
             </doTry>
         </route>
 
-        <route id="rte-o-dcl_telemeteredFileConsumerRoute">
-            <from ref="rte-o-dcl_telemeteredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-RTEODT000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.rte-o-dcl_telemetered" />
-        </route>
 
         <route id="rte-o-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.rte-o-dcl_telemetered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.rte-o-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="rte-o-dcl_telemeteredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

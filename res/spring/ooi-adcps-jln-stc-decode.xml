@@ -18,30 +18,14 @@
     <camelContext id="adcps-jln-stc-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="adcps-jln-stc_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcps-jln-stc_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <endpoint id="adcps-jln-stc_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/adcps-jln-stc_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="adcps-jln-stc_recoveredFileConsumerRoute">
-            <from ref="adcps-jln-stc_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-ADCPSJ000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.adcps-jln-stc_recovered" />
-        </route>
 
         <route id="adcps-jln-stc_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcps-jln-stc_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.adcps-jln-stc_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="adcps-jln-stc_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -50,24 +34,14 @@
             </doTry>
         </route>
 
-        <route id="adcps-jln-stc_telemeteredFileConsumerRoute">
-            <from ref="adcps-jln-stc_telemeteredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-ADCPSS000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.adcps-jln-stc_telemetered" />
-        </route>
 
         <route id="adcps-jln-stc_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.adcps-jln-stc_telemetered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.adcps-jln-stc_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="adcps-jln-stc_telemeteredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

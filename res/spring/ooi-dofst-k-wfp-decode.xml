@@ -18,30 +18,14 @@
     <camelContext id="dofst-k-wfp-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="dofst-k-wfp_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dofst-k-wfp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <endpoint id="dofst-k-wfp_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/dofst-k-wfp_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="dofst-k-wfp_recoveredFileConsumerRoute">
-            <from ref="dofst-k-wfp_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-DOFSTR000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.dofst-k-wfp_recovered" />
-        </route>
 
         <route id="dofst-k-wfp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dofst-k-wfp_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.dofst-k-wfp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="dofst-k-wfp_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -50,24 +34,14 @@
             </doTry>
         </route>
 
-        <route id="dofst-k-wfp_telemeteredFileConsumerRoute">
-            <from ref="dofst-k-wfp_telemeteredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-DOFSTT000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.dofst-k-wfp_telemetered" />
-        </route>
 
         <route id="dofst-k-wfp_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dofst-k-wfp_telemetered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.dofst-k-wfp_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="dofst-k-wfp_telemeteredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

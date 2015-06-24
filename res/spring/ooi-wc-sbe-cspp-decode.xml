@@ -18,30 +18,14 @@
     <camelContext id="wc-sbe-cspp-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="wc-sbe-cspp_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/wc-sbe-cspp_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <endpoint id="wc-sbe-cspp_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/wc-sbe-cspp_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="wc-sbe-cspp_recoveredFileConsumerRoute">
-            <from ref="wc-sbe-cspp_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-WCSBER000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.wc-sbe-cspp_recovered" />
-        </route>
 
         <route id="wc-sbe-cspp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.wc-sbe-cspp_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.wc-sbe-cspp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="wc-sbe-cspp_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
@@ -50,24 +34,14 @@
             </doTry>
         </route>
 
-        <route id="wc-sbe-cspp_telemeteredFileConsumerRoute">
-            <from ref="wc-sbe-cspp_telemeteredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-WCSBET000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.wc-sbe-cspp_telemetered" />
-        </route>
 
         <route id="wc-sbe-cspp_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.wc-sbe-cspp_telemetered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.wc-sbe-cspp_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="wc-sbe-cspp_telemeteredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

@@ -12,27 +12,14 @@
     <camelContext id="phsen-abcdef-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="phsen-abcdef_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/phsen-abcdef_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="phsen-abcdef_recoveredFileConsumerRoute">
-            <from ref="phsen-abcdef_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX0X-X01-PHSEN-ABCDEF-R00</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.phsen-abcdef_recovered" />
-        </route>
 
         <route id="phsen-abcdef_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.phsen-abcdef_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

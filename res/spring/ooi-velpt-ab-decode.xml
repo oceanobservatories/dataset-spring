@@ -12,27 +12,14 @@
     <camelContext id="velpt-ab-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="velpt-ab_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/velpt-ab_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="velpt-ab_recoveredFileConsumerRoute">
-            <from ref="velpt-ab_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-VELABR001</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.velpt-ab_recovered" />
-        </route>
 
         <route id="velpt-ab_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.velpt-ab_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.velpt-ab_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="velpt-ab_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

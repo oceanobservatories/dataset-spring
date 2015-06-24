@@ -12,27 +12,14 @@
     <camelContext id="flobn-m-subcon-temperature-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="flobn-m-subcon-temperature_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flobn-m-subcon-temperature_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="flobn-m-subcon-temperature_recoveredFileConsumerRoute">
-            <from ref="flobn-m-subcon-temperature_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-FLOBNMR005</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.flobn-m-subcon-temperature_recovered" />
-        </route>
 
         <route id="flobn-m-subcon-temperature_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flobn-m-subcon-temperature_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.flobn-m-subcon-temperature_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="flobn-m-subcon-temperature_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

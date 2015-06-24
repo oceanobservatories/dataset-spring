@@ -12,27 +12,14 @@
     <camelContext id="flord-l-wfp-sio-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="flord-l-wfp-sio_telemeteredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/flord-l-wfp-sio_telemetered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="flord-l-wfp-sio_telemeteredFileConsumerRoute">
-            <from ref="flord-l-wfp-sio_telemeteredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>telemetered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-FLORDL000</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.flord-l-wfp-sio_telemetered" />
-        </route>
 
         <route id="flord-l-wfp-sio_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.flord-l-wfp-sio_telemetered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.flord-l-wfp-sio_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="flord-l-wfp-sio_telemeteredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

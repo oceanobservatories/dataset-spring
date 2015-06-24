@@ -12,27 +12,14 @@
     <camelContext id="ppsdn-a-subcon-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="ppsdn-a-subcon_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/ppsdn-a-subcon_recovered?delete=true&amp;delay=3000&amp;maxMessagesPerPoll=30&amp;exclusiveReadLockStrategy=#fileChangedStrategy" />
-
-        <route id="ppsdn-a-subcon_recoveredFileConsumerRoute">
-            <from ref="ppsdn-a-subcon_recoveredFileEndpoint" />
-            <setHeader headerName="deliveryType">
-                <constant>recovered</constant>
-            </setHeader>
-            <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-PPSDNAR001</constant>
-            </setHeader>
-            <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.ppsdn-a-subcon_recovered" />
-        </route>
 
         <route id="ppsdn-a-subcon_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ppsdn-a-subcon_recovered?concurrentConsumers=4" />
+            <from uri="jms-durable:queue:Ingest.ppsdn-a-subcon_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="ppsdn-a-subcon_recoveredProcessor" />
-                    <to uri="vm:generate?concurrentConsumers=10" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

@@ -6,13 +6,13 @@
     <bean id="fdchp-a-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="fdchp-a-dcl_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/fdchp_a/dcl/fdchp_a_dcl_telemetered_driver.py" />
+        <constructor-arg index="2" value=mi.dataset.driver.fdchp_a.dcl.fdchp_a_dcl_telemetered_driver" />
     </bean>
 
     <bean id="fdchp-a-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="fdchp-a-dcl_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/fdchp_a/dcl/fdchp_a_dcl_recovered_driver.py" />
+        <constructor-arg index="2" value="mi.dataset.driver.fdchp_a.dcl.fdchp_a_dcl_recovered_driver" />
     </bean>
 
     <camelContext id="fdchp-a-dcl-decode-camel"

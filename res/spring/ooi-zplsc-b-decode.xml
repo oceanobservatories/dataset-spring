@@ -6,7 +6,7 @@
     <bean id="zplsc-b_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileEchogram">
         <constructor-arg name="name" value="zplsc-b_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg name="scriptPath" value="#{basePythonCodeLocalizationPath}/mi/dataset/driver/zplsc_b/zplsc_b_telemetered_driver.py" />
+        <constructor-arg name="scriptPath" value="mi.dataset.driver.zplsc_b.zplsc_b_telemetered_driver" />
         <constructor-arg name="outputPath" value="${edex.home}/data/processing" /> <!-- Temporary output directory location -->
     </bean>
 

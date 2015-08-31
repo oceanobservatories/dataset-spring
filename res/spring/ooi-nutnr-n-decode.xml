@@ -14,7 +14,7 @@
 
 
         <route id="nutnr-n_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-n_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.nutnr-n_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-n_recoveredProcessor" />

@@ -20,7 +20,7 @@
 
 
         <route id="auv-eng-auv_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.auv-eng-auv_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.auv-eng-auv_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="auv-eng-auv_recoveredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="auv-eng-auv_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.auv-eng-auv_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.auv-eng-auv_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="auv-eng-auv_telemeteredProcessor" />

@@ -20,7 +20,7 @@
 
 
         <route id="dosta-abcdjm-glider_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.dosta-abcdjm-glider_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-abcdjm-glider_recoveredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="dosta-abcdjm-glider_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-abcdjm-glider_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.dosta-abcdjm-glider_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-abcdjm-glider_telemeteredProcessor" />

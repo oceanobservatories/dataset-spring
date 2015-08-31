@@ -20,7 +20,7 @@
 
 
         <route id="wc-hmr-cspp_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.wc-hmr-cspp_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.wc-hmr-cspp_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="wc-hmr-cspp_telemeteredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="wc-hmr-cspp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.wc-hmr-cspp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.wc-hmr-cspp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="wc-hmr-cspp_recoveredProcessor" />

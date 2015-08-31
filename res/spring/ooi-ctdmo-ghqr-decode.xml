@@ -14,7 +14,7 @@
 
 
         <route id="ctdmo-ghqr_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdmo-ghqr_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.ctdmo-ghqr_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdmo-ghqr_recoveredProcessor" />

@@ -20,7 +20,7 @@
 
 
         <route id="flord-m-glider_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flord-m-glider_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.flord-m-glider_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="flord-m-glider_recoveredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="flord-m-glider_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.flord-m-glider_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.flord-m-glider_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="flord-m-glider_telemeteredProcessor" />

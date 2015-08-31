@@ -14,7 +14,7 @@
 
 
         <route id="zplsc-c-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.zplsc-c-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.zplsc-c-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="zplsc-c-dcl_telemeteredProcessor" />

@@ -14,7 +14,7 @@
 
 
         <route id="adcpt-m-log9_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpt-m-log9_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.adcpt-m-log9_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpt-m-log9_recoveredProcessor" />

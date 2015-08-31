@@ -20,7 +20,7 @@
 
 
         <route id="sio-eng-sio_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.sio-eng-sio_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.sio-eng-sio_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="sio-eng-sio_recoveredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="sio-eng-sio_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.sio-eng-sio_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.sio-eng-sio_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="sio-eng-sio_telemeteredProcessor" />

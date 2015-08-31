@@ -3,49 +3,49 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="adcpa-m-glider_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg index="0" value="adcpa-m-glider_recovered" />
+    <bean id="ctdbp-cdef-dcl_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="ctdbp-cdef-dcl_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="mi.dataset.driver.moas.gl.adcpa.adcpa_m_glider_recovered_driver" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctbp_cdef.dcl.ctdbp_cdef_dcl_recovered_driver" />
     </bean>
 
-    <bean id="adcpa-m-glider_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg index="0" value="adcpa-m-glider_telemetered" />
+    <bean id="ctdbp-cdef-dcl_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="ctdbp-cdef-dcl_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="mi.dataset.driver.moas.gl.adcpa.adcpa_m_glider_telemetered_driver" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctbp_cdef.dcl.ctdbp_cdef_dcl_telemetered_driver" />
     </bean>
 
-    <camelContext id="adcpa-m-glider-decode-camel"
+    <camelContext id="ctdbp-cdef-dcl-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
 
-        <route id="adcpa-m-glider_recoveredIngest">
-            <from uri="jms-durable-ingest:queue:Ingest.adcpa-m-glider_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+        <route id="ctdbp-cdef-dcl_recoveredIngest">
+            <from uri="jms-durable-ingest:queue:Ingest.ctdbp-cdef-dcl_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcpa-m-glider_recoveredProcessor" />
+                    <bean ref="ctdbp-cdef-dcl_recoveredProcessor" />
                     <to uri="direct-vm:generate?timeout=720000" />
                     <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpa-m-glider?level=ERROR" />
+                    <to uri="log:ooi.ctdbp-cdef-dcl?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>
 
 
-        <route id="adcpa-m-glider_telemeteredIngest">
-            <from uri="jms-durable-ingest:queue:Ingest.adcpa-m-glider_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+        <route id="ctdbp-cdef-dcl_telemeteredIngest">
+            <from uri="jms-durable-ingest:queue:Ingest.ctdbp-cdef-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
-                    <bean ref="adcpa-m-glider_telemeteredProcessor" />
+                    <bean ref="ctdbp-cdef-dcl_telemeteredProcessor" />
                     <to uri="direct-vm:generate?timeout=720000" />
                     <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.adcpa-m-glider?level=ERROR" />
+                    <to uri="log:ooi.ctdbp-cdef-dcl?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

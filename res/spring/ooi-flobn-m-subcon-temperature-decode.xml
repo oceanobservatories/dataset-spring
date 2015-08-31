@@ -14,7 +14,7 @@
 
 
         <route id="flobn-m-subcon-temperature_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flobn-m-subcon-temperature_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.flobn-m-subcon-temperature_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="flobn-m-subcon-temperature_recoveredProcessor" />

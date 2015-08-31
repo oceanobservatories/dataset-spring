@@ -14,7 +14,7 @@
 
 
         <route id="ctdbp-cdef-cp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ctdbp-cdef-cp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.ctdbp-cdef-cp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="ctdbp-cdef-cp_recoveredProcessor" />

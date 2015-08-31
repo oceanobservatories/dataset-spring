@@ -20,7 +20,7 @@
 
 
         <route id="vel3d-cd-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d-cd-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.vel3d-cd-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3d-cd-dcl_telemeteredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="vel3d-cd-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d-cd-dcl_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.vel3d-cd-dcl_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3d-cd-dcl_recoveredProcessor" />

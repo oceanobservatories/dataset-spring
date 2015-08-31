@@ -20,7 +20,7 @@
 
 
         <route id="nutnr-b-dcl-conc_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.nutnr-b-dcl-conc_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_recoveredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="nutnr-b-dcl-conc_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.nutnr-b-dcl-conc_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.nutnr-b-dcl-conc_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="nutnr-b-dcl-conc_telemeteredProcessor" />

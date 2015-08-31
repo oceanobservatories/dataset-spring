@@ -20,7 +20,7 @@
 
 
         <route id="rte-o-dcl_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.rte-o-dcl_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.rte-o-dcl_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="rte-o-dcl_recoveredProcessor" />
@@ -36,7 +36,7 @@
 
 
         <route id="rte-o-dcl_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.rte-o-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.rte-o-dcl_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="rte-o-dcl_telemeteredProcessor" />

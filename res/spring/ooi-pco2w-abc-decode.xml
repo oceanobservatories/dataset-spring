@@ -14,7 +14,7 @@
 
 
         <route id="pco2w-abc_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.pco2w-abc_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.pco2w-abc_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="pco2w-abc_recoveredProcessor" />

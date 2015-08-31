@@ -14,7 +14,7 @@
 
 
         <route id="dosta-ln-wfp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.dosta-ln-wfp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.dosta-ln-wfp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="dosta-ln-wfp_recoveredProcessor" />

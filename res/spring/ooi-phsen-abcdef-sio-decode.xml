@@ -14,7 +14,7 @@
 
 
         <route id="phsen-abcdef-sio_telemeteredIngest">
-            <from uri="jms-durable:queue:Ingest.phsen-abcdef-sio_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.phsen-abcdef-sio_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="phsen-abcdef-sio_telemeteredProcessor" />

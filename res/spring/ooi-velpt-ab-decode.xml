@@ -14,7 +14,7 @@
 
 
         <route id="velpt-ab_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.velpt-ab_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.velpt-ab_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="velpt-ab_recoveredProcessor" />

@@ -14,7 +14,7 @@
 
 
         <route id="adcpa-n_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.adcpa-n_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.adcpa-n_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="adcpa-n_recoveredProcessor" />

@@ -14,7 +14,7 @@
 
 
         <route id="vel3d-l-wfp_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.vel3d-l-wfp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.vel3d-l-wfp_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="vel3d-l-wfp_recoveredProcessor" />

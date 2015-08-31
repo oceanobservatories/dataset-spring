@@ -14,7 +14,7 @@
 
 
         <route id="ppsdn-a-subcon_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.ppsdn-a-subcon_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.ppsdn-a-subcon_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="ppsdn-a-subcon_recoveredProcessor" />

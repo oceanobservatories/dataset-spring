@@ -3,27 +3,27 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="winch-cspp_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
-        <constructor-arg index="0" value="winch-cspp_telemetered" />
+    <bean id="ctdbp-cdef_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
+        <constructor-arg index="0" value="ctdbp-cdef_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="mi.dataset.driver.winch_cspp.winch_cspp_driver" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctbp_cdef.ctdbp_cdef_recovered_driver" />
     </bean>
 
-    <camelContext id="winch-cspp-decode-camel"
+    <camelContext id="ctdbp-cdef-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
 
-        <route id="winch-cspp_telemeteredIngest">
-            <from uri="jms-durable-ingest:queue:Ingest.winch-cspp_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+        <route id="ctdbp-cdef_recoveredIngest">
+            <from uri="jms-durable-ingest:queue:Ingest.ctdbp-cdef_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
-                    <bean ref="winch-cspp_telemeteredProcessor" />
+                    <bean ref="ctdbp-cdef_recoveredProcessor" />
                     <to uri="direct-vm:generate?timeout=720000" />
                     <!-- 720000ms = 12 minutes -->
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
-                    <to uri="log:ooi.winch-cspp?level=ERROR" />
+                    <to uri="log:ooi.ctdbp-cdef?level=ERROR" />
                 </doCatch>
             </doTry>
         </route>

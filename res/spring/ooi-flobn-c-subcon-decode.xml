@@ -14,7 +14,7 @@
 
 
         <route id="flobn-c-subcon_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.flobn-c-subcon_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <from uri="jms-durable-ingest:queue:Ingest.flobn-c-subcon_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
                 <pipeline>
                     <bean ref="flobn-c-subcon_recoveredProcessor" />

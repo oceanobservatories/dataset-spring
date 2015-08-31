@@ -42,11 +42,11 @@
                 <constant>XX00XXXX-XX00X-00-ZPLSCB001</constant>
             </setHeader>
             <bean ref="fileToString" />
-            <to uri="jms-durable:queue:Ingest.zplsc-b_recovered" />
+            <to uri="jms-durable-ingest:queue:Ingest.zplsc-b_recovered" />
         </route>
 
         <route id="zplsc-b_recoveredIngest">
-            <from uri="jms-durable:queue:Ingest.zplsc-b_recovered" />
+            <from uri="jms-durable-ingest:queue:Ingest.zplsc-b_recovered" />
             <doTry>
                 <pipeline>
                     <bean ref="zplsc-b_recoveredProcessor" />

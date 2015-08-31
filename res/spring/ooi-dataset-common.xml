@@ -6,5 +6,70 @@
     <bean id="basePythonCodeLocalizationPath" class="java.lang.String">
         <constructor-arg type="java.lang.String" value="ooi/parsers/mi-dataset" />
     </bean>
+    
+    <!-- specify the connection to the ingest broker -->
+    <!-- MaxPrefetch set at 0, due to DataPool routers getting messages backed up behind long running tasks -->
+    <bean id="ingestAmqConnectionFactory" class="org.apache.qpid.client.AMQConnectionFactory">
+       <constructor-arg type="java.lang.String" value="amqp://guest:guest@/${JMS_VIRTUALHOST}?brokerlist='tcp://${INGEST_BROKER_ADDR}?retries='9999'&amp;heartbeat='0'&amp;connecttimeout='5000'&amp;connectdelay='5000''&amp;maxprefetch='0'&amp;sync_publish='all'&amp;sync_ack='true'"/>
+    </bean>
+    
+    <bean id="jms-durable-ingest" class="com.raytheon.uf.edex.esb.camel.jms.DedicatedThreadJmsComponent">
+       <constructor-arg ref="ingestJmsDurableConfig" />
+       <property name="taskExecutor" ref="ingestGenericThreadPool" />
+    </bean>
+
+    <bean id="ingestGenericThreadPool"
+        class="com.raytheon.uf.edex.esb.camel.spring.JmsThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="0" />
+        <property name="maxPoolSize" value="10" />
+        <property name="queueCapacity" value="0" />
+    </bean>
+    
+    <bean id="ingestJmsDurableConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="cacheLevelName" value="CACHE_NONE"/>
+        <property name="recoveryInterval" value="10000"/>
+        <property name="requestTimeout" value="5000"/>
+        <!-- If this is false, while stopping we will reject messages that have already been pulled from qpid, essentially losing the message -->
+        <property name="acceptMessagesWhileStopping" value="true"/>
+
+        <!-- receiveTimeout is amount of time thread waits to receive a message before recycling -->
+        <!-- receiveTimeout also affects how fast a JMSConsumer will shut down, because the
+                  thread may be stuck polling for the duration of receiveTimeout before shutting down -->
+        <property name="receiveTimeout" value="5000"/>
+        <property name="transacted" value="false"/>
+
+        <!-- force maxMessagesPerTask so that the threads don't keep disconnecting and reconnecting.
+             This will keep a data-type attached to the initial thread it starts on -->
+        <property name="maxMessagesPerTask" value="-1"/>
+        <property name="listenerConnectionFactory" ref="ingestJmsPooledConnectionFactory" />
+        <property name="templateConnectionFactory" ref="ingestJmsPooledConnectionFactory" />
+        <property name="destinationResolver" ref="ingestQpidDurableResolver" />
+        <property name="disableReplyTo" value="true" />
+        <property name="deliveryPersistent" value="true"/>
+
+        <!--
+        <property name="transacted" value="true" />
+        <property name="acknowledgementModeName" value="TRANSACTED"/>
+        <property name="transactionManager" ref="jmsReceiveTransactionManager" />
+        -->
+    </bean>
+    
+    <bean id="ingestJmsPooledConnectionFactory" class="com.raytheon.uf.common.jms.JmsPooledConnectionFactory">
+       <constructor-arg ref="ingestAmqConnectionFactory"/>
+       <property name="provider" value="QPID"/>
+       <property name="reconnectInterval" value="5000"/>
+       <!-- After resource has been closed by thread keep it allocated for another 2 minutes in case thread needs it again -->
+       <property name="resourceRetention" value="120000"/>
+    </bean>
+    
+    <bean id="ingestQpidNoDurableResolver" class="com.raytheon.uf.edex.esb.camel.spring.QpidDestinationNameResolver">
+        <property name="queueNamePrefix" value="direct://amq.direct/"/>
+        <property name="queueNamePostfix" value="?durable='false'"/>
+    </bean>
+
+    <bean id="ingestQpidDurableResolver" class="com.raytheon.uf.edex.esb.camel.spring.QpidDestinationNameResolver">
+        <property name="queueNamePrefix" value="direct://amq.direct/"/>
+        <property name="queueNamePostfix" value="?durable='true'"/>
+    </bean>
 
 </beans>

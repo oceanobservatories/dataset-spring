@@ -7,41 +7,38 @@
         <constructor-arg name="name" value="zplsc-b_recovered" />
         <constructor-arg name="basePythonCodePath" value="#{basePythonCodeLocalizationPath}" />
         <constructor-arg name="scriptPath" value="mi.dataset.driver.zplsc_b.zplsc_b_telemetered_driver" />
-        <constructor-arg name="outputPath" value="${edex.home}/data/processing" /> <!-- Temporary output directory location -->
+        <constructor-arg name="outputPath" value="$ooi{ooi.media.fileserver.resourceBase}/zplsc-b/image" /> <!-- Temporary output directory location -->
     </bean>
 
     <bean id="fileStore" class="org.apache.camel.processor.idempotent.FileIdempotentRepository">
         <!-- the filename for the store -->
-        <property name="fileStore" value="${edex.home}/data/ooi/zplsc-b_recovered/.filestore.dat"/>  <!-- Delete this file to re-test previously downloaded raw data -->
+        <property name="fileStore" value="$ooi{ooi.source.zplscb}"/>  <!-- Delete this file to re-test previously downloaded raw data -->
         <!-- the max filesize in bytes for the file. Camel will trunk and flush the cache if the file gets bigger -->
         <property name="maxFileStoreSize" value="512000"/>
         <!-- the number of elements in our store -->
         <property name="cacheSize" value="250"/>
     </bean>
+    
+    <bean id="pathToString" class="com.raytheon.uf.edex.ooi.decoder.dataset.PathToString"/>
 
     <camelContext id="zplsc-b-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
-        <endpoint id="zplsc-b_recoveredFTPEndpoint"
-            uri="ftp://ooi@128.193.64.201/data/QCT_3?password=994ef22&amp;binary=true&amp;include=.*.raw&amp;backoffMultiplier=10&amp;backoffIdleThreshold=3&amp;localWorkDirectory=tmp&amp;delay=3s&amp;timeout=1500&amp;idempotent=true&amp;idempotentRepository=#fileStore&amp;runLoggingLevel=DEBUG&amp;maxMessagesPerPoll=30" />
-
-        <endpoint id="zplsc-b_recoveredFileEndpoint"
-            uri="file:${edex.home}/data/ooi/zplsc-b_recovered?include=.*.raw&amp;delete=true&amp;runLoggingLevel=DEBUG&amp;delay=3s&amp;maxMessagesPerPoll=30" />
-
-        <route id="zplsc-b_recoveredFTPConsumerRoute">
-            <from ref="zplsc-b_recoveredFTPEndpoint" />
-            <to ref="zplsc-b_recoveredFileEndpoint" />
-        </route>
-
+        <endpoint id="zplsc-b_recoveredRawFileEndpoint"
+            uri="file:${edex.home}/data/ooi/zplsc-b_recovered/?recursive=true&amp;include=.*.raw&amp;delete=true&amp;runLoggingLevel=DEBUG&amp;delay=3s&amp;maxMessagesPerPoll=30" />
+        
+        <endpoint id="zplsc-b_recoveredImageFileEndpoint"
+            uri="file:$ooi{ooi.media.fileserver.resourceBase}/zplsc-b/image" />
+            
         <route id="zplsc-b_recoveredFileConsumerRoute">
-            <from ref="zplsc-b_recoveredFileEndpoint" />
+            <from ref="zplsc-b_recoveredRawFileEndpoint" />
             <setHeader headerName="deliveryType">
                 <constant>recovered</constant>
             </setHeader>
             <setHeader headerName="sensor">
-                <constant>XX00XXXX-XX00X-00-ZPLSCB001</constant>
+                <constant>$ooi{ooi.refdes_template.zplscb}</constant>
             </setHeader>
-            <bean ref="fileToString" />
+            <bean ref="pathToString" />
             <to uri="jms-durable-ingest:queue:Ingest.zplsc-b_recovered" />
         </route>
 
@@ -58,6 +55,7 @@
                 </doCatch>
             </doTry>
         </route>
-
+        
     </camelContext>
+    
 </beans>

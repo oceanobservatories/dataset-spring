@@ -25,7 +25,7 @@
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
 
         <endpoint id="zplsc-b_recoveredRawFileEndpoint"
-            uri="file:${edex.home}/data/ooi/zplsc-b_recovered/?recursive=true&amp;include=.*.raw&amp;delete=true&amp;runLoggingLevel=DEBUG&amp;delay=3s&amp;maxMessagesPerPoll=30" />
+            uri="file:$ooi{ooi.source.zplscb}?recursive=true&amp;include=.*.raw&amp;delete=true&amp;runLoggingLevel=DEBUG&amp;delay=3s&amp;maxMessagesPerPoll=30" />
             
         <route id="zplsc-b_recoveredFileConsumerRoute">
             <from ref="zplsc-b_recoveredRawFileEndpoint" />

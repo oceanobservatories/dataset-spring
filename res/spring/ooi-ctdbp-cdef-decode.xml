@@ -6,7 +6,7 @@
     <bean id="ctdbp-cdef_recoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.FileDecoder">
         <constructor-arg index="0" value="ctdbp-cdef_recovered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
-        <constructor-arg index="2" value="mi.dataset.driver.ctbp_cdef.ctdbp_cdef_recovered_driver" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctdbp_cdef.ctdbp_cdef_recovered_driver" />
     </bean>
 
     <camelContext id="ctdbp-cdef-decode-camel"

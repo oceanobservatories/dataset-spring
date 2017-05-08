@@ -9,6 +9,12 @@
         <constructor-arg index="2" value="mi.dataset.driver.ctdmo_ghqr.sio.ctdmo_ghqr_sio_co_recovered_driver" />
     </bean>
 
+    <bean id="ctdmo-ghqr-sio_ctRecoveredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
+        <constructor-arg index="0" value="ctdmo-ghqr-sio_ctRecovered" />
+        <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
+        <constructor-arg index="2" value="mi.dataset.driver.ctdmo_ghqr.sio.ctdmo_ghqr_sio_ct_recovered_driver" />
+    </bean>
+
     <bean id="ctdmo-ghqr-sio_telemeteredProcessor" class="com.raytheon.uf.edex.ooi.decoder.dataset.ctdmo_ghqr.CtdmoGhqrCoFileDecoder">
         <constructor-arg index="0" value="ctdmo-ghqr-sio_telemetered" />
         <constructor-arg index="1" value="#{basePythonCodeLocalizationPath}" />
@@ -34,6 +40,20 @@
             </doTry>
         </route>
 
+        <route id="ctdmo-ghqr-sio_ctRecoveredIngest">
+            <from uri="jms-durable-ingest:queue:Ingest.ctdmo-ghqr-sio_ctRecovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
+            <doTry>
+                <pipeline>
+                    <bean ref="ctdmo-ghqr-sio_ctRecoveredProcessor" />
+                    <to uri="direct-vm:generate?timeout=720000" />
+                    <!-- 720000ms = 12 minutes -->
+                </pipeline>
+                <doCatch>
+                    <exception>java.lang.Throwable</exception>
+                    <to uri="log:ooi.ctdmo-ghqr-sio?level=ERROR" />
+                </doCatch>
+            </doTry>
+        </route>
 
         <route id="ctdmo-ghqr-sio_telemeteredIngest">
             <from uri="jms-durable-ingest:queue:Ingest.ctdmo-ghqr-sio_telemetered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />

@@ -17,7 +17,7 @@
 
     <camelContext id="suna-dcl-decode-camel"
         xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
-
+        
         <route id="suna-dcl_recoveredIngest">
             <from uri="jms-durable-ingest:queue:Ingest.suna-dcl_recovered?concurrentConsumers=1&amp;maxConcurrentConsumers=10&amp;disableReplyTo=true" />
             <doTry>
